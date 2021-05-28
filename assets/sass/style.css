@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+body {
+  color: RGB(80, 80, 90);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  color: #b3b3b3;
+}
+
+a:hover {
+  color: #fca311;
+}
+
+aside {
+  max-width: 300px !important;
+  background-color: RGB(28, 29, 28);
+  height: 100vh;
+  -webkit-box-shadow: 5px 0 15px #181818;
+          box-shadow: 5px 0 15px #181818;
+  z-index: 100;
+}
+
+aside .brand {
+  font-size: 2em;
+  font-weight: bold;
+  color: #fca311;
+  padding: 1em !important;
+}
+
+aside .brand span {
+  font-size: 0.6em;
+  font-weight: 300;
+  color: white;
+}
+
+aside nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+aside nav a {
+  background-color: #2b2b2b;
+  padding: 0.7em 1em !important;
+  margin: 0.5em;
+}
+
+main {
+  width: 100%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#222527), to(#14171a));
+  background-image: linear-gradient(#222527, #14171a);
+}
+
+main header {
+  padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main header > * {
+  cursor: pointer;
+}
+
+main header > *:hover {
+  color: #fca311;
+}
+
+main header input {
+  border-radius: 0.5em;
+  border: none;
+  background-color: #36393b;
+  padding: 0.4em 2em;
+  font-size: 0.8em;
+  outline: none;
+  color: #b3b3b3;
+}
+
+main header input:hover, main header input:focus {
+  background-color: #292c2c;
+}
+
+main header i {
+  position: relative;
+}
+
+main header i::after {
+  content: '';
+  background-color: #fca311;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  left: 70%;
+}
+
+main header .lightMode {
+  width: 50px;
+  height: 26px;
+  border-radius: 100px;
+  background-image: linear-gradient(280deg, #5d6270, #242b31);
+  position: relative;
+}
+
+main header .lightMode::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  top: 50%;
+  left: 13px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+main header button {
+  background-color: #36393b;
+  border: none;
+  border-radius: 1em;
+  color: #b3b3b3;
+  padding: 0.4em 0.8em;
+  margin: 0 1em;
+}
+
+main .actu {
+  padding: 1em 2em;
+}
+
+main .actu h1 {
+  font-weight: bold;
+  color: white;
+}
+
+main .actu h1 span {
+  color: #b3b3b3;
+}
+
+main .actu h1 span span {
+  color: #fca311;
+}
+/*# sourceMappingURL=style.css.map */

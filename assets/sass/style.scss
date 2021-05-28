@@ -1,0 +1,130 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+$grey: rgb(179, 179, 179);
+$yellow: #fca311;
+
+
+body {
+    color: RGB(80, 80, 90);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(179, 179, 179);
+    &:hover {
+        color: #fca311;
+    }
+}
+
+
+aside {
+    max-width: 300px !important;
+    background-color: RGB(28, 29, 28);
+    height: 100vh;
+    box-shadow:  5px 0 15px rgb(24, 24, 24);
+    z-index: 100;
+    .brand {
+        font-size: 2em;
+        font-weight: bold;
+        color: $yellow;
+        padding: 1em !important;
+        span {
+            font-size: 0.6em;
+            font-weight: 300;
+            color: white;
+        }
+    }
+    nav {
+        display: flex;
+        flex-direction: column;
+        a {
+            background-color: rgb(43, 43, 43);
+            padding:0.7em 1em !important;
+            margin: 0.5em;
+        }
+    }
+}
+
+main {
+    width: 100%;
+    background-image: linear-gradient(#222527, #14171a);
+    header {
+        padding: 1em;
+        display: flex;
+        align-items: center;
+        & > * {
+            cursor: pointer;
+            &:hover {
+                color: #fca311;
+            }
+        }
+        input {
+            border-radius: 0.5em;
+            border: none;
+            background-color: #36393b;
+            padding: 0.4em 2em;
+            font-size: 0.8em;
+            outline: none;
+            color: rgb(179, 179, 179);
+            &:hover , &:focus {
+                background-color: #292c2c;
+            }
+        }
+        i {
+            position: relative;
+            &::after {
+                content: '';
+                background-color: #fca311;
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                left: 70%;
+            }
+        }
+        
+        .lightMode {
+            width: 50px;
+            height: 26px;
+            border-radius: 100px;
+            background-image: linear-gradient(280deg, #5d6270, #242b31);
+            position: relative;
+            &::after {
+                content: '';
+                position: absolute;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background-color: rgb(240, 240, 240);
+                top: 50%;
+                left: 13px;
+                transform: translate(-50%, -50%);
+            }
+        }
+        button {
+            background-color: #36393b;
+            border: none;
+            border-radius: 1em;
+            color: rgb(179, 179, 179);
+            padding: 0.4em 0.8em;
+            margin: 0 1em;
+        }
+    }
+    .actu {
+        padding: 1em 2em;
+        h1 {
+            font-weight: bold;
+            color: white;
+            span {
+                color: $grey;
+                span {
+                    color: $yellow;
+                }
+            }
+        }
+    }
+}
