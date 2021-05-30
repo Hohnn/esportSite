@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 body {
-  color: RGB(80, 80, 90);
+  color: #b3b3b3;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -18,7 +18,7 @@ a:hover {
 aside {
   max-width: 300px !important;
   background-color: RGB(28, 29, 28);
-  height: 100vh;
+  min-height: 100vh;
   -webkit-box-shadow: 5px 0 15px #181818;
           box-shadow: 5px 0 15px #181818;
   z-index: 100;
@@ -55,8 +55,22 @@ aside nav a {
 
 main {
   width: 100%;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#222527), to(#14171a));
-  background-image: linear-gradient(#222527, #14171a);
+  background-image: linear-gradient(#22252700 0%, #222527 500px, #14171a);
+  position: relative;
+}
+
+main::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 500px;
+  background-image: url(../images/aero.jpg);
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
 
 main header {
@@ -67,6 +81,7 @@ main header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 main header > * {
@@ -126,22 +141,64 @@ main header .lightMode::after {
           transform: translate(-50%, -50%);
 }
 
+main header .lightMode:hover {
+  border: 2px #fca311 solid;
+}
+
 main header button {
   background-color: #36393b;
   border: none;
   border-radius: 1em;
+  font-size: 0.9em;
   color: #b3b3b3;
   padding: 0.4em 0.8em;
   margin: 0 1em;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+
+main header button:hover {
+  background-color: #fca311;
+  color: RGB(28, 29, 28);
+}
+
+main header .profilLogo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fca311;
+  background-color: #2b2b2b;
+  margin: 0 0 0 1em;
+}
+
+main header .profilMenu {
+  position: absolute;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  bottom: 0;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
+main header .profilMenu button {
+  margin: 5px 10px;
 }
 
 main .actu {
-  padding: 1em 2em;
+  padding: 1em 0;
+  margin-top: 150px;
 }
 
 main .actu h1 {
   font-weight: bold;
   color: white;
+  padding: 0 0.5em;
 }
 
 main .actu h1 span {
@@ -150,5 +207,116 @@ main .actu h1 span {
 
 main .actu h1 span span {
   color: #fca311;
+}
+
+main .card {
+  border: none;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.575);
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.575);
+  background-image: url(../images/broken-fire.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+main .card .desc {
+  position: relative;
+  margin-top: auto;
+  padding: 2em 1.5em;
+  z-index: 100;
+  font-weight: lighter;
+}
+
+main .card .desc .title {
+  font-size: 2.5em;
+}
+
+main .card .desc .date, main .card .desc .auteur {
+  color: #b3b3b3;
+}
+
+main .card .desc .sujet {
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+
+main .card .desc button {
+  border: none;
+  background-color: #fca311;
+  padding: 0.5em 2.5em;
+  color: white;
+  border-radius: 5px;
+  margin-top: 2em;
+}
+
+main .card::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(40%, #00000000), to(#000000e0));
+  background-image: linear-gradient(#00000000 40%, #000000e0);
+}
+
+main .Mini {
+  background-image: none;
+  height: 240px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  min-width: 530px;
+}
+
+main .Mini:first-of-type {
+  margin-bottom: 20px;
+}
+
+main .Mini:last-of-type .image {
+  background-image: url(../images/pont.jpg);
+}
+
+main .Mini .image {
+  background-image: url(../images/into-the-fire.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 50%;
+  height: 100%;
+}
+
+main .Mini .desc {
+  margin-top: unset;
+  width: 100%;
+  background-color: #222527;
+  padding: 1em 2em 2em;
+  font-size: 0.9em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+main .Mini .desc .title {
+  margin-top: 0;
+}
+
+main .Mini .desc button {
+  margin-top: auto;
+  padding: 0.3em 2em;
+  font-size: 0.8em;
 }
 /*# sourceMappingURL=style.css.map */
