@@ -34,7 +34,7 @@ aside {
         font-size: 2em;
         font-weight: bold;
         color: $yellow;
-        padding: 1em !important;
+        padding: 1em ;
         span {
             font-size: 0.6em;
             font-weight: 300;
@@ -259,5 +259,20 @@ main {
                 font-size: 0.8em;
             }
         }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    main {
+        font-size: 16px;
+    }
+    aside {
+        width: 100px !important;
+    }
+    .brand {
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        padding: 0rem !important;
+        margin: 1rem auto;
     }
 }
