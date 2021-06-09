@@ -180,6 +180,7 @@ main {
     .card {
         border: none;
         height: 500px;
+        min-width: 300px;
         position: relative;
         overflow: hidden;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.575);
@@ -193,7 +194,7 @@ main {
             z-index: 100;
             font-weight: lighter;
             .title {
-                font-size: 2.5em;
+                font-weight: lighter;
             }
             .date, .auteur {
                 color: $grey;
@@ -238,12 +239,12 @@ main {
             background-image: url(../images/into-the-fire.jpg);
             background-size: cover;
             background-position: center;
-            width: 50%;
+            flex-grow: 1;  
             height: 100%;
         }
         .desc {
             margin-top: unset;
-            width: 100%;
+            flex-shrink: 1;       
             background-color: $semi_dark;
             padding: 1em 2em 2em;
             font-size: 0.9em;
@@ -274,5 +275,48 @@ main {
         text-orientation: upright;
         padding: 0rem !important;
         margin: 1rem auto;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .Mini {
+        min-width: 300px !important;
+        flex-direction: column !important;
+        height: 400px !important;
+    } 
+    aside {
+        position: absolute;
+        z-index: 1000;
+        width: 100vw !important;
+        max-width: unset !important;
+        height: 6vh !important;
+        min-height: unset !important;
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        .brand {
+            writing-mode: unset;
+            margin: auto 1rem;
+        }
+        nav {
+            flex-direction: row;
+            justify-content: space-around;
+            flex-grow: 1;
+            max-width: 420px;
+            a {
+                background-color: unset;
+                margin: auto 0;
+            }
+        }
+    }
+}
+
+.myModal {
+    background-color: $dark_grey;
+    .modal-header {
+        border-bottom: unset;
+    }
+    .modal-footer {
+        border-top: unset;
     }
 }

@@ -212,6 +212,7 @@ main .actu h1 span span {
 main .card {
   border: none;
   height: 500px;
+  min-width: 300px;
   position: relative;
   overflow: hidden;
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.575);
@@ -230,7 +231,7 @@ main .card .desc {
 }
 
 main .card .desc .title {
-  font-size: 2.5em;
+  font-weight: lighter;
 }
 
 main .card .desc .date, main .card .desc .auteur {
@@ -288,13 +289,16 @@ main .Mini .image {
   background-image: url(../images/into-the-fire.jpg);
   background-size: cover;
   background-position: center;
-  width: 50%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   height: 100%;
 }
 
 main .Mini .desc {
   margin-top: unset;
-  width: 100%;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
   background-color: #222527;
   padding: 1em 2em 2em;
   font-size: 0.9em;
@@ -335,5 +339,63 @@ main .Mini .desc button {
     padding: 0rem !important;
     margin: 1rem auto;
   }
+}
+
+@media screen and (max-width: 750px) {
+  .Mini {
+    min-width: 300px !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    height: 400px !important;
+  }
+  aside {
+    position: absolute;
+    z-index: 1000;
+    width: 100vw !important;
+    max-width: unset !important;
+    height: 6vh !important;
+    min-height: unset !important;
+    position: fixed;
+    bottom: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  aside .brand {
+    -webkit-writing-mode: unset;
+        -ms-writing-mode: unset;
+            writing-mode: unset;
+    margin: auto 1rem;
+  }
+  aside nav {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    max-width: 420px;
+  }
+  aside nav a {
+    background-color: unset;
+    margin: auto 0;
+  }
+}
+
+.myModal {
+  background-color: #2b2b2b;
+}
+
+.myModal .modal-header {
+  border-bottom: unset;
+}
+
+.myModal .modal-footer {
+  border-top: unset;
 }
 /*# sourceMappingURL=style.css.map */
