@@ -4,6 +4,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 18px;
+  overflow-x: hidden;
 }
 
 a {
@@ -51,6 +52,12 @@ aside nav a {
   background-color: #2b2b2b;
   padding: 0.7em 1em !important;
   margin: 0.5em;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+aside nav a:hover {
+  background-color: transparent;
 }
 
 main {
@@ -139,10 +146,12 @@ main header .lightMode::after {
   left: 13px;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
 }
 
-main header .lightMode:hover {
-  border: 2px #fca311 solid;
+main header .lightMode:hover:after {
+  background-color: #fca311;
 }
 
 main header button {
@@ -153,13 +162,13 @@ main header button {
   color: #b3b3b3;
   padding: 0.4em 0.8em;
   margin: 0 1em;
-  -webkit-transition: 0.2s ease-out;
-  transition: 0.2s ease-out;
+  -webkit-transition: 0.25s ease-out;
+  transition: 0.25s ease-out;
 }
 
 main header button:hover {
-  background-color: #fca311;
-  color: RGB(28, 29, 28);
+  background-color: transparent;
+  color: #fca311;
 }
 
 main header .profilLogo {
@@ -182,12 +191,25 @@ main header .profilMenu {
       -ms-flex-direction: column;
           flex-direction: column;
   bottom: 0;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
+  -webkit-transform: translate(100%, 100%);
+          transform: translate(100%, 100%);
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 main header .profilMenu button {
   margin: 5px 10px;
+  -webkit-box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.247);
+          box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.247);
+}
+
+main header .focused {
+  -webkit-transform: translate(0%, 100%) !important;
+          transform: translate(0%, 100%) !important;
+}
+
+main header .userName {
+  background-color: unset;
 }
 
 main .actu {
