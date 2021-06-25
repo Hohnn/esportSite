@@ -420,4 +420,15 @@ main .Mini .desc button {
 .myModal .modal-footer {
   border-top: unset;
 }
+
+.bgYellow {
+  background-color: #fca311 !important;
+  border-color: #fca311;
+}
+
+.bgYellow:hover {
+  border-color: #fca311;
+  -webkit-box-shadow: 0 0px 5px 1px #fca311;
+          box-shadow: 0 0px 5px 1px #fca311;
+}
 /*# sourceMappingURL=style.css.map */

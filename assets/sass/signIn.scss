@@ -1,0 +1,24 @@
+@import 'colors';
+
+.body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    margin: 0;
+    padding: 1rem;
+    position: relative;
+    min-height: 100vh;
+    height: 100%;
+    color: white;
+    background-color: $dark;
+    .brand {
+        width: 100%;
+    }
+    .myForm {
+        width: 100%;
+        form {
+            max-width: 500px;
+        }
+    }
+}

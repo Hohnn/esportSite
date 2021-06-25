@@ -76,7 +76,6 @@
                         </div>
                     </div>
                 </section>
-                
             </main>
         </div>
     </div>
@@ -85,19 +84,52 @@
   <!-- Modal -->
   <div class="modal fade " id="connectionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog ">
-      <div class="modal-content myModal">
+      <form class="modal-content myModal" action="index.html" method="POST">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Se connecter</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+            <div class="mb-3">
+                <label for="email" class="form-label d-none">Login</label>
+                <input type="email" class="form-control" id="email" name="login" aria-describedby="emailHelp" placeholder="Email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label d-none">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
+            </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+            <button class="btn btn-primary me-auto" data-bs-target="#inscriptionModal" data-bs-toggle="modal" data-bs-dismiss="modal">Inscription</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary bgYellow">Connection</button>
         </div>
-      </div>
+      </form>
+    </div>
+  </div>    
+  <div class="modal fade " id="inscriptionModal" tabindex="-1" aria-labelledby="signin" aria-hidden="true">
+    <div class="modal-dialog ">
+      <form class="modal-content myModal" action="index.html" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Inscription</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="email" class="form-label d-none">Login</label>
+                <input type="email" class="form-control" id="email" name="login" aria-describedby="emailHelp" placeholder="Email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label d-none">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary me-auto" data-bs-target="#connectionModal" data-bs-toggle="modal" data-bs-dismiss="modal">Connection</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary bgYellow">Valider</button>
+        </div>
+      </form>
     </div>
   </div>    
 

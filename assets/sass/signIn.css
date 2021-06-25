@@ -1,0 +1,33 @@
+.body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  margin: 0;
+  padding: 1rem;
+  position: relative;
+  min-height: 100vh;
+  height: 100%;
+  color: white;
+  background-color: RGB(28, 29, 28);
+}
+
+.body .brand {
+  width: 100%;
+}
+
+.body .myForm {
+  width: 100%;
+}
+
+.body .myForm form {
+  max-width: 500px;
+}
+/*# sourceMappingURL=signIn.css.map */
