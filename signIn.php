@@ -3,7 +3,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +14,7 @@
     <title>DAW Inscription</title>
 </head>
 <body class="body flex-md-row ">
+    <div class="magic"></div>
     <div class="brand text-center">
         <h1 class="my-4">BIENVENUE</h1>
         <p class="desc">Rejoignez nous et participer à la création d'une communauter eSport sur Battlefield</p>
@@ -64,5 +65,7 @@
         <button type="submit" class="btn btn-primary" id="btn" name="submit">S'inscrire</button>
         </form>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="./assets/js/magic.js"></script>
 </body>
 </html>

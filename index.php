@@ -100,14 +100,14 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary me-auto" data-bs-target="#inscriptionModal" data-bs-toggle="modal" data-bs-dismiss="modal">Inscription</button>
+            <a href="signIn.php" class="btn btn-primary me-auto" >Inscription</a>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary bgYellow">Connection</button>
         </div>
       </form>
     </div>
   </div>    
-  <div class="modal fade " id="inscriptionModal" tabindex="-1" aria-labelledby="signin" aria-hidden="true">
+<!--   <div class="modal fade " id="inscriptionModal" tabindex="-1" aria-labelledby="signin" aria-hidden="true">
     <div class="modal-dialog ">
       <form class="modal-content myModal" action="index.html" method="POST">
         <div class="modal-header">
@@ -131,7 +131,7 @@
         </div>
       </form>
     </div>
-  </div>    
+  </div>   -->  
 
 
 

@@ -1,0 +1,13 @@
+{
+    "members": [
+        {
+            "id": "demo",
+            "nom": "demo",
+            "prenom": "demo",
+            "mail": "demo",
+            "formule": "demo",
+            "password": "$2y$10$f5.J59gYGTv0v6QmZAHC9.BlEqjlH4nBrBFHd8Lk5xO0HMUM2nVde",
+            "image": "assets/imgSite/2.jpg"
+        }
+    ]
+}

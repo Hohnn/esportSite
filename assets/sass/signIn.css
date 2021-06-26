@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap");
 .body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -17,17 +18,59 @@
   height: 100%;
   color: white;
   background-color: RGB(28, 29, 28);
+  overflow: hidden;
 }
 
 .body .brand {
   width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.body .brand h1 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 3rem;
 }
 
 .body .myForm {
   width: 100%;
+  position: relative;
+  z-index: 10;
 }
 
 .body .myForm form {
   max-width: 500px;
+}
+
+.body .myForm form .form-control {
+  background-color: #dfdfdf !important;
+}
+
+.body .myForm form button {
+  background-color: #fca311;
+  border-color: #fca311;
+}
+
+.magic {
+  z-index: 5;
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 30rem;
+  height: 30rem;
+  background: url(../images/signInBg.jpg) 50% 50% no-repeat fixed;
+  background-size: cover;
+  border-radius: 50%;
+  -webkit-box-shadow: inset 0 0 50px black, inset 0 0 100px black;
+          box-shadow: inset 0 0 50px black, inset 0 0 100px black;
+}
+
+@media (max-width: 770px) {
+  .magic {
+    display: none;
+  }
+  body {
+    overflow-y: scroll;
+  }
 }
 /*# sourceMappingURL=signIn.css.map */

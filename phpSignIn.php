@@ -22,6 +22,16 @@ function isSame($value1, $value2){ //compart si les mdp sont identique
     }
 }
 
+function addMember(){
+    $members = file_get_contents("./assets/json/members.json");
+    $list = json_decode($members)->members;
+    $list[] = ['id' => '9999', 'name' => 'Name'];
+    $json = json_encode($list);
+    echo '<pre>';
+print_r($json);
+echo '</pre>';
+}
+
 $name = htmlspecialchars($_POST['name'] ?? 'Vide');
 $firstname = htmlspecialchars($_POST['firstname'] ?? 'Vide');
 $age = htmlspecialchars($_POST['age'] ?? 'Vide');
@@ -85,7 +95,9 @@ if (isset($_POST['submit'])) { //si submit est dans le post
         $classPassword = 'is-invalid';
     }
     if ($count == 0) { // le conteur est à 0
-        header("Location: test.php"); // recharge la page
+        /* header("Location: test.php"); // recharge la page */
+        addMember();
+
     }
 }
 
