@@ -1,13 +1,14 @@
 {
     "members": [
         {
-            "id": "demo",
+            "id": "001",
             "nom": "demo",
             "prenom": "demo",
-            "mail": "demo",
-            "formule": "demo",
+            "nickname": "demo56",
+            "mail": "demo@gmail.com",
+            "age": "demo",
             "password": "$2y$10$f5.J59gYGTv0v6QmZAHC9.BlEqjlH4nBrBFHd8Lk5xO0HMUM2nVde",
-            "image": "assets/imgSite/2.jpg"
+            "image": "pont.jpg"
         }
     ]
 }

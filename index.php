@@ -1,3 +1,7 @@
+<?php
+    include 'phpLogin.php';
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -27,12 +31,14 @@
                     <i class="bi bi-bell mx-3"></i>
                     <i class="bi bi-chat-left-text"></i>
                     <div class="lightMode ms-auto"></div>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#connectionModal">Se connecter</button>
-                    <button class="userName" id="userName">userName</button>
-                    <button class="profilLogo" id="profilLogo"></button>
+                    <button class="<?= isset($_SESSION['nickname']) ? 'd-none' : 'd-block' ?>" type="button" data-bs-toggle="modal" data-bs-target="#connectionModal">Se connecter</button>
+                    <button class="userName <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="userName"><?= $_SESSION['nickname'] ?? '' ?></button>
+                    <img src="./assets/images/<?= $_SESSION['image'] ?? '' ?>" class="profilLogo <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="profilLogo" alt="">
                     <div class="profilMenu">
                         <button type="button">Profil</button>
-                        <button type="button">Se déconnecter</button>                        
+                        <form method="post">
+                            <button name="logout" value="logout">Déconnexion</button>
+                        </form>                        
                     </div>
                 </header>
                 <section class="actu">
@@ -82,9 +88,9 @@
 
   
   <!-- Modal -->
-  <div class="modal fade " id="connectionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade " id="connectionModal" tabindex="-1" aria-labelledby="connectionModal" aria-hidden="true">
     <div class="modal-dialog ">
-      <form class="modal-content myModal" action="index.html" method="POST">
+      <form class="modal-content myModal" action="index.php" method="POST">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Se connecter</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -100,9 +106,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="signIn.php" class="btn btn-primary me-auto" >Inscription</a>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary bgYellow">Connection</button>
+            <a href="signIn.php" class="btn btn-outline-light me-auto" >Creer un compte</a>
+            <button type="submit" class="btn btn-primary bgYellow">Connection</button>
         </div>
       </form>
     </div>

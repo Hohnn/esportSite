@@ -210,6 +210,8 @@ main header .focused {
 
 main header .userName {
   background-color: unset;
+  color: white;
+  margin-right: 0;
 }
 
 main .actu {
