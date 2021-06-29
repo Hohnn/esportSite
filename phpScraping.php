@@ -9,10 +9,18 @@ function displayTable(){
             <tr> <?php
             foreach($tr->find('td') as $td){ ?>
             <td><?= $td->plaintext ?></td> <?php
-          } ?>
-          </tr> <?php
+        } ?>
+        </tr> <?php
         }
     }
 }
 
+function statsWeapon() {
+    $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/Hohnn/weapons");
+    $list = $html->find('div[data-v-526226f2].content', 0);
+    $div = $list->find('div.weapon-preview', 0);
+    $stats = $list->find('div[data-v-b632d9da].stats', 0);
+    echo $div;
+    echo $stats;
+}
 ?>
