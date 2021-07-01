@@ -51,6 +51,24 @@
   border-color: #fca311;
 }
 
+.body .myModal {
+  background: rgba(37, 37, 37, 0.25);
+  -webkit-box-shadow: 0 8px 32px 0 rgba(169, 169, 173, 0.37);
+          box-shadow: 0 8px 32px 0 rgba(169, 169, 173, 0.37);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.body .myModal .modal-header {
+  border-bottom: unset;
+}
+
+.body .myModal .modal-footer {
+  border-top: unset;
+}
+
 .magic {
   z-index: 5;
   position: absolute;

@@ -26,9 +26,9 @@
     .myForm {
         width: 100%;
         position: relative;
-        z-index: 10;
+        z-index: 10;    
         form {
-            max-width: 500px;
+            max-width: 500px;           
             .form-control {
                 background-color: rgb(223, 223, 223) !important;
             }
@@ -36,6 +36,20 @@
                 background-color: $yellow;
                 border-color: $yellow;
             }
+        }
+    }
+    .myModal {
+        background: rgba( 37, 37, 37, 0.25 );
+        box-shadow: 0 8px 32px 0 rgba(169, 169, 173, 0.37);
+        backdrop-filter: blur( 3px );
+        -webkit-backdrop-filter: blur( 3px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+        .modal-header {
+            border-bottom: unset;
+        }
+        .modal-footer {
+            border-top: unset;
         }
     }
 }

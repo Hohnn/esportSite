@@ -154,7 +154,7 @@ main header .lightMode:hover:after {
   background-color: #fca311;
 }
 
-main header button {
+main header button, main header a {
   background-color: #36393b;
   border: none;
   border-radius: 1em;
@@ -166,7 +166,7 @@ main header button {
   transition: 0.25s ease-out;
 }
 
-main header button:hover {
+main header button:hover, main header a:hover {
   background-color: transparent;
   color: #fca311;
 }

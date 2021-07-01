@@ -31,7 +31,7 @@
                     <i class="bi bi-bell mx-3"></i>
                     <i class="bi bi-chat-left-text"></i>
                     <div class="lightMode ms-auto"></div>
-                    <button class="<?= isset($_SESSION['nickname']) ? 'd-none' : 'd-block' ?>" type="button" data-bs-toggle="modal" data-bs-target="#connectionModal">Se connecter</button>
+                    <a href="login.php" class="<?= isset($_SESSION['nickname']) ? 'd-none' : 'd-block' ?>">Se connecter</a>
                     <button class="userName <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="userName"><?= $_SESSION['nickname'] ?? '' ?></button>
                     <img src="./assets/images/<?= $_SESSION['image'] ?? '' ?>" class="profilLogo <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="profilLogo" alt="">
                     <div class="profilMenu">
@@ -112,33 +112,6 @@
       </form>
     </div>
   </div>    
-<!--   <div class="modal fade " id="inscriptionModal" tabindex="-1" aria-labelledby="signin" aria-hidden="true">
-    <div class="modal-dialog ">
-      <form class="modal-content myModal" action="index.html" method="POST">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Inscription</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="mb-3">
-                <label for="email" class="form-label d-none">Login</label>
-                <input type="email" class="form-control" id="email" name="login" aria-describedby="emailHelp" placeholder="Email">
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label d-none">Mot de passe</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary me-auto" data-bs-target="#connectionModal" data-bs-toggle="modal" data-bs-dismiss="modal">Connection</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary bgYellow">Valider</button>
-        </div>
-      </form>
-    </div>
-  </div>   -->  
-
-
 
 
     <!-- Script -->
