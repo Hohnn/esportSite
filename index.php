@@ -1,5 +1,6 @@
 <?php
     include 'phpLogin.php';
+    include 'phpRSS.php';
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +55,6 @@
                                         <div class="auteur">Hohnn</div>
                                         <button type="button">Voir</button>
                                     </div>
-
                                 </div>
                             </div>
                             <div class="col">

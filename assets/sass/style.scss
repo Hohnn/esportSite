@@ -330,16 +330,6 @@ main {
     }
 }
 
-.myModal {
-    background-color: $dark_grey;
-    .modal-header {
-        border-bottom: unset;
-    }
-    .modal-footer {
-        border-top: unset;
-    }
-}
-
 .bgYellow {
     background-color: $yellow !important;
     border-color: $yellow;
@@ -348,3 +338,4 @@ main {
         box-shadow: 0 0px 5px 1px $yellow;
     }
 }
+

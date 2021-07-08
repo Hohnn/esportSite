@@ -1,5 +1,5 @@
 <?php
-include('phpScraping.php');
+include 'phpScraping.php';
 
     include 'phpLogin.php';
 ?>
@@ -14,6 +14,7 @@ include('phpScraping.php');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./assets/sass/style.css">
     <link rel="stylesheet" href="./assets/sass/user.css">
+    <link rel="stylesheet" href="./assets/sass/scraping.css">
     <title>DAW esport</title>
 </head>
 <body>
@@ -45,6 +46,10 @@ include('phpScraping.php');
                     </div>
                 </header>
                 <section class="actu">
+                <div class="container-fluid topStats">
+                    <div class="row ">  <?= displayLifetime() ?> </div>
+                    <div class="row mygrid"><?= displayTopStats() ?> </div>
+                </div>
                     <div class="title">Arme favorite</div>
                     <div class="mostUsed">
                         <div data-v-526226f2="" data-v-b632d9da="" class="weapon-preview"><img data-v-526226f2="" data-v-b632d9da="" src="https://eaassets-a.akamaihd.net/battlelog/battlebinary/gamedata/Casablanca/55/66/ZK383-374279ef.png">

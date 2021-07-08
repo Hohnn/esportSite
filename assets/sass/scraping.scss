@@ -1,0 +1,31 @@
+@import 'colors';
+.topStats {
+    background-color: $dark_grey;
+    .mygrid {
+        display: grid;
+        grid-gap: .75rem;
+        grid-template-columns: repeat(auto-fit,minmax(9rem,1fr));
+        padding: .625rem;
+        .numbers {
+            display: flex;
+            flex-direction: column;
+            .name {
+                font-size: 1rem;
+                font-weight: 500;
+                white-space: nowrap;
+            }
+            .value {
+                font-size: 1.25rem;
+                font-weight: 700;
+                white-space: nowrap;
+                color: white;
+            }
+            .rank {
+                font-size: .625rem;
+                font-weight: 500;
+                white-space: nowrap;
+                color: $yellow;
+            }
+        }
+    }
+}

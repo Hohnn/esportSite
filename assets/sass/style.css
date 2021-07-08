@@ -411,18 +411,6 @@ main .Mini .desc button {
   }
 }
 
-.myModal {
-  background-color: #2b2b2b;
-}
-
-.myModal .modal-header {
-  border-bottom: unset;
-}
-
-.myModal .modal-footer {
-  border-top: unset;
-}
-
 .bgYellow {
   background-color: #fca311 !important;
   border-color: #fca311;

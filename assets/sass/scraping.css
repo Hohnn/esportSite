@@ -1,0 +1,43 @@
+.topStats {
+  background-color: #2b2b2b;
+}
+
+.topStats .mygrid {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: .75rem;
+  -ms-grid-columns: (minmax(9rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  padding: .625rem;
+}
+
+.topStats .mygrid .numbers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.topStats .mygrid .numbers .name {
+  font-size: 1rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.topStats .mygrid .numbers .value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: white;
+}
+
+.topStats .mygrid .numbers .rank {
+  font-size: .625rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: #fca311;
+}
+/*# sourceMappingURL=scraping.css.map */
