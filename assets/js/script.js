@@ -1,3 +1,4 @@
+console.log('tttttt');
 const userName = document.getElementById('userName')
 const profilLogo = document.getElementById('profilLogo')
 const profilMenu = document.querySelector('.profilMenu')

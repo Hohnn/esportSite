@@ -181,9 +181,8 @@ main {
             margin-right: 0;
         }
     }
-    .actu {
+    section {
         padding: 1em 0;
-        margin-top: 150px;
         h1 {
             font-weight: bold;
             color: white;
@@ -196,87 +195,191 @@ main {
             }
         }
     }
-    .card {
-        border: none;
-        height: 500px;
-        min-width: 300px;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.575);
-        background-image: url(../images/broken-fire.jpg);
-        background-size: cover;
-        background-position: center;
-        .desc {
+    .actu {
+        margin-top: 150px;
+        .card {
+            border: none;
+            height: 500px;
+            min-width: 300px;
             position: relative;
-            margin-top: auto;
-            padding: 2em 1.5em;
-            z-index: 100;
-            font-weight: lighter;
-            .title {
-                font-weight: lighter;
-            }
-            .date, .auteur {
-                color: $grey;
-            }
-            .sujet {
-                font-size: 1.2em;
-                text-transform: uppercase;
-            }
-            button {
-                border: none;
-                background-color: $yellow;
-                padding: 0.5em 2.5em;
-                color: white;
-                border-radius: 5px;
-                margin-top: 2em;
-            }
-        }
-        &::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(#00000000 40%, #000000e0);
-        }
-    }
-     .Mini {
-        background-image: none;
-        height: 240px;
-        display: flex;
-        flex-direction: row;
-        justify-content: stretch;
-        min-width: 530px;
-        &:first-of-type {
-            margin-bottom: 20px;
-        }
-        &:last-of-type {
-            .image {
-                background-image: url(../images/pont.jpg);
-            }
-        }
-        .image {
-            background-image: url(../images/into-the-fire.jpg);
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.575);
             background-size: cover;
             background-position: center;
-            flex-grow: 1;  
-            height: 100%;
-        }
-        .desc {
-            margin-top: unset;
-            flex-shrink: 1;       
-            background-color: $semi_dark;
-            padding: 1em 2em 2em;
-            font-size: 0.9em;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            .title {
-                margin-top: 0;
-            }
-            button {
+            background-image: url(../images/broken-fire.jpg);
+    
+            .desc {
+                position: relative;
                 margin-top: auto;
-                padding: 0.3em 2em;
-                font-size: 0.8em;
+                padding: 2em 1.5em;
+                z-index: 100;
+                font-weight: lighter;
+                .title {
+                    font-weight: lighter;
+                }
+                .date, .auteur {
+                    color: $grey;
+                }
+                .sujet {
+                    font-size: 1.2em;
+                    text-transform: uppercase;
+                }
+                button {
+                    border: none;
+                    background-color: $yellow;
+                    padding: 0.5em 2.5em;
+                    color: white;
+                    border-radius: 5px;
+                    margin-top: 2em;
+                }
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(#00000000 40%, #000000e0);
+            }
+        }
+         .Mini {
+            background-image: none;
+            height: 240px;
+            display: flex;
+            flex-direction: row;
+            justify-content: stretch;
+            min-width: 530px;
+            &:first-of-type {
+                margin-bottom: 20px;
+            }
+            &:last-of-type {
+                .image {
+                    background-image: url(../images/pont.jpg);
+                }
+            }
+            .image {
+                background-image: url(../images/into-the-fire.jpg);
+                background-size: cover;
+                background-position: center;
+                flex-grow: 1;  
+                height: 100%;
+            }
+            .desc {
+                margin-top: unset;
+                flex-shrink: 1;       
+                background-color: $semi_dark;
+                padding: 1em 2em 2em;
+                font-size: 0.9em;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                .title {
+                    margin-top: 0;
+                }
+                button {
+                    margin-top: auto;
+                    padding: 0.3em 2em;
+                    font-size: 0.8em;
+                }
+            }
+        }
+    }
+    
+    .twitch {
+        margin-top: 2rem;
+        nav {
+            margin-top: 2rem;
+            ul {
+                display: flex;
+                list-style: none;
+                li {
+                    margin-right: 1.5rem;
+                }
+            }
+        }
+        .nav {
+            position: absolute;
+            width: 100px;
+            height: 93%;
+            z-index: 100;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.315);
+            i {
+                margin-bottom: 3rem;
+            }
+        }
+        #prev, #prev2, #prev3 {
+            left: 0;
+            right: unset;
+        }
+        .cont {
+            height: 270px;
+            position: relative;
+        }
+        .scroll {
+            flex-wrap: nowrap !important;
+            overflow-x: scroll;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 50%;
+            width: 97%;
+            transform: translateX(-50%);
+            padding-bottom: 1rem;
+            &::-webkit-scrollbar {
+                height: 10px;
+              }
+            &::-webkit-scrollbar-thumb {
+                background: #555; 
+                border-radius: 10px;
+              }  
+            &::-webkit-scrollbar-thumb:hover {
+                background: $yellow; 
+              }
+            &::-webkit-scrollbar-track {
+                background: transparent; 
+                border-radius: 10px;
+              }  
+        }
+        
+        .card {
+            background-color: unset;
+            border: unset;
+            max-width: 500px;
+            .footer {
+                display: flex;
+                align-items: flex-start;
+                margin-top: 0.5rem;
+                .logo {
+                    border-radius: 50%;
+                    height: 50px;
+                    width: 50px;
+                    margin-right: 0.5rem;
+                }
+                .desc {
+                    .title {
+                        font-size: 1rem;
+                        color: white;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        max-width: 200px;
+                    }
+                }
+            }
+        }
+    }
+    .topMembers {
+        .scroll {
+            top: 50%;
+            transform: translate(-50%, -50%);
+            .profil {
+                width: 10vw;
+                min-width: max-content;
             }
         }
     }
