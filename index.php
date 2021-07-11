@@ -18,13 +18,15 @@
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <aside class="col-3">
-                    <div class="brand">DAW <span class="d-none d-lg-block">esport</span></div>
-                    <nav>
-                        <a href="#" class="d-flex"><i class="bi bi-newspaper"></i><div class="ms-3 d-none d-lg-block">ACTUALITÉ</div></a>
-                        <a href="#" class="d-flex"><i class="bi bi-mouse2"></i><div class="ms-3 d-none d-lg-block">COMPÉTITION</div></a>
-                        <a href="#" class="d-flex"><i class="bi bi-trophy"></i><div class="ms-3 d-none d-lg-block">LEAGUE</div></a>
-                        <a href="#" class="d-flex"><i class="bi bi-people"></i><div class="ms-3 d-none d-lg-block">MEMBRES</div></a>
-                    </nav>
+                    <div class="stick">
+                        <div class="brand">DAW <span class="d-none d-lg-block">esport</span></div>
+                        <nav>
+                            <a href="#" class="d-flex"><i class="bi bi-newspaper"></i><div class="ms-3 d-none d-lg-block">ACTUALITÉ</div></a>
+                            <a href="#" class="d-flex"><i class="bi bi-mouse2"></i><div class="ms-3 d-none d-lg-block">COMPÉTITION</div></a>
+                            <a href="#" class="d-flex"><i class="bi bi-trophy"></i><div class="ms-3 d-none d-lg-block">LEAGUE</div></a>
+                            <a href="#" class="d-flex"><i class="bi bi-people"></i><div class="ms-3 d-none d-lg-block">MEMBRES</div></a>
+                        </nav>
+                    </div>
             </aside>
             <main class="col">
                 <header>
@@ -44,8 +46,8 @@
                 </header>
                 <section class="actu">
                     <h1>L'ACTUALITÉ <br> <span>BATTLEFIELD <span>5</span></span></h1>
-                    <div class="container-fluid mt-5">
-                        <div class="row flexcol">
+                    <div class="container-fluid mt-5 phone">
+                        <div class="row g-3">
                             <div class="col">
                                 <div class="card ">
                                     <div class="desc text-white">
@@ -104,7 +106,7 @@
                         <div id="next" class="nav"><i class="bi bi-arrow-right-circle-fill"></i></div>
                         <div id="prev" class="nav"><i class="bi bi-arrow-left-circle-fill"></i></div>
                         <div id="myscroll" class="row g-3 scroll">
-                            <div class="col">
+<!--                             <div class="col">
                                 <a href="" class="card">
                                     <img class="preview" src="https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/754db86712c0c9de4b76_chiv3rs_42761575101_1625871820//thumb/thumb0-320x180.jpg" alt="">
                                     <div class="footer">
@@ -115,67 +117,7 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div>
-                            <div class="col">
-                                <a href="" class="card">
-                                    <img class="preview" src="https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/754db86712c0c9de4b76_chiv3rs_42761575101_1625871820//thumb/thumb0-320x180.jpg" alt="">
-                                    <div class="footer">
-                                        <img class="logo" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                        <div class="desc">
-                                            <h2 class="title">[FR/ENG(vite fait)] Road To Level 500 (493) Enfin en vacance !!!</h2>
-                                            <div class="name">Chiv3rs</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a href="" class="card">
-                                    <img class="preview" src="https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/754db86712c0c9de4b76_chiv3rs_42761575101_1625871820//thumb/thumb0-320x180.jpg" alt="">
-                                    <div class="footer">
-                                        <img class="logo" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                        <div class="desc">
-                                            <h2 class="title">[FR/ENG(vite fait)] Road To Level 500 (493) Enfin en vacance !!!</h2>
-                                            <div class="name">Chiv3rs</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a href="" class="card">
-                                    <img class="preview" src="https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/754db86712c0c9de4b76_chiv3rs_42761575101_1625871820//thumb/thumb0-320x180.jpg" alt="">
-                                    <div class="footer">
-                                        <img class="logo" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                        <div class="desc">
-                                            <h2 class="title">[FR/ENG(vite fait)] Road To Level 500 (493) Enfin en vacance !!!</h2>
-                                            <div class="name">Chiv3rs</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a href="" class="card">
-                                    <img class="preview" src="https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/754db86712c0c9de4b76_chiv3rs_42761575101_1625871820//thumb/thumb0-320x180.jpg" alt="">
-                                    <div class="footer">
-                                        <img class="logo" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                        <div class="desc">
-                                            <h2 class="title">[FR/ENG(vite fait)] Road To Level 500 (493) Enfin en vacance !!!</h2>
-                                            <div class="name">Chiv3rs</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a href="" class="card">
-                                    <img class="preview" src="https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/754db86712c0c9de4b76_chiv3rs_42761575101_1625871820//thumb/thumb0-320x180.jpg" alt="">
-                                    <div class="footer">
-                                        <img class="logo" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                        <div class="desc">
-                                            <h2 class="title">[FR/ENG(vite fait)] Road To Level 500 (493) Enfin en vacance !!!</h2>
-                                            <div class="name">Chiv3rs</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                            </div> -->
                             
                         </div>
                     </div>
@@ -398,5 +340,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/test.js"></script>
+    <script src="./assets/js/apiTwitch.js"></script>
 </body>
 </html>

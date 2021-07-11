@@ -22,7 +22,14 @@ aside {
   min-height: 100vh;
   -webkit-box-shadow: 5px 0 15px #181818;
           box-shadow: 5px 0 15px #181818;
+  position: relative;
   z-index: 100;
+}
+
+aside .stick {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
 }
 
 aside .brand {
@@ -64,6 +71,7 @@ main {
   width: 100%;
   background-image: linear-gradient(#22252700 0%, #222527 500px, #14171a);
   position: relative;
+  background-attachment: scroll;
 }
 
 main::before {
@@ -72,6 +80,7 @@ main::before {
   width: 100%;
   height: 500px;
   background-image: url(../images/aero.jpg);
+  position: fixed;
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -499,6 +508,12 @@ main .topMembers .scroll .profil {
 }
 
 @media screen and (max-width: 750px) {
+  main {
+    padding: 0 !important;
+  }
+  main .phone {
+    padding: 0 !important;
+  }
   .Mini {
     min-width: 300px !important;
     -webkit-box-orient: vertical !important;
@@ -516,6 +531,8 @@ main .topMembers .scroll .profil {
     min-height: unset !important;
     position: fixed;
     bottom: 0;
+  }
+  aside .stick {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
