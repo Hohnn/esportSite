@@ -186,7 +186,6 @@ main header .profilLogo {
   border-radius: 50%;
   border: 2px solid #fca311;
   background-color: #2b2b2b;
-  margin: 0 0 0 1em;
 }
 
 main header .profilMenu {
@@ -217,10 +216,20 @@ main header .focused {
           transform: translate(0%, 100%) !important;
 }
 
-main header .userName {
+main header .userInfos {
+  margin: 0 1rem;
+  margin-left: 1.5rem;
+  text-align: end;
+}
+
+main header .userInfos .userName {
   background-color: unset;
   color: white;
   margin-right: 0;
+}
+
+main header .userInfos .role {
+  font-size: 0.8rem;
 }
 
 main section {
@@ -422,6 +431,7 @@ main .twitch .scroll {
   top: 0;
   left: 50%;
   width: 97%;
+  max-height: 100%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   padding-bottom: 1rem;
@@ -449,6 +459,41 @@ main .twitch .card {
   background-color: unset;
   border: unset;
   max-width: 500px;
+  max-height: 100%;
+}
+
+main .twitch .card .wrapPreview {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+main .twitch .card .wrapPreview .preview {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+main .twitch .card .wrapPreview span {
+  position: absolute;
+  font-weight: lighter;
+}
+
+main .twitch .card .wrapPreview span:first-of-type {
+  right: 0;
+  margin: 0.6rem;
+}
+
+main .twitch .card .wrapPreview span:last-of-type {
+  left: 0;
+  bottom: 0;
+  margin: 0.6rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 0.9rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.4rem;
 }
 
 main .twitch .card .footer {

@@ -55,10 +55,20 @@ function createContent2(param) {
     let array = param.streams;
 
     array.forEach(function(item) {
+        let viewers
+        if (item.viewers > 1) {
+            viewers = item.viewers + ' spectateurs';
+        } else {
+            viewers = item.viewers + ' spectateur';
+        }
         let col = document.createElement('div');
         col.className = 'col';
         col.innerHTML = `<a href="${item.channel.url}" class="card">
-                            <img class="preview" src="${item.preview.medium}" alt="stream preview">
+                            <div class="wrapPreview">
+                                <img class="preview" src="${item.preview.medium}" alt="stream preview">
+                                <span class="badge bg-danger">LIVE</span>
+                                <span class="count">${viewers}</span>
+                            </div>
                             <div class="footer">
                                 <img class="logo" src="${item.channel.logo}" alt="stream logo">
                                 <div class="desc">

@@ -31,12 +31,14 @@
             <main class="col">
                 <header>
                     <input type="search" placeholder="Recherche" class="d-none d-md-block">
-                    <i class="bi bi-bell mx-3"></i>
+                    <i class="bi bi-bell mx-3 ms-auto"></i>
                     <i class="bi bi-chat-left-text"></i>
-                    <div class="lightMode ms-auto"></div>
                     <a href="login.php" class="<?= isset($_SESSION['nickname']) ? 'd-none' : 'd-block' ?>">Se connecter</a>
-                    <button class="userName <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="userName"><?= $_SESSION['nickname'] ?? '' ?></button>
-                    <img src="./assets/images/<?= $_SESSION['image'] ?? '' ?>" class="profilLogo <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="profilLogo" alt="">
+                    <div class="userInfos <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>">
+                        <div class="userName" id="userName"><?= $_SESSION['nickname'] ?? '' ?></div>
+                        <div class="role"><?= $_SESSION['role'] ?? '' ?></div>
+                    </div>
+                    <img src="./assets/images/<?= $_SESSION['image'] ?? '' ?>" class="profilLogo <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="profilLogo" alt="profil logo">
                     <div class="profilMenu">
                         <button type="button">Profil</button>
                         <form method="post">
@@ -106,9 +108,14 @@
                         <div id="next" class="nav"><i class="bi bi-arrow-right-circle-fill"></i></div>
                         <div id="prev" class="nav"><i class="bi bi-arrow-left-circle-fill"></i></div>
                         <div id="myscroll" class="row g-3 scroll">
-<!--                             <div class="col">
+                            <!-- <div class="col">
                                 <a href="" class="card">
-                                    <img class="preview" src="https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/754db86712c0c9de4b76_chiv3rs_42761575101_1625871820//thumb/thumb0-320x180.jpg" alt="">
+                                    <div class="wrapPreview">
+                                        <img class="preview" src="https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/754db86712c0c9de4b76_chiv3rs_42761575101_1625871820//thumb/thumb0-320x180.jpg" alt="">
+                                        <span class="badge bg-danger">LIVE</span>
+                                        <span class="count">99 spectateurs</span>
+                                    </div>
+                                    
                                     <div class="footer">
                                         <img class="logo" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
                                         <div class="desc">

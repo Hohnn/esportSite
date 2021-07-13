@@ -8,7 +8,8 @@
             "mail": "demo@gmail.com",
             "age": "demo",
             "password": "$2y$10$f5.J59gYGTv0v6QmZAHC9.BlEqjlH4nBrBFHd8Lk5xO0HMUM2nVde",
-            "image": "pont.jpg"
+            "image": "pont.jpg",
+            "role": "visiteur"
         }
     ]
 }

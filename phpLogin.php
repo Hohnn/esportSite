@@ -16,6 +16,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
                 $_SESSION['mail'] = $member->mail;
                 $_SESSION['age'] = $member->age;
                 $_SESSION['image'] = $member->image;
+                $_SESSION['role'] = $member->role;
                 header('location: index.php');
             } else {
                 $errorPass = 'Ce mot de passe n’est pas correct. Veuillez réessayer.';
