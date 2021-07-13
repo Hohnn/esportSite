@@ -53,7 +53,6 @@ function createContent(param) {
 
 function createContent2(param) {
     let array = param.streams;
-
     array.forEach(function(item) {
         let viewers
         if (item.viewers > 1) {
@@ -82,3 +81,71 @@ function createContent2(param) {
 }
 
 const keyYoutube = 'AIzaSyDFkMEdzq2ghlMxMLFgXYLAzzMAqJKGWa0'
+
+$.ajax({
+    url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=bf5&key=AIzaSyBLvgZi6dAuc5mbmGFitVzFwLAOz9jAciM`,
+    beforeSend: function(xhr) {
+        xhr.setRequestHeader("Accept", "application/json")
+   }, 
+    success: function(data){
+        console.log(data.items); 
+        createContentYT(data)                        
+    }
+})
+
+
+function monthDiff(d1, d2) {
+    var months;
+    months = (d2.getFullYear() - d1.getFullYear()) * 12;
+    months -= d1.getMonth();
+    months += d2.getMonth();
+    return months <= 0 ? 0 : months;
+}
+function yearDiff(d1, d2) {
+    var months;
+    months = (d2.getFullYear() - d1.getFullYear());
+    console.log('test');
+    return months <= 0 ? 0 : months;
+}
+
+function createContentYT(param) {
+    let array = param.items;
+    array.forEach(function(item) {
+        let viewers
+        if (item.viewers > 1) {
+            viewers = item.viewers + ' spectateurs';
+        } else {
+            viewers = item.viewers + ' spectateur';
+        }
+        let publish = item.snippet.publishedAt;
+        let today = new Date()
+        let videoDate = new Date(publish).getTime()
+        let difference =  today.getTime() - videoDate
+        let differenceDays = Math.floor(difference / (1000 * 60 * 60 * 24))
+        let phrase = `il y a ${differenceDays} jours`
+        if (differenceDays > 31) {
+            differenceDays = monthDiff(new Date(publish), new Date())
+            phrase = `il y a ${differenceDays} mois`
+            if(differenceDays > 12) {
+                differenceDays = yearDiff(new Date(publish), new Date())
+                phrase = `il y a ${differenceDays} ans`
+            }
+        }
+        let col = document.createElement('div');
+        col.className = 'col';
+        col.innerHTML = `<a href="https://www.youtube.com/watch?v=${item.id.videoId}" class="card">
+                            <div class="wrapPreview">
+                                <img class="preview" src="${item.snippet.thumbnails.medium.url}" alt="stream preview">
+                                <span class="badge bg-danger"></span>
+                                <span class="count">${phrase}</span>
+                            </div>
+                            <div class="footer">
+                                <div class="desc">
+                                    <h2 class="title">${item.snippet.title}</h2>
+                                    <div class="name">${item.snippet.channelTitle}</div>
+                                </div>
+                            </div>
+                        </a>`
+        myscroll2.appendChild(col);
+    })
+}

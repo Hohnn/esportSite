@@ -151,7 +151,7 @@
                         <div id="next2" class="nav"><i class="bi bi-arrow-right-circle-fill"></i></div>
                         <div id="prev2" class="nav"><i class="bi bi-arrow-left-circle-fill"></i></div>
                         <div id="myscroll2" class="row g-3 scroll">
-                            <div class="col">
+                  <!--           <div class="col">
                                 <a href="" class="card">
                                     <img class="preview" src="https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/754db86712c0c9de4b76_chiv3rs_42761575101_1625871820//thumb/thumb0-320x180.jpg" alt="">
                                     <div class="footer">
@@ -162,67 +162,8 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div>
-                            <div class="col">
-                                <a href="" class="card">
-                                    <img class="preview" src="https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/754db86712c0c9de4b76_chiv3rs_42761575101_1625871820//thumb/thumb0-320x180.jpg" alt="">
-                                    <div class="footer">
-                                        <img class="logo" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                        <div class="desc">
-                                            <h2 class="title">[FR/ENG(vite fait)] Road To Level 500 (493) Enfin en vacance !!!</h2>
-                                            <div class="name">Chiv3rs</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a href="" class="card">
-                                    <img class="preview" src="https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/754db86712c0c9de4b76_chiv3rs_42761575101_1625871820//thumb/thumb0-320x180.jpg" alt="">
-                                    <div class="footer">
-                                        <img class="logo" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                        <div class="desc">
-                                            <h2 class="title">[FR/ENG(vite fait)] Road To Level 500 (493) Enfin en vacance !!!</h2>
-                                            <div class="name">Chiv3rs</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a href="" class="card">
-                                    <img class="preview" src="https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/754db86712c0c9de4b76_chiv3rs_42761575101_1625871820//thumb/thumb0-320x180.jpg" alt="">
-                                    <div class="footer">
-                                        <img class="logo" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                        <div class="desc">
-                                            <h2 class="title">[FR/ENG(vite fait)] Road To Level 500 (493) Enfin en vacance !!!</h2>
-                                            <div class="name">Chiv3rs</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a href="" class="card">
-                                    <img class="preview" src="https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/754db86712c0c9de4b76_chiv3rs_42761575101_1625871820//thumb/thumb0-320x180.jpg" alt="">
-                                    <div class="footer">
-                                        <img class="logo" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                        <div class="desc">
-                                            <h2 class="title">[FR/ENG(vite fait)] Road To Level 500 (493) Enfin en vacance !!!</h2>
-                                            <div class="name">Chiv3rs</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a href="" class="card">
-                                    <img class="preview" src="https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j/754db86712c0c9de4b76_chiv3rs_42761575101_1625871820//thumb/thumb0-320x180.jpg" alt="">
-                                    <div class="footer">
-                                        <img class="logo" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                        <div class="desc">
-                                            <h2 class="title">[FR/ENG(vite fait)] Road To Level 500 (493) Enfin en vacance !!!</h2>
-                                            <div class="name">Chiv3rs</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                            </div> -->
+                       
 
                         </div>
                     </div>
