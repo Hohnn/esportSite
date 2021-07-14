@@ -5,7 +5,7 @@
                     <div class="stick">
                         <div class="brand">DAW <span class="d-none d-lg-inline-block">esport</span></div>
                         <nav>
-                            <a href="#" class="d-flex"><i class="bi bi-newspaper"></i><div class="ms-3 d-none d-lg-block">ACTUALITÉ</div></a>
+                            <a href="index.php" class="d-flex"><i class="bi bi-newspaper"></i><div class="ms-3 d-none d-lg-block">ACTUALITÉ</div></a>
                             <a href="#" class="d-flex"><i class="bi bi-mouse2"></i><div class="ms-3 d-none d-lg-block">COMPÉTITION</div></a>
                             <a href="#" class="d-flex"><i class="bi bi-trophy"></i><div class="ms-3 d-none d-lg-block">LEAGUE</div></a>
                             <a href="#" class="d-flex"><i class="bi bi-people"></i><div class="ms-3 d-none d-lg-block">MEMBRES</div></a>
@@ -24,7 +24,7 @@
                     </div>
                     <img src="./assets/images/<?= $_SESSION['image'] ?? '' ?>" class="profilLogo <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="profilLogo" alt="profil logo">
                     <div class="profilMenu">
-                        <button type="button">Profil</button>
+                    <a href="user.php">Profil</a>
                         <form method="post">
                             <button name="logout" value="logout">Déconnexion</button>
                         </form>                        

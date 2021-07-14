@@ -1,5 +1,4 @@
 .topStats {
-  background-color: rgba(36, 34, 34, 0.459);
   padding: 1rem;
   border-radius: 1rem;
 }
@@ -14,8 +13,8 @@
   display: -ms-grid;
   display: grid;
   grid-gap: .75rem;
-  -ms-grid-columns: (minmax(9rem, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  -ms-grid-columns: (minmax(8rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
   padding: .625rem;
 }
 

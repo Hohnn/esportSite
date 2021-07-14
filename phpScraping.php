@@ -1,6 +1,6 @@
 <?php
 include ('simple_html_dom.php');
-
+/* 
 function displayTable(){
     $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/Hohnn/overview");
     $list = $html->find('table[data-v-3504b6eb]', 0);
@@ -13,7 +13,7 @@ function displayTable(){
         </tr> <?php
         }
     }
-}
+} */
 
 function statsWeapon() {
     $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/Hohnn/weapons");

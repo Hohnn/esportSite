@@ -2,9 +2,8 @@ body {
   background-color: #2b2b2b;
 }
 
-.profilDesc {
+.profilDesc, .topWeapon {
   height: 100%;
-  background-color: rgba(36, 34, 34, 0.459);
   padding: 1rem;
   border-radius: 1rem;
   display: -webkit-box;
@@ -16,14 +15,14 @@ body {
           flex-direction: column;
 }
 
-.profilDesc .title {
+.profilDesc .title, .topWeapon .title {
   color: white;
   border-bottom: 1px solid rgba(255, 255, 255, 0.459);
   padding-bottom: 1rem;
   margin-bottom: 1rem;
 }
 
-.profilDesc .wrap {
+.profilDesc .wrap, .topWeapon .wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -35,21 +34,21 @@ body {
           flex-grow: 1;
 }
 
-.profilDesc .wrap .infos {
+.profilDesc .wrap .infos, .topWeapon .wrap .infos {
   position: relative;
   z-index: 10;
 }
 
-.profilDesc .wrap .infos ul {
+.profilDesc .wrap .infos ul, .topWeapon .wrap .infos ul {
   list-style: none;
   margin-bottom: 0.5rem;
 }
 
-.profilDesc .wrap .infos ul li {
+.profilDesc .wrap .infos ul li, .topWeapon .wrap .infos ul li {
   color: white;
 }
 
-.profilDesc .wrap img {
+.profilDesc .wrap img, .topWeapon .wrap img {
   top: 0;
   left: 0;
   width: 200px;
@@ -70,6 +69,10 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.mostUsed h3 {
+  color: #fca311;
 }
 
 .mostUsed .title {
@@ -96,8 +99,8 @@ body {
   display: -ms-grid;
   display: grid;
   grid-gap: .75rem;
-  -ms-grid-columns: (minmax(10rem, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  -ms-grid-columns: (minmax(8rem, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
   padding: 1rem 0;
 }
 
@@ -120,6 +123,9 @@ body {
 }
 
 @media screen and (max-width: 992px) {
+  .mostUsed {
+    display: block;
+  }
   .profilDesc img {
     display: none !important;
   }

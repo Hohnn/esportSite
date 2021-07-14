@@ -1,6 +1,5 @@
 @import 'colors';
 .topStats {
-    background-color: rgba(36, 34, 34, 0.459);
     padding: 1rem;
     border-radius: 1rem;
     .heures {
@@ -11,7 +10,7 @@
     .mygrid {
         display: grid;
         grid-gap: .75rem;
-        grid-template-columns: repeat(auto-fit,minmax(9rem,1fr));
+        grid-template-columns: repeat(auto-fit,minmax(8rem,1fr));
         padding: .625rem;
         .numbers {
             display: flex;

@@ -20,97 +20,48 @@ include 'phpScraping.php';
 <?php include './components/header.php' ?>
                 <section class="actu">
                     <h1>PROFIL <span><span class="text-uppercase"><?= $_SESSION['nickname'] ?? '' ?></span></span></h1>
-                <div class="container-fluid  mt-5">
-                    <div class="row">
-                        <div class="col-12 col-xl-6">
-                            <div class="profilDesc">
-                                <div class="title">Compte</div>
-                                <div class="wrap">
-                                    <div class="infos">
-                                        <ul>
-                                            <li><?= $_SESSION['lastname'] ?? '' ?></li>
-                                        </ul>
-                                        <ul>
-                                            <li><?= $_SESSION['firstname'] ?? '' ?></li>
-                                        </ul>
-                                        <ul>
-                                            <li><?= $_SESSION['nickname'] ?? '' ?></li>
-                                        </ul>
-                                        <ul>
-                                            <li><?= $_SESSION['mail'] ?? '' ?></li>
-                                        </ul>
-                                        <ul>
-                                            <li><?= $_SESSION['age'] ?? '' ?> ans</li>
-                                        </ul>
-                                        <ul>
-                                            <li><?= $_SESSION['role'] ?? '' ?></li>
-                                        </ul>
+                    <div class="container-fluid  mt-5">
+                        <div class="row">
+                            <div class="col-12 col-xl-6">
+                                <div class="profilDesc">
+                                    <div class="title">Compte</div>
+                                    <div class="wrap">
+                                        <div class="infos">
+                                            <ul>
+                                                <li><?= $_SESSION['lastname'] ?? '' ?></li>
+                                            </ul>
+                                            <ul>
+                                                <li><?= $_SESSION['firstname'] ?? '' ?></li>
+                                            </ul>
+                                            <ul>
+                                                <li><?= $_SESSION['nickname'] ?? '' ?></li>
+                                            </ul>
+                                            <ul>
+                                                <li><?= $_SESSION['mail'] ?? '' ?></li>
+                                            </ul>
+                                            <ul>
+                                                <li><?= $_SESSION['age'] ?? '' ?> ans</li>
+                                            </ul>
+                                            <ul>
+                                                <li><?= $_SESSION['role'] ?? '' ?></li>
+                                            </ul>
+                                        </div>
+                                        <img src="./assets/images/<?= $_SESSION['image'] ?? '' ?>" class="profilLogo <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="profilLogo" alt="profil logo">
                                     </div>
-                                    <img src="./assets/images/<?= $_SESSION['image'] ?? '' ?>" class="profilLogo <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="profilLogo" alt="profil logo">
-                                </div>
-                                
+                                    
 
-                            </div>
-                        </div>
-                        <div class="col-12 col-xl-6 topStats">
-                            <div class="heures ps-2 text-white">Temps de jeu : <?= displayLifetime() ?> </div>
-                            <div class="row mygrid c"><?= displayTopStats() ?> </div>
-                        </div>
-                    </div>
-                   
-                </div>
-                    <div class="title">Arme favorite</div>
-                    <div class="mostUsed">
-                        <div data-v-526226f2="" data-v-b632d9da="" class="weapon-preview"><img data-v-526226f2="" data-v-b632d9da="" src="https://eaassets-a.akamaihd.net/battlelog/battlebinary/gamedata/Casablanca/55/66/ZK383-374279ef.png">
-                            <h3 data-v-526226f2="" data-v-b632d9da="">ZK-383</h3>
-                        </div>
-                        <div data-v-526226f2="" data-v-b632d9da="" class="stats">
-                            <div data-v-74e21cc0="" data-v-526226f2="" class="stat" data-v-b632d9da="">
-
-                                <div data-v-74e21cc0="" class="numbers"><span data-v-74e21cc0="" class="name">Kills</span> <span data-v-74e21cc0="" class="value">16,405</span>
-                                    <div data-v-74e21cc0="" class="bottom">
-
-                                    </div>
                                 </div>
                             </div>
-                            <div data-v-74e21cc0="" data-v-526226f2="" class="stat" data-v-b632d9da="">
-
-                                <div data-v-74e21cc0="" class="numbers"><span data-v-74e21cc0="" class="name">Kills/min</span> <span data-v-74e21cc0="" class="value">3.11</span>
-                                    <div data-v-74e21cc0="" class="bottom">
-                                    </div>
-                                </div>
+                            <div class="col-12 col-xl-6 topStats">
+                                <div class="heures ps-2 text-white">Temps de jeu : <?= displayLifetime() ?> </div>
+                                <div class="row mygrid c"><?= displayTopStats() ?> </div>
                             </div>
-                            <div data-v-74e21cc0="" data-v-526226f2="" class="stat collapse" data-v-b632d9da="">
+                            <div class="col-12 mt-3">
+                                <div class="topWeapon">
+                                    <div class="title">Arme favorite</div>
 
-                                <div data-v-74e21cc0="" class="numbers"><span data-v-74e21cc0="" class="name">Time Played</span> <span data-v-74e21cc0="" class="value">87h 57m</span>
-                                    <div data-v-74e21cc0="" class="bottom">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div data-v-74e21cc0="" data-v-526226f2="" class="stat" data-v-b632d9da="">
-
-                                <div data-v-74e21cc0="" class="numbers"><span data-v-74e21cc0="" class="name">Shots Fired</span> <span data-v-74e21cc0="" class="value">353,715</span>
-                                    <div data-v-74e21cc0="" class="bottom">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div data-v-74e21cc0="" data-v-526226f2="" class="stat collapse" data-v-b632d9da="">
-                                <div data-v-74e21cc0="" class="numbers"><span data-v-74e21cc0="" class="name">Shots Hit</span> <span data-v-74e21cc0="" class="value">88,701</span>
-                                    <div data-v-74e21cc0="" class="bottom">
-                                    </div>
-                                </div>
-                            </div>
-                            <div data-v-74e21cc0="" data-v-526226f2="" class="stat" data-v-b632d9da="">
-                                <div data-v-74e21cc0="" class="numbers"><span data-v-74e21cc0="" class="name">Shots Accuracy</span> <span data-v-74e21cc0="" class="value">25.08</span>
-                                    <div data-v-74e21cc0="" class="bottom">
-                                    </div>
-                                </div>
-                            </div>
-                            <div data-v-74e21cc0="" data-v-526226f2="" class="stat" data-v-b632d9da="">
-                                <div data-v-74e21cc0="" class="numbers"><span data-v-74e21cc0="" class="name">Headshots</span> <span data-v-74e21cc0="" class="value">2,917</span>
-                                    <div data-v-74e21cc0="" class="bottom">
+                                    <div class="mostUsed">
+                                        <?= statsWeapon() ?>
                                     </div>
                                 </div>
                             </div>
