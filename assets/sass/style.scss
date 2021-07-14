@@ -320,7 +320,10 @@ main {
             align-items: center;
             font-size: 2rem;
             cursor: pointer;
-            color: rgba(255, 255, 255, 0.315);
+            color: rgba(255, 255, 255, 0.733);
+            &:hover {
+                color: rgb(255, 255, 255);
+            }
             i {
                 margin-bottom: 3rem;
             }
@@ -339,10 +342,10 @@ main {
             position: absolute;
             z-index: 1;
             top: 0;
-            left: 50%;
-            width: 97%;
+            left: 1rem;
+            width: fit-content !important;
+            max-width: 97%;
             max-height: 100%;
-            transform: translateX(-50%);
             padding-bottom: 1rem;
             &::-webkit-scrollbar {
                 height: 10px;
@@ -417,7 +420,7 @@ main {
     .topMembers {
         .scroll {
             top: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateY(-50%);
             .profil {
                 width: 10vw;
                 min-width: max-content;

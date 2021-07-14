@@ -405,7 +405,11 @@ main .twitch .nav {
           align-items: center;
   font-size: 2rem;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.315);
+  color: rgba(255, 255, 255, 0.733);
+}
+
+main .twitch .nav:hover {
+  color: white;
 }
 
 main .twitch .nav i {
@@ -429,11 +433,12 @@ main .twitch .scroll {
   position: absolute;
   z-index: 1;
   top: 0;
-  left: 50%;
-  width: 97%;
+  left: 1rem;
+  width: -webkit-fit-content !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  max-width: 97%;
   max-height: 100%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
   padding-bottom: 1rem;
 }
 
@@ -524,8 +529,8 @@ main .twitch .card .footer .desc .title {
 
 main .topMembers .scroll {
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 main .topMembers .scroll .profil {

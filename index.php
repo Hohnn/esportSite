@@ -106,7 +106,7 @@
                     </nav>
                     <div class="container-fluid cont">
                         <div id="next" class="nav"><i class="bi bi-arrow-right-circle-fill"></i></div>
-                        <div id="prev" class="nav"><i class="bi bi-arrow-left-circle-fill"></i></div>
+                        <div id="prev" class="nav d-none"><i class="bi bi-arrow-left-circle-fill"></i></div>
                         <div id="myscroll" class="row g-3 scroll">
                             <!-- <div class="col">
                                 <a href="" class="card">
@@ -149,7 +149,7 @@
                     </nav>
                     <div class="container-fluid cont">
                         <div id="next2" class="nav"><i class="bi bi-arrow-right-circle-fill"></i></div>
-                        <div id="prev2" class="nav"><i class="bi bi-arrow-left-circle-fill"></i></div>
+                        <div id="prev2" class="nav d-none"><i class="bi bi-arrow-left-circle-fill"></i></div>
                         <div id="myscroll2" class="row g-3 scroll">
                   <!--           <div class="col">
                                 <a href="" class="card">
@@ -172,7 +172,7 @@
                     <h1>LES <span>MEMBRES <span>DAW</span></span></h1>
                     <div class="container-fluid cont">
                         <div id="next3" class="nav"><i class="bi bi-arrow-right-circle-fill"></i></div>
-                        <div id="prev3" class="nav"><i class="bi bi-arrow-left-circle-fill"></i></div>
+                        <div id="prev3" class="nav d-none"><i class="bi bi-arrow-left-circle-fill"></i></div>
                         <div id="myscroll3" class="row scroll d-flex">
                             <div class="col">
                                 <div class="profil text-center">
@@ -219,33 +219,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div class="profil text-center">
-                                    <img class="rounded-circle" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                    <div class="desc">
-                                        <h3 class="text-white fs-5 mt-2 mb-1">Chiv3rs</h3>
-                                        <p>150 points</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="profil text-center">
-                                    <img class="rounded-circle" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                    <div class="desc">
-                                        <h3 class="text-white fs-5 mt-2 mb-1">Chiv3rs</h3>
-                                        <p>150 points</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="profil text-center">
-                                    <img class="rounded-circle" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                    <div class="desc">
-                                        <h3 class="text-white fs-5 mt-2 mb-1">Chiv3rs</h3>
-                                        <p>150 points</p>
-                                    </div>
-                                </div>
-                            </div>
+
                         
                         </div>
                     </div>
