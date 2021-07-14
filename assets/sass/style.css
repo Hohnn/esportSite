@@ -185,7 +185,8 @@ main header .profilLogo {
   height: 50px;
   border-radius: 50%;
   border: 2px solid #fca311;
-  background-color: #2b2b2b;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 main header .profilMenu {

@@ -1,5 +1,13 @@
 .topStats {
-  background-color: #2b2b2b;
+  background-color: rgba(36, 34, 34, 0.459);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.topStats .heures {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.459);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .topStats .mygrid {
@@ -34,10 +42,15 @@
   color: white;
 }
 
-.topStats .mygrid .numbers .rank {
+.topStats .mygrid .numbers .bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.topStats .mygrid .numbers .bottom .rank {
   font-size: .625rem;
   font-weight: 500;
-  white-space: nowrap;
   color: #fca311;
 }
 /*# sourceMappingURL=scraping.css.map */

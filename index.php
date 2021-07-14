@@ -19,7 +19,7 @@
         <div class="row flex-nowrap">
             <aside class="col-3">
                     <div class="stick">
-                        <div class="brand">DAW <span class="d-none d-lg-block">esport</span></div>
+                        <div class="brand">DAW <span class="d-none d-lg-inline-block">esport</span></div>
                         <nav>
                             <a href="#" class="d-flex"><i class="bi bi-newspaper"></i><div class="ms-3 d-none d-lg-block">ACTUALITÉ</div></a>
                             <a href="#" class="d-flex"><i class="bi bi-mouse2"></i><div class="ms-3 d-none d-lg-block">COMPÉTITION</div></a>
@@ -227,34 +227,7 @@
                
             </main>
         </div>
-    </div>
-
-  
-  <!-- Modal -->
-  <div class="modal fade " id="connectionModal" tabindex="-1" aria-labelledby="connectionModal" aria-hidden="true">
-    <div class="modal-dialog ">
-      <form class="modal-content myModal" action="index.php" method="POST">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Se connecter</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="mb-3">
-                <label for="email" class="form-label d-none">Login</label>
-                <input type="email" class="form-control" id="email" name="login" aria-describedby="emailHelp" placeholder="Email">
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label d-none">Mot de passe</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
-            </div>
-        </div>
-        <div class="modal-footer">
-            <a href="signIn.php" class="btn btn-outline-light me-auto" >Creer un compte</a>
-            <button type="submit" class="btn btn-primary bgYellow">Connection</button>
-        </div>
-      </form>
-    </div>
-  </div>    
+    </div>  
 
 
     <!-- Script -->

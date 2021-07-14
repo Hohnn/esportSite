@@ -161,7 +161,7 @@ main {
             height: 50px;
             border-radius: 50%;
             border: 2px solid $yellow;
-            background-color: $dark_grey;
+            object-fit: cover;
         }
         .profilMenu {
             position: absolute;

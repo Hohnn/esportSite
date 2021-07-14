@@ -17,38 +17,47 @@ include 'phpScraping.php';
     <link rel="stylesheet" href="./assets/sass/scraping.css">
     <title>DAW esport</title>
 </head>
-<body>
-    <div class="container-fluid">
-        <div class="row flex-nowrap">
-            <aside class="col-3">
-                    <div class="brand">DAW <span class="d-none d-lg-block">esport</span></div>
-                    <nav>
-                        <a href="#" class="d-flex"><i class="bi bi-newspaper"></i><div class="ms-3 d-none d-lg-block">ACTUALITÉ</div></a>
-                        <a href="#" class="d-flex"><i class="bi bi-mouse2"></i><div class="ms-3 d-none d-lg-block">COMPÉTITION</div></a>
-                        <a href="#" class="d-flex"><i class="bi bi-trophy"></i><div class="ms-3 d-none d-lg-block">LEAGUE</div></a>
-                        <a href="#" class="d-flex"><i class="bi bi-people"></i><div class="ms-3 d-none d-lg-block">MEMBRES</div></a>
-                    </nav>
-            </aside>
-            <main class="col">
-                <header>
-                    <input type="search" placeholder="Recherche" class="d-none d-md-block">
-                    <i class="bi bi-bell mx-3"></i>
-                    <i class="bi bi-chat-left-text"></i>
-                    <div class="lightMode ms-auto"></div>
-                    <button class="<?= isset($_SESSION['nickname']) ? 'd-none' : 'd-block' ?>" type="button" data-bs-toggle="modal" data-bs-target="#connectionModal">Se connecter</button>
-                    <button class="userName <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="userName"><?= $_SESSION['nickname'] ?? '' ?></button>
-                    <img src="./assets/images/<?= $_SESSION['image'] ?? '' ?>" class="profilLogo <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="profilLogo" alt="">
-                    <div class="profilMenu">
-                        <button type="button">Profil</button>
-                        <form method="post">
-                            <button name="logout" value="logout">Déconnexion</button>
-                        </form>                        
-                    </div>
-                </header>
+<?php include './components/header.php' ?>
                 <section class="actu">
-                <div class="container-fluid topStats">
-                    <div class="row ">  <?= displayLifetime() ?> </div>
-                    <div class="row mygrid"><?= displayTopStats() ?> </div>
+                    <h1>PROFIL <span><span class="text-uppercase"><?= $_SESSION['nickname'] ?? '' ?></span></span></h1>
+                <div class="container-fluid  mt-5">
+                    <div class="row">
+                        <div class="col-12 col-xl-6">
+                            <div class="profilDesc">
+                                <div class="title">Compte</div>
+                                <div class="wrap">
+                                    <div class="infos">
+                                        <ul>
+                                            <li><?= $_SESSION['lastname'] ?? '' ?></li>
+                                        </ul>
+                                        <ul>
+                                            <li><?= $_SESSION['firstname'] ?? '' ?></li>
+                                        </ul>
+                                        <ul>
+                                            <li><?= $_SESSION['nickname'] ?? '' ?></li>
+                                        </ul>
+                                        <ul>
+                                            <li><?= $_SESSION['mail'] ?? '' ?></li>
+                                        </ul>
+                                        <ul>
+                                            <li><?= $_SESSION['age'] ?? '' ?> ans</li>
+                                        </ul>
+                                        <ul>
+                                            <li><?= $_SESSION['role'] ?? '' ?></li>
+                                        </ul>
+                                    </div>
+                                    <img src="./assets/images/<?= $_SESSION['image'] ?? '' ?>" class="profilLogo <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="profilLogo" alt="profil logo">
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-xl-6 topStats">
+                            <div class="heures ps-2 text-white">Temps de jeu : <?= displayLifetime() ?> </div>
+                            <div class="row mygrid c"><?= displayTopStats() ?> </div>
+                        </div>
+                    </div>
+                   
                 </div>
                     <div class="title">Arme favorite</div>
                     <div class="mostUsed">

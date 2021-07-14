@@ -5,6 +5,50 @@ body {
     background-color: $dark_grey;
 }
 
+.profilDesc {
+
+    height: 100%;
+    background-color: rgba(36, 34, 34, 0.459);
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    .title {
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.459);
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+    .wrap {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        .infos {
+            position: relative;
+            z-index: 10;
+            ul {
+                list-style: none;
+                margin-bottom: 0.5rem;
+                li {
+                    color: white;
+                }
+            }
+        }
+        img {
+            top: 0;
+            left: 0;
+            width: 200px;
+            object-fit: cover;
+            height: 200px;
+            border-radius: 50%;
+            object-position: center;
+            margin: 0 auto;
+            border: 2px solid $yellow;
+        }
+    }
+    
+}
+
 .mostUsed {
     display: flex;
     align-items: center;
@@ -31,6 +75,14 @@ body {
             .value {
                 color: white;
             }
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .profilDesc {
+        img {
+            display: none !important;
         }
     }
 }
