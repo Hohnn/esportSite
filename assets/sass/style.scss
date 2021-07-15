@@ -67,6 +67,7 @@ main {
     background-image: linear-gradient(#22252700 0%,#222527 500px, #14171a);
     position: relative;
     background-attachment: scroll;
+    min-height: 100vh;
     &::before {
         content: '';
         position: absolute;
@@ -174,6 +175,11 @@ main {
             button {
                 margin: 5px 10px;
                 box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.247);
+            }
+            & > *:not(form) {
+                margin: 5px 10px;
+                box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.247);
+                text-align: center;
             }
         }
         .focused {

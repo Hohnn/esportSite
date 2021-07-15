@@ -72,6 +72,7 @@ main {
   background-image: linear-gradient(#22252700 0%, #222527 500px, #14171a);
   position: relative;
   background-attachment: scroll;
+  min-height: 100vh;
 }
 
 main::before {
@@ -210,6 +211,13 @@ main header .profilMenu button {
   margin: 5px 10px;
   -webkit-box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.247);
           box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.247);
+}
+
+main header .profilMenu > *:not(form) {
+  margin: 5px 10px;
+  -webkit-box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.247);
+          box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.247);
+  text-align: center;
 }
 
 main header .focused {

@@ -1,0 +1,29 @@
+section .title {
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.459);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+section .preview {
+  width: 100%;
+  height: 100%;
+  max-height: 200px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+section form {
+  margin: auto;
+}
+
+section form .wrap {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+section form .wrap input {
+  width: 200px;
+}
+/*# sourceMappingURL=admin.css.map */

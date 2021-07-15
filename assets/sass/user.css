@@ -41,11 +41,12 @@ body {
 
 .profilDesc .wrap .infos ul, .topWeapon .wrap .infos ul {
   list-style: none;
-  margin-bottom: 0.5rem;
 }
 
 .profilDesc .wrap .infos ul li, .topWeapon .wrap .infos ul li {
   color: white;
+  margin-bottom: 0.5rem;
+  font-weight: lighter;
 }
 
 .profilDesc .wrap img, .topWeapon .wrap img {

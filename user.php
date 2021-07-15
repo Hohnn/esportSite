@@ -29,20 +29,10 @@ include 'phpScraping.php';
                                         <div class="infos">
                                             <ul>
                                                 <li><?= $_SESSION['lastname'] ?? '' ?></li>
-                                            </ul>
-                                            <ul>
                                                 <li><?= $_SESSION['firstname'] ?? '' ?></li>
-                                            </ul>
-                                            <ul>
                                                 <li><?= $_SESSION['nickname'] ?? '' ?></li>
-                                            </ul>
-                                            <ul>
                                                 <li><?= $_SESSION['mail'] ?? '' ?></li>
-                                            </ul>
-                                            <ul>
                                                 <li><?= $_SESSION['age'] ?? '' ?> ans</li>
-                                            </ul>
-                                            <ul>
                                                 <li><?= $_SESSION['role'] ?? '' ?></li>
                                             </ul>
                                         </div>
@@ -59,11 +49,9 @@ include 'phpScraping.php';
                             <div class="col-12 mt-3">
                                 <div class="topWeapon">
                                     <div class="title">Arme favorite</div>
-
                                     <div class="mostUsed">
                                         <?= statsWeapon() ?>
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </div>

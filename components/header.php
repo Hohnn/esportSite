@@ -24,9 +24,10 @@
                     </div>
                     <img src="./assets/images/<?= $_SESSION['image'] ?? '' ?>" class="profilLogo <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="profilLogo" alt="profil logo">
                     <div class="profilMenu">
-                    <a href="user.php">Profil</a>
+                        <a href="user.php">Profil</a>
+                        <a href="admin.php" class="<?= $_SESSION['role'] == 'admin' ? 'd-block' : 'd-none' ?>">Admin</a>
                         <form method="post">
                             <button name="logout" value="logout">Déconnexion</button>
-                        </form>                        
+                        </form> 
                     </div>
                 </header>

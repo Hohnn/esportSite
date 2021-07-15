@@ -10,6 +10,17 @@
             "password": "$2y$10$f5.J59gYGTv0v6QmZAHC9.BlEqjlH4nBrBFHd8Lk5xO0HMUM2nVde",
             "image": "pont.jpg",
             "role": "visiteur"
+        },
+        {
+            "id": "002",
+            "nom": "admin",
+            "prenom": "admin",
+            "nickname": "admin56",
+            "mail": "admin@gmail.com",
+            "age": "admin",
+            "password": "$2y$10$f5.J59gYGTv0v6QmZAHC9.BlEqjlH4nBrBFHd8Lk5xO0HMUM2nVde",
+            "image": "broken-fire.jpg",
+            "role": "admin"
         }
     ]
 }
