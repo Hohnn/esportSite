@@ -62,7 +62,7 @@ function createContent2(param) {
         }
         let col = document.createElement('div');
         col.className = 'col';
-        col.innerHTML = `<a href="${item.channel.url}" class="card">
+        col.innerHTML = `<a target="_blank" href="${item.channel.url}" class="card">
                             <div class="wrapPreview">
                                 <img class="preview" src="${item.preview.medium}" alt="stream preview">
                                 <span class="badge bg-danger">LIVE</span>
@@ -128,12 +128,16 @@ function createContentYT(param) {
             phrase = `il y a ${differenceDays} mois`
             if(differenceDays > 12) {
                 differenceDays = yearDiff(new Date(publish), new Date())
-                phrase = `il y a ${differenceDays} ans`
+                if (differenceDays == 1) {
+                    phrase = `il y a ${differenceDays} an`
+                } else {
+                    phrase = `il y a ${differenceDays} ans`
+                }
             }
         }
         let col = document.createElement('div');
         col.className = 'col';
-        col.innerHTML = `<a href="https://www.youtube.com/watch?v=${item.id.videoId}" class="card">
+        col.innerHTML = `<a target="_blank" href="https://www.youtube.com/watch?v=${item.id.videoId}" class="card">
                             <div class="wrapPreview">
                                 <img class="preview" src="${item.snippet.thumbnails.medium.url}" alt="stream preview">
                                 <span class="badge bg-danger"></span>

@@ -1,6 +1,7 @@
 <?php
     include 'phpLogin.php';
     include 'phpRSS.php';
+    include 'phpMembers.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +17,7 @@
 </head>
 <?php include './components/header.php' ?>
                 <section class="actu">
-                    <h1>L'ACTUALITÉ <br> <span>BATTLEFIELD <span>5</span></span></h1>
+                    <h1>L'ACTUALITÉ <br> <span>BATTLEFIELD <span>PC</span></span></h1>
                     <div class="container-fluid mt-5 phone">
                         <div class="row g-3">
                             <div class="col">
@@ -26,7 +27,7 @@
                                         <div class="date">25/05/1992</div>
                                         <div class="sujet">News</div>
                                         <div class="auteur">Hohnn</div>
-                                        <button type="button">Voir</button>
+                                        <a href="" target="_blank" type="button">Voir</a>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +39,7 @@
                                         <div class="date">25/05/1992</div>
                                         <div class="sujet">News</div>
                                         <div class="auteur">Hohnn</div>
-                                        <button type="button">Voir</button>
+                                        <a href="" target="_blank" type="button">Voir</a>
                                     </div>
                                 </div>
                                 <div class="card Mini">
@@ -48,7 +49,7 @@
                                         <div class="date">25/05/1992</div>
                                         <div class="sujet">News</div>
                                         <div class="auteur">Hohnn</div>
-                                        <button type="button">Voir</button>
+                                        <a href="" target="_blank" type="button">Voir</a>
                                     </div>
                                 </div>
                             </div>
@@ -143,51 +144,17 @@
                         <div id="next3" class="nav"><i class="bi bi-arrow-right-circle-fill"></i></div>
                         <div id="prev3" class="nav d-none"><i class="bi bi-arrow-left-circle-fill"></i></div>
                         <div id="myscroll3" class="row scroll d-flex">
-                            <div class="col">
+                            <!-- <div class="col">
                                 <div class="profil text-center">
                                     <img class="rounded-circle" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
                                     <div class="desc">
                                         <h3 class="text-white fs-5 mt-2 mb-1">Chiv3rs</h3>
                                         <p>150 points</p>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="profil text-center">
-                                    <img class="rounded-circle" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                    <div class="desc">
-                                        <h3 class="text-white fs-5 mt-2 mb-1">Chiv3rs</h3>
-                                        <p>150 points</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="profil text-center">
-                                    <img class="rounded-circle" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                    <div class="desc">
-                                        <h3 class="text-white fs-5 mt-2 mb-1">Chiv3rs</h3>
-                                        <p>150 points</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="profil text-center">
-                                    <img class="rounded-circle" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                    <div class="desc">
-                                        <h3 class="text-white fs-5 mt-2 mb-1">Chiv3rs</h3>
-                                        <p>150 points</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="profil text-center">
-                                    <img class="rounded-circle" src="https://static-cdn.jtvnw.net/jtv_user_pictures/43805c3d-7ddf-4281-9529-06b565676a6d-profile_image-70x70.png" alt="">
-                                    <div class="desc">
-                                        <h3 class="text-white fs-5 mt-2 mb-1">Chiv3rs</h3>
-                                        <p>150 points</p>
-                                    </div>
-                                </div>
-                            </div>
+                                </div> 
+                            </div> -->
+                            <?= displayMembers() ?>
+                  
 
                         
                         </div>

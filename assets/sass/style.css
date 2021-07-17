@@ -297,7 +297,7 @@ main .actu .card .desc .sujet {
   text-transform: uppercase;
 }
 
-main .actu .card .desc button {
+main .actu .card .desc a {
   border: none;
   background-color: #fca311;
   padding: 0.5em 2.5em;
@@ -372,7 +372,7 @@ main .actu .Mini .desc .title {
   margin-top: 0;
 }
 
-main .actu .Mini .desc button {
+main .actu .Mini .desc a {
   margin-top: auto;
   padding: 0.3em 2em;
   font-size: 0.8em;
@@ -549,6 +549,17 @@ main .topMembers .scroll .profil {
   min-width: max-content;
 }
 
+main .topMembers .scroll .profil img {
+  width: 100px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+main .topMembers .scroll .profil .desc p {
+  font-weight: lighter;
+}
+
 @media screen and (max-width: 992px) {
   main {
     font-size: 16px;
@@ -629,5 +640,13 @@ main .topMembers .scroll .profil {
   border-color: #fca311;
   -webkit-box-shadow: 0 0px 5px 1px #fca311;
           box-shadow: 0 0px 5px 1px #fca311;
+}
+
+.border_red {
+  border: 2px solid red;
+}
+
+.border_yellow {
+  border: 2px solid #fca311;
 }
 /*# sourceMappingURL=style.css.map */

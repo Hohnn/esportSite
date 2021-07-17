@@ -15,8 +15,8 @@ function displayTable(){
     }
 } */
 
-function statsWeapon() {
-    $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/Hohnn/weapons");
+function statsWeapon($user) {
+    $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/weapons");
     $list = $html->find('div[data-v-526226f2].content', 0);
     $div = $list->find('div.weapon-preview', 0);
     $stats = $list->find('div[data-v-b632d9da].stats', 0);
@@ -24,15 +24,15 @@ function statsWeapon() {
     echo $stats;
 }
 
-function displayLifetime(){
-    $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/Hohnn/overview");
+function displayLifetime($user){
+    $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/overview");
     $list = $html->find('div[data-v-b632d9da]', 0);
     $span = $list->find('span[data-v-061dbdd2].playtime', 0)->plaintext;
     $s = $span;
     return strstr($s, 'H' , true) . ' ' . 'Heures';
 }
-function displayTopStats(){
-    $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/Hohnn/overview");
+function displayTopStats($user){
+    $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/overview");
     $list = $html->find('div[data-v-b632d9da].main', 0);
     foreach ($list->find('.numbers') as $value) { ?>
         <?= $value ?>

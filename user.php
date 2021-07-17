@@ -1,7 +1,39 @@
 <?php
-include 'phpScraping.php';
-
+    include 'phpScraping.php';
     include 'phpLogin.php';
+
+    $members = file_get_contents('./assets/json/members.json');
+    $membersList = json_decode($members)->members;
+    foreach($membersList as $member){
+        if($member->id_origin == $_GET['nickname']) {
+            $user = $member->id_origin;
+        }
+    }
+
+function displayProfil(){
+    $members = file_get_contents('./assets/json/members.json');
+    $membersList = json_decode($members)->members;
+    foreach($membersList as $member){ 
+        if (isset($_GET['nickname'])) {
+            if ($_GET['nickname'] == $member->nickname) { ?>
+            <div class="infos">
+                <ul>
+                    <li><?= $member->nom ?></li>
+                    <li><?= $member->prenom ?></li>
+                    <li><?= $member->nickname ?></li>
+                    <li><?= $member->mail ?></li>
+                    <li><?= $member->age ?> ans</li>
+                    <li><?= $member->role ?></li>
+                </ul>
+            </div>
+            <img src="./assets/images/<?= $member->image ?>" class="profilLogo" id="profilLogo" alt="profil logo">
+            <?php
+
+            }
+        }
+     }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -19,38 +51,26 @@ include 'phpScraping.php';
 </head>
 <?php include './components/header.php' ?>
                 <section class="actu">
-                    <h1>PROFIL <span><span class="text-uppercase"><?= $_SESSION['nickname'] ?? '' ?></span></span></h1>
+                    <h1>PROFIL <span><span class="text-uppercase"><?= $_GET['nickname'] ?? '' ?></span></span></h1>
                     <div class="container-fluid  mt-5">
                         <div class="row">
                             <div class="col-12 col-xl-6">
                                 <div class="profilDesc">
                                     <div class="title">Compte</div>
                                     <div class="wrap">
-                                        <div class="infos">
-                                            <ul>
-                                                <li><?= $_SESSION['lastname'] ?? '' ?></li>
-                                                <li><?= $_SESSION['firstname'] ?? '' ?></li>
-                                                <li><?= $_SESSION['nickname'] ?? '' ?></li>
-                                                <li><?= $_SESSION['mail'] ?? '' ?></li>
-                                                <li><?= $_SESSION['age'] ?? '' ?> ans</li>
-                                                <li><?= $_SESSION['role'] ?? '' ?></li>
-                                            </ul>
-                                        </div>
-                                        <img src="./assets/images/<?= $_SESSION['image'] ?? '' ?>" class="profilLogo <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="profilLogo" alt="profil logo">
+                                        <?= displayProfil() ?>
                                     </div>
-                                    
-
                                 </div>
                             </div>
                             <div class="col-12 col-xl-6 topStats">
-                                <div class="heures ps-2 text-white">Temps de jeu : <?= displayLifetime() ?> </div>
-                                <div class="row mygrid c"><?= displayTopStats() ?> </div>
+                                <div class="heures ps-2 text-white">Temps de jeu : <?= displayLifetime($user) ?> </div>
+                                <div class="row mygrid c"><?= displayTopStats($user) ?> </div>
                             </div>
                             <div class="col-12 mt-3">
                                 <div class="topWeapon">
                                     <div class="title">Arme favorite</div>
                                     <div class="mostUsed">
-                                        <?= statsWeapon() ?>
+                                        <?php statsWeapon($user) ?>
                                     </div>
                             </div>
                         </div>

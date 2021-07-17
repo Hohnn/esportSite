@@ -33,7 +33,7 @@
                             </div>
 
                             <div class="col d-flex mt-3 mt-sm-0">
-                                <form action="">
+                                <form action="admin.php" method="POST">
                                     <input class="form-control form-control-sm" id="title" type="text" placeholder="Titre">
                                     <div class="wrap d-flex mt-2">
                                         <input class="form-control form-control-sm" id="date" type="text" placeholder="Date">

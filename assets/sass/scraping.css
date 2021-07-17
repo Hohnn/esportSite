@@ -52,4 +52,34 @@
   font-weight: 500;
   color: #fca311;
 }
+
+.mostUsed .stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.mostUsed .numbers {
+  padding-left: 0.8rem;
+  width: 9rem;
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+
+.numbers {
+  position: relative;
+}
+
+.numbers::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #fca311;
+}
 /*# sourceMappingURL=scraping.css.map */
