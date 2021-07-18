@@ -50,7 +50,7 @@ $mailArray = ['julien@gmail.com', 'paul@gmail.com', 'habib@hotmail.fr'];
 
 if (isset($_POST['submit'])) { //si submit est dans le post
     $count = 0;
-    if (!isValid($regexName, $name)) { // si la regex n'est pas valide
+   /*  if (!isValid($regexName, $name)) { // si la regex n'est pas valide
         $errorName = 'Nom incorrect, exemple : Macron'; // mettre un message
         $count++; // incrémente un conter d'erreur
         $className = 'is-invalid';
@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) { //si submit est dans le post
         $errorZipCode = 'Code postal incorrect, exemple : 50310';
         $count++;
         $classZipCode = 'is-invalid';
-    }
+    } */
     if (!isValid($regexMail, $email)) {
         $errorMail = 'Mail incorrect, exemple : john@gmail.com';
         $count++;
@@ -94,10 +94,17 @@ if (isset($_POST['submit'])) { //si submit est dans le post
         $count++;
         $classPassword = 'is-invalid';
     }
+    if(empty($_POST["g-recaptcha-response"])){
+        $errorCaptcha = 'Veuillez respondre à la question de securité';
+        $count++;
+    }
+    if(!isset($_POST["cgu"])){
+        $count++;
+        $errorCgu = 'Veuillez accépter les CGU';
+    }
     if ($count == 0) { // le conteur est à 0
         /* header("Location: test.php"); // recharge la page */
         addMember();
-
     }
 }
 
@@ -124,5 +131,6 @@ if (!empty($_COOKIE)) {
     }
 }
  */
+
 
 ?>

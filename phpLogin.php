@@ -9,12 +9,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
     foreach($membersList as $member) {
         if ($login == $member->mail) {
             if (password_verify($password, $member->password)) {
-                $_SESSION['id'] = $member->id;
-                $_SESSION['lastname'] = $member->nom;
-                $_SESSION['firstname'] = $member->prenom;
                 $_SESSION['nickname'] = $member->nickname;
-                $_SESSION['mail'] = $member->mail;
-                $_SESSION['age'] = $member->age;
                 $_SESSION['image'] = $member->image;
                 $_SESSION['role'] = $member->role;
                 header('location: index.php');
@@ -22,7 +17,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
                 $errorPass = 'Ce mot de passe n’est pas correct. Veuillez réessayer.';
             }
         } else {
-            $errorLog = 'Nous n’avons pas trouvé de compte avec cette adresse électronique.';
+            $errorLog = 'Mauvaise adresse mail';
         }
     }
 }

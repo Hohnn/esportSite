@@ -56,15 +56,19 @@ aside nav {
 }
 
 aside nav a {
-  background-color: #2b2b2b;
+  background-color: transparent;
   padding: 0.7em 1em !important;
   margin: 0.5em;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  font-size: 1.2rem;
+  border-bottom: 1px #a5a5a5 solid;
+  font-weight: bold;
 }
 
 aside nav a:hover {
-  background-color: transparent;
+  background-color: #2b2b2b;
+  border-color: #fca311;
 }
 
 main {

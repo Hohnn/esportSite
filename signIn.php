@@ -22,31 +22,13 @@
 
     <div class="myForm">
         <form action="signIn.php" method="post" novalidate>
+  
         <div class="mb-3">
-            <label for="name" class="form-label">Nom</label>
-            <input placeholder="Votre nom..." type="text" class="form-control <?=$className ?? ''?>" id="name" name="name" required value="<?=$_POST['name'] ?? '';?>" > <!-- si il ya le name dans POSt affiche le sinon met rien -->
-            <div class="form-text text-danger"><?=$errorName ?? ''?></div> <!-- affiche le message d'erreur -->
-        </div>
-        <div class="mb-3">
-            <label for="firstname" class="form-label">Prénom</label>
-            <input placeholder="Votre prénom..." type="text" class="form-control <?=$classFirstname ?? ''?>" id="firstname" name="firstname" required value="<?=$_POST['firstname'] ?? '';?>">
-            <div class="form-text text-danger"><?=$errorFirstname ?? ''?></div>
-        </div>
-        <div class="mb-3">
-            <label for="nickname" class="form-label">Pseudo</label>
+            <label for="nickname" class="form-label">Nom d'utilisateur</label>
             <input placeholder="Votre pseudo..." type="text" class="form-control <?=$classNickname ?? ''?>" id="nickname" name="nickname" required value="<?=$_POST['nickname'] ?? '';?>">
             <div class="form-text text-danger"><?=$errorNickname ?? ''?></div>
         </div>
-        <div class="mb-3">
-            <label for="age" class="form-label">Age</label>
-            <input placeholder="Votre age..." type="number" class="form-control <?=$classAge ?? ''?>" id="age" name="age" required value="<?=$_POST['age'] ?? '';?>">
-            <div class="form-text text-danger"><?=$errorAge ?? ''?></div>
-        </div>
-        <div class="mb-3">
-            <label for="zipCode" class="form-label">Code Postal</label>
-            <input placeholder="Code postal..." type="text" class="form-control <?=$classZipCode ?? ''?>" id="zipCode" name="zipCode" aria-describedby="emailHelp" required value="<?=$_POST['zipCode'] ?? '';?>">
-            <div class="form-text text-danger"><?=$errorZipCode ?? ''?></div>
-        </div>
+
         <div class="mb-3">
             <label for="email" class="form-label">Adresse mail</label>
             <input placeholder="Adresse mail..." type="email" class="form-control <?=$classMail ?? ''?>" id="email" name="email" aria-describedby="emailHelp" required value="<?=$_POST['email'] ?? '';?>">
@@ -58,16 +40,45 @@
             <div class="form-text text-danger"><?=$errorMdp ?? ''?></div>
         </div>
         <div class="mb-3">
-            <label for="confirm" class="form-label">Confirmation</label>
+            <label for="confirm" class="form-label">Confirmer le mot de passe</label>
             <input placeholder="Confirmer votre mot de passe" type="password" class="form-control <?= $classPassword ?? '' ?>" id="confirm" name="confirm" required>
             <div class="form-text text-danger"><?= $errorPassword ?? '' ?></div>
+        </div>
+        <div class="mb-3">
+            <div class="g-recaptcha" data-sitekey="6LfE56MbAAAAAEKmbGvII0V7FgBAOuUaekRQorZu" data-theme="dark"></div>
+            <div class="form-text text-danger"><?= $errorCaptcha ?? '' ?></div>            
+        </div>
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" name="cgu" value="checked" id="cgu">
+            <label class="form-check-label" for="cgu">Je suis d’accord avec les </label>
+            <a type="button" class="text-warning" data-bs-toggle="modal" data-bs-target="#cguModal">conditions générale d’utilisation</a>
+            <div class="form-text text-danger"><?= $errorCgu ?? '' ?></div>            
         </div>
         <button type="submit" class="btn btn-primary" id="btn" name="submit">S'inscrire</button>
         </form>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="cguModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-fullscreen-sm-down">
+            <div class="modal-content text-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Conditions d’inscription</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Notre logiciel utilise des cookies pour vous distinguer des autres utilisateurs de notre site Internet. Cela nous permet de vous offrir une expérience personnalisée lorsque vous naviguez sur ce site.
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script src="./assets/js/magic.js"></script>
     <script src="./assets/js/vanilla-tilt.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?hl=fr" async defer></script>
 
 </body>
 </html>

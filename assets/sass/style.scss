@@ -51,12 +51,16 @@ aside {
         display: flex;
         flex-direction: column;
         a {
-            background-color: $dark_grey;
+            background-color: transparent;
             padding:0.7em 1em !important;
             margin: 0.5em;
             transition: 0.5s;
+            font-size: 1.2rem;
+            border-bottom: 1px rgb(165, 165, 165) solid;
+            font-weight: bold;
             &:hover {
-                background-color: transparent;
+                background-color: $dark_grey;
+                border-color: $yellow;
             }
         }
     }

@@ -5,11 +5,10 @@
     $members = file_get_contents('./assets/json/members.json');
     $membersList = json_decode($members)->members;
     foreach($membersList as $member){
-        if($member->id_origin == $_GET['nickname']) {
+        if($member->nickname== $_GET['nickname']) {
             $user = $member->id_origin;
         }
     }
-
 function displayProfil(){
     $members = file_get_contents('./assets/json/members.json');
     $membersList = json_decode($members)->members;
