@@ -1,31 +1,25 @@
 <?php
     include 'phpScraping.php';
-    include 'phpLogin.php';
 
-    $members = file_get_contents('./assets/json/members.json');
-    $membersList = json_decode($members)->members;
-    foreach($membersList as $member){
-        if($member->nickname== $_GET['nickname']) {
-            $user = $member->id_origin;
-        }
-    }
 function displayProfil(){
     $members = file_get_contents('./assets/json/members.json');
     $membersList = json_decode($members)->members;
     foreach($membersList as $member){ 
         if (isset($_GET['nickname'])) {
             if ($_GET['nickname'] == $member->nickname) { ?>
-            <div class="infos">
+            <div id="desc" class="infos">
                 <ul>
-                    <li><?= $member->nom ?></li>
-                    <li><?= $member->prenom ?></li>
-                    <li><?= $member->nickname ?></li>
-                    <li><?= $member->mail ?></li>
-                    <li><?= $member->age ?> ans</li>
-                    <li><?= $member->role ?></li>
+                    <li><i class="bi bi-person me-3"></i><?= $member->nickname ?></li>
+                    <li class="<?= isset($member->id_origin) ? '' : 'none' ?>"><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/><?= $member->id_origin ?? 'ID origin' ?></li>
+                    <li><i class="bi bi-person-bounding-box me-3"></i><?= $member->role ?></li>
+                    <li class="social">
+                        <a class="<?= isset($member->twitter) ? 'd-block' : 'none' ?>" href="<?= $member->twitter ?? '' ?>"><i class="bi bi-twitter"></i></a>
+                        <a class="<?= isset($member->youtube) ? 'd-block' : 'none' ?>" href="<?= $member->youtube ?? '' ?>"><i class="bi bi-youtube"></i></a>
+                        <a class="<?= isset($member->twitch) ? 'd-block' : 'none' ?>" href="<?= $member->twitch ?? '' ?>"><i class="bi bi-twitch"></i></a>
+                    </li>
                 </ul>
             </div>
-            <img src="./assets/images/<?= $member->image ?>" class="profilLogo" id="profilLogo" alt="profil logo">
+            <img src="./assets/images/<?= $member->image ?>" class="profilLogoDesc" id="profilLogo" alt="profil logo">
             <?php
 
             }
@@ -55,21 +49,38 @@ function displayProfil(){
                         <div class="row">
                             <div class="col-12 col-xl-6">
                                 <div class="profilDesc">
-                                    <div class="title">Compte</div>
+                                    <div class="title">Compte <i id="edit" class="bi bi-pencil-square"></i></div>
                                     <div class="wrap">
+                                        <from id="descEdit" class="edit d-none">
+                                            <div><i class="bi bi-person me-3"></i> <input type="text" value="<?= $member->nickname ?>"> </div>
+                                            <div><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/> <input type="text" placeholder="ID origin" value="<?= $member->id_origin ?? '' ?>"> </div>
+                                            <div><i class="bi bi-twitter me-3"></i> <input type="text" placeholder="lien twitter" value="<?= $member->twitter ?? '' ?>"> </div>
+                                            <div><i class="bi bi-youtube me-3"></i> <input type="text" placeholder="lien youtube" value="<?= $member->youtube ?? '' ?>"> </div>
+                                            <div><i class="bi bi-twitch me-3"></i> <input type="text" placeholder="lien twitch" value="<?= $member->twitch ?? '' ?>"> </div>
+                                            <div>
+                                                <i class="bi bi-image me-3"></i>
+                                                <button type="button"><label for="fileToUpload">Parcourir...</label> </button>
+                                                <input class="form-control d-none" id="fileToUpload" type="file">
+                                            </div>
+                                            <button class="bgYellow ms-auto" type="submit">Confirmer</button>
+                                        </from>
                                         <?= displayProfil() ?>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-xl-6 topStats">
-                                <div class="heures ps-2 text-white">Temps de jeu : <?= displayLifetime($user) ?> </div>
-                                <div class="row mygrid c"><?= displayTopStats($user) ?> </div>
+                            <div class="heures ps-2 text-white">Temps de jeu : <?= $displayLifetime ?> </div>
+                                <div class="row mygrid c">
+                                    <?php foreach ($displayTopStats as $key => $value) { ?>
+                                            <?= $value ?>
+                                        <?php } ?>
+                                </div>
                             </div>
                             <div class="col-12 mt-3">
                                 <div class="topWeapon">
                                     <div class="title">Arme favorite</div>
                                     <div class="mostUsed">
-                                        <?php statsWeapon($user) ?>
+                                        <?php /* statsWeapon($user) */ ?>
                                     </div>
                             </div>
                         </div>
@@ -84,5 +95,6 @@ function displayProfil(){
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/user.js"></script>
 </body>
 </html>

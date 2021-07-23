@@ -1,3 +1,5 @@
+<?php include './phpLogin.php'; ?>
+
 <body>
     <div class="container-fluid">
         <div class="row flex-nowrap">

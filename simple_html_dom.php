@@ -141,10 +141,10 @@ class simple_html_dom_node
 		$dom->nodes[] = $this;
 	}
 
-	function __destruct()
+/* 	function __destruct()
 	{
 		$this->clear();
-	}
+	} */
 
 	function __toString()
 	{

@@ -1,5 +1,4 @@
 <?php
-    include 'phpLogin.php';
     include 'phpRSS.php';
     include 'phpMembers.php';
 ?>

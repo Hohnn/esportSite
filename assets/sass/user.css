@@ -20,6 +20,14 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.459);
   padding-bottom: 1rem;
   margin-bottom: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.profilDesc .title i, .topWeapon .title i {
+  margin-left: auto;
+  cursor: pointer;
 }
 
 .profilDesc .wrap, .topWeapon .wrap {
@@ -43,13 +51,79 @@ body {
   list-style: none;
 }
 
+.profilDesc .wrap .infos ul .none, .topWeapon .wrap .infos ul .none {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.profilDesc .wrap .infos ul .none:hover, .topWeapon .wrap .infos ul .none:hover {
+  color: unset;
+}
+
+.profilDesc .wrap .infos ul .social, .topWeapon .wrap .infos ul .social {
+  margin-top: 2rem;
+  font-size: 2rem;
+}
+
 .profilDesc .wrap .infos ul li, .topWeapon .wrap .infos ul li {
   color: white;
   margin-bottom: 0.5rem;
   font-weight: lighter;
+  list-style: none;
 }
 
-.profilDesc .wrap img, .topWeapon .wrap img {
+.profilDesc .wrap .infos ul li a, .topWeapon .wrap .infos ul li a {
+  margin-right: 1rem;
+}
+
+.profilDesc .wrap .infos ul li img, .topWeapon .wrap .infos ul li img {
+  width: 18px;
+  height: 18px;
+  border: none;
+}
+
+.profilDesc .wrap .edit, .topWeapon .wrap .edit {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.profilDesc .wrap .edit img, .topWeapon .wrap .edit img {
+  width: 18px;
+  height: 18px;
+  border: none;
+}
+
+.profilDesc .wrap .edit input, .topWeapon .wrap .edit input {
+  background-color: unset;
+  font-weight: lighter;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.5rem;
+  color: white;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.459);
+  border-radius: 0.5rem 0 0 0;
+  margin-bottom: 0.5rem;
+}
+
+.profilDesc .wrap .edit button, .topWeapon .wrap .edit button {
+  background-color: rgba(255, 255, 255, 0.459);
+  border: unset;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-family: inherit;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.profilDesc .wrap .profilLogoDesc, .topWeapon .wrap .profilLogoDesc {
   top: 0;
   left: 0;
   width: 200px;
@@ -127,7 +201,7 @@ body {
   .mostUsed {
     display: block;
   }
-  .profilDesc img {
+  .profilDesc .profilLogoDesc {
     display: none !important;
   }
 }

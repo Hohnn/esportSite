@@ -1,19 +1,5 @@
 <?php
 include ('simple_html_dom.php');
-/* 
-function displayTable(){
-    $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/Hohnn/overview");
-    $list = $html->find('table[data-v-3504b6eb]', 0);
-    foreach($list->find('tr') as $key => $tr){
-        if ($key <= 3 || $key == 9 || $key == 11 || $key >= 16) { ?>
-            <tr> <?php
-            foreach($tr->find('td') as $td){ ?>
-            <td><?= $td->plaintext ?></td> <?php
-        } ?>
-        </tr> <?php
-        }
-    }
-} */
 
 function statsWeapon($user) {
     $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/weapons");
@@ -37,6 +23,33 @@ function displayTopStats($user){
     foreach ($list->find('.numbers') as $value) { ?>
         <?= $value ?>
     <?php
+    }
 }
+
+function displayStats($user){
+    $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/overview");
+    $targetTime = $html->find('div[data-v-b632d9da]', 0);
+    $time = $targetTime->find('span[data-v-061dbdd2].playtime', 0)->plaintext;
+    $time = strstr($time, 'H' , true) . ' ' . 'Heures';
+    $targetStats = $html->find('div[data-v-b632d9da].main', 0);
+    $stats = []; 
+    foreach ($targetStats->find('.numbers') as $value) {
+        array_push($stats, $value);
+    }
+    $array = [$time, $stats];
+    return $array;
 }
+
+
+$members = file_get_contents('./assets/json/members.json');
+$membersList = json_decode($members)->members;
+foreach($membersList as $member){
+    if($member->nickname == $_GET['nickname']) {
+        $user = $member->id_origin;
+    }
+}
+
+$scrap = displayStats($user);
+$displayLifetime = $scrap[0];
+$displayTopStats = $scrap[1];
 ?>

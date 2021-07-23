@@ -21,3 +21,11 @@
             <input placeholder="Code postal..." type="text" class="form-control <?=$classZipCode ?? ''?>" id="zipCode" name="zipCode" aria-describedby="emailHelp" required value="<?=$_POST['zipCode'] ?? '';?>">
             <div class="form-text text-danger"><?=$errorZipCode ?? ''?></div>
         </div>
+
+
+        <div class="heures ps-2 text-white">Temps de jeu : <?= $displayLifetime ?> </div>
+                                <div class="row mygrid c">
+                                    <?php foreach ($displayTopStats as $key => $value) { ?>
+                                            <?= $value ?>
+                                        <?php } ?>
+                                </div>
