@@ -30,6 +30,7 @@ aside .stick {
   position: -webkit-sticky;
   position: sticky;
   top: 0px;
+  height: 100vh;
 }
 
 aside .brand {
@@ -55,7 +56,7 @@ aside nav {
           flex-direction: column;
 }
 
-aside nav a {
+aside nav .pages {
   background-color: transparent;
   padding: 0.7em 1em !important;
   margin: 0.5em;
@@ -66,9 +67,57 @@ aside nav a {
   font-weight: bold;
 }
 
-aside nav a:hover {
+aside nav .pages:hover {
   background-color: #2b2b2b;
   border-color: #fca311;
+}
+
+aside nav .plusPhone {
+  cursor: pointer;
+  border: none;
+}
+
+aside nav .profilMenu2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: auto;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+aside nav .profilMenu2 > *:not(form) {
+  margin: 5px 10px;
+  text-align: center;
+}
+
+aside nav .profilMenu2 form {
+  margin: 1rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+aside nav .profilMenu2 button {
+  background-color: transparent;
+  border: none;
+  border-radius: 1em;
+  font-size: 0.9em;
+  color: #b3b3b3;
+  padding: 0.4em 0.8em;
+  -webkit-transition: 0.25s ease-out;
+  transition: 0.25s ease-out;
+  margin-left: auto;
+}
+
+aside nav .profilMenu2 button:hover {
+  background-color: #36393b;
+  color: #fca311;
 }
 
 main {
@@ -139,33 +188,6 @@ main header i::after {
   height: 10px;
   border-radius: 50%;
   left: 70%;
-}
-
-main header .lightMode {
-  width: 50px;
-  height: 26px;
-  border-radius: 100px;
-  background-image: linear-gradient(280deg, #5d6270, #242b31);
-  position: relative;
-}
-
-main header .lightMode::after {
-  content: '';
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: #f0f0f0;
-  top: 50%;
-  left: 13px;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  -webkit-transition: 0.25s;
-  transition: 0.25s;
-}
-
-main header .lightMode:hover:after {
-  background-color: #fca311;
 }
 
 main header button, main header a {
@@ -476,8 +498,8 @@ main .twitch .scroll::-webkit-scrollbar-track {
 main .twitch .card {
   background-color: unset;
   border: unset;
-  max-width: 500px;
   max-height: 100%;
+  max-width: 320px;
 }
 
 main .twitch .card .wrapPreview {
@@ -531,13 +553,19 @@ main .twitch .card .footer .logo {
   margin-right: 0.5rem;
 }
 
+main .twitch .card .footer .desc {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  min-width: 0;
+}
+
 main .twitch .card .footer .desc .title {
   font-size: 1rem;
   color: white;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 200px;
 }
 
 main .topMembers .scroll {
@@ -582,6 +610,9 @@ main .topMembers .scroll .profil .desc p {
 }
 
 @media screen and (max-width: 750px) {
+  .pages {
+    margin: unset !important;
+  }
   main {
     padding: 0 !important;
   }
@@ -610,6 +641,7 @@ main .topMembers .scroll .profil .desc p {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    height: auto;
   }
   aside .brand {
     -webkit-writing-mode: unset;
@@ -627,11 +659,27 @@ main .topMembers .scroll .profil .desc p {
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
             flex-grow: 1;
-    max-width: 420px;
   }
-  aside nav a {
-    background-color: unset;
-    margin: auto 0;
+  aside nav a:first-of-type {
+    margin-left: auto !important;
+  }
+  aside nav a:last-of-type {
+    margin-right: auto !important;
+  }
+  aside .profilMenu2 {
+    right: 0;
+    width: auto !important;
+    background-color: #222527;
+    border-radius: 1rem 0 0 1rem;
+    bottom: 4rem !important;
+    text-align: center;
+    visibility: hidden;
+  }
+  aside .profilMenu2 i {
+    margin: 0 !important;
+  }
+  aside .profilMenu2 button {
+    margin: 0 auto !important;
   }
 }
 

@@ -5,4 +5,23 @@ const descEdit = document.getElementById('descEdit')
 edit.addEventListener('click', () => {
     desc.classList.add('d-none')
     descEdit.classList.remove('d-none')
+    edit.style.color = '#fca311'
+})
+
+function previewImage(fileToUpload, backImage){
+    fileToUpload.addEventListener("change", function () {
+        let oFReader = new FileReader(); // on créé un nouvel objet FileReader
+        oFReader.readAsDataURL(this.files[0]);
+        oFReader.onload = function (oFREvent) {
+            backImage.src = oFREvent.target.result;
+        };
+    })
+}
+
+previewImage(fileToUpload, profilLogoDesc)
+
+cancel.addEventListener('click', () => {
+    desc.classList.remove('d-none')
+    descEdit.classList.add('d-none')
+    edit.style.color = 'white'
 })

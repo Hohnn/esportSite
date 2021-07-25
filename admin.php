@@ -1,6 +1,4 @@
-<?php
-    include 'phpLogin.php';
-?>
+
 
 <!DOCTYPE html>
 <html lang="fr">

@@ -19,7 +19,7 @@ function displayProfil(){
                     </li>
                 </ul>
             </div>
-            <img src="./assets/images/<?= $member->image ?>" class="profilLogoDesc" id="profilLogo" alt="profil logo">
+            <img src="./assets/images/<?= $member->image ?>" class="profilLogoDesc" id="profilLogoDesc" alt="profil logo">
             <?php
 
             }
@@ -58,11 +58,15 @@ function displayProfil(){
                                             <div><i class="bi bi-youtube me-3"></i> <input type="text" placeholder="lien youtube" value="<?= $member->youtube ?? '' ?>"> </div>
                                             <div><i class="bi bi-twitch me-3"></i> <input type="text" placeholder="lien twitch" value="<?= $member->twitch ?? '' ?>"> </div>
                                             <div>
-                                                <i class="bi bi-image me-3"></i>
-                                                <button type="button"><label for="fileToUpload">Parcourir...</label> </button>
+                                                <i class="bi bi-person-circle me-3"></i>
+                                                <label for="fileToUpload" class="upload">Parcourir...</label>
                                                 <input class="form-control d-none" id="fileToUpload" type="file">
                                             </div>
-                                            <button class="bgYellow ms-auto" type="submit">Confirmer</button>
+                                            <div class="d-flex align-items-start mt-4">
+                                                <button class="bgYellow" type="submit">Confirmer</button>
+                                                <button class="btn btn-outline-secondary ms-auto cancel" id="cancel">Annuler</button>
+                                            </div>
+
                                         </from>
                                         <?= displayProfil() ?>
                                     </div>

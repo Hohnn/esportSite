@@ -18,3 +18,9 @@ toggleMenu(userName)
 removeMenu(userName)
 toggleMenu(profilLogo)
 removeMenu(profilLogo)
+
+const plusPhone = document.getElementById('plusPhone')
+const userMenu = document.getElementById('userMenu')
+plusPhone.addEventListener('click', () => {
+    userMenu.classList.toggle('visible')
+})
