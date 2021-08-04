@@ -2,7 +2,7 @@
 body {
   color: #b3b3b3;
   font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 18px;
   overflow-x: hidden;
 }
@@ -286,7 +286,7 @@ main section h1 span span {
 }
 
 main .actu {
-  margin-top: 150px;
+  margin-top: 100px;
 }
 
 main .actu .card {
@@ -700,5 +700,21 @@ main .topMembers .scroll .profil .desc p {
 
 .border_yellow {
   border: 2px solid #fca311;
+}
+
+#plusArticle {
+  cursor: pointer;
+}
+
+#plusArticle:hover {
+  color: #fca311;
+}
+
+.plusSug {
+  position: absolute;
+  top: -150%;
+  background-color: #2b2b2b;
+  padding: 0.3rem 1rem;
+  border-radius: 1rem;
 }
 /*# sourceMappingURL=style.css.map */

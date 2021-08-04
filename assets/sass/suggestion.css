@@ -1,0 +1,29 @@
+form {
+  width: 100% !important;
+}
+
+form input, form textarea, form select, form label {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.card {
+  height: unset !important;
+}
+
+.noFilter {
+  -webkit-filter: invert(0) !important;
+          filter: invert(0) !important;
+}
+
+.text-danger {
+  font-size: 0.9rem;
+  font-weight: lighter;
+}
+
+h1 {
+  -webkit-text-stroke: 1px white;
+  color: transparent !important;
+  text-transform: uppercase;
+}
+/*# sourceMappingURL=suggestion.css.map */

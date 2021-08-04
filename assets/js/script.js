@@ -24,3 +24,9 @@ const userMenu = document.getElementById('userMenu')
 plusPhone.addEventListener('click', () => {
     userMenu.classList.toggle('visible')
 })
+
+const plusSug = document.getElementById('plusSug')
+const plusArticle = document.getElementById('plusArticle')
+plusArticle.addEventListener('click', () => {
+    plusSug.classList.toggle('d-none')
+})

@@ -102,16 +102,20 @@ body {
                 cursor: pointer;
             }
         }
+        .logoContainer {
+            display: flex;
+            justify-content: center;
+            width: auto;
+            height: 100%;
+        }
         .profilLogoDesc {
-            top: 0;
-            left: 0;
-            width: 200px;
             object-fit: cover;
+            width: 200px;
             height: 200px;
             border-radius: 50%;
             object-position: center;
-            margin: 0 auto;
             border: 2px solid $yellow;
+            flex-shrink: 1;
         }
     }
     
@@ -153,10 +157,5 @@ body {
 @media screen and (max-width: 992px) {
     .mostUsed {
         display: block;
-    }
-    .profilDesc {
-        .profilLogoDesc {
-            display: none !important;
-        }
     }
 }

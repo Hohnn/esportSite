@@ -134,18 +134,28 @@ body {
   cursor: pointer;
 }
 
+.profilDesc .wrap .logoContainer, .topWeapon .wrap .logoContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: auto;
+  height: 100%;
+}
+
 .profilDesc .wrap .profilLogoDesc, .topWeapon .wrap .profilLogoDesc {
-  top: 0;
-  left: 0;
-  width: 200px;
   -o-object-fit: cover;
      object-fit: cover;
+  width: 200px;
   height: 200px;
   border-radius: 50%;
   -o-object-position: center;
      object-position: center;
-  margin: 0 auto;
   border: 2px solid #fca311;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
 }
 
 .mostUsed {
@@ -211,9 +221,6 @@ body {
 @media screen and (max-width: 992px) {
   .mostUsed {
     display: block;
-  }
-  .profilDesc .profilLogoDesc {
-    display: none !important;
   }
 }
 /*# sourceMappingURL=user.css.map */

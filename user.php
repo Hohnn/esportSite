@@ -19,7 +19,9 @@ function displayProfil(){
                     </li>
                 </ul>
             </div>
-            <img src="./assets/images/<?= $member->image ?>" class="profilLogoDesc" id="profilLogoDesc" alt="profil logo">
+            <div class="mx-auto logoContainer d-none d-sm-flex">
+                <img src="./assets/images/<?= $member->image ?>" class="profilLogoDesc" id="profilLogoDesc" alt="profil logo">
+            </div>
             <?php
 
             }
@@ -66,7 +68,6 @@ function displayProfil(){
                                                 <button class="bgYellow" type="submit">Confirmer</button>
                                                 <button class="btn btn-outline-secondary ms-auto cancel" id="cancel">Annuler</button>
                                             </div>
-
                                         </from>
                                         <?= displayProfil() ?>
                                     </div>

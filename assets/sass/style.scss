@@ -11,7 +11,7 @@ $semi_dark: #222527;
 body {
     color: $grey;
     font-family: 'Roboto', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 18px;
     overflow-x: hidden;
 }
@@ -230,7 +230,7 @@ main {
         }
     }
     .actu {
-        margin-top: 150px;
+        margin-top: 100px;
         .card {
             border: none;
             height: 500px;
@@ -553,4 +553,19 @@ main {
 
 .border_yellow {
     border: 2px solid $yellow;
+}
+
+#plusArticle {
+    cursor: pointer;
+    &:hover {
+        color: $yellow;
+    }
+}
+
+.plusSug {
+    position: absolute;
+    top: -150%;
+    background-color: $dark_grey;
+    padding: 0.3rem 1rem;
+    border-radius: 1rem;
 }

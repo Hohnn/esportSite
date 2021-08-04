@@ -1,0 +1,30 @@
+@import 'colors';
+
+
+
+form {
+    width: 100% !important;
+    input, textarea, select, label {
+        filter: invert(1);
+    }
+}
+
+
+.card {
+    height: unset !important;
+}
+
+.noFilter {
+    filter: invert(0) !important;
+}
+
+.text-danger {
+    font-size: 0.9rem;
+    font-weight: lighter;
+}
+
+h1 {
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+    color: transparent !important;
+    text-transform: uppercase;
+}
