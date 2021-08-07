@@ -15,21 +15,6 @@ $author = htmlspecialchars($_POST['author'] ?? '');
 $source = htmlspecialchars($_POST['source'] ?? '');
 $desc = htmlspecialchars($_POST['desc'] ?? '');
 
-
-$name = htmlspecialchars($_POST['name'] ?? 'Vide');
-$firstname = htmlspecialchars($_POST['firstname'] ?? 'Vide');
-$age = htmlspecialchars($_POST['age'] ?? 'Vide');
-$zipCode = htmlspecialchars($_POST['zipCode'] ?? 'Vide');
-$email = htmlspecialchars($_POST['email'] ?? 'Vide');
-$nickname = htmlspecialchars($_POST['nickname'] ?? 'Vide');
-$password = htmlspecialchars($_POST['password'] ?? 'Vide');
-$confirm = htmlspecialchars($_POST['confirm'] ?? 'Vide');
-$regexName = "/^[a-z ,.'-]+$/i";
-$regexAge = "/^\d{1,2}$/";
-$regexZipCode = "/^\d{5}$/";
-$regexMail = "/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/";
-$regexPassword = "/^(?=.*?[A-Z])(?=.*?[a-z]).{5,}$/";
-$regexNickname = "/^[^0-9]\w+$/";
 $regexAll = "/./";
 $regexUrl = "/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/";
 $mailArray = ['julien@gmail.com', 'paul@gmail.com', 'habib@hotmail.fr'];

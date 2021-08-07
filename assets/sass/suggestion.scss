@@ -24,7 +24,9 @@ form {
 }
 
 h1 {
-    -webkit-text-stroke: 1px rgb(255, 255, 255);
-    color: transparent !important;
     text-transform: uppercase;
+}
+
+.invert {
+    filter: invert(1) !important;
 }

@@ -26,3 +26,13 @@ function preview(fileToUpload, backImage, title, titlePreview, author, authorPre
 }
 
 preview(fileToUpload, backImage, title, titlePreview, author, authorPreview, date, datePreview, type, typePreview)
+
+const submitBtn = document.getElementById('submit');
+const myModal = new bootstrap.Modal(document.getElementById('myModal'), {
+    keyboard: false
+})
+
+if (submitBtn.dataset.submit == 'invalid') {
+    console.log('valid');
+    myModal.show()
+}

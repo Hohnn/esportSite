@@ -22,8 +22,11 @@ form input, form textarea, form select, form label {
 }
 
 h1 {
-  -webkit-text-stroke: 1px white;
-  color: transparent !important;
   text-transform: uppercase;
+}
+
+.invert {
+  -webkit-filter: invert(1) !important;
+          filter: invert(1) !important;
 }
 /*# sourceMappingURL=suggestion.css.map */
