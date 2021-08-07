@@ -27,9 +27,9 @@ a {
 
 aside {
     max-width: 300px !important;
-    background-color: $dark;
+    background-image: linear-gradient(#222527 500px, #14171a);
     min-height: 100vh;
-    box-shadow:  5px 0 15px rgb(24, 24, 24);
+    border-right: 1px solid rgb(70, 70, 70);
     position: relative;
     z-index: 100;
     .stick {
@@ -54,14 +54,37 @@ aside {
         .pages {
             background-color: transparent;
             padding:0.7em 1em !important;
-            margin: 0.5em;
+            margin:0.1rem 0.5em;
             transition: 0.5s;
             font-size: 1.2rem;
-            border-bottom: 1px rgb(165, 165, 165) solid;
             font-weight: bold;
+            position: relative;
+            div {
+                font-weight: normal;
+                letter-spacing: 1px;
+                font-size: 1.1rem;
+                &::first-letter {
+                    text-transform: uppercase;
+                }
+            }
             &:hover {
                 background-color: $dark_grey;
                 border-color: $yellow;
+            }
+        }
+        .active {
+            color: white;
+            i {
+                color: $yellow;
+            }
+            &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background-color: $yellow;
             }
         }
         .plusPhone {
@@ -103,24 +126,10 @@ aside {
 
 main {
     width: 100%;
-    background-image: linear-gradient(#22252700 0%,#222527 500px, #14171a);
+    background-image: linear-gradient(#222527 500px, #14171a);
     position: relative;
     background-attachment: scroll;
     min-height: 100vh;
-    &::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 500px;
-        background-image: url(../images/aero.jpg);
-        position: fixed;
-        background-position: top;
-        background-size: cover;
-        background-repeat: no-repeat;
-        left: 0;
-        top: 0;
-        z-index: -1;
-    }
     header {
         padding: 1em;
         display: flex;
@@ -132,14 +141,15 @@ main {
                 color: $yellow;
             }
         }
-        input {
-            border-radius: 0.5em;
-            border: none;
-            background-color: #36393b;
+        input[type="search"] {
+            border-radius: 3em;
+            border: 1px solid rgb(70, 70, 70);
+            background-color: transparent;
             padding: 0.4em 2em;
             font-size: 0.8em;
             outline: none;
             color: $grey;
+            position: relative;
             &:hover , &:focus {
                 background-color: #292c2c;
             }
@@ -486,6 +496,29 @@ main {
 }
 
 @media screen and (max-width: 750px) {
+    aside {
+        .active {
+            &::before {
+                width: 0px !important;
+            }
+        }
+    }
+        
+    #carousel {
+        button {
+            width: 30px !important;
+            height: 30px !important;
+        }
+        .carousel-item {
+            img {
+                width: 100%;
+                height: 300px !important;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    }
+    
     .pages {
         margin: unset !important;
     }
@@ -577,3 +610,56 @@ main {
     padding: 0.3rem 1rem;
     border-radius: 1rem;
 } 
+
+
+
+#carousel {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+    .carousel-indicators {
+        left: unset;
+        margin-right: 5%;
+        margin-bottom: 2.5rem;
+        .active {
+            border: 1px solid $yellow;
+            box-shadow: 0 0 10px $yellow;
+        }
+        button {
+            width: 70px;
+            height: 40px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            background-clip: unset;
+            text-indent: 0px;
+            border: unset;
+            border-radius: 10px;
+            overflow: hidden;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    
+    .carousel-item {
+        img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .carousel-caption {
+        text-align: left;
+        left: 5%;
+        right: 40%;
+    }
+
+    .mycaption-top {
+        top: 3%;
+        text-transform: uppercase;
+    }
+}

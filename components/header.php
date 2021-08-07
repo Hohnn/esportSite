@@ -7,10 +7,11 @@
                     <div class="stick">
                         <div class="brand d-none d-sm-block">DAW <span class="d-none d-lg-inline-block">esport</span></div>
                         <nav>
-                            <a href="index.php" class="d-flex pages"><i class="bi bi-newspaper"></i><div class="ms-3 d-none d-lg-block">Actualité</div></a>
-                            <a href="#" class="d-flex pages"><i class="bi bi-mouse2"></i><div class="ms-3 d-none d-lg-block">Compétiton</div></a>
-                            <a href="#" class="d-flex pages"><i class="bi bi-trophy"></i><div class="ms-3 d-none d-lg-block">League</div></a>
-                            <a href="#" class="d-flex pages"><i class="bi bi-people"></i><div class="ms-3 d-none d-lg-block">Team</div></a>
+                            <a href="index.php" class="d-flex pages active"><i class="bi bi-newspaper"></i><div class="ms-3 d-none d-lg-block">Actualité</div></a>
+                            <a href="#" class="d-flex pages"><i class="bi bi-trophy"></i><div class="ms-3 d-none d-lg-block">Compétiton</div></a>
+                            <a href="#" class="d-flex pages"><i class="bi bi-people"></i><div class="ms-3 d-none d-lg-block">l'équipe DAW</div></a>
+                            <a href="#" class="d-flex pages"><i class="bi bi-info-circle"></i><div class="ms-3 d-none d-lg-block">à propos</div></a>
+
                             <div id="plusPhone" class="d-md-none pages ms-auto plusPhone <?= !empty($_SESSION) ? '' : 'd-none' ?>"><i class="bi bi-three-dots-vertical"></i></div>
                             <div id="userMenu" class="profilMenu2 <?= !empty($_SESSION) ? '' : 'd-none' ?>">
                                 <a href="user.php?nickname=<?= $_SESSION['nickname'] ?? '' ?>" class="d-flex pages">
@@ -30,7 +31,7 @@
             </aside>
             <main class="col">
                 <header>
-                    <input type="search" placeholder="Recherche" class="d-none d-sm-block  me-auto ">
+                    <input type="search" placeholder="Rechercher" class="d-none d-sm-block  me-auto">
                     <i class="bi bi-bell mx-3 <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>"></i>
                     <i class="bi bi-chat-left-text <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>"></i>
                     <a href="login.php" class="<?= isset($_SESSION['nickname']) ? 'd-none' : 'd-block' ?>">Se connecter</a>

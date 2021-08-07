@@ -18,10 +18,9 @@ a:hover {
 
 aside {
   max-width: 300px !important;
-  background-color: RGB(28, 29, 28);
+  background-image: linear-gradient(#222527 500px, #14171a);
   min-height: 100vh;
-  -webkit-box-shadow: 5px 0 15px #181818;
-          box-shadow: 5px 0 15px #181818;
+  border-right: 1px solid #464646;
   position: relative;
   z-index: 100;
 }
@@ -59,17 +58,45 @@ aside nav {
 aside nav .pages {
   background-color: transparent;
   padding: 0.7em 1em !important;
-  margin: 0.5em;
+  margin: 0.1rem 0.5em;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   font-size: 1.2rem;
-  border-bottom: 1px #a5a5a5 solid;
   font-weight: bold;
+  position: relative;
+}
+
+aside nav .pages div {
+  font-weight: normal;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+}
+
+aside nav .pages div::first-letter {
+  text-transform: uppercase;
 }
 
 aside nav .pages:hover {
   background-color: #2b2b2b;
   border-color: #fca311;
+}
+
+aside nav .active {
+  color: white;
+}
+
+aside nav .active i {
+  color: #fca311;
+}
+
+aside nav .active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #fca311;
 }
 
 aside nav .plusPhone {
@@ -122,25 +149,10 @@ aside nav .profilMenu2 button:hover {
 
 main {
   width: 100%;
-  background-image: linear-gradient(#22252700 0%, #222527 500px, #14171a);
+  background-image: linear-gradient(#222527 500px, #14171a);
   position: relative;
   background-attachment: scroll;
   min-height: 100vh;
-}
-
-main::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 500px;
-  background-image: url(../images/aero.jpg);
-  position: fixed;
-  background-position: top;
-  background-size: cover;
-  background-repeat: no-repeat;
-  left: 0;
-  top: 0;
-  z-index: -1;
 }
 
 main header {
@@ -162,17 +174,18 @@ main header > *:hover {
   color: #fca311;
 }
 
-main header input {
-  border-radius: 0.5em;
-  border: none;
-  background-color: #36393b;
+main header input[type="search"] {
+  border-radius: 3em;
+  border: 1px solid #464646;
+  background-color: transparent;
   padding: 0.4em 2em;
   font-size: 0.8em;
   outline: none;
   color: #b3b3b3;
+  position: relative;
 }
 
-main header input:hover, main header input:focus {
+main header input[type="search"]:hover, main header input[type="search"]:focus {
   background-color: #292c2c;
 }
 
@@ -619,6 +632,21 @@ main .topMembers .scroll .profil .desc p {
 }
 
 @media screen and (max-width: 750px) {
+  aside .active::before {
+    width: 0px !important;
+  }
+  #carousel button {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  #carousel .carousel-item img {
+    width: 100%;
+    height: 300px !important;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+  }
   .pages {
     margin: unset !important;
   }
@@ -725,5 +753,64 @@ main .topMembers .scroll .profil .desc p {
   background-color: #2b2b2b;
   padding: 0.3rem 1rem;
   border-radius: 1rem;
+}
+
+#carousel {
+  border-radius: 1rem;
+  overflow: hidden;
+  -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+#carousel .carousel-indicators {
+  left: unset;
+  margin-right: 5%;
+  margin-bottom: 2.5rem;
+}
+
+#carousel .carousel-indicators .active {
+  border: 1px solid #fca311;
+  -webkit-box-shadow: 0 0 10px #fca311;
+          box-shadow: 0 0 10px #fca311;
+}
+
+#carousel .carousel-indicators button {
+  width: 70px;
+  height: 40px;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-clip: unset;
+  text-indent: 0px;
+  border: unset;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#carousel .carousel-indicators button img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#carousel .carousel-item img {
+  width: 100%;
+  height: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+#carousel .carousel-caption {
+  text-align: left;
+  left: 5%;
+  right: 40%;
+}
+
+#carousel .mycaption-top {
+  top: 3%;
+  text-transform: uppercase;
 }
 /*# sourceMappingURL=style.css.map */

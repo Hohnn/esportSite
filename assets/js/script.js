@@ -40,3 +40,13 @@ twitchMenu.forEach(element => {
         this.classList.add('active')
     })
 });
+
+const asideMenu = document.querySelectorAll('aside nav a')
+asideMenu.forEach(element => {
+    element.addEventListener('click', function () {
+        asideMenu.forEach(element => {
+            element.classList.remove('active')
+        })
+        this.classList.add('active')
+    })
+});
