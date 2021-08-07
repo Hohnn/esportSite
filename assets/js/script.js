@@ -30,3 +30,13 @@ const plusArticle = document.getElementById('plusArticle')
 plusArticle.addEventListener('click', () => {
     plusSug.classList.toggle('d-none')
 })
+
+const twitchMenu = document.querySelectorAll('.twitch li')
+twitchMenu.forEach(element => {
+    element.addEventListener('click', function () {
+        twitchMenu.forEach(element => {
+            element.classList.remove('active')
+        })
+        this.classList.add('active')
+    })
+});

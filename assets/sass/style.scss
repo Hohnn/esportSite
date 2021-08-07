@@ -11,7 +11,7 @@ $semi_dark: #222527;
 body {
     color: $grey;
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 18px;
     overflow-x: hidden;
 }
@@ -230,7 +230,7 @@ main {
         }
     }
     .actu {
-        margin-top: 100px;
+        margin-top: 150px;
         .card {
             border: none;
             height: 500px;
@@ -322,11 +322,20 @@ main {
         margin-top: 2rem;
         nav {
             margin-top: 2rem;
+            font-weight: lighter;
             ul {
                 display: flex;
                 list-style: none;
                 li {
                     margin-right: 1.5rem;
+                    border-bottom: 2px solid transparent;
+                }
+                .active {
+                    border-color: $yellow;
+                    a {
+                        color: white;
+
+                    }
                 }
             }
         }
@@ -366,7 +375,6 @@ main {
             left: 1rem;
             width: fit-content !important;
             max-width: 97%;
-            max-height: 100%;
             padding-bottom: 1rem;
             &::-webkit-scrollbar {
                 height: 10px;
@@ -532,7 +540,7 @@ main {
                 margin: 0 !important;
             }
             button {
-                margin: 0 auto !important;
+                margin: 0 auto !important;  
             }
         }
     }
@@ -568,4 +576,4 @@ main {
     background-color: $dark_grey;
     padding: 0.3rem 1rem;
     border-radius: 1rem;
-}
+} 

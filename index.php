@@ -67,7 +67,7 @@
                     <h1>L'ACTUALITÉ <span>TWITCH <span>BF</span></span></h1>
                     <nav>
                         <ul>
-                            <li>
+                            <li class="active">
                                 <a href="#">Tous</a>
                             </li>
                             <li>
@@ -90,7 +90,7 @@
                     <h1>L'ACTUALITÉ <span>YOUTUBE <span>BF</span></span></h1>
                     <nav>
                         <ul>
-                            <li>
+                            <li class="active">
                                 <a href="#">Tous</a>
                             </li>
                             <li>

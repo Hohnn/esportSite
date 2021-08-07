@@ -2,7 +2,7 @@
 body {
   color: #b3b3b3;
   font-family: 'Roboto', sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 18px;
   overflow-x: hidden;
 }
@@ -286,7 +286,7 @@ main section h1 span span {
 }
 
 main .actu {
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 main .actu .card {
@@ -410,6 +410,7 @@ main .twitch {
 
 main .twitch nav {
   margin-top: 2rem;
+  font-weight: lighter;
 }
 
 main .twitch nav ul {
@@ -421,6 +422,15 @@ main .twitch nav ul {
 
 main .twitch nav ul li {
   margin-right: 1.5rem;
+  border-bottom: 2px solid transparent;
+}
+
+main .twitch nav ul .active {
+  border-color: #fca311;
+}
+
+main .twitch nav ul .active a {
+  color: white;
 }
 
 main .twitch .nav {
@@ -473,7 +483,6 @@ main .twitch .scroll {
   width: -moz-fit-content !important;
   width: fit-content !important;
   max-width: 97%;
-  max-height: 100%;
   padding-bottom: 1rem;
 }
 
