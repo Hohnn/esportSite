@@ -35,16 +35,18 @@
                     <i class="bi bi-bell mx-3 <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>"></i>
                     <i class="bi bi-chat-left-text <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>"></i>
                     <a href="login.php" class="<?= isset($_SESSION['nickname']) ? 'd-none' : 'd-block' ?>">Se connecter</a>
-                    <div class="userInfos <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>">
-                        <div class="userName" id="userName"><?= $_SESSION['nickname'] ?? '' ?></div>
-                        <div class="role"><?= $_SESSION['role'] ?? '' ?></div>
+                    <div class="userInfos <?= isset($_SESSION['nickname']) ? 'd-flex' : 'd-none' ?>">
+                        <div class="wrap">
+                            <div class="userName" id="userName"><?= $_SESSION['nickname'] ?? '' ?></div>
+                            <div class="role"><?= $_SESSION['role'] ?? '' ?></div>
+                        </div>                        
+                        <img src="./assets/images/<?= $_SESSION['image'] ?? '' ?>" class="profilLogo <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="profilLogo" alt="profil logo">
                     </div>
-                    <img src="./assets/images/<?= $_SESSION['image'] ?? '' ?>" class="profilLogo <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="profilLogo" alt="profil logo">
-                    <div class="profilMenu">
+                    <!-- <div class="profilMenu">
                         <a href="user.php?nickname=<?= $_SESSION['nickname'] ?? '' ?>">Profil</a>
                         <a href="admin.php" class="<?= $_SESSION['role'] == 'admin' ? 'd-block' : 'd-none' ?>">Admin</a>
                         <form method="post">
                             <button name="logout" value="logout">Déconnexion</button>
                         </form> 
-                    </div>
+                    </div> -->
                 </header>

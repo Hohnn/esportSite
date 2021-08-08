@@ -1,11 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-$grey: rgb(179, 179, 179);
-$yellow: #fca311;
-$dark: RGB(28, 29, 28);
-$dark_grey: rgb(43, 43, 43);
-$semi_dark: #222527;
+@import 'colors';
 
 
 body {
@@ -27,7 +23,7 @@ a {
 
 aside {
     max-width: 300px !important;
-    background-image: linear-gradient(#222527 500px, #14171a);
+    background-image: linear-gradient(hsl(204, 10%, 18%), hsl(210, 13%, 9%));
     min-height: 100vh;
     border-right: 1px solid rgb(70, 70, 70);
     position: relative;
@@ -126,7 +122,7 @@ aside {
 
 main {
     width: 100%;
-    background-image: linear-gradient(#222527 500px, #14171a);
+    background-image: linear-gradient(hsl(204, 10%, 14%), hsl(210, 13%, 9%));
     position: relative;
     background-attachment: scroll;
     min-height: 100vh;
@@ -182,14 +178,8 @@ main {
             }
         }
         
-        .profilLogo {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid $yellow;
-            object-fit: cover;
-        }
-        .profilMenu {
+        
+        /* .profilMenu {
             position: absolute;
             right: 0;
             display: flex;
@@ -206,14 +196,14 @@ main {
                 box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.247);
                 text-align: center;
             }
-        }
+        } */
         .focused {
             transform: translate(0%, 100%) !important; 
         }
         .userInfos {
-            margin: 0 1rem;
-            margin-left: 1.5rem;
+            margin-left: 2rem;
             text-align: end;
+            display: flex;
             .userName {
                 background-color: unset;
                 color: white;
@@ -221,6 +211,14 @@ main {
             }
             .role {
                 font-size: 0.8rem;
+            }
+            .profilLogo {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                border: 2px solid $yellow;
+                object-fit: cover;
+                margin-left: 1rem;
             }
         }
         
@@ -403,15 +401,18 @@ main {
         }
         
         .card {
-            background-color: unset;
+            background-color: hsl(204, 10%, 18%);
+            padding: 0.6rem;
             border: unset;
             max-height: 100%;
-            max-width: 320px;
+            max-width: 340px;
+            border-radius: 1rem;
             .wrapPreview {
                 position: relative;
                 width: fit-content;
                 .preview {
                     width: fit-content;
+                    border-radius: 0.6rem;
                 }
                 span {
                     position: absolute;
@@ -471,7 +472,7 @@ main {
                     object-fit: cover;
                 }
                 .desc {
-                    p {
+                    span {
                         font-weight: lighter;
                     }
                 }
@@ -662,4 +663,10 @@ main {
         top: 3%;
         text-transform: uppercase;
     }
+}
+
+.myCard {
+    background-color: $card;
+    border-radius: 1rem;
+    padding: 0.6rem;
 }

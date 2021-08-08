@@ -50,7 +50,7 @@ function displayProfil(){
                     <div class="container-fluid  mt-5">
                         <div class="row">
                             <div class="col-12 col-xl-6">
-                                <div class="profilDesc">
+                                <div class="profilDesc myCard">
                                     <div class="title">Compte <i id="edit" class="bi bi-pencil-square"></i></div>
                                     <div class="wrap">
                                         <from id="descEdit" class="edit d-none">
@@ -73,20 +73,25 @@ function displayProfil(){
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-xl-6 topStats">
-                            <div class="heures ps-2 text-white">Temps de jeu : <?= $displayLifetime ?> </div>
-                                <div class="row mygrid c">
-                                    <?php foreach ($displayTopStats as $key => $value) { ?>
-                                            <?= $value ?>
-                                        <?php } ?>
+                            <div class="col-12 col-xl-6">
+                                <div class="topStats myCard">
+                                    <div class="heures ps-2 text-white">
+                                        Temps de jeu : <?= $displayLifetime ?> 
+                                    </div>
+                                    <div class="row mygrid c">
+                                        <?php foreach ($displayTopStats as $key => $value) { ?>
+                                                <?= $value ?>
+                                            <?php } ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-12 mt-3">
-                                <div class="topWeapon">
+                                <div class="topWeapon myCard">
                                     <div class="title">Arme favorite</div>
                                     <div class="mostUsed">
                                         <?php /* statsWeapon($user) */ ?>
                                     </div>
+                                </div>
                             </div>
                         </div>
                     </div>

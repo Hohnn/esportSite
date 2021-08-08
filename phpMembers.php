@@ -11,13 +11,15 @@ function displayMembers(){
         }    
 ?>
         <div class="col">
-            <a href="user.php?nickname=<?= $member->nickname?>" class="profil text-center">
-                <img class="rounded-circle border_<?= $color ?? '' ?>" src="./assets/images/<?= $member->image?>" alt="Logo">
-                <div class="desc">
-                    <h3 class="text-white fs-5 mt-2 mb-1"><?= $member->nickname?></h3>
-                    <p><?= $member->role?></p>
-                </div>
-            </a> 
+            <div class="myCard">
+                <a href="user.php?nickname=<?= $member->nickname?>" class="profil text-center">
+                    <img class="rounded-circle border_<?= $color ?? '' ?>" src="./assets/images/<?= $member->image?>" alt="Logo">
+                    <div class="desc">
+                        <h3 class="text-white fs-5 mt-2 mb-1"><?= $member->nickname?></h3>
+                        <span><?= $member->role?></span>
+                    </div>
+                </a> 
+            </div>
         </div>
 <?php
     }

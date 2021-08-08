@@ -18,7 +18,8 @@ a:hover {
 
 aside {
   max-width: 300px !important;
-  background-image: linear-gradient(#222527 500px, #14171a);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#292f32), to(#14171a));
+  background-image: linear-gradient(#292f32, #14171a);
   min-height: 100vh;
   border-right: 1px solid #464646;
   position: relative;
@@ -149,7 +150,8 @@ aside nav .profilMenu2 button:hover {
 
 main {
   width: 100%;
-  background-image: linear-gradient(#222527 500px, #14171a);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#202427), to(#14171a));
+  background-image: linear-gradient(#202427, #14171a);
   position: relative;
   background-attachment: scroll;
   min-height: 100vh;
@@ -164,6 +166,24 @@ main header {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+  /* .profilMenu {
+            position: absolute;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            bottom: 0;
+            transform: translate(100%, 100%);
+            transition: 0.5s ease-in-out; 
+            button {
+                margin: 5px 10px;
+                box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.247);
+            }
+            & > *:not(form) {
+                margin: 5px 10px;
+                box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.247);
+                text-align: center;
+            }
+        } */
 }
 
 main header > * {
@@ -220,54 +240,17 @@ main header button:hover, main header a:hover {
   color: #fca311;
 }
 
-main header .profilLogo {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 2px solid #fca311;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-main header .profilMenu {
-  position: absolute;
-  right: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  bottom: 0;
-  -webkit-transform: translate(100%, 100%);
-          transform: translate(100%, 100%);
-  -webkit-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
-}
-
-main header .profilMenu button {
-  margin: 5px 10px;
-  -webkit-box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.247);
-          box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.247);
-}
-
-main header .profilMenu > *:not(form) {
-  margin: 5px 10px;
-  -webkit-box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.247);
-          box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.247);
-  text-align: center;
-}
-
 main header .focused {
   -webkit-transform: translate(0%, 100%) !important;
           transform: translate(0%, 100%) !important;
 }
 
 main header .userInfos {
-  margin: 0 1rem;
-  margin-left: 1.5rem;
+  margin-left: 2rem;
   text-align: end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 main header .userInfos .userName {
@@ -278,6 +261,16 @@ main header .userInfos .userName {
 
 main header .userInfos .role {
   font-size: 0.8rem;
+}
+
+main header .userInfos .profilLogo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fca311;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-left: 1rem;
 }
 
 main section {
@@ -518,10 +511,12 @@ main .twitch .scroll::-webkit-scrollbar-track {
 }
 
 main .twitch .card {
-  background-color: unset;
+  background-color: #292f32;
+  padding: 0.6rem;
   border: unset;
   max-height: 100%;
-  max-width: 320px;
+  max-width: 340px;
+  border-radius: 1rem;
 }
 
 main .twitch .card .wrapPreview {
@@ -535,6 +530,7 @@ main .twitch .card .wrapPreview .preview {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  border-radius: 0.6rem;
 }
 
 main .twitch .card .wrapPreview span {
@@ -610,7 +606,7 @@ main .topMembers .scroll .profil img {
      object-fit: cover;
 }
 
-main .topMembers .scroll .profil .desc p {
+main .topMembers .scroll .profil .desc span {
   font-weight: lighter;
 }
 
@@ -812,5 +808,11 @@ main .topMembers .scroll .profil .desc p {
 #carousel .mycaption-top {
   top: 3%;
   text-transform: uppercase;
+}
+
+.myCard {
+  background-color: #292f32;
+  border-radius: 1rem;
+  padding: 0.6rem;
 }
 /*# sourceMappingURL=style.css.map */
