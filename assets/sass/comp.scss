@@ -1,0 +1,93 @@
+@import 'colors';
+
+
+.teamCard {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    .toggle {
+        position: absolute;
+        bottom: 0.6rem;
+        right: 1rem;
+    }
+    header {
+        display: flex;
+        align-items: stretch;
+        background-color: hsl(204, 10%, 25%);
+        .teamLogo  {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .wrap {
+            margin-left: 1rem;
+            h3 {
+                color: white;
+            }
+            .flag {
+                background-color: white;
+                width: 2rem;
+                height: 1rem;
+                border-radius: 5px;
+            }
+            .link {
+                color: white;
+                background-color: $yellow;
+                font-size: 0.8rem;
+                margin: 0;
+                width: 100%;
+                border-radius: 2rem;
+                text-align: center;
+                padding: 0.1rem ;
+                a {
+                    background-color: unset;
+                    color: white;
+                    margin: 0;
+                }
+            }
+        }
+    }
+    .teamMembers {
+        padding: 1rem;
+        padding-right: 3rem;
+        a {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            .memberLogo {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            .memberName { 
+                margin-left: 0.5rem;
+                color: white;
+                font-weight: lighter;
+            }
+        }
+    }
+    .small {
+        display: flex;
+        a {
+            margin-bottom: 0rem;
+        }
+        .memberLogo {
+            margin-left: -7px;
+        }
+        .memberName {
+            display: none;
+        }
+    }
+    
+}
+.active {
+    z-index: 1000;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.432);
+}
+
+.teamCol {
+    max-width: fit-content;
+    min-width: 300px;
+}
