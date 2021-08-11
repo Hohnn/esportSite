@@ -66,7 +66,7 @@ function displayProfil(){
                                             </div>
                                             <div class="d-flex align-items-start mt-4">
                                                 <button class="bgYellow" type="submit">Confirmer</button>
-                                                <button class="btn btn-outline-secondary ms-auto cancel" id="cancel">Annuler</button>
+                                                <button class="btn ms-auto cancel" id="cancel">Annuler</button>
                                             </div>
                                         </from>
                                         <?= displayProfil() ?>
@@ -76,9 +76,13 @@ function displayProfil(){
                             <div class="col-12 col-xl-6">
                                 <div class="topStats myCard">
                                     <div class="heures ps-2 text-white">
-                                        Temps de jeu : <?= $displayLifetime ?> 
+                                        Enter votre origin ID
+                                        <!-- Temps de jeu : <?= $displayLifetime ?>  -->
                                     </div>
-                                    <div class="row mygrid c">
+                                    <div class="noOrigin">
+                                        <input type="text" placeholder="Origin ID">
+                                    </div>
+                                    <div class="row mygrid">
                                         <?php foreach ($displayTopStats as $key => $value) { ?>
                                                 <?= $value ?>
                                             <?php } ?>
@@ -104,7 +108,6 @@ function displayProfil(){
     <!-- Script -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    <script src="./assets/js/script.js"></script>
     <script src="./assets/js/user.js"></script>
 </body>
 </html>

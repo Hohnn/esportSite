@@ -1,4 +1,4 @@
-console.log('tttttt');
+/* console.log('tttttt');
 const userName = document.getElementById('userName')
 const profilLogo = document.getElementById('profilLogo')
 const profilMenu = document.querySelector('.profilMenu')
@@ -17,13 +17,8 @@ function removeMenu (target) {
 toggleMenu(userName)
 removeMenu(userName)
 toggleMenu(profilLogo)
-removeMenu(profilLogo)
+removeMenu(profilLogo) */
 
-const plusPhone = document.getElementById('plusPhone')
-const userMenu = document.getElementById('userMenu')
-plusPhone.addEventListener('click', () => {
-    userMenu.classList.toggle('visible')
-})
 
 const plusSug = document.getElementById('plusSug')
 const plusArticle = document.getElementById('plusArticle')
@@ -35,16 +30,6 @@ const twitchMenu = document.querySelectorAll('.twitch li')
 twitchMenu.forEach(element => {
     element.addEventListener('click', function () {
         twitchMenu.forEach(element => {
-            element.classList.remove('active')
-        })
-        this.classList.add('active')
-    })
-});
-
-const asideMenu = document.querySelectorAll('aside nav a')
-asideMenu.forEach(element => {
-    element.addEventListener('click', function () {
-        asideMenu.forEach(element => {
             element.classList.remove('active')
         })
         this.classList.add('active')
