@@ -51,6 +51,11 @@
     .teamMembers {
         padding: 1rem;
         padding-right: 3rem;
+        a:first-child {
+            .memberLogo {
+                margin-left: 0px;
+            }
+        }
         a {
             display: flex;
             align-items: center;
@@ -74,7 +79,8 @@
             margin-bottom: 0rem;
         }
         .memberLogo {
-            margin-left: -7px;
+            margin-left: -10px;
+            border: 2px solid $card;
         }
         .memberName {
             display: none;
@@ -90,4 +96,145 @@
 .teamCol {
     max-width: fit-content;
     min-width: 300px;
+}
+
+.tournamentCard {
+    display: flex;
+    position: relative;
+    flex-shrink: 1;
+    color: white;
+    transition: 0.3s ease-in-out ;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    &:hover {
+        transform: translate(0, -0.5rem);
+      
+    }
+    &>div:not(:first-child) {
+        border-left: 1px solid $yellow;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 2 ;
+        justify-content: center;
+        padding-left: 1rem;
+        
+    }
+    span {
+        font-weight: lighter;
+        color: $grey;
+        &::first-letter {
+            text-transform: uppercase;
+        }
+    }
+    .link {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    .brand {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        .orgLogo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .orgName {
+            margin-left: 0.8rem;
+        }
+    }
+    .teams {
+        .teamsWrap {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            .teamLogo {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-left: -10px;
+                border: 2px solid $card;
+            }
+            .teamLogo:first-of-type {
+                margin-left: 0px;
+            }
+        }
+        
+    }
+}
+
+section {
+    h1 {
+        color: $grey !important;
+        &::first-letter {
+            color: $yellow;
+        }
+    }
+}
+
+.matchCol {
+    max-width: 400px;
+    .matchCard {
+        padding: 1rem;
+        header {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex: 1 1;
+            padding: 0;
+            .teamLogo {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            .scoreWrap {
+                .score {
+                    background: rgba( 255, 255, 255, 0.25 );
+                    backdrop-filter: blur( 4px );
+                    -webkit-backdrop-filter: blur( 4px );
+                    border-radius: 50px;
+                    width: 90px;
+                    display: flex;
+                    justify-content: center;
+                    padding: 0 0.5rem;
+                    font-weight: lighter;
+                    font-size: 0.9rem;
+                    color: $yellow;
+                    margin: 5px 0;
+                    flex-shrink: 1;
+                    span:nth-child(1) {
+                        margin: 0 auto;
+                    }
+                    span:nth-child(3) {
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+        footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            .vodWrap {
+                a {
+                    display: block;
+                }
+            }
+            .typeWrap {
+                span {
+                    color: white;
+                }
+                .date {
+                    font-weight: lighter;
+                }
+            }
+        }
+    }
 }

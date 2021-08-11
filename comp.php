@@ -17,7 +17,7 @@
 </head>
 <?php include './components/header.php' ?>
                 <section class="team">
-                    <h1 class="text-uppercase">les <span>équipes<span></span></span></h1>
+                    <h1 class="text-uppercase">équipes</h1>
                     <div class="container-fluid  mt-5">
                         <div class="row g-3" data-masonry='{"percentPosition": true }'>
                             <div class="col teamCol" >
@@ -64,48 +64,84 @@
                     </div>    
                 </section>
                 <section class="tournament mt-5">
-                    <h1 class="text-uppercase">les <span>tournois<span></span></span></h1>
+                    <h1 class="text-uppercase">tournois</h1>
                     <div class="container-fluid  mt-5">
-                        <div class="row g-3" data-masonry='{"percentPosition": true }'>
-                            <div class="col teamCol" >
-                                <div class="teamCard myCard">
-                                    <div id="toggle" class="toggle"><i class="bi bi-plus-circle"></i></div>
+                        <div class="row g-3">
+                            <div class="col-12" >
+                                <div class="tournamentCard myCard">
+                                    <div class="brand">
+                                        <img src="./assets/images/teamLogo/daw.png" alt="" class="orgLogo">
+                                        <h4 class="orgName">Tournoi BSP</h4>
+                                    </div>
+                                    <div class="type">
+                                        <span>Format</span> 
+                                        6 vs 6 Conquète escoude
+                                    </div>
+                                    <div class="date"> 
+                                        <span>Début</span> 
+                                        13/10/2016
+                                    </div>
+                                    <div class="status">
+                                        <span>Status</span> 
+                                        En cours
+                                    </div>
+                                    <div class="teams">
+                                        <span>équipes</span> 
+                                        <div class="teamsWrap">
+                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                        </div>
+                                    </div>
+                                    <a href="#" class="link"></a>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>    
+                </section>
+                <section class="tournament mt-5">
+                    <h1 class="text-uppercase">Matchs <span>récent<span></span></span></h1>
+                    <div class="container-fluid  mt-5">
+                        <div class="row g-3">
+                            <div class="col matchCol" >
+                                <div class="matchCard myCard">
                                     <header>
                                         <img src="./assets/images/teamLogo/daw.png" alt="" class="teamLogo">
-                                        <div class="wrap">
-                                            <h3 class="teamName">BSP dqdsd</h3>
-                                            <div class="link">
-                                                <a href="#">informations</a>
+                                        <div class="scoreWrap">
+                                            <div class="score">
+                                                <span>25</span>
+                                                <span>/</span>
+                                                <span>0</span>
+                                            </div>
+                                            <div class="score">
+                                                <span>250</span>
+                                                <span>/</span>
+                                                <span>0</span>
+                                            </div>
+                                            <div class="score">
+                                                <span>25</span>
+                                                <span>/</span>
+                                                <span>0</span>
                                             </div>
                                         </div>
+                                        <img src="./assets/images/teamLogo/daw.png" alt="" class="teamLogo">
                                     </header>
-                                    <div class="teamMembers small">
-                                        <a href="#">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>                                        
-                                        <a href="#">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>                                        
-                                        <a href="#">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>                                        
-                                        <a href="#">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>                                        
-                                        <a href="#">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>                                        
-                                        <a href="#">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>                                      
+                                    <footer>
                                         
-                                    </div>
+                                        <div class="typeWrap">
+                                            <span>Tournoi BSP</span>
+                                            <div class="date">25 mai</div>
+                                        </div>
+                                        <div class="vodWrap">
+                                            <span>VOD Twitch</span>
+                                            <a href="#" class="btn bgTwitch"></a>
+                                        </div>
+                                    </footer>
                                 </div>
                             </div>
                         

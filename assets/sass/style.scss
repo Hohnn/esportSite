@@ -229,12 +229,15 @@ main {
             font-weight: bold;
             color: white;
             padding: 0 0.5em;
+            color: $grey;
+            text-transform: uppercase;
             span {
-                color: $grey;
-                span {
+                color: white;
+                &::first-letter{
                     color: $yellow;
                 }
             }
+            
         }
     }
     .actu {
@@ -487,13 +490,14 @@ main {
     }
     aside {
         width: 100px !important;
+        .brand {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            padding: 0rem !important;
+            margin: 1rem auto;
+        }
     }
-    .brand {
-        writing-mode: vertical-rl;
-        text-orientation: upright;
-        padding: 0rem !important;
-        margin: 1rem auto;
-    }
+    
 }
 
 @media screen and (max-width: 750px) {
@@ -669,4 +673,13 @@ main {
     background-color: $card;
     border-radius: 1rem;
     padding: 0.6rem;
+}
+
+.bgTwitch {
+    background-color: $twitch !important;
+    border-color: $twitch;
+    &:hover {
+        border-color: $twitch;
+        box-shadow: 0 0px 5px 1px $twitch;
+    }
 }

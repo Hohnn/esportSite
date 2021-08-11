@@ -61,7 +61,7 @@
                 </div>
                 
                 <section class="actu">
-                    <h1>L'ACTUALITÉ <br> <span>BATTLEFIELD <span>PC</span></span></h1>
+                    <h1>L'ACTU <span>battlefield</span></h1>
                     <div class="container-fluid mt-4 phone">
                         <div class="d-flex justify-content-end position-relative">
                             <div id="plusSug" class="plusSug d-none">
@@ -92,7 +92,7 @@
                     </div>
                 </section>
                 <section class="twitch">
-                    <h1>L'ACTUALITÉ <span>TWITCH <span>BF</span></span></h1>
+                    <h1>L'ACTU <span>TWITCH</span></h1>
                     <nav>
                         <ul>
                             <li class="active">
@@ -115,7 +115,7 @@
                     </div>
                 </section>
                 <section class="twitch">
-                    <h1>L'ACTUALITÉ <span>YOUTUBE <span>BF</span></span></h1>
+                    <h1>L'ACTU <span>YOUTUBE</span></h1>
                     <nav>
                         <ul>
                             <li class="active">
@@ -138,7 +138,7 @@
                     </div>
                 </section>
                 <section class="twitch topMembers">
-                    <h1>LES <span>MEMBRES <span>DAW</span></span></h1>
+                    <h1>MEMBRES <span>DAW</span></h1>
                     <div class="container-fluid cont">
                         <div id="next3" class="nav"><i class="bi bi-arrow-right-circle-fill"></i></div>
                         <div id="prev3" class="nav d-none"><i class="bi bi-arrow-left-circle-fill"></i></div>

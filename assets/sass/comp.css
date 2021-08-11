@@ -65,6 +65,10 @@
   padding-right: 3rem;
 }
 
+.teamCard .teamMembers a:first-child .memberLogo {
+  margin-left: 0px;
+}
+
 .teamCard .teamMembers a {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -100,7 +104,8 @@
 }
 
 .teamCard .small .memberLogo {
-  margin-left: -7px;
+  margin-left: -10px;
+  border: 2px solid #292f32;
 }
 
 .teamCard .small .memberName {
@@ -118,5 +123,199 @@
   max-width: -moz-fit-content;
   max-width: fit-content;
   min-width: 300px;
+}
+
+.tournamentCard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  color: white;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tournamentCard:hover {
+  -webkit-transform: translate(0, -0.5rem);
+          transform: translate(0, -0.5rem);
+}
+
+.tournamentCard > div:not(:first-child) {
+  border-left: 1px solid #fca311;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-left: 1rem;
+}
+
+.tournamentCard span {
+  font-weight: lighter;
+  color: #b3b3b3;
+}
+
+.tournamentCard span::first-letter {
+  text-transform: uppercase;
+}
+
+.tournamentCard .link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.tournamentCard .brand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.tournamentCard .brand .orgLogo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.tournamentCard .brand .orgName {
+  margin-left: 0.8rem;
+}
+
+.tournamentCard .teams .teamsWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.tournamentCard .teams .teamsWrap .teamLogo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-left: -10px;
+  border: 2px solid #292f32;
+}
+
+.tournamentCard .teams .teamsWrap .teamLogo:first-of-type {
+  margin-left: 0px;
+}
+
+section h1 {
+  color: #b3b3b3 !important;
+}
+
+section h1::first-letter {
+  color: #fca311;
+}
+
+.matchCol {
+  max-width: 400px;
+}
+
+.matchCol .matchCard {
+  padding: 1rem;
+}
+
+.matchCol .matchCard header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  padding: 0;
+}
+
+.matchCol .matchCard header .teamLogo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.matchCol .matchCard header .scoreWrap .score {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 50px;
+  width: 90px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 0.5rem;
+  font-weight: lighter;
+  font-size: 0.9rem;
+  color: #fca311;
+  margin: 5px 0;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+}
+
+.matchCol .matchCard header .scoreWrap .score span:nth-child(1) {
+  margin: 0 auto;
+}
+
+.matchCol .matchCard header .scoreWrap .score span:nth-child(3) {
+  margin: 0 auto;
+}
+
+.matchCol .matchCard footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.matchCol .matchCard footer .vodWrap a {
+  display: block;
+}
+
+.matchCol .matchCard footer .typeWrap span {
+  color: white;
+}
+
+.matchCol .matchCard footer .typeWrap .date {
+  font-weight: lighter;
 }
 /*# sourceMappingURL=comp.css.map */
