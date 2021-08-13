@@ -157,7 +157,7 @@ main {
   min-height: 100vh;
 }
 
-main header {
+main > header {
   padding: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -186,15 +186,15 @@ main header {
         } */
 }
 
-main header > * {
+main > header > * {
   cursor: pointer;
 }
 
-main header > *:hover {
+main > header > *:hover {
   color: #fca311;
 }
 
-main header input[type="search"] {
+main > header input[type="search"] {
   border-radius: 3em;
   border: 1px solid #464646;
   background-color: transparent;
@@ -205,15 +205,15 @@ main header input[type="search"] {
   position: relative;
 }
 
-main header input[type="search"]:hover, main header input[type="search"]:focus {
+main > header input[type="search"]:hover, main > header input[type="search"]:focus {
   background-color: #292c2c;
 }
 
-main header i {
+main > header i {
   position: relative;
 }
 
-main header i::after {
+main > header i::after {
   content: '';
   background-color: #fca311;
   position: absolute;
@@ -223,7 +223,7 @@ main header i::after {
   left: 70%;
 }
 
-main header button, main header a {
+main > header button, main > header a {
   background-color: #36393b;
   border: none;
   border-radius: 1em;
@@ -235,17 +235,17 @@ main header button, main header a {
   transition: 0.25s ease-out;
 }
 
-main header button:hover, main header a:hover {
+main > header button:hover, main > header a:hover {
   background-color: transparent;
   color: #fca311;
 }
 
-main header .focused {
+main > header .focused {
   -webkit-transform: translate(0%, 100%) !important;
           transform: translate(0%, 100%) !important;
 }
 
-main header .userInfos {
+main > header .userInfos {
   margin-left: 2rem;
   text-align: end;
   display: -webkit-box;
@@ -253,17 +253,17 @@ main header .userInfos {
   display: flex;
 }
 
-main header .userInfos .userName {
+main > header .userInfos .userName {
   background-color: unset;
   color: white;
   margin-right: 0;
 }
 
-main header .userInfos .role {
+main > header .userInfos .role {
   font-size: 0.8rem;
 }
 
-main header .userInfos .profilLogo {
+main > header .userInfos .profilLogo {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -285,12 +285,12 @@ main section h1 {
   text-transform: uppercase;
 }
 
-main section h1 span {
-  color: white;
+main section h1::first-letter {
+  color: #fca311;
 }
 
-main section h1 span::first-letter {
-  color: #fca311;
+main section h1 span {
+  color: white;
 }
 
 main .actu {
@@ -519,6 +519,15 @@ main .twitch .card {
   max-height: 100%;
   max-width: 340px;
   border-radius: 1rem;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+main .twitch .card:hover {
+  -webkit-transform: translateY(-0.5rem);
+          transform: translateY(-0.5rem);
+  -webkit-box-shadow: 0 0.5rem 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0.5rem 10px rgba(0, 0, 0, 0.2);
 }
 
 main .twitch .card .wrapPreview {
@@ -582,10 +591,14 @@ main .twitch .card .footer .desc {
 
 main .twitch .card .footer .desc .title {
   font-size: 1rem;
-  color: white;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+main .twitch .card .footer .desc .name {
+  color: white;
+  font-size: 1rem;
 }
 
 main .topMembers .scroll {

@@ -83,7 +83,7 @@ function createContent2(param) {
 const keyYoutube = 'AIzaSyDFkMEdzq2ghlMxMLFgXYLAzzMAqJKGWa0'
 
 $.ajax({
-    url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=bf5&key=AIzaSyBLvgZi6dAuc5mbmGFitVzFwLAOz9jAciM`,
+    url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&playlistId=PLjEqEe1rImKuZ_dFkycwVYBs3-LVhDGUI&key=AIzaSyBLvgZi6dAuc5mbmGFitVzFwLAOz9jAciM`,
     beforeSend: function(xhr) {
         xhr.setRequestHeader("Accept", "application/json")
    }, 

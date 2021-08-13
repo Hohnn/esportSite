@@ -138,7 +138,7 @@
                     </div>
                 </section>
                 <section class="twitch topMembers">
-                    <h1>MEMBRES <span>DAW</span></h1>
+                    <h1>MEMBRES</h1>
                     <div class="container-fluid cont">
                         <div id="next3" class="nav"><i class="bi bi-arrow-right-circle-fill"></i></div>
                         <div id="prev3" class="nav d-none"><i class="bi bi-arrow-left-circle-fill"></i></div>

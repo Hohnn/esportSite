@@ -110,8 +110,16 @@
                         <div class="row g-3">
                             <div class="col matchCol" >
                                 <div class="matchCard myCard">
+                                    <div class="imgBack">
+                                        <img class="maps" src="./assets/images/1.jpg" alt="">
+                                        <img class="maps" src="./assets/images/2.jpg" alt="">
+                                        <img class="maps" src="./assets/images/3.jpg" alt="">
+                                    </div>
                                     <header>
-                                        <img src="./assets/images/teamLogo/daw.png" alt="" class="teamLogo">
+                                        <div class="teamWrap">
+                                            <img src="./assets/images/teamLogo/daw.png" alt="team logo" class="teamLogo">
+                                            <span>DAW</span>
+                                        </div>
                                         <div class="scoreWrap">
                                             <div class="score">
                                                 <span>25</span>
@@ -129,7 +137,10 @@
                                                 <span>0</span>
                                             </div>
                                         </div>
-                                        <img src="./assets/images/teamLogo/daw.png" alt="" class="teamLogo">
+                                        <div class="teamWrap">
+                                            <img src="./assets/images/teamLogo/daw.png" alt="team logo" class="teamLogo">
+                                            <span>DAW</span>
+                                        </div>
                                     </header>
                                     <footer>
                                         

@@ -18,7 +18,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
                 $_SESSION['role'] = $member->role;
                 header('location: index.php');
             } else {
-                $errorPass = 'Ce mot de passe n’est pas correct. Veuillez réessayer.';
+                $errorPass = 'Ce mot de passe n’est pas correct.';
             }
         } else {
             $errorLog = 'Mauvaise adresse mail';
