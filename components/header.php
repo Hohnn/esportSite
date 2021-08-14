@@ -10,7 +10,7 @@
                             <a href="index.php" class="d-flex pages <?= $_SERVER['SCRIPT_NAME'] == "/index.php" ? 'active' : ''  ?>"><i class="bi bi-newspaper"></i><div class="ms-3 d-none d-lg-block">Actualité</div></a>
                             <a href="comp.php" class="d-flex pages <?= $_SERVER['SCRIPT_NAME'] == "/comp.php" ? 'active' : ''  ?>"><i class="bi bi-trophy"></i><div class="ms-3 d-none d-lg-block">Compétitons</div></a>
                             <a href="#" class="d-flex pages"><i class="bi bi-people"></i><div class="ms-3 d-none d-lg-block">l'équipe DAW</div></a>
-                            <a href="#" class="d-flex pages"><i class="bi bi-info-circle"></i><div class="ms-3 d-none d-lg-block">à propos</div></a>
+                            <a href="about.php" class="d-flex pages <?= $_SERVER['SCRIPT_NAME'] == "/about.php" ? 'active' : ''  ?>"><i class="bi bi-info-circle"></i><div class="ms-3 d-none d-lg-block">à propos</div></a>
 
                             <div id="plusPhone" class="d-md-none pages ms-auto plusPhone <?= !empty($_SESSION) ? '' : 'd-none' ?>"><i class="bi bi-three-dots-vertical"></i></div>
                             <div id="userMenu" class="profilMenu2 <?= !empty($_SESSION) ? '' : 'd-none' ?>">

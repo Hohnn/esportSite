@@ -760,7 +760,7 @@ main .topMembers .scroll .profil .desc span {
 
 .plusSug {
   position: absolute;
-  top: -150%;
+  bottom: -150%;
   background-color: #2b2b2b;
   padding: 0.3rem 1rem;
   border-radius: 1rem;

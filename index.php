@@ -58,9 +58,15 @@
                     </div>
                 </div>
                 </div>
+                    <div class="d-flex justify-content-end position-relative">
+                        <div id="plusSug" class="plusSug d-none">
+                            <a href="suggestion.php" class="fs-6 fw-light">Proposer un article</a>
+                        </div>
+                        <i id="plusArticle" class="bi bi-three-dots"></i>
+                    </div>
                 </div>
                 
-                <section class="actu">
+                <!-- <section class="actu">
                     <h1>L'ACTU <span>battlefield</span></h1>
                     <div class="container-fluid mt-4 phone">
                         <div class="d-flex justify-content-end position-relative">
@@ -90,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> -->
                 <section class="twitch">
                     <h1>L'ACTU <span>TWITCH</span></h1>
                     <nav>

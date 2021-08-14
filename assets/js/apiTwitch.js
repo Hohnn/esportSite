@@ -11,47 +11,14 @@ $.ajax({
         console.log(data);                         
         //process the JSON data etc
         console.log(data.streams);
-        createContent2(data);
+        createContent(data);
 
     }
 })
 
-function createContent(param) {
-    let array = param.streams;
-    array.forEach(function(item) {
-        let col = document.createElement('div');
-        col.className = 'col';
-        let card = document.createElement('a');
-        card.className = 'card';
-        card.setAttribute('href', item.channel.url);
-        let img = document.createElement('img');
-        img.src = item.preview.medium;
-        img.className = 'preview';
-        let footer = document.createElement('div');
-        footer.className = 'footer';
-        let logo = document.createElement('img');
-        logo.className = 'logo';
-        logo.src = item.channel.logo;
-        let desc = document.createElement('div');
-        desc.className = 'desc';
-        let title = document.createElement('h2');
-        title.className = 'title';
-        title.innerHTML = item.channel.description;
-        let name = document.createElement('div');
-        name.className = 'name';
-        name.innerHTML = item.channel.display_name;
-        desc.appendChild(title);
-        desc.appendChild(name);
-        footer.appendChild(logo);
-        footer.appendChild(desc);
-        card.appendChild(img);
-        card.appendChild(footer);
-        col.appendChild(card);
-        myscroll.appendChild(col);
-    })
-}
 
-function createContent2(param) {
+
+function createContent(param) {
     let array = param.streams;
     array.forEach(function(item) {
         let viewers
@@ -80,10 +47,11 @@ function createContent2(param) {
     })
 }
 
-const keyYoutube = 'AIzaSyDFkMEdzq2ghlMxMLFgXYLAzzMAqJKGWa0'
-
+/* items/snippet(publishedAt,title, thumbnails/medium, videoOwnerChannelTitle) */
+let playlistId = 'PLjEqEe1rImKvYQEaq7IwKLK3oBKea7Cfg'
+let filter = 'fields=items%2Fsnippet(publishedAt%2Ctitle%2C%20thumbnails%2Fmedium%2C%20resourceId%2C%20videoOwnerChannelTitle)'
 $.ajax({
-    url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&playlistId=PLjEqEe1rImKuZ_dFkycwVYBs3-LVhDGUI&key=AIzaSyBLvgZi6dAuc5mbmGFitVzFwLAOz9jAciM`,
+    url: `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=15&playlistId=${playlistId}&${filter}&key=AIzaSyBLvgZi6dAuc5mbmGFitVzFwLAOz9jAciM`,
     beforeSend: function(xhr) {
         xhr.setRequestHeader("Accept", "application/json")
    }, 
@@ -95,14 +63,14 @@ $.ajax({
 
 
 function monthDiff(d1, d2) {
-    var months;
+    let months;
     months = (d2.getFullYear() - d1.getFullYear()) * 12;
     months -= d1.getMonth();
     months += d2.getMonth();
     return months <= 0 ? 0 : months;
 }
 function yearDiff(d1, d2) {
-    var months;
+    let months;
     months = (d2.getFullYear() - d1.getFullYear());
     console.log('test');
     return months <= 0 ? 0 : months;
@@ -111,12 +79,7 @@ function yearDiff(d1, d2) {
 function createContentYT(param) {
     let array = param.items;
     array.forEach(function(item) {
-        let viewers
-        if (item.viewers > 1) {
-            viewers = item.viewers + ' spectateurs';
-        } else {
-            viewers = item.viewers + ' spectateur';
-        }
+        
         let publish = item.snippet.publishedAt;
         let today = new Date()
         let videoDate = new Date(publish).getTime()
@@ -137,7 +100,7 @@ function createContentYT(param) {
         }
         let col = document.createElement('div');
         col.className = 'col';
-        col.innerHTML = `<a target="_blank" href="https://www.youtube.com/watch?v=${item.id.videoId}" class="card">
+        col.innerHTML = `<a target="_blank" href="https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}" class="card">
                             <div class="wrapPreview">
                                 <img class="preview" src="${item.snippet.thumbnails.medium.url}" alt="stream preview">
                                 <span class="badge bg-danger"></span>
@@ -146,7 +109,7 @@ function createContentYT(param) {
                             <div class="footer">
                                 <div class="desc">
                                     <h2 class="title">${item.snippet.title}</h2>
-                                    <div class="name">${item.snippet.channelTitle}</div>
+                                    <div class="name">${item.snippet.videoOwnerChannelTitle}</div>
                                 </div>
                             </div>
                         </a>`
