@@ -48,7 +48,7 @@ function displayProfil(){
                 <section class="actu">
                     <h1>PROFIL <span><span class="text-uppercase"><?= $_GET['nickname'] ?? '' ?></span></span></h1>
                     <div class="container-fluid  mt-5">
-                        <div class="row">
+                        <div class="row g-3">
                             <div class="col-12 col-xl-6">
                                 <div class="profilDesc myCard">
                                     <div class="title">Compte <i id="edit" class="bi bi-pencil-square"></i></div>
@@ -75,25 +75,29 @@ function displayProfil(){
                             </div>
                             <div class="col-12 col-xl-6">
                                 <div class="topStats myCard">
-                                    <div class="heures ps-2 text-white">
-                                        Enter votre origin ID
-                                        <!-- Temps de jeu : <?= $displayLifetime ?>  -->
-                                    </div>
                                     <div class="noOrigin">
+                                        <p class="desc">Enter votre Origin ID pour compléter votre profil</p>
                                         <input type="text" placeholder="Origin ID">
                                     </div>
-                                    <div class="row mygrid">
-                                        <?php foreach ($displayTopStats as $key => $value) { ?>
-                                                <?= $value ?>
-                                            <?php } ?>
+                                    <div class="d-none">
+                                        <div class="heures ps-2 text-white">
+                                            <!-- Temps de jeu : <?= $displayLifetime ?>  -->
+                                        </div>
+                                        
+                                        <div class="row mygrid">
+                                            <?php foreach ($displayTopStats as $key => $value) { ?>
+                                                    <?= $value ?>
+                                                <?php } ?>
+                                        </div>
                                     </div>
+                                   
                                 </div>
                             </div>
                             <div class="col-12 mt-3">
-                                <div class="topWeapon myCard">
+                                <div class="topWeapon myCard d-none">
                                     <div class="title">Arme favorite</div>
                                     <div class="mostUsed">
-                                        <?php /* statsWeapon($user) */ ?>
+                                        <?php statsWeapon($user) ?>
                                     </div>
                                 </div>
                             </div>

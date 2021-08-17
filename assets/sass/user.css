@@ -222,6 +222,44 @@ body {
   color: white;
 }
 
+.topStats {
+  height: 100%;
+}
+
+.topStats .noOrigin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  min-height: 280px;
+}
+
+.topStats .noOrigin .desc {
+  font-weight: lighter;
+  color: white;
+}
+
+.topStats .noOrigin input {
+  border-radius: 3em;
+  border: 1px solid #fca311;
+  background-color: transparent;
+  padding: 0.4em 2em;
+  font-size: 0.8em;
+  outline: none;
+  color: #b3b3b3;
+  position: relative;
+}
+
 @media screen and (max-width: 992px) {
   .mostUsed {
     display: block;
