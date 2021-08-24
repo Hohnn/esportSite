@@ -106,7 +106,6 @@
 
 .teamCard .small .memberLogo {
   margin-left: -10px;
-  border: 2px solid #292f32;
 }
 
 .teamCard .small .memberName {
@@ -223,7 +222,6 @@ main .active {
   -o-object-fit: cover;
      object-fit: cover;
   margin-left: -10px;
-  border: 2px solid #292f32;
 }
 
 .tournamentCard .teams .teamsWrap .teamLogo:first-of-type {

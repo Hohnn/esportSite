@@ -81,7 +81,6 @@
         }
         .memberLogo {
             margin-left: -10px;
-            border: 2px solid $card;
         }
         .memberName {
             display: none;
@@ -163,7 +162,6 @@ main {
                 border-radius: 50%;
                 object-fit: cover;
                 margin-left: -10px;
-                border: 2px solid $card;
             }
             .teamLogo:first-of-type {
                 margin-left: 0px;

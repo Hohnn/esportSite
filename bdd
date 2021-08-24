@@ -1,0 +1,108 @@
+DROP TABLE IF EXISTS user ;
+CREATE TABLE user (ID_signin BIGINT AUTO_INCREMENT NOT NULL,
+USERNAME_signin CHAR(50),
+MAIL_signin CHAR(200),
+PASSWORD_signin CHAR(500),
+ID_Status **NOT FOUND**,
+profil_id_user_assets **NOT FOUND**,
+PRIMARY KEY (ID_signin)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Status ;
+CREATE TABLE Status (ID_Status BIGINT AUTO_INCREMENT NOT NULL,
+STATUS_Status CHAR(50),
+PRIMARY KEY (ID_Status)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS profil ;
+CREATE TABLE profil (ID_user_assets BIGINT AUTO_INCREMENT NOT NULL,
+LOGO_user_assets CHAR(200),
+HEADER_user_assets CHAR(200),
+ORIGIN_ID_user_assets CHAR(100),
+TWITTER_user_assets CHAR(200),
+YOUTUBE_user_assets CHAR(200),
+TWITCH_user_assets CHAR(200),
+user_id_signin **NOT FOUND**,
+PRIMARY KEY (ID_user_assets)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS proposal ;
+CREATE TABLE proposal (ID_article_proposal BIGINT AUTO_INCREMENT NOT NULL,
+TITLE_article_proposal CHAR(200),
+DESC_article_proposal CHAR,
+LINK_article_proposal CHAR,
+ID_signin **NOT FOUND**,
+PRIMARY KEY (ID_article_proposal)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS teams ;
+CREATE TABLE teams (ID_teams BIGINT AUTO_INCREMENT NOT NULL,
+NAME_teams CHAR(50),
+LOGO_teams CHAR(100),
+COUNTRY_teams CHAR(50),
+ID_signin **NOT FOUND**,
+PRIMARY KEY (ID_teams)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS player ;
+CREATE TABLE player (ID_player BIGINT AUTO_INCREMENT NOT NULL,
+NAME_player CHAR(50),
+teams_id_teams **NOT FOUND**,
+PRIMARY KEY (ID_player)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS tournament ;
+CREATE TABLE tournament (ID_tournament BIGINT AUTO_INCREMENT NOT NULL,
+NAME_tournament CHAR(50),
+LOGO_tournament CHAR(50),
+FORMAT_tournament CHAR(100),
+START_DATE_tournament DATE,
+STATUS_tournament CHAR(50),
+LINK_tournament CHAR(200),
+teams_id_teams **NOT FOUND**,
+ID_signin **NOT FOUND**,
+PRIMARY KEY (ID_tournament)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS matches ;
+CREATE TABLE matches (ID_matches BIGINT AUTO_INCREMENT NOT NULL,
+DATE_matches DATE,
+LINK_VOD_matches CHAR(200),
+tournament_id_tournament **NOT FOUND**,
+matches_score_id_matches_score **NOT FOUND**,
+ID_signin **NOT FOUND**,
+PRIMARY KEY (ID_matches)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS matches_score ;
+CREATE TABLE matches_score (ID_matches_score BIGINT AUTO_INCREMENT NOT NULL,
+TEAM1_matches_score CHAR(50),
+TEAM2_matches_score CHAR(50),
+matches_id_matches **NOT FOUND**,
+ID_maps **NOT FOUND**,
+PRIMARY KEY (ID_matches_score)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS maps ;
+CREATE TABLE maps (ID_maps BIGINT AUTO_INCREMENT NOT NULL,
+MAP_NAME_maps CHAR(50),
+PRIMARY KEY (ID_maps)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS article ;
+CREATE TABLE article (ID_article BIGINT AUTO_INCREMENT NOT NULL,
+TITLE_article CHAR(100),
+DATE_article DATE,
+TYPE_article CHAR(50),
+LINK_article CHAR(200),
+IMAGE_article CHAR(200),
+DESC_article CHAR(200),
+AUTHOR_article CHAR(100),
+ID_signin **NOT FOUND**,
+PRIMARY KEY (ID_article)) ENGINE=InnoDB;
+
+ALTER TABLE user ADD CONSTRAINT FK_user_ID_Status FOREIGN KEY (ID_Status) REFERENCES Status (ID_Status);
+
+ALTER TABLE user ADD CONSTRAINT FK_user_profil_id_user_assets FOREIGN KEY (profil_id_user_assets) REFERENCES profil (ID_user_assets);
+ALTER TABLE profil ADD CONSTRAINT FK_profil_user_id_signin FOREIGN KEY (user_id_signin) REFERENCES user (ID_signin);
+ALTER TABLE proposal ADD CONSTRAINT FK_proposal_ID_signin FOREIGN KEY (ID_signin) REFERENCES user (ID_signin);
+ALTER TABLE teams ADD CONSTRAINT FK_teams_ID_signin FOREIGN KEY (ID_signin) REFERENCES user (ID_signin);
+ALTER TABLE player ADD CONSTRAINT FK_player_teams_id_teams FOREIGN KEY (teams_id_teams) REFERENCES teams (ID_teams);
+ALTER TABLE tournament ADD CONSTRAINT FK_tournament_teams_id_teams FOREIGN KEY (teams_id_teams) REFERENCES teams (ID_teams);
+ALTER TABLE tournament ADD CONSTRAINT FK_tournament_ID_signin FOREIGN KEY (ID_signin) REFERENCES user (ID_signin);
+ALTER TABLE matches ADD CONSTRAINT FK_matches_tournament_id_tournament FOREIGN KEY (tournament_id_tournament) REFERENCES tournament (ID_tournament);
+ALTER TABLE matches ADD CONSTRAINT FK_matches_matches_score_id_matches_score FOREIGN KEY (matches_score_id_matches_score) REFERENCES matches_score (ID_matches_score);
+ALTER TABLE matches ADD CONSTRAINT FK_matches_ID_signin FOREIGN KEY (ID_signin) REFERENCES user (ID_signin);
+ALTER TABLE matches_score ADD CONSTRAINT FK_matches_score_matches_id_matches FOREIGN KEY (matches_id_matches) REFERENCES matches (ID_matches);
+ALTER TABLE matches_score ADD CONSTRAINT FK_matches_score_ID_maps FOREIGN KEY (ID_maps) REFERENCES maps (ID_maps);
+ALTER TABLE article ADD CONSTRAINT FK_article_ID_signin FOREIGN KEY (ID_signin) REFERENCES user (ID_signin);
