@@ -75,4 +75,32 @@
   margin: 0 auto;
   max-width: 1000px;
 }
+
+.about .descCard {
+  padding: 1rem;
+  width: 300px;
+}
+
+.about .descCard .icon {
+  color: white;
+  background-color: #fca311;
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  font-size: 1.2rem;
+}
+
+.about .descCard h4 {
+  margin: 1rem 0;
+  color: white;
+}
+
+.about .descCard h4::first-letter {
+  text-transform: uppercase;
+}
 /*# sourceMappingURL=about.css.map */
