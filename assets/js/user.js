@@ -5,7 +5,11 @@ const descEdit = document.getElementById('descEdit')
 edit.addEventListener('click', () => {
     desc.classList.toggle('d-none')
     descEdit.classList.toggle('d-none')
-    edit.style.color = '#fca311'
+    if (descEdit.classList.contains('d-none')) {
+        edit.style.color = 'white'        
+    } else {
+        edit.style.color = '#fca311'
+    }
 })
 
 function previewImage(fileToUpload, backImage){

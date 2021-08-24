@@ -1,8 +1,13 @@
 <?php
-include ('simple_html_dom.php');
+require ('simple_html_dom.php');
 
 function statsWeapon($user) {
+    if (!file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/weapons")) {
+        echo 'error';
+        return false;
+    }
     $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/weapons");
+    
     $list = $html->find('div[data-v-526226f2].content', 0);
     $div = $list->find('div.weapon-preview', 0);
     $stats = $list->find('div[data-v-b632d9da].stats', 0);
@@ -10,7 +15,7 @@ function statsWeapon($user) {
     echo $stats;
 }
 
-function displayLifetime($user){
+/* function displayLifetime($user){
     $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/overview");
     $list = $html->find('div[data-v-b632d9da]', 0);
     $span = $list->find('span[data-v-061dbdd2].playtime', 0)->plaintext;
@@ -24,12 +29,16 @@ function displayTopStats($user){
         <?= $value ?>
     <?php
     }
-}
+} */
 
 function displayStats($user){
+    if (!file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/overview")) {
+        return false;
+    }
     $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/overview");
-    $targetTime = $html->find('div[data-v-b632d9da]', 0);
-    $time = $targetTime->find('span[data-v-061dbdd2].playtime', 0)->plaintext;
+    
+    $targetTime = $html->find('div[data-v-9d8d0016]', 0);
+    $time = $targetTime->find('span[data-v-9d8d0016].playtime', 0)->plaintext;
     $time = strstr($time, 'H' , true) . ' ' . 'Heures';
     $targetStats = $html->find('div[data-v-b632d9da].main', 0);
     $stats = []; 
@@ -48,6 +57,7 @@ foreach($membersList as $member){
         $user = $member->id_origin;
     }
 }
+
 
 $scrap = displayStats($user);
 $displayLifetime = $scrap[0];
