@@ -1,5 +1,7 @@
 <?php
  include 'phpSignIn.php';
+ require './controllers/controller.php';
+ session_start();
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +56,7 @@
             <a type="button" class="text-warning" data-bs-toggle="modal" data-bs-target="#cguModal">conditions générale d’utilisation</a>
             <div class="form-text text-danger"><?= $errorCgu ?? '' ?></div>            
         </div>
-        <button type="submit" class="btn btn-primary" id="btn" name="submit">S'inscrire</button>
+        <button type="submit" class="btn btn-primary" id="btn" name="submitSignin">S'inscrire</button>
         </form>
     </div>
 

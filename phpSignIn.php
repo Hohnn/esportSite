@@ -60,7 +60,10 @@ if (isset($_POST['submit'])) { //si submit est dans le post
         $count++;
         $classZipCode = 'is-invalid';
     } */
-    if (!isValid($regexMail, $email)) {
+
+
+
+    /* if (!isValid($regexMail, $email)) {
         $errorMail = 'Mail incorrect, exemple : john@gmail.com';
         $count++;
         $classMail = 'is-invalid';
@@ -91,10 +94,10 @@ if (isset($_POST['submit'])) { //si submit est dans le post
     if(!isset($_POST["cgu"])){
         $count++;
         $errorCgu = 'Veuillez accépter les CGU';
-    }
-    if ($count == 0) { // le conteur est à 0
+    } */
+    /* if ($count == 0) { // le conteur est à 0
         header("Location: login.php"); // recharge la page
-    }
+    } */
 }
 
 $pushToCookie = ['name', 'firstname', 'age', 'pseudo', 'zipCode', 'email'];

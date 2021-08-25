@@ -486,11 +486,12 @@ main .twitch .scroll {
   position: absolute;
   z-index: 1;
   top: 0;
+  right: 0;
   left: 1rem;
   width: -webkit-fit-content !important;
   width: -moz-fit-content !important;
   width: fit-content !important;
-  max-width: 97%;
+  max-width: 99%;
   padding-bottom: 1rem;
 }
 
@@ -516,8 +517,8 @@ main .twitch .card {
   background-color: #292f32;
   padding: 0.6rem;
   border: unset;
-  max-height: 100%;
-  max-width: 340px;
+  height: 100%;
+  width: 340px;
   border-radius: 1rem;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
@@ -532,9 +533,8 @@ main .twitch .card:hover {
 
 main .twitch .card .wrapPreview {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 320px;
+  height: 180px;
 }
 
 main .twitch .card .wrapPreview .preview {

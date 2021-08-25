@@ -1,4 +1,5 @@
-<?php include './phpLogin.php'; ?>
+<?php include './phpLogin.php'; 
+?>
 
 <body>
     <div class="container-fluid">
@@ -14,7 +15,7 @@
 
                             <div id="plusPhone" class="d-md-none pages ms-auto plusPhone <?= !empty($_SESSION) ? '' : 'd-none' ?>"><i class="bi bi-three-dots-vertical"></i></div>
                             <div id="userMenu" class="profilMenu2 <?= !empty($_SESSION) ? '' : 'd-none' ?>">
-                                <a href="user.php?nickname=<?= $_SESSION['nickname'] ?? '' ?>" class="d-flex pages <?= $_SERVER['SCRIPT_NAME'] == "/user.php" ? 'active' : ''  ?>" >                                
+                                <a href="user.php?nickname=<?= $_SESSION['user'] ?? '' ?>" class="d-flex pages <?= $_SERVER['SCRIPT_NAME'] == "/user.php" ? 'active' : ''  ?>" >                                
                                     <i class="bi bi-person-lines-fill me-3"></i>  
                                     <div class="d-none d-lg-block">Profil</div>
                                 </a>
@@ -32,23 +33,19 @@
             <main class="col">
                 <header>
                     <input type="search" placeholder="Rechercher" class="d-none d-sm-block  me-auto">
-                    <i class="bi bi-bell mx-3 <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>"></i>
-                    <i class="bi bi-chat-left-text <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>"></i>
-                    <a href="login.php" class="<?= isset($_SESSION['nickname']) ? 'd-none' : 'd-block' ?>">Se connecter</a>
-                    <div class="userInfos <?= isset($_SESSION['nickname']) ? 'd-flex' : 'd-none' ?>">
+<?php if (!isset($_SESSION['user'])) { ?>
+                    <a href="login.php" class="">Se connecter</a>
+<?php } else { ?>
+                    <i class="bi bi-bell mx-3"></i>
+                    <i class="bi bi-chat-left-text"></i>
+                    <div class="userInfos">
                         <div class="wrap">
-                            <div class="userName" id="userName"><?= $_SESSION['nickname'] ?? '' ?></div>
-                            <div class="role"><?= $_SESSION['role'] ?? '' ?></div>
+                            <div class="userName" id="userName"><?= $_SESSION['user'] ?? '' ?></div>
+                            <div class="role"><?= $_SESSION['status'] ?? '' ?></div>
                         </div>                        
-                        <img src="./assets/images/<?= $_SESSION['image'] ?? '' ?>" class="profilLogo <?= isset($_SESSION['nickname']) ? 'd-block' : 'd-none' ?>" id="profilLogo" alt="profil logo">
+                        <img src="./assets/images/<?= $_SESSION['logo'] ?? '' ?>" class="profilLogo" id="profilLogo" alt="profil logo">
                     </div>
-                    <!-- <div class="profilMenu">
-                        <a href="user.php?nickname=<?= $_SESSION['nickname'] ?? '' ?>">Profil</a>
-                        <a href="admin.php" class="<?= $_SESSION['role'] == 'admin' ? 'd-block' : 'd-none' ?>">Admin</a>
-                        <form method="post">
-                            <button name="logout" value="logout">Déconnexion</button>
-                        </form> 
-                    </div> -->
+<?php } ?>
                 </header>
 
                 <script src="./assets/js/header.js"></script>

@@ -1,7 +1,12 @@
 <?php
     include 'phpScraping.php';
 
-function displayProfil(){
+?>
+
+<?php
+
+
+function displayProfil2(){
     $members = file_get_contents('./assets/json/members.json');
     $membersList = json_decode($members)->members;
     foreach($membersList as $member){ 
@@ -27,6 +32,33 @@ function displayProfil(){
             }
         }
      }
+}
+
+function displayProfil(){
+    $User = new UserModel();
+    var_dump($User->getUserByUsername($_GET['nickname']));
+    if (isset($_GET['nickname'])) {
+        if ($User->getUserByUsername($_GET['nickname'])) { 
+            $user = $User->getUserByUsername($_GET['nickname']) ?>
+        <div id="desc" class="infos">
+            <ul>
+                <li><i class="bi bi-person me-3"></i><?= $user['USER_USERNAME'] ?></li>
+                <li><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/><?= $user['PROFIL_ORIGIN_ID'] ?? 'Inconnu' ?></li>
+                <li><i class="bi bi-person-bounding-box me-3"></i><?= $user['STATUS_ROLE'] ?></li>
+                <li class="social">
+                    <a class="<?= $user['PROFIL_TWITTER'] ? 'd-block' : 'none' ?>" href="<?= $user['PROFIL_TWITTER'] ?? '' ?>"><i class="bi bi-twitter"></i></a>
+                    <a class="<?= $user['PROFIL_YOUTUBE'] ? 'd-block' : 'none' ?>" href="<?= $user['PROFIL_YOUTUBE'] ?? '' ?>"><i class="bi bi-youtube"></i></a>
+                    <a class="<?= $user['PROFIL_TWITCH'] ? 'd-block' : 'none' ?>" href="<?= $user['PROFIL_TWITCH'] ?? '' ?>"><i class="bi bi-twitch"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="mx-auto logoContainer d-none d-sm-flex">
+            <img src="./assets/images/<?= $member->image ?>" class="profilLogoDesc" id="profilLogoDesc" alt="profil logo">
+        </div>
+        <?php
+
+        }
+    }
 }
 
 ?>
@@ -75,14 +107,15 @@ function displayProfil(){
                             </div>
                             <div class="col-12 col-xl-6">
                                 <div class="topStats myCard">
-                                    <div class="noOrigin">
+                                    <div class="noOrigin <?= $showInput ?? 'd-none' ?>">
                                         <p class="desc">Enter votre Origin ID pour compléter votre profil</p>
                                         <input type="text" placeholder="Origin ID">
                                     </div>
-                                    <div class="d-none">
+                                    <div class="<?= $showStats ?? 'd-none' ?>">
                                         <div class="heures ps-2 text-white">
                                             <!-- Temps de jeu : <?= $displayLifetime ?>  -->
                                         </div>
+
                                         
                                         <div class="row mygrid">
                                             <?php foreach ($displayTopStats as $key => $value) { ?>
@@ -115,3 +148,4 @@ function displayProfil(){
     <script src="./assets/js/user.js"></script>
 </body>
 </html>
+

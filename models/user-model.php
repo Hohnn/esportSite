@@ -84,24 +84,45 @@ class Appointments extends database {
 
 }
 
-class User extends database {
+class UserModel extends database {
 
-    public function setUser($username, $mail, $password) {
+    public function setUser($username, $mail, $password, $status) {
         $bdd = $this->connectDatabase();
-        $condition = "INSERT INTO user (username, mail, password)
-        VALUES (?, ?, ?)";
+        $condition = "INSERT INTO user (user_username, user_mail, user_password)
+        VALUES (?, ?, ?, ?)";
         $result = $bdd->prepare($condition);
         $result->bindValue(1, $username, PDO::PARAM_STR);
         $result->bindValue(2, $mail, PDO::PARAM_STR);
         $result->bindValue(3, $password, PDO::PARAM_STR);
+        $result->bindValue(4, $password, PDO::PARAM_INT);
         $result->execute();
         return $result;
     }
 
     public function getAllUser() {
         $bdd = $this->connectDatabase();
-        $condition = "SELECT * FROM user ";
-        
+        $condition = "SELECT * FROM user as A INNER JOIN `profil` as B ON A.user_id = B.user_user_id NATURAL JOIN `status` ";
+        $result = $bdd->query($condition)->fetchAll();
+        return $result;
     }
 
+    public function getUserByMail($mail) {
+        $bdd = $this->connectDatabase();
+        $condition = "SELECT * FROM user as A INNER JOIN `profil` as B ON A.user_id = B.user_user_id NATURAL JOIN `status` WHERE user_mail = ? ";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $mail, PDO::PARAM_STR);
+        $result->execute();
+        $fetch = $result->fetch(); /* pas fetchAll pour pas avoir 2 array */
+        return $fetch;
+    }
+
+    public function getUserByUsername($username) {
+        $bdd = $this->connectDatabase();
+        $condition = "SELECT * FROM user as A INNER JOIN `profil` as B ON A.user_id = B.user_user_id NATURAL JOIN `status` WHERE user_username = ? ";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $username, PDO::PARAM_STR);
+        $result->execute();
+        $fetch = $result->fetch(); /* pas fetchAll pour pas avoir 2 array */
+        return $fetch;
+    }
 }

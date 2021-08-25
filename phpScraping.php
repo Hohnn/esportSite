@@ -1,5 +1,7 @@
 <?php
 require ('simple_html_dom.php');
+require './controllers/controller.php';
+
 
 function statsWeapon($user) {
     if (!file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/weapons")) {
@@ -59,7 +61,16 @@ foreach($membersList as $member){
 }
 
 
-$scrap = displayStats($user);
-$displayLifetime = $scrap[0];
-$displayTopStats = $scrap[1];
+if ($User->getUserByUsername($_GET['nickname'])['PROFIL_ORIGIN_ID']) {
+    $user = '';
+    $scrap = displayStats($user);
+    $showStats = '';
+} else {
+    $showInput = '';
+}
+
+
+
+$displayLifetime = $scrap[0] ?? '';
+$displayTopStats = $scrap[1] ?? '';
 ?>
