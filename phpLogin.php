@@ -1,8 +1,4 @@
 <?php
-$session = $_SESSION ?? false;
-if (!$session) {
-    session_start();
-}
 
 $members = file_get_contents('./assets/json/members.json');
 $membersList = json_decode($members)->members;

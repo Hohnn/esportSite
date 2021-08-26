@@ -1,4 +1,6 @@
 <?php
+require './controllers/controller.php';
+
     include 'phpRSS.php';
     include 'phpMembers.php';
 ?>

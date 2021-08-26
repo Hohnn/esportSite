@@ -1,7 +1,5 @@
 <?php
 require ('simple_html_dom.php');
-require './controllers/controller.php';
-
 
 function statsWeapon($user) {
     if (!file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/weapons")) {
@@ -17,22 +15,6 @@ function statsWeapon($user) {
     echo $stats;
 }
 
-/* function displayLifetime($user){
-    $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/overview");
-    $list = $html->find('div[data-v-b632d9da]', 0);
-    $span = $list->find('span[data-v-061dbdd2].playtime', 0)->plaintext;
-    $s = $span;
-    return strstr($s, 'H' , true) . ' ' . 'Heures';
-}
-function displayTopStats($user){
-    $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/overview");
-    $list = $html->find('div[data-v-b632d9da].main', 0);
-    foreach ($list->find('.numbers') as $value) { ?>
-        <?= $value ?>
-    <?php
-    }
-} */
-
 function displayStats($user){
     if (!file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/overview")) {
         return false;
@@ -41,7 +23,7 @@ function displayStats($user){
     
     $targetTime = $html->find('div[data-v-9d8d0016]', 0);
     $time = $targetTime->find('span[data-v-9d8d0016].playtime', 0)->plaintext;
-    $time = strstr($time, 'H' , true) . ' ' . 'Heures';
+    $time = strstr($time, 'h' , true) . ' ' . 'Heures';
     $targetStats = $html->find('div[data-v-b632d9da].main', 0);
     $stats = []; 
     foreach ($targetStats->find('.numbers') as $value) {
@@ -51,25 +33,13 @@ function displayStats($user){
     return $array;
 }
 
-
-$members = file_get_contents('./assets/json/members.json');
-$membersList = json_decode($members)->members;
-foreach($membersList as $member){
-    if($member->nickname == $_GET['nickname']) {
-        $user = $member->id_origin;
-    }
-}
-
-
-if ($User->getUserByUsername($_GET['nickname'])['PROFIL_ORIGIN_ID']) {
-    $user = '';
+if ($User->getUserByUsername($_GET['nickname'])['USER_ORIGIN_ID']) {
+    $user = $User->getUserByUsername($_GET['nickname'])['USER_ORIGIN_ID'];
     $scrap = displayStats($user);
     $showStats = '';
 } else {
     $showInput = '';
 }
-
-
 
 $displayLifetime = $scrap[0] ?? '';
 $displayTopStats = $scrap[1] ?? '';

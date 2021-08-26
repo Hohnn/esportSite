@@ -1,4 +1,9 @@
 <?php include './phpLogin.php'; 
+
+    if(isset($_SESSION['user'])){
+        $user = $User->getUserByUsername($_SESSION['user']);
+    }
+
 ?>
 
 <body>
@@ -38,13 +43,13 @@
 <?php } else { ?>
                     <i class="bi bi-bell mx-3"></i>
                     <i class="bi bi-chat-left-text"></i>
-                    <div class="userInfos">
+                    <a href="user.php?nickname=<?= $_SESSION['user'] ?? '' ?>" class="userInfos">
                         <div class="wrap">
                             <div class="userName" id="userName"><?= $_SESSION['user'] ?? '' ?></div>
-                            <div class="role"><?= $_SESSION['status'] ?? '' ?></div>
+                            <div class="role"><?= $user['STATUS_ROLE']  ?? '' ?></div>
                         </div>                        
-                        <img src="./assets/images/<?= $_SESSION['logo'] ?? '' ?>" class="profilLogo" id="profilLogo" alt="profil logo">
-                    </div>
+                        <img src="./assets/images/<?= $user['USER_LOGO'] ? 'user_logo/' . $user['USER_LOGO'] : 'default_user/' . $user['DEFAULTLOGO_NAME'] ?>" class="profilLogo" id="profilLogo" alt="profil logo">
+                    </a>
 <?php } ?>
                 </header>
 

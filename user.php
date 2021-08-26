@@ -1,62 +1,33 @@
 <?php
+require './controllers/controller.php';
     include 'phpScraping.php';
-
 ?>
 
 <?php
 
-
-function displayProfil2(){
-    $members = file_get_contents('./assets/json/members.json');
-    $membersList = json_decode($members)->members;
-    foreach($membersList as $member){ 
-        if (isset($_GET['nickname'])) {
-            if ($_GET['nickname'] == $member->nickname) { ?>
-            <div id="desc" class="infos">
-                <ul>
-                    <li><i class="bi bi-person me-3"></i><?= $member->nickname ?></li>
-                    <li class="<?= isset($member->id_origin) ? '' : 'none' ?>"><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/><?= $member->id_origin ?? 'ID origin' ?></li>
-                    <li><i class="bi bi-person-bounding-box me-3"></i><?= $member->role ?></li>
-                    <li class="social">
-                        <a class="<?= isset($member->twitter) ? 'd-block' : 'none' ?>" href="<?= $member->twitter ?? '' ?>"><i class="bi bi-twitter"></i></a>
-                        <a class="<?= isset($member->youtube) ? 'd-block' : 'none' ?>" href="<?= $member->youtube ?? '' ?>"><i class="bi bi-youtube"></i></a>
-                        <a class="<?= isset($member->twitch) ? 'd-block' : 'none' ?>" href="<?= $member->twitch ?? '' ?>"><i class="bi bi-twitch"></i></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="mx-auto logoContainer d-none d-sm-flex">
-                <img src="./assets/images/<?= $member->image ?>" class="profilLogoDesc" id="profilLogoDesc" alt="profil logo">
-            </div>
-            <?php
-
-            }
-        }
-     }
-}
-
 function displayProfil(){
     $User = new UserModel();
-    var_dump($User->getUserByUsername($_GET['nickname']));
     if (isset($_GET['nickname'])) {
         if ($User->getUserByUsername($_GET['nickname'])) { 
-            $user = $User->getUserByUsername($_GET['nickname']) ?>
+            $user = $User->getUserByUsername($_GET['nickname']);
+?>
         <div id="desc" class="infos">
             <ul>
                 <li><i class="bi bi-person me-3"></i><?= $user['USER_USERNAME'] ?></li>
-                <li><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/><?= $user['PROFIL_ORIGIN_ID'] ?? 'Inconnu' ?></li>
+                <li><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/><?= $user['USER_ORIGIN_ID'] ?? 'Inconnu' ?></li>
                 <li><i class="bi bi-person-bounding-box me-3"></i><?= $user['STATUS_ROLE'] ?></li>
                 <li class="social">
-                    <a class="<?= $user['PROFIL_TWITTER'] ? 'd-block' : 'none' ?>" href="<?= $user['PROFIL_TWITTER'] ?? '' ?>"><i class="bi bi-twitter"></i></a>
-                    <a class="<?= $user['PROFIL_YOUTUBE'] ? 'd-block' : 'none' ?>" href="<?= $user['PROFIL_YOUTUBE'] ?? '' ?>"><i class="bi bi-youtube"></i></a>
-                    <a class="<?= $user['PROFIL_TWITCH'] ? 'd-block' : 'none' ?>" href="<?= $user['PROFIL_TWITCH'] ?? '' ?>"><i class="bi bi-twitch"></i></a>
+                    <a class="<?= $user['USER_TWITTER'] ? '' : 'none' ?>" href="<?= $user['USER_TWITTER'] ?? '' ?>"><i class="bi bi-twitter"></i></a>
+                    <a class="<?= $user['USER_YOUTUBE'] ? '' : 'none' ?>" href="<?= $user['USER_YOUTUBE'] ?? '' ?>"><i class="bi bi-youtube"></i></a>
+                    <a class="<?= $user['USER_TWITCH'] ? '' : 'none' ?>" href="<?= $user['USER_TWITCH'] ?? '' ?>"><i class="bi bi-twitch"></i></a>
                 </li>
             </ul>
         </div>
         <div class="mx-auto logoContainer d-none d-sm-flex">
-            <img src="./assets/images/<?= $member->image ?>" class="profilLogoDesc" id="profilLogoDesc" alt="profil logo">
+            <img src="./assets/images/<?= $user['USER_LOGO'] ? 'user_logo/' . $user['USER_LOGO'] : 'default_user/' . $user['DEFAULTLOGO_NAME'] ?>" class="profilLogoDesc" id="profilLogoDesc" alt="profil logo">
         </div>
-        <?php
-
+<?php
+        
         }
     }
 }
@@ -83,47 +54,52 @@ function displayProfil(){
                         <div class="row g-3">
                             <div class="col-12 col-xl-6">
                                 <div class="profilDesc myCard">
-                                    <div class="title">Compte <i id="edit" class="bi bi-pencil-square"></i></div>
+                                    <div class="title">Compte 
+<?php if(isset($_SESSION['user']) == $_GET['nickname']){ ?>
+                                        <i id="edit" class="bi bi-pencil-square"></i>
+<?php }?>
+                                    </div>
                                     <div class="wrap">
-                                        <from id="descEdit" class="edit d-none">
-                                            <div><i class="bi bi-person me-3"></i> <input type="text" value="<?= $member->nickname ?>"> </div>
-                                            <div><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/> <input type="text" placeholder="ID origin" value="<?= $member->id_origin ?? '' ?>"> </div>
-                                            <div><i class="bi bi-twitter me-3"></i> <input type="text" placeholder="lien twitter" value="<?= $member->twitter ?? '' ?>"> </div>
-                                            <div><i class="bi bi-youtube me-3"></i> <input type="text" placeholder="lien youtube" value="<?= $member->youtube ?? '' ?>"> </div>
-                                            <div><i class="bi bi-twitch me-3"></i> <input type="text" placeholder="lien twitch" value="<?= $member->twitch ?? '' ?>"> </div>
+                                        <form id="descEdit" class="edit d-none" action="" method="POST">
+                                            <div><i class="bi bi-person me-3"></i> <input type="text" name="username" value="<?= $user['USER_USERNAME'] ?>"> </div>
+                                            <div><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/> <input type="text" name="originId" placeholder="ID origin" value="<?= $user['USER_ORIGIN_ID'] ?? '' ?>"> </div>
+                                            <div><i class="bi bi-twitter me-3"></i> <input type="text" placeholder="lien twitter" name="twitter" value="<?= $user['USER_TWITTER'] ?? '' ?>"> </div>
+                                            <div><i class="bi bi-youtube me-3"></i> <input type="text" placeholder="lien youtube" name="youtube" value="<?= $user['USER_YOUTUBE'] ?? '' ?>"> </div>
+                                            <div><i class="bi bi-twitch me-3"></i> <input type="text" placeholder="lien twitch" name="twitch" value="<?= $user['USER_TWITCH'] ?? '' ?>"> </div>
                                             <div>
                                                 <i class="bi bi-person-circle me-3"></i>
                                                 <label for="fileToUpload" class="upload">Parcourir...</label>
-                                                <input class="form-control d-none" id="fileToUpload" type="file">
+                                                <input class="form-control d-none" id="fileToUpload" type="file" name="logo">
                                             </div>
                                             <div class="d-flex align-items-start mt-4">
-                                                <button class="bgYellow" type="submit">Confirmer</button>
+                                                <button class="bgYellow" type="submit" name="submitEdit">Confirmer</button>
                                                 <button class="btn ms-auto cancel" id="cancel">Annuler</button>
                                             </div>
-                                        </from>
+                                        </form>
                                         <?= displayProfil() ?>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-xl-6">
                                 <div class="topStats myCard">
-                                    <div class="noOrigin <?= $showInput ?? 'd-none' ?>">
+<?php if(isset($_SESSION['user']) == $_GET['nickname']){ ?>
+                                    <form class="noOrigin <?= $showInput ?? 'd-none' ?>" action="" method="POST">
                                         <p class="desc">Enter votre Origin ID pour compléter votre profil</p>
-                                        <input type="text" placeholder="Origin ID">
-                                    </div>
+                                        <input type="text" name="originId" placeholder="Origin ID">
+                                    </form>
+<?php } elseif (!$user['USER_ORIGIN_ID']) { ?>
+                                    <div class="noOrigin">L'utilisateur n'a pas renseigné sont origin id</div>
+<?php } ?>
                                     <div class="<?= $showStats ?? 'd-none' ?>">
                                         <div class="heures ps-2 text-white">
-                                            <!-- Temps de jeu : <?= $displayLifetime ?>  -->
+                                            Temps de jeu : <?= $displayLifetime ?> 
                                         </div>
-
-                                        
                                         <div class="row mygrid">
-                                            <?php foreach ($displayTopStats as $key => $value) { ?>
+<?php foreach ($displayTopStats as $key => $value) { ?>
                                                     <?= $value ?>
-                                                <?php } ?>
+<?php } ?>
                                         </div>
                                     </div>
-                                   
                                 </div>
                             </div>
                             <div class="col-12 mt-3">

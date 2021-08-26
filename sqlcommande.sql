@@ -1,0 +1,1 @@
+INSERT INTO `esport`.`user` (`USER_ID`, `USER_USERNAME`, `USER_MAIL`, `USER_PASSWORD`, `STATUS_ID`) VALUES ('1', 'Hohnn', 'jean-bateee@hotmail.fr', '$2y$10$Bdg6LHfAY6UaNY0auJknkulaFiJxB9o2qXS3BInk90EoV.Ofcjndi', '4');

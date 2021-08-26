@@ -1,6 +1,6 @@
 <?php
- include 'phpSignIn.php';
  require './controllers/controller.php';
+ include 'phpSignIn.php';
  session_start();
 ?>
 
