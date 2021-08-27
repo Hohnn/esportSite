@@ -16,7 +16,7 @@ function statsWeapon($user) {
 }
 
 function displayStats($user){
-    if (!file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/overview")) {
+    if (!file_get_contents("https://battlefieldtracker.com/bfv/profile/origin/$user/overview")) {
         return false;
     }
     $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/overview");

@@ -1,10 +1,9 @@
 <?php 
 require './controllers/database.php';
 require './models/user-model.php';
-$session = $_SESSION ?? false;
-if (!$session) {
-    session_start();
-}
+include './controllers/phpUpload.php';
+
+
 
 $User = new UserModel();
 
@@ -59,12 +58,12 @@ if (isset($_POST['submitEdit'])) {
     $twitter = htmlspecialchars($_POST['twitter'] ?? '');
     $youtube = htmlspecialchars($_POST['youtube'] ?? '');
     $twitch = htmlspecialchars($_POST['twitch'] ?? '');
-    $logo = htmlspecialchars($_POST['logo'] ?? '');
     $count = 0;
     if (!isValid($regexNickname, $username)) {
         $count++;
         $classUsername = 'is-invalid';
         $errorUsername = 'Ce pseudo n’est pas valide.'; 
+    }
     if ($originId) {
         if (!isValid($regexNickname, $originId)) {
             $count++;
@@ -94,12 +93,32 @@ if (isset($_POST['submitEdit'])) {
             $errorTwitch = 'Ce lien n’est pas valide.';
         }
     }
+
     if ($count == 0) {
         $User->setUpdateUser($_SESSION['id'], $username, $originId, $twitter, $youtube, $twitch);
+        $uploaded = upload("logo");
+        if (empty($uploaded)) {
+            $goodUpload = true;
+        } else {
+            $goodUpload = false;
+        }
+    } else {
+        $goodUpload = false;
     }
+        
 
 }
+
+function displayLogError($errorLog) {
+    if (count($errorLog) > 0) {
+        echo '<div class="alert alert-danger">';
+        foreach ($errorLog as $error) {
+            echo $error . '<br>';
+        }
+        echo '</div>';
+    }
 }
 
-
-?>
+/* $test = file_get_contents("https://battlefieldtracker.com/bfv/profile/origin/hohnn/overview");
+var_dump($test); */
+?> 

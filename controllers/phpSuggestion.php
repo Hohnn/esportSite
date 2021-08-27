@@ -1,4 +1,5 @@
 <?php
+    require './controllers/controller.php';
 
 function isValid($pattern, $subject){ //vérifie la regex puis renvoi vrai ou faux
     if (preg_match($pattern, $subject)) {

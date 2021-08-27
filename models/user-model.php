@@ -102,9 +102,18 @@ class UserModel extends database {
 
     public function getAllUser() {
         $bdd = $this->connectDatabase();
-        $condition = "SELECT * FROM NATURAL JOIN `status` ";
+        $condition = "SELECT * FROM user NATURAL JOIN `status` ";
         $result = $bdd->query($condition)->fetchAll();
         return $result;
+    }
+
+    public function getUserById($id) {
+        $bdd = $this->connectDatabase();
+        $condition = "SELECT * FROM user NATURAL JOIN `status` WHERE user_id = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $id, PDO::PARAM_INT);
+        $result->execute();
+        return $result->fetch();
     }
 
     public function getUserByMail($mail) {
@@ -147,6 +156,16 @@ class UserModel extends database {
         $result->bindValue(4, $youtube, PDO::PARAM_STR);
         $result->bindValue(5, $twitch, PDO::PARAM_STR);
         $result->bindValue(6, $id, PDO::PARAM_INT);
+        $result->execute();
+        return $result;
+    }
+
+    public function setUpdateUserLogo($id, $logoName) {
+        $bdd = $this->connectDatabase();
+        $condition = "UPDATE user SET user_logo = ? WHERE user_id = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $logoName, PDO::PARAM_STR);
+        $result->bindValue(2, $id, PDO::PARAM_INT);
         $result->execute();
         return $result;
     }

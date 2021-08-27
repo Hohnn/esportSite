@@ -1,6 +1,6 @@
 <?php
- include 'phpLogin.php';
- require './controllers/controller.php';
+    require './controllers/controller.php';
+    include 'phpLogin.php';
 
 ?>
 

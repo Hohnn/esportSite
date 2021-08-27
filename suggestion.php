@@ -1,7 +1,6 @@
 <?php
 require './controllers/phpSuggestion.php';
 
-require './controllers/phpUpload.php';
 
 
 ?>

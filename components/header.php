@@ -24,7 +24,7 @@
                                     <i class="bi bi-person-lines-fill me-3"></i>  
                                     <div class="d-none d-lg-block">Profil</div>
                                 </a>
-                                <a href="admin.php" class="<?= isset($_SESSION['role']) == 'admin' ? 'd-block' : 'd-none' ?> d-flex pages <?= $_SERVER['SCRIPT_NAME'] == "/admin.php" ? 'active' : ''  ?>">
+                                <a href="admin.php" class="<?= $user['STATUS_ROLE'] == 'administrateur' ? 'd-block' : 'd-none' ?> d-flex pages <?= $_SERVER['SCRIPT_NAME'] == "/admin.php" ? 'active' : ''  ?>">
                                     <i class="bi bi-sliders me-3"></i>
                                     <div class="d-none d-lg-block">Administration</div>
                                 </a>

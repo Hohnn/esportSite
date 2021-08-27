@@ -1,4 +1,8 @@
+<?php 
+    require './controllers/controller.php';
 
+
+?>
 
 <!DOCTYPE html>
 <html lang="fr">

@@ -81,7 +81,7 @@ body {
                 outline: none;
                 border: 1px solid rgba(255, 255, 255, 0.459);
                 border-radius: 0.5rem 0 0 0;
-                margin-bottom: 0.5rem;
+                margin-top: 0.5rem;
             }
             button[type="submit"] {
                 background-color: rgba(255, 255, 255, 0.459);
@@ -186,4 +186,11 @@ body {
     .mostUsed {
         display: block;
     }
+}
+
+.logInvalid {
+    font-size: 0.9rem;
+    color: red;
+    font-weight: lighter;
+    margin-left: 2.2rem;
 }

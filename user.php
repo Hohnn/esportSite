@@ -1,38 +1,8 @@
 <?php
-require './controllers/controller.php';
+    require './controllers/controller.php';
     include 'phpScraping.php';
 ?>
 
-<?php
-
-function displayProfil(){
-    $User = new UserModel();
-    if (isset($_GET['nickname'])) {
-        if ($User->getUserByUsername($_GET['nickname'])) { 
-            $user = $User->getUserByUsername($_GET['nickname']);
-?>
-        <div id="desc" class="infos">
-            <ul>
-                <li><i class="bi bi-person me-3"></i><?= $user['USER_USERNAME'] ?></li>
-                <li><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/><?= $user['USER_ORIGIN_ID'] ?? 'Inconnu' ?></li>
-                <li><i class="bi bi-person-bounding-box me-3"></i><?= $user['STATUS_ROLE'] ?></li>
-                <li class="social">
-                    <a class="<?= $user['USER_TWITTER'] ? '' : 'none' ?>" href="<?= $user['USER_TWITTER'] ?? '' ?>"><i class="bi bi-twitter"></i></a>
-                    <a class="<?= $user['USER_YOUTUBE'] ? '' : 'none' ?>" href="<?= $user['USER_YOUTUBE'] ?? '' ?>"><i class="bi bi-youtube"></i></a>
-                    <a class="<?= $user['USER_TWITCH'] ? '' : 'none' ?>" href="<?= $user['USER_TWITCH'] ?? '' ?>"><i class="bi bi-twitch"></i></a>
-                </li>
-            </ul>
-        </div>
-        <div class="mx-auto logoContainer d-none d-sm-flex">
-            <img src="./assets/images/<?= $user['USER_LOGO'] ? 'user_logo/' . $user['USER_LOGO'] : 'default_user/' . $user['DEFAULTLOGO_NAME'] ?>" class="profilLogoDesc" id="profilLogoDesc" alt="profil logo">
-        </div>
-<?php
-        
-        }
-    }
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -60,23 +30,65 @@ function displayProfil(){
 <?php }?>
                                     </div>
                                     <div class="wrap">
-                                        <form id="descEdit" class="edit d-none" action="" method="POST">
-                                            <div><i class="bi bi-person me-3"></i> <input type="text" name="username" value="<?= $user['USER_USERNAME'] ?>"> </div>
-                                            <div><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/> <input type="text" name="originId" placeholder="ID origin" value="<?= $user['USER_ORIGIN_ID'] ?? '' ?>"> </div>
-                                            <div><i class="bi bi-twitter me-3"></i> <input type="text" placeholder="lien twitter" name="twitter" value="<?= $user['USER_TWITTER'] ?? '' ?>"> </div>
-                                            <div><i class="bi bi-youtube me-3"></i> <input type="text" placeholder="lien youtube" name="youtube" value="<?= $user['USER_YOUTUBE'] ?? '' ?>"> </div>
-                                            <div><i class="bi bi-twitch me-3"></i> <input type="text" placeholder="lien twitch" name="twitch" value="<?= $user['USER_TWITCH'] ?? '' ?>"> </div>
+                                        <form id="descEdit" class="edit <?= isset($goodUpload) && $goodUpload == false ? '' : 'd-none' ?>" action="" method="POST" enctype="multipart/form-data" >
+                                            <div>
+                                                <i class="bi bi-person me-3"></i>
+                                                <input type="text" name="username" value="<?= $user['USER_USERNAME'] ?>">
+                                                <div class="logInvalid"><?= $errorUsername ?? '' ?></div>
+                                            </div>
+                                            <div>
+                                                <img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/> 
+                                                <input type="text" name="originId" placeholder="ID origin" value="<?= $user['USER_ORIGIN_ID'] ?? '' ?>"> 
+                                                <div class="logInvalid"><?= $errorOriginId ?? '' ?></div>
+                                            </div>
+                                            <div>
+                                                <i class="bi bi-twitter me-3"></i> 
+                                                <input type="text" placeholder="lien twitter" name="twitter" value="<?= $user['USER_TWITTER'] ?? '' ?>"> 
+                                                <div class="logInvalid"><?= $errorTwitter ?? '' ?></div>
+                                            </div>
+                                            <div>
+                                                <i class="bi bi-youtube me-3"></i> 
+                                                <input type="text" placeholder="lien youtube" name="youtube" value="<?= $user['USER_YOUTUBE'] ?? '' ?>"> 
+                                                <div class="logInvalid"><?= $errorYoutube ?? '' ?></div>
+                                            </div>
+                                            <div>
+                                                <i class="bi bi-twitch me-3"></i> 
+                                                <input type="text" placeholder="lien twitch" name="twitch" value="<?= $user['USER_TWITCH'] ?? '' ?>"> 
+                                                <div class="logInvalid"><?= $errorTwitch ?? '' ?></div>
+                                            </div>
                                             <div>
                                                 <i class="bi bi-person-circle me-3"></i>
                                                 <label for="fileToUpload" class="upload">Parcourir...</label>
-                                                <input class="form-control d-none" id="fileToUpload" type="file" name="logo">
+                                                <input class="form-control d-none" id="fileToUpload" type="file" name="logo" accept="image/png, image/jpg, image/jpeg">
+                                                <div class="logInvalid"><?= $uploaded[0] ?? '' ?></div>
                                             </div>
                                             <div class="d-flex align-items-start mt-4">
                                                 <button class="bgYellow" type="submit" name="submitEdit">Confirmer</button>
                                                 <button class="btn ms-auto cancel" id="cancel">Annuler</button>
                                             </div>
                                         </form>
-                                        <?= displayProfil() ?>
+<?php if (isset($_GET['nickname'])) {
+        if ($User->getUserByUsername($_GET['nickname'])) { 
+            $user = $User->getUserByUsername($_GET['nickname']);
+?>
+                                        <div id="desc" class="infos <?= isset($goodUpload) && $goodUpload == false ? 'd-none' : '' ?>">
+                                            <ul>
+                                                <li><i class="bi bi-person me-3"></i><?= $user['USER_USERNAME'] ?></li>
+                                                <li><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/><?= $user['USER_ORIGIN_ID'] ?? 'Inconnu' ?></li>
+                                                <li><i class="bi bi-person-bounding-box me-3"></i><?= $user['STATUS_ROLE'] ?></li>
+                                                <li class="social">
+                                                    <a class="<?= $user['USER_TWITTER'] ? '' : 'none' ?>" href="<?= $user['USER_TWITTER'] ?? '' ?>"><i class="bi bi-twitter"></i></a>
+                                                    <a class="<?= $user['USER_YOUTUBE'] ? '' : 'none' ?>" href="<?= $user['USER_YOUTUBE'] ?? '' ?>"><i class="bi bi-youtube"></i></a>
+                                                    <a class="<?= $user['USER_TWITCH'] ? '' : 'none' ?>" href="<?= $user['USER_TWITCH'] ?? '' ?>"><i class="bi bi-twitch"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="mx-auto logoContainer d-none d-sm-flex">
+                                            <img src="./assets/images/<?= $user['USER_LOGO'] ? 'user_logo/' . $user['USER_LOGO'] : 'default_user/' . $user['DEFAULTLOGO_NAME'] ?>" class="profilLogoDesc" id="profilLogoDesc" alt="profil logo">
+                                        </div>
+<?php   }
+    }  
+?>
                                     </div>
                                 </div>
                             </div>
@@ -117,11 +129,11 @@ function displayProfil(){
         </div>
     </div>
 
-
     <!-- Script -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="./assets/js/user.js"></script>
+    
 </body>
 </html>
 
