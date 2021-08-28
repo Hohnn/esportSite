@@ -619,11 +619,10 @@ main {
 }
 
 .plusSug {
-    position: absolute;
-    bottom: -150%;
-    background-color: $dark_grey;
+    text-align: end;
     padding: 0.3rem 1rem;
     border-radius: 1rem;
+    font-size: 0.9rem;
 } 
 
 

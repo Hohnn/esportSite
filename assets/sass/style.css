@@ -759,11 +759,10 @@ main .topMembers .scroll .profil .desc span {
 }
 
 .plusSug {
-  position: absolute;
-  bottom: -150%;
-  background-color: #2b2b2b;
+  text-align: end;
   padding: 0.3rem 1rem;
   border-radius: 1rem;
+  font-size: 0.9rem;
 }
 
 #carousel {

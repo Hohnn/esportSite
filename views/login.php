@@ -1,6 +1,5 @@
 <?php
-    require './controllers/controller.php';
-    include 'phpLogin.php';
+    require_once __DIR__.'/../controllers/controller.php';
 
 ?>
 
@@ -12,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./assets/sass/signIn.css">
+    <link rel="stylesheet" href="../assets/sass/signIn.css">
     <title>DAW Inscription</title>
 </head>
 <body class="body flex-md-row ">
@@ -47,7 +46,6 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 <!--     <script src="./assets/js/magic.js"></script> -->
-    <script src="./assets/js/vanilla-tilt.js"></script>
 
 </body>
 </html>

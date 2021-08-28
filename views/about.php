@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__.'/../controllers/controller.php';
 
 ?>
 
@@ -11,11 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./assets/sass/style.css">
-    <link rel="stylesheet" href="./assets/sass/about.css">
+    <link rel="stylesheet" href="../assets/sass/style.css">
+    <link rel="stylesheet" href="../assets/sass/about.css">
     <title>DAW esport</title>
 </head>
-<?php include './components/header.php' ?>
+<?php require  __DIR__.'/../components/header.php' ?>
                 <section class="about" id="about">
                     
                     <div class="container-fluid  mt-5">
@@ -26,7 +26,7 @@
                                     <div class="subtitle">Une équipe compétitive mais pas que ...</div>
                                     <p class="tag">Rester informé sur l'actualité <br> et la compétition sur Battlefield</p>
                                     <a href="login.php" class="btn bgYellow text-white">Créer un compte</a>
-                                <img class="floatImg" src="./assets/images/twisted.png" alt="twisted">
+                                <img class="floatImg" src="../assets/images/twisted.png" alt="twisted">
                                     
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                         </div>
                         <div class="row g-3">
                             <div class="col " >
-                                <img class="floatImg" src="./assets/images/twisted.png" alt="twisted">
+                                <img class="floatImg" src="../assets/images/twisted.png" alt="twisted">
                                 <div class="step">
                                     <h3>Faite vous connaitre !</h3>
                                     <div class="wrap">

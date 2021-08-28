@@ -1,5 +1,5 @@
 <?php
-require './controllers/controller.php';
+require_once __DIR__.'/../controllers/controller.php';
 
 
 ?>
@@ -12,11 +12,11 @@ require './controllers/controller.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./assets/sass/style.css">
-    <link rel="stylesheet" href="./assets/sass/comp.css">
+    <link rel="stylesheet" href="../assets/sass/style.css">
+    <link rel="stylesheet" href="../assets/sass/comp.css">
     <title>DAW esport</title>
 </head>
-<?php include './components/header.php' ?>
+<?php require __DIR__.'/../components/header.php' ?>
                 <section class="team">
                     <h1 class="text-uppercase">équipes</h1>
                     <div class="container-fluid  mt-5">
@@ -25,7 +25,7 @@ require './controllers/controller.php';
                                 <div class="teamCard myCard">
                                     <div id="toggle" class="toggle"><i class="bi bi-plus-circle"></i></div>
                                     <header>
-                                        <img src="./assets/images/teamLogo/daw.png" alt="" class="teamLogo">
+                                        <img src="../assets/images/teamLogo/daw.png" alt="" class="teamLogo">
                                         <div class="wrap">
                                             <h3 class="teamName">Daw </h3>
                                             <img src="" alt="" class="flag">
@@ -33,27 +33,27 @@ require './controllers/controller.php';
                                     </header>
                                     <div class="teamMembers small">
                                         <a href="#">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
                                             <h5 class="memberName">Hohnn</h5>
                                         </a>                                        
                                         <a href="#">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
                                             <h5 class="memberName">Hohnn</h5>
                                         </a>                                        
                                         <a href="#">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
                                             <h5 class="memberName">Hohnn</h5>
                                         </a>                                        
                                         <a href="#">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
                                             <h5 class="memberName">Hohnn</h5>
                                         </a>                                        
                                         <a href="#">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
                                             <h5 class="memberName">Hohnn</h5>
                                         </a>                                        
                                         <a href="#">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
                                             <h5 class="memberName">Hohnn</h5>
                                         </a>                                      
                                         
@@ -71,7 +71,7 @@ require './controllers/controller.php';
                             <div class="col-12" >
                                 <div class="tournamentCard myCard">
                                     <div class="brand">
-                                        <img src="./assets/images/teamLogo/daw.png" alt="" class="orgLogo">
+                                        <img src="../assets/images/teamLogo/daw.png" alt="" class="orgLogo">
                                         <h4 class="orgName">Tournoi BSP</h4>
                                     </div>
                                     <div class="type">
@@ -89,13 +89,13 @@ require './controllers/controller.php';
                                     <div class="teams">
                                         <span>équipes</span> 
                                         <div class="teamsWrap">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="./assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
                                         </div>
                                     </div>
                                     <a href="#" class="link"></a>
@@ -112,13 +112,13 @@ require './controllers/controller.php';
                             <div class="col matchCol" >
                                 <div class="matchCard myCard">
                                     <div class="imgBack">
-                                        <img class="maps" src="./assets/images/1.jpg" alt="">
-                                        <img class="maps" src="./assets/images/2.jpg" alt="">
-                                        <img class="maps" src="./assets/images/3.jpg" alt="">
+                                        <img class="maps" src="../assets/images/1.jpg" alt="">
+                                        <img class="maps" src="../assets/images/2.jpg" alt="">
+                                        <img class="maps" src="../assets/images/3.jpg" alt="">
                                     </div>
                                     <header>
                                         <div class="teamWrap">
-                                            <img src="./assets/images/teamLogo/daw.png" alt="team logo" class="teamLogo">
+                                            <img src="../assets/images/teamLogo/daw.png" alt="team logo" class="teamLogo">
                                             <span>DAW</span>
                                         </div>
                                         <div class="scoreWrap">
@@ -139,7 +139,7 @@ require './controllers/controller.php';
                                             </div>
                                         </div>
                                         <div class="teamWrap">
-                                            <img src="./assets/images/teamLogo/daw.png" alt="team logo" class="teamLogo">
+                                            <img src="../assets/images/teamLogo/daw.png" alt="team logo" class="teamLogo">
                                             <span>DAW</span>
                                         </div>
                                     </header>

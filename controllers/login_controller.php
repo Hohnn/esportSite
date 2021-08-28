@@ -1,7 +1,7 @@
 <?php
 
-$members = file_get_contents('./assets/json/members.json');
-$membersList = json_decode($members)->members;
+/* $members = file_get_contents('./assets/json/members.json');
+$membersList = json_decode($members)->members; */
 
 /* if (isset($_POST['login']) && isset($_POST['password'])) {
     $login = $_POST['login'];

@@ -1,9 +1,12 @@
 <?php 
-require './controllers/database.php';
-require './models/user-model.php';
-include './controllers/phpUpload.php';
+require_once __DIR__.'/database.php';
+require_once __DIR__.'/../models/user-model.php';
+require_once __DIR__.'/upload_controller.php';
+require_once __DIR__.'/login_controller.php';
 
-
+if(!isset($_SESSION)) {
+    session_start();
+}
 
 $User = new UserModel();
 
@@ -44,13 +47,13 @@ $regexNickname = "/^[^0-9]\w+$/";
 $regexTwitter = "/http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)/";
 $regexYoutube = "/http(?:s)?:\/\/(?:www\.)?youtube\.com\/([a-zA-Z0-9_]+)/";
 $regexTwitch = "/http(?:s)?:\/\/(?:www\.)?twitch\.tv\/([a-zA-Z0-9_]+)/";
-function isValid($pattern, $subject){ //vérifie la regex puis renvoi vrai ou faux
+/* function isValid($pattern, $subject){ //vérifie la regex puis renvoi vrai ou faux
     if (preg_match($pattern, $subject)) {
         return true;
     } else {
         return false;
     }
-}
+} */
 
 if (isset($_POST['submitEdit'])) {
     $username = htmlspecialchars($_POST['username'] ?? '');

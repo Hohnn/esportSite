@@ -1,5 +1,5 @@
 <?php
-require ('simple_html_dom.php');
+require __DIR__.'/../vendor/simple_html_dom.php';
 
 function statsWeapon($user) {
     if (!file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/weapons")) {
