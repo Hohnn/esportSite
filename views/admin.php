@@ -18,6 +18,22 @@
 <?php require __DIR__.'/../components/header.php' ?>
                 <section class="actu">
                     <h1>ADMINISTRATION</h1>
+<?php if (isset($_GET['edit']) == 'match') { ?>
+                    <div class="container-md">
+                        <form class="row myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
+                            <div class="col-md-6">    
+                                <div>
+                                    <label for="title">Nom de l'équipe n°1</label>
+                                    <input type="text" class="form-control" name="title" id="title" value="" required>
+                                    <div class="invalid-feedback ">Looks good!</div>
+                                </div>                                
+                            </div> 
+                            <div class="w-100 d-flex mt-2">
+                                <button class="btn btn-sm btn-primary ms-auto bgYellow px-3" type="submit" id="submit" name="submit" data-submit="<?= isset($count) && $count == 0 ? "valid" : "invalid" ?>">Valider</button>
+                            </div>
+                        </form>
+                    </div>
+<?php } else { ?>
                     <div class="container-fluid">
                         <div class="row mt-5">
                             <div class="title">News n°1</div>
@@ -113,10 +129,10 @@
                                         <button type="button">Voir</button>
                                     </div>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
+<?php } ?>
                 </section>
             </main>
         </div>

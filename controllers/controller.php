@@ -3,6 +3,7 @@ require_once __DIR__.'/database.php';
 require_once __DIR__.'/../models/user-model.php';
 require_once __DIR__.'/upload_controller.php';
 require_once __DIR__.'/login_controller.php';
+require_once __DIR__.'/signin_controller.php';
 
 if(!isset($_SESSION)) {
     session_start();

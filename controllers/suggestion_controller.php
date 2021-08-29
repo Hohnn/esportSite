@@ -1,12 +1,12 @@
 <?php
 
-function isValid($pattern, $subject){ //vérifie la regex puis renvoi vrai ou faux
+/* function isValid($pattern, $subject){ //vérifie la regex puis renvoi vrai ou faux
     if (preg_match($pattern, $subject)) {
         return true;
     } else {
         return false;
     }
-}
+} */
 
 $title = htmlspecialchars($_POST['title'] ?? '');
 $date = htmlspecialchars($_POST['date'] ?? '');

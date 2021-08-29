@@ -156,7 +156,11 @@ require_once __DIR__.'/../controllers/controller.php';
                                     </footer>
                                 </div>
                             </div>
-                        
+                            <div class="col matchCol position-relative">
+                                <a href="../views/admin.php?edit=match">
+                                    <div class="addCard"></div>
+                                </a>
+                            </div>
                         </div>
                     </div>    
                 </section>
@@ -171,7 +175,7 @@ require_once __DIR__.'/../controllers/controller.php';
     <!-- Masonry -->
     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
     <!-- page -->
-    <script src="./assets/js/comp.js"></script>
+    <script src="../assets/js/comp.js"></script>
 
 </body>
 </html>

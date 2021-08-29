@@ -61,7 +61,7 @@
                             <div class="userName" id="userName"><?= $_SESSION['user'] ?? '' ?></div>
                             <div class="role"><?= $user['STATUS_ROLE']  ?? '' ?></div>
                         </div>                        
-                        <img src="./assets/images/<?= $user['USER_LOGO'] ? 'user_logo/' . $user['USER_LOGO'] : 'default_user/' . $user['DEFAULTLOGO_NAME'] ?>" class="profilLogo" id="profilLogo" alt="profil logo">
+                        <img src="../assets/images/<?= $user['USER_LOGO'] ? 'user_logo/' . $user['USER_LOGO'] : 'default_user/' . $user['DEFAULTLOGO_NAME'] ?>" class="profilLogo" id="profilLogo" alt="profil logo">
                     </a>
 <?php } ?>
                 </header>

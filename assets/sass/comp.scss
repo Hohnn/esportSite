@@ -303,3 +303,43 @@ section {
         }
     }
 }
+
+.addCard {
+    border-radius: 1rem;
+    border: 1px solid $grey;
+    width: 70%;
+    height: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    &:hover {
+        border: 1px solid $yellow;
+        &::after { 
+            background-color: $yellow;
+        }
+        &::before { 
+            background-color: $yellow;
+        }
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        width: 60px;
+        height: 1px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $grey;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 50px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $grey;
+    }
+}
