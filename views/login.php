@@ -20,7 +20,50 @@
         <h1 class="my-4">BIENVENUE</h1>
         <p class="desc">Rejoignez nous et participer à la création d'une communauter eSport sur Battlefield</p>
     </div>
-
+<?php if(isset($_GET['token'])) {?>
+    <div class="myForm">
+        <form class="modal-content myModal" action="login.php" method="POST">
+            <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Nouveau mot de passe</h3>
+            </div>
+            <div class="modal-body pt-0">
+                <div class="mb-4">Vous êtes un nouvel utilisateur ? <a href="signIn.php" class="text-warning" >Créez un compte</a></div>
+                <div class="mb-3 form-floating">
+                    <input type="password" class="form-control <?=isset($errorPass) ? 'is-invalid' : ''?>"" id="password" name="password" placeholder="Mot de passe">
+                    <label for="password" class="text-muted">Mot de passe</label>
+                    <div class="form-text text-danger"><?=$errorPass ?? ''?></div>
+                </div>
+                <div class="mb-3 form-floating">
+                    <input type="password" class="form-control <?=isset($errorConfimPass) ? 'is-invalid' : ''?>"" id="confirmPassword" name="confirmPassword" placeholder="Mot de passe">
+                    <label for="confirmPassword" class="text-muted">Confirmer le mot de passe</label>
+                    <div class="form-text text-danger"><?=$errorConfimPass ?? ''?></div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="submit" name="submitNewMdp" class="btn btn-primary bgYellow">Envoyé</button>
+            </div>
+        </form>
+    </div>
+<?php }elseif (isset($_GET['mdp']) == 'forget') { ?>
+    <div class="myForm">
+        <form class="modal-content myModal" action="login.php" method="POST">
+            <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Changement de mot de passe</h3>
+            </div>
+            <div class="modal-body pt-0">
+            <div class="mb-4">Vous êtes un nouvel utilisateur ? <a href="signIn.php" class="text-warning" >Créez un compte</a></div>
+                <div class="mb-3 form-floating">
+                    <input type="email" class="form-control <?=isset($errorLog) ? 'is-invalid' : ''?>" id="email" name="mail" placeholder="name@example.com" value="<?= $_POST['login'] ?? '' ?>">
+                    <label for="email" class="text-muted">Addresse mail</label>
+                    <div class="form-text text-danger"><?=$errorLog ?? ''?></div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="submit" name="submitForgetMdp" class="btn btn-primary bgYellow">Envoyé</button>
+            </div>
+        </form>
+    </div>
+<?php } else { ?>
     <div class="myForm">
         <form class="modal-content myModal" action="login.php" method="POST">
             <div class="modal-header">
@@ -39,11 +82,14 @@
                     <div class="form-text text-danger"><?=$errorPass ?? ''?></div>
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer justify-content-between">
                 <button type="submit" name="submitLogin" class="btn btn-primary bgYellow">Connection</button>
+                <a href="../views/login.php?mdp=forget" class="text-white">Mot de passe oublié ?</a>
             </div>
         </form>
     </div>
+
+    <?php } ?>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 <!--     <script src="./assets/js/magic.js"></script> -->
 

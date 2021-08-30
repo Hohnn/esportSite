@@ -169,4 +169,14 @@ class UserModel extends database {
         $result->execute();
         return $result;
     }
+
+    public function setToken($id, $token) {
+        $bdd = $this->connectDatabase();
+        $condition = "UPDATE user SET user_token = ? WHERE user_id = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $token, PDO::PARAM_STR);
+        $result->bindValue(2, $id, PDO::PARAM_INT);
+        $result->execute();
+        return $result;
+    }
 }

@@ -125,4 +125,5 @@ function displayLogError($errorLog) {
 
 /* $test = file_get_contents("https://battlefieldtracker.com/bfv/profile/origin/hohnn/overview");
 var_dump($test); */
+
 ?> 
