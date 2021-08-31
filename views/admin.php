@@ -20,55 +20,44 @@
                     <h1>ADMINISTRATION</h1>
 <?php if (isset($_GET['edit']) == 'match') { ?>
                     <div class="container-md">
-                        <form class="row g-3 myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
-                            <div class="col-md-6">    
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Nom d'équipe" required>
-                                        <div class="invalid-feedback ">Nom invalide</div>
-                                    </div>
-                                    <div class="col">
-                                        <div>
-                                            <i class="bi bi-person-circle me-3"></i>
-                                            <label for="fileToUpload" class="upload">Parcourir...</label>
-                                            <input class="form-control d-none" id="fileToUpload" type="file" name="logo" accept="image/png, image/jpg, image/jpeg">
-                                            <div class="logInvalid"><?= $uploaded[0] ?? '' ?></div>
-                                        </div>
-                                    </div>
-                                </div> 
+                        <form class="row pt-3 myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
+                            <div class="col-sm-5">
+                                <select class="form-select" aria-label="Default select example" name="team1" required>
+                                    <option selected hidden>équipe n°1</option>
+<?php  for ($i=8; $i < 18; $i++) { 
+if ($i >=  8 || $i <= 17) {  ?>
+                                    <option value="<?= $i ?>" <?= $i == 12 ? 'disabled' : '' ?>><?= $i ?> : 00</option>
+<?php }} ?>
+                                </select>
+                            </div>
+                            <div class="col-sm-2 d-flex justify-content-center align-items-center text-yellow">VS</div>
+                            <div class="col-sm-5">
+                                <select class="form-select" aria-label="Default select example" name="team2" required>
+                                    <option selected hidden>équipe n°2</option>
+<?php  for ($i=8; $i < 18; $i++) { 
+if ($i >=  8 || $i <= 17) {  ?>
+                                    <option value="<?= $i ?>" <?= $i == 12 ? 'disabled' : '' ?>><?= $i ?> : 00</option>
+<?php }} ?>
+                                </select>
                             </div>   
-                            <div class="col-md-6">    
+                            <div class="col-12 g-3 mb-0">
                                 <div class="row g-3">
-                                    <div class="col">
-                                        <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Nom d'équipe" required>
-                                        <div class="invalid-feedback ">Nom invalide</div>
-                                    </div>
-                                    <div class="col">
-                                        <div>
-                                            <i class="bi bi-person-circle me-3"></i>
-                                            <label for="fileToUpload" class="upload">Parcourir...</label>
-                                            <input class="form-control d-none" id="fileToUpload" type="file" name="logo" accept="image/png, image/jpg, image/jpeg">
-                                            <div class="logInvalid"><?= $uploaded[0] ?? '' ?></div>
-                                        </div>
-                                    </div>
-                                </div> 
-                            </div>   
-                                <div class="row g-3 mb-0">
-                                    <div class="col">
+                                    <div class="col minSet">
                                         <div class="row g-2">
-                                            <div class="col">
-                                                <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Score" required>
-                                                <div class="invalid-feedback ">Score invalide</div>
+                                            <div class="col-5">
+                                                <input type="text" class="form-control" name="score1Team1" id="score1Team1" value="" placeholder="Score T1" required>
+                                                <div class="invalid-feedback ">non valide</div>
                                             </div>
-                                            <div class="col">
-                                                <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Score" required>
-                                                <div class="invalid-feedback ">Score invalide</div>
+                                            <div class="col-2 d-flex justify-content-center align-items-center text-yellow">/</div>
+                                            <div class="col-5">
+                                                <input type="text" class="form-control" name="score1Team2" id="score1Team2" value="" placeholder="Score T2" required>
+                                                <div class="invalid-feedback ">non valide</div>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col">
-                                                <select class="form-select" aria-label="Default select example" name="hour" required>
-                                                    <option selected hidden><?= 'test' ?></option>
+                                                <select class="form-select" aria-label="Default select example" name="map1" required>
+                                                    <option selected hidden>Carte n°1</option>
         <?php  for ($i=8; $i < 18; $i++) { 
             if ($i >=  8 || $i <= 17) {  ?>
                                                     <option value="<?= $i ?>" <?= $i == 12 ? 'disabled' : '' ?>><?= $i ?> : 00</option>
@@ -77,43 +66,22 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col">
+                                    <div class="col minSet">
                                         <div class="row g-2">
-                                            <div class="col">
-                                                <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Score" required>
+                                            <div class="col-5">
+                                                <input type="text" class="form-control" name="score2Team1" id="score2Team1" value="" placeholder="Score T1" required>
                                                 <div class="invalid-feedback ">Score invalide</div>
                                             </div>
-                                            <div class="col">
-                                                <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Score" required>
+                                            <div class="col-2 d-flex justify-content-center align-items-center text-yellow">/</div>
+                                            <div class="col-5">
+                                                <input type="text" class="form-control" name="score2Team2" id="score2Team2" value="" placeholder="Score T2" required>
                                                 <div class="invalid-feedback ">Score invalide</div>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col">
                                                 <select class="form-select" aria-label="Default select example" name="hour" required>
-                                                    <option selected hidden><?= 'test' ?></option>
-        <?php  for ($i=8; $i < 18; $i++) { 
-            if ($i >=  8 || $i <= 17) {  ?>
-                                                    <option value="<?= $i ?>" <?= $i == 12 ? 'disabled' : '' ?>><?= $i ?> : 00</option>
-        <?php }} ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div><div class="col">
-                                        <div class="row g-2">
-                                            <div class="col">
-                                                <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Score" required>
-                                                <div class="invalid-feedback ">Score invalide</div>
-                                            </div>
-                                            <div class="col">
-                                                <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Score" required>
-                                                <div class="invalid-feedback ">Score invalide</div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col">
-                                                <select class="form-select" aria-label="Default select example" name="hour" required>
-                                                    <option selected hidden><?= 'test' ?></option>
+                                                    <option selected hidden>Carte n°2</option>
         <?php  for ($i=8; $i < 18; $i++) { 
             if ($i >=  8 || $i <= 17) {  ?>
                                                     <option value="<?= $i ?>" <?= $i == 12 ? 'disabled' : '' ?>><?= $i ?> : 00</option>
@@ -122,9 +90,37 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>    
-                                <div class="row g-3">
-                                    <div class="col">
+                                    <div class="col minSet">
+                                        <div class="row g-2">
+                                            <div class="col-5">
+                                                <input type="text" class="form-control" name="score3Team1" id="score3Team1" value="" placeholder="Score T1" required>
+                                                <div class="invalid-feedback ">Score invalide</div>
+                                            </div>
+                                            <div class="col-2 d-flex justify-content-center align-items-center text-yellow">/</div>
+                                            <div class="col-5">
+                                                <input type="text" class="form-control" name="score3Team2" id="score3Team2" value="" placeholder="Score T2" required>
+                                                <div class="invalid-feedback ">Score invalide</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row mt-2">
+                                            <div class="col">
+                                                <select class="form-select" aria-label="Default select example" name="hour" required>
+                                                    <option selected hidden>Carte n°3</option>
+        <?php  for ($i=8; $i < 18; $i++) { 
+            if ($i >=  8 || $i <= 17) {  ?>
+                                                    <option value="<?= $i ?>" <?= $i == 12 ? 'disabled' : '' ?>><?= $i ?> : 00</option>
+        <?php }} ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>  
+
+                                <div class="col-12 g-3">
+                                    <div class="row g-3">
+                                    <div class="col minSet">
                                         <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Evenement" required>
                                         <div class="invalid-feedback ">Nom invalide</div>
                                     </div>
@@ -132,13 +128,14 @@
                                         <input type="date" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Date" required>
                                         <div class="invalid-feedback ">Nom invalide</div>
                                     </div>
-                                    <div class="col">
+                                    <div class="col minSet">
                                         <input type="link" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Lien" required>
                                         <div class="invalid-feedback ">Nom invalide</div>
                                     </div>
-                                </div>    
+                                </div>  
+                                </div>  
                                 
-                            <div class="w-100 d-flex mt-2">
+                            <div class="col d-flex mt-2">
                                 <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" id="submit" name="submit" data-submit="<?= isset($count) && $count == 0 ? "valid" : "invalid" ?>">Valider</button>
                             </div>
                         </form>

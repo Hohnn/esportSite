@@ -26,4 +26,12 @@ section form .wrap {
 section form .wrap input {
   width: 200px;
 }
+
+.minSet {
+  min-width: 220px;
+}
+
+.text-yellow {
+  color: #ffc107;
+}
 /*# sourceMappingURL=admin.css.map */
