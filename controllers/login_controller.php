@@ -30,7 +30,7 @@ $membersList = json_decode($members)->members; */
 if (isset($_POST['logout'])) {
     session_unset();
     session_destroy();
-    header('location: index.php');
+    header('location: ../index.php');
 }
 
                             //Préciser qu'il faut utiliser le texte brut
@@ -53,7 +53,7 @@ if (isset($_POST['submitForgetMdp'])) {
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Accepter SSL
         $mail->Port = 465;
         $mail->setFrom('dawesportbf@gmail.com', 'DAW eSport'); // Personnaliser l'envoyeur
-        $mail->AddAddress("anousone.mounivongs@novei.fr");
+        $mail->AddAddress("$email");
         $mail->Subject    =  'Changement de mot de passe';                      //Le sujet du mail           //Nombre de caracteres pour le retour a la ligne automatique
         $mail->Body = 'Bonjour, pour finaliser l\'opération, veuillez entrer votre nouveau mot de passe à l\'adresse suivante : <a href="http://esportsite/views/login.php?token=' . $token . '">cliquez ici</a>'; 	       //Texte brut
         $mail->IsHTML(true); 
@@ -68,7 +68,6 @@ if (isset($_POST['submitForgetMdp'])) {
     } else {
         $errorLog = "Cette adresse mail n'est pas inscrit";
     }
-
 }
 
 if (isset($_POST['submitNewMdp'])) {
@@ -78,6 +77,7 @@ if (isset($_POST['submitNewMdp'])) {
     if (!empty($pass) && $pass == $confirmPass) {
         $passHash = password_hash($pass, PASSWORD_DEFAULT);
         if ($User->setUpdateUserPassword($token, $passHash)) {
+            $User->removeUserToken($token);
             header('location: /views/login.php?updatePass=success');
         } else {
             header('location: /views/login.php?updatePass=error');

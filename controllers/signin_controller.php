@@ -1,6 +1,6 @@
 <?php
 
-function isValid($pattern, $subject){ //vérifie la regex puis renvoi vrai ou faux
+/* function isValid($pattern, $subject){ //vérifie la regex puis renvoi vrai ou faux
     if (preg_match($pattern, $subject)) {
         return true;
     } else {
@@ -21,7 +21,7 @@ function isSame($value1, $value2){ //compart si les mdp sont identique
         return true;
     }
 }
-
+ */
 $name = htmlspecialchars($_POST['name'] ?? 'Vide');
 $firstname = htmlspecialchars($_POST['firstname'] ?? 'Vide');
 $age = htmlspecialchars($_POST['age'] ?? 'Vide');

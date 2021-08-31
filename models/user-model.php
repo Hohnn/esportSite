@@ -18,7 +18,7 @@ class UserModel extends database {
 
     public function getAllUser() {
         $bdd = $this->connectDatabase();
-        $condition = "SELECT * FROM user NATURAL JOIN `status` ";
+        $condition = "SELECT * FROM user NATURAL JOIN `status` NATURAL JOIN `defaultlogo` ";
         $result = $bdd->query($condition)->fetchAll();
         return $result;
     }
@@ -109,5 +109,18 @@ class UserModel extends database {
         } else {
             return false;
         }
+    }
+
+    public function setUpdateUserStatus($id, $status) {
+
+    }
+
+    public function removeUserToken($token) {
+        $bdd = $this->connectDatabase();
+        $condition = "UPDATE user SET user_token = NULL WHERE user_token = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $token, PDO::PARAM_STR);
+        $result->execute();
+        return $result;
     }
 }
