@@ -31,9 +31,9 @@ if (isset($_POST['submitLogin'])) {
         if (password_verify($password, $user['USER_PASSWORD'])) {
             $_SESSION['user'] = $user['USER_USERNAME'];
             $_SESSION['id'] = $user['USER_ID'];
-            header('Location: ../index.php');
+            header('Location: ../views/user.php');
         } else {
-            $errorPass = 'Ce mot de passe n’est pas correct.';
+            $errorPass = 'Ce mot de passe n’est pas valide.';
         }
     } else {
         $errorLog = 'Mauvaise adresse mail';

@@ -36,6 +36,9 @@
   width: 100%;
   position: relative;
   z-index: 10;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .body .myForm form {
@@ -90,5 +93,25 @@
   body {
     overflow-y: scroll;
   }
+}
+
+.mySuccess {
+  background-color: rgba(2, 255, 2, 0.473);
+  border-color: green;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.brand-login {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fca311;
+  border: none;
+}
+
+.brand-login span {
+  color: white;
+  font-weight: 300;
+  font-size: 1.5rem;
 }
 /*# sourceMappingURL=signIn.css.map */

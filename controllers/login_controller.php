@@ -33,51 +33,57 @@ if (isset($_POST['logout'])) {
     header('location: index.php');
 }
 
-$mail = new PHPMailer(true);
-$mail->isSMTP();
-$mail->SMTPSecure = 'tls';
-$mail->SMTPDebug  = 2; 
-$mail->Host = 'smtp.gmail.com';
-$mail->SMTPAuth = true;
-$mail->Username   =  'dawesportbf@gmail.com';   //Adresse email à utiliser
-$mail->Password   =  'E7NXyZkDpUoBCF';         //Mot de passe de l'adresse email à utiliser
-$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Accepter SSL
-$mail->Port = 465;
+                            //Préciser qu'il faut utiliser le texte brut
 
-/*         $mail->SMTPAuth = 1; */
-/*         $mail->CharSet = 'UTF-8'; //Format d'encodage à utiliser pour les caractères
-if($mail->SMTPAuth){
-    $mail->SMTPSecure = 'ssl';               //Protocole de sécurisation des échanges avec le SMTP
-    $mail->Username   =  'jean-bateee@hotmail.fr';   //Adresse email à utiliser
-    $mail->Password   =  '9YEG4tPNHShXj8';         //Mot de passe de l'adresse email à utiliser
-} */
-/*         $mail->smtpConnect(); */
-$mail->setFrom('from@example.com', 'Mailer'); // Personnaliser l'envoyeur
-$mail->AddAddress('jean-bateee@hotmail.fr');
-$mail->Subject    =  'Mon sujet';                      //Le sujet du mail
-/* $mail->WordWrap   = 50; 	 */		                   //Nombre de caracteres pour le retour a la ligne automatique
-$mail->Body = 'Mon message en texte brut test'; 	       //Texte brut
-$mail->IsHTML(true);                             //Préciser qu'il faut utiliser le texte brut
-
+$User = new UserModel();
 
 if (isset($_POST['submitForgetMdp'])) {
     $email = htmlspecialchars($_POST['mail']) ?? '';
-$User = new UserModel();
     $user = $User->getUserByMail($email) ?? false;
     if ($user) {
         $token = bin2hex(random_bytes(10));
+        $mail = new PHPMailer(true);
+        $mail->isSMTP();
+        $mail->SMTPSecure = 'tls';
+/*         $mail->SMTPDebug  = 2;  */
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username   =  'dawesportbf@gmail.com';   //Adresse email à utiliser
+        $mail->Password   =  'E7NXyZkDpUoBCF';         //Mot de passe de l'adresse email à utiliser
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Accepter SSL
+        $mail->Port = 465;
+        $mail->setFrom('dawesportbf@gmail.com', 'DAW eSport'); // Personnaliser l'envoyeur
+        $mail->AddAddress("anousone.mounivongs@novei.fr");
+        $mail->Subject    =  'Changement de mot de passe';                      //Le sujet du mail           //Nombre de caracteres pour le retour a la ligne automatique
+        $mail->Body = 'Bonjour, pour finaliser l\'opération, veuillez entrer votre nouveau mot de passe à l\'adresse suivante : <a href="http://esportsite/views/login.php?token=' . $token . '">cliquez ici</a>'; 	       //Texte brut
+        $mail->IsHTML(true); 
         $User->setToken($user['USER_ID'], $token);
-        header("location: /views/login.php?token=$token");
+        /* header("location: /views/login.php?token=$token"); */
+        if (!$mail->send()) {
+            echo 'Erreur, message non envoyé.';
+            echo $mail->ErrorInfo;
+        } else{
+            $mailSuccess = "Un mail vous à été envoyé avec les instructions à suivre.";
+        }
+    } else {
+        $errorLog = "Cette adresse mail n'est pas inscrit";
     }
-    /* if (!$mail->send()) {
-        echo 'Erreur, message non envoyé.';
-        echo $mail->ErrorInfo;
-    } else{
-        echo 'Message bien envoyé';
-    } */
+
 }
 
 if (isset($_POST['submitNewMdp'])) {
-
+    $token = htmlspecialchars($_POST['token']) ?? '';
+    $pass = htmlspecialchars($_POST['password']) ?? '';
+    $confirmPass = htmlspecialchars($_POST['confirmPassword']) ?? '';
+    if (!empty($pass) && $pass == $confirmPass) {
+        $passHash = password_hash($pass, PASSWORD_DEFAULT);
+        if ($User->setUpdateUserPassword($token, $passHash)) {
+            header('location: /views/login.php?updatePass=success');
+        } else {
+            header('location: /views/login.php?updatePass=error');
+        }
+    } else {
+        $errorConfirmPass = 'Les mots de passe ne correspondent pas';
+    }
 }
 ?>
