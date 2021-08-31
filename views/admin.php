@@ -20,16 +20,126 @@
                     <h1>ADMINISTRATION</h1>
 <?php if (isset($_GET['edit']) == 'match') { ?>
                     <div class="container-md">
-                        <form class="row myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
+                        <form class="row g-3 myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
                             <div class="col-md-6">    
-                                <div>
-                                    <label for="title">Nom de l'équipe n°1</label>
-                                    <input type="text" class="form-control" name="title" id="title" value="" required>
-                                    <div class="invalid-feedback ">Looks good!</div>
-                                </div>                                
-                            </div> 
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Nom d'équipe" required>
+                                        <div class="invalid-feedback ">Nom invalide</div>
+                                    </div>
+                                    <div class="col">
+                                        <div>
+                                            <i class="bi bi-person-circle me-3"></i>
+                                            <label for="fileToUpload" class="upload">Parcourir...</label>
+                                            <input class="form-control d-none" id="fileToUpload" type="file" name="logo" accept="image/png, image/jpg, image/jpeg">
+                                            <div class="logInvalid"><?= $uploaded[0] ?? '' ?></div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>   
+                            <div class="col-md-6">    
+                                <div class="row g-3">
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Nom d'équipe" required>
+                                        <div class="invalid-feedback ">Nom invalide</div>
+                                    </div>
+                                    <div class="col">
+                                        <div>
+                                            <i class="bi bi-person-circle me-3"></i>
+                                            <label for="fileToUpload" class="upload">Parcourir...</label>
+                                            <input class="form-control d-none" id="fileToUpload" type="file" name="logo" accept="image/png, image/jpg, image/jpeg">
+                                            <div class="logInvalid"><?= $uploaded[0] ?? '' ?></div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>   
+                                <div class="row g-3 mb-0">
+                                    <div class="col">
+                                        <div class="row g-2">
+                                            <div class="col">
+                                                <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Score" required>
+                                                <div class="invalid-feedback ">Score invalide</div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Score" required>
+                                                <div class="invalid-feedback ">Score invalide</div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col">
+                                                <select class="form-select" aria-label="Default select example" name="hour" required>
+                                                    <option selected hidden><?= 'test' ?></option>
+        <?php  for ($i=8; $i < 18; $i++) { 
+            if ($i >=  8 || $i <= 17) {  ?>
+                                                    <option value="<?= $i ?>" <?= $i == 12 ? 'disabled' : '' ?>><?= $i ?> : 00</option>
+        <?php }} ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row g-2">
+                                            <div class="col">
+                                                <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Score" required>
+                                                <div class="invalid-feedback ">Score invalide</div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Score" required>
+                                                <div class="invalid-feedback ">Score invalide</div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col">
+                                                <select class="form-select" aria-label="Default select example" name="hour" required>
+                                                    <option selected hidden><?= 'test' ?></option>
+        <?php  for ($i=8; $i < 18; $i++) { 
+            if ($i >=  8 || $i <= 17) {  ?>
+                                                    <option value="<?= $i ?>" <?= $i == 12 ? 'disabled' : '' ?>><?= $i ?> : 00</option>
+        <?php }} ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div><div class="col">
+                                        <div class="row g-2">
+                                            <div class="col">
+                                                <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Score" required>
+                                                <div class="invalid-feedback ">Score invalide</div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Score" required>
+                                                <div class="invalid-feedback ">Score invalide</div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col">
+                                                <select class="form-select" aria-label="Default select example" name="hour" required>
+                                                    <option selected hidden><?= 'test' ?></option>
+        <?php  for ($i=8; $i < 18; $i++) { 
+            if ($i >=  8 || $i <= 17) {  ?>
+                                                    <option value="<?= $i ?>" <?= $i == 12 ? 'disabled' : '' ?>><?= $i ?> : 00</option>
+        <?php }} ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>    
+                                <div class="row g-3">
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Evenement" required>
+                                        <div class="invalid-feedback ">Nom invalide</div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="date" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Date" required>
+                                        <div class="invalid-feedback ">Nom invalide</div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="link" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Lien" required>
+                                        <div class="invalid-feedback ">Nom invalide</div>
+                                    </div>
+                                </div>    
+                                
                             <div class="w-100 d-flex mt-2">
-                                <button class="btn btn-sm btn-primary ms-auto bgYellow px-3" type="submit" id="submit" name="submit" data-submit="<?= isset($count) && $count == 0 ? "valid" : "invalid" ?>">Valider</button>
+                                <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" id="submit" name="submit" data-submit="<?= isset($count) && $count == 0 ? "valid" : "invalid" ?>">Valider</button>
                             </div>
                         </form>
                     </div>
