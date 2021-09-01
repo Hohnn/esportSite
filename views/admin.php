@@ -1,5 +1,6 @@
 <?php 
     require_once __DIR__.'/../controllers/controller.php';
+    require_once __DIR__.'/../controllers/admin_controller.php';
 
 ?>
 
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../assets/sass/style.css">
     <link rel="stylesheet" href="../assets/sass/admin.css">
+    <link rel="stylesheet" href="../assets/sass/comp.css">
     <title>DAW esport</title>
 </head>
 <?php require __DIR__.'/../components/header.php' ?>
@@ -20,24 +22,26 @@
                     <h1>ADMINISTRATION</h1>
 <?php if (isset($_GET['edit']) == 'match') { ?>
                     <div class="container-md">
+                        <div class="row g-4">
+                            <div class="col-12 col-xl-7">
+
+                        
                         <form class="row pt-3 myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
                             <div class="col-sm-5">
                                 <select class="form-select" aria-label="Default select example" name="team1" required>
                                     <option selected hidden>équipe n°1</option>
-<?php  for ($i=8; $i < 18; $i++) { 
-if ($i >=  8 || $i <= 17) {  ?>
-                                    <option value="<?= $i ?>" <?= $i == 12 ? 'disabled' : '' ?>><?= $i ?> : 00</option>
-<?php }} ?>
+<?php  foreach ($allTeams as $team) { ?>
+                                    <option value="<?= $team['TEAM_ID'] ?>"><?= $team['TEAM_NAME'] ?></option>
+<?php } ?>
                                 </select>
                             </div>
                             <div class="col-sm-2 d-flex justify-content-center align-items-center text-yellow">VS</div>
                             <div class="col-sm-5">
                                 <select class="form-select" aria-label="Default select example" name="team2" required>
                                     <option selected hidden>équipe n°2</option>
-<?php  for ($i=8; $i < 18; $i++) { 
-if ($i >=  8 || $i <= 17) {  ?>
-                                    <option value="<?= $i ?>" <?= $i == 12 ? 'disabled' : '' ?>><?= $i ?> : 00</option>
-<?php }} ?>
+<?php  foreach ($allTeams as $team) { ?>
+                                    <option value="<?= $team['TEAM_ID'] ?>"><?= $team['TEAM_NAME'] ?></option>
+<?php } ?>
                                 </select>
                             </div>   
                             <div class="col-12 g-3 mb-0">
@@ -56,12 +60,11 @@ if ($i >=  8 || $i <= 17) {  ?>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col">
-                                                <select class="form-select" aria-label="Default select example" name="map1" required>
+                                                <select class="form-select" aria-label="Default select example" name="map" required>
                                                     <option selected hidden>Carte n°1</option>
-        <?php  for ($i=8; $i < 18; $i++) { 
-            if ($i >=  8 || $i <= 17) {  ?>
-                                                    <option value="<?= $i ?>" <?= $i == 12 ? 'disabled' : '' ?>><?= $i ?> : 00</option>
-        <?php }} ?>
+<?php  foreach ($allMaps as $map) { ?>
+                                                    <option value="<?= $map['MAPS_ID'] ?>"><?= $map['MAPS_NAME'] ?></option>
+<?php } ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -80,12 +83,11 @@ if ($i >=  8 || $i <= 17) {  ?>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col">
-                                                <select class="form-select" aria-label="Default select example" name="hour" required>
+                                                <select class="form-select" aria-label="Default select example" name="map2" required>
                                                     <option selected hidden>Carte n°2</option>
-        <?php  for ($i=8; $i < 18; $i++) { 
-            if ($i >=  8 || $i <= 17) {  ?>
-                                                    <option value="<?= $i ?>" <?= $i == 12 ? 'disabled' : '' ?>><?= $i ?> : 00</option>
-        <?php }} ?>
+<?php  foreach ($allMaps as $map) { ?>
+                                                    <option value="<?= $map['MAPS_ID'] ?>"><?= $map['MAPS_NAME'] ?></option>
+<?php } ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -105,12 +107,11 @@ if ($i >=  8 || $i <= 17) {  ?>
                                         
                                         <div class="row mt-2">
                                             <div class="col">
-                                                <select class="form-select" aria-label="Default select example" name="hour" required>
+                                                <select class="form-select" aria-label="Default select example" name="map3" required>
                                                     <option selected hidden>Carte n°3</option>
-        <?php  for ($i=8; $i < 18; $i++) { 
-            if ($i >=  8 || $i <= 17) {  ?>
-                                                    <option value="<?= $i ?>" <?= $i == 12 ? 'disabled' : '' ?>><?= $i ?> : 00</option>
-        <?php }} ?>
+<?php  foreach ($allMaps as $map) { ?>
+                                                    <option value="<?= $map['MAPS_ID'] ?>"><?= $map['MAPS_NAME'] ?></option>
+<?php } ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -121,24 +122,72 @@ if ($i >=  8 || $i <= 17) {  ?>
                                 <div class="col-12 g-3">
                                     <div class="row g-3">
                                     <div class="col minSet">
-                                        <input type="text" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Evenement" required>
+                                        <input type="text" class="form-control" name="event" id="event" value="" placeholder="Evenement" required>
                                         <div class="invalid-feedback ">Nom invalide</div>
                                     </div>
                                     <div class="col">
-                                        <input type="date" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Date" required>
+                                        <input type="date" class="form-control" name="match_date" id="match_date" value="" placeholder="Date" required>
                                         <div class="invalid-feedback ">Nom invalide</div>
                                     </div>
                                     <div class="col minSet">
-                                        <input type="link" class="form-control" name="team1Name" id="team1Name" value="" placeholder="Lien" required>
+                                        <input type="link" class="form-control" name="link" id="link" value="" placeholder="Lien" required>
                                         <div class="invalid-feedback ">Nom invalide</div>
                                     </div>
                                 </div>  
                                 </div>  
                                 
                             <div class="col d-flex mt-2">
-                                <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" id="submit" name="submit" data-submit="<?= isset($count) && $count == 0 ? "valid" : "invalid" ?>">Valider</button>
+                                <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" id="submit" name="submitMatch" data-submit="<?= isset($count) && $count == 0 ? "valid" : "invalid" ?>">Valider</button>
                             </div>
                         </form>
+                        </div>
+                        <div class="col matchCol">
+                            <div class="matchCard myCard">
+                                    <div class="imgBack">
+                                        <img class="maps" id="map1"  alt="">
+                                        <img class="maps" id="map2"  alt="">
+                                        <img class="maps" id=map3  alt="">
+                                    </div>
+                                    <header>
+                                        <div class="teamWrap">
+                                            <img id="logoTeam1"  class="teamLogo">
+                                            <span id="nameTeam1">DAW</span>
+                                        </div>
+                                        <div class="scoreWrap">
+                                            <div class="score">
+                                                <span id="score1map1">0</span>
+                                                <span>/</span>
+                                                <span id="score2map1">0</span>
+                                            </div>
+                                            <div class="score">
+                                                <span id="score1map2">0</span>
+                                                <span>/</span>
+                                                <span id="score2map2">0</span>
+                                            </div>
+                                            <div class="score">
+                                                <span id="score1map3">0</span>
+                                                <span>/</span>
+                                                <span id="score2map3">0</span>
+                                            </div>
+                                        </div>
+                                        <div class="teamWrap">
+                                            <img id="logoTeam2"  class="teamLogo">
+                                            <span id="nameTeam2">DAW</span>
+                                        </div>
+                                    </header>
+                                    <footer>
+                                        <div class="typeWrap">
+                                            <span id="event">Tournoi BSP</span>
+                                            <div id="dateEvent" class="date">25 mai</div>
+                                        </div>
+                                        <div class="vodWrap">
+                                            <span id="vod">VOD Twitch</span>
+                                            <a id="vodColor" href="#" class="btn bgTwitch"></a>
+                                        </div>
+                                    </footer>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 <?php } else { ?>
                     <div class="container-fluid">

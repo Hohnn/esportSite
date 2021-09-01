@@ -31,3 +31,25 @@ section {
 .text-yellow {
     color: #ffc107;
 }
+
+.matchCol {
+    max-width: unset !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .matchCard {
+        width: 100%;
+        max-width: 400px;
+        .imgBack {
+            .maps {
+                background-color: grey;
+            }
+            .maps:nth-child(2) {
+                background-color: rgb(75, 75, 75);
+            }
+        }
+        .teamLogo {
+            background-color: hsl(0, 0%, 20%);
+        }
+    }
+}
