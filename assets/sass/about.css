@@ -6,6 +6,8 @@
 .about .header {
   position: relative;
   z-index: 5;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.712);
+  color: rgba(255, 255, 255, 0.76);
 }
 
 .about .header .floatImg {
@@ -14,18 +16,21 @@
   -o-object-fit: cover;
      object-fit: cover;
   position: absolute;
-  right: 10vw;
+  right: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   z-index: -1;
   border-radius: 1rem;
+  -o-object-position: top;
+     object-position: top;
 }
 
 .about .header h1 {
   text-transform: initial !important;
   padding-left: 0;
   margin-bottom: 0;
+  font-size: 4rem;
 }
 
 .about .header h1 span {
@@ -63,6 +68,7 @@
   background-position: left;
   border-radius: 1rem;
   padding: 2rem 0.5rem;
+  margin-top: 6rem;
 }
 
 .about .fullImg h2 {
@@ -102,5 +108,65 @@
 
 .about .descCard h4::first-letter {
   text-transform: uppercase;
+}
+
+.about .descCard p {
+  font-weight: normal;
+}
+
+.knows img {
+  position: absolute;
+  right: -40px;
+  z-index: 0;
+  width: 500px;
+  height: 550px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 1rem;
+}
+
+.knows .step {
+  position: relative;
+  margin-top: 3rem;
+  z-index: 5;
+  color: white;
+  max-width: 500px;
+  margin-bottom: 6rem;
+}
+
+.knows .step h3 {
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.knows .step .wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-bottom: 3rem;
+}
+
+.knows .step .wrap span {
+  color: #fca311;
+  border: 1px solid #fca311;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.knows .step .wrap .title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.knows .step .wrap .desc {
+  color: rgba(255, 255, 255, 0.637);
+  font-weight: normal;
 }
 /*# sourceMappingURL=about.css.map */

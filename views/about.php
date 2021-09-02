@@ -18,114 +18,117 @@ require_once __DIR__.'/../controllers/controller.php';
 <?php require  __DIR__.'/../components/header.php' ?>
                 <section class="about" id="about">
                     
-                    <div class="container-fluid  mt-5">
+                    <div class="container  mt-5">
                         <div class="row g-3">
                             <div class="col " >
                                 <div class="header">
                                     <h1><span>DAW</span> eSport</h1>
                                     <div class="subtitle">Une équipe compétitive mais pas que ...</div>
-                                    <p class="tag">Rester informé sur l'actualité <br> et la compétition sur Battlefield</p>
+                                    <p class="tag">Rester informé sur l'actualité et la compétition sur Battlefield. <br> Faite vous connaitre grâce à votre profil.</p>
                                     <a href="login.php" class="btn bgYellow text-white">Créer un compte</a>
-                                <img class="floatImg" src="../assets/images/twisted.png" alt="twisted">
+                                <img class="floatImg d-none d-xl-block" src="../assets/images/head.png" alt="twisted">
                                     
                             </div>
                         </div>
                     </div>
                     <div class="fullImg">
-                        <h2>L'essentiel est regroupé pour un meilleur suivi !</h2>
+                        <h2>L'essentiel regroupé pour un meilleur suivi !</h2>
                         <p>les compétions eSport sont souvent difficile à suivre, 
                         les matchs et événements sont la plupart du temps organisé 
                         sur différente plate-forme</p>
                     </div>
-                    <div class="container-fluid  mt-5">
-                        <div class="row g-3">
+                        <div class="row g-5">
                             <div class="col " >
-                                <div class="descCard myCard">
+                                <div class="descCard myCard mx-auto">
                                     <div class="icon">
                                         <i class="bi bi-newspaper"></i>
                                     </div>
-                                    <h4>L'actualité</h4>
-                                    <p>Nous sélectionnons 3 articles qui nous semble pertinent pour les fans de la franchise</p>
+                                    <h4 class="">Actualités</h4>
+                                    <p>Nous sélectionnons 3 articles qui nous semble pertinent pour les fans de la franchise.</p>
                                 </div>
                             </div>
                             <div class="col " >
-                                <div class="descCard myCard">
+                                <div class="descCard myCard mx-auto">
                                     <div class="icon">
                                         <i class="bi bi-twitch"></i>
                                     </div>
                                     <h4>Twitch</h4>
-                                    <p>Découvrez ou redécouvrez les streamers en live actuellement sur le jeu</p>
+                                    <p>Découvrez ou redécouvrez les streamers en live actuellement sur le jeu.</p>
                                 </div>
                             </div>
                             <div class="col " >
-                                <div class="descCard myCard">
+                                <div class="descCard myCard mx-auto">
                                     <div class="icon">
                                         <i class="bi bi-youtube"></i>
                                     </div>
                                     <h4>Youtube</h4>
-                                    <p>Une sélection du meilleur contenu créer par la communauté pour les joueurs</p>
+                                    <p>Une sélection du meilleur contenu créer par la communauté pour les joueurs.</p>
                                 </div>
                             </div>
                             <div class="col " >
-                                <div class="descCard myCard">
+                                <div class="descCard myCard mx-auto">
                                     <div class="icon">
                                         <i class="bi bi-shield-shaded"></i>
                                     </div>
                                     <h4>équipes</h4>
-                                    <p>Les équipes les plus active seront répertorié avec leur joueurs les plus actifs</p>
+                                    <p>Les équipes les plus active seront répertorié avec leur joueurs les plus actifs.</p>
                                 </div>
                             </div>
-                            <div class="col " >
-                                <div class="descCard myCard">
+                            <div class="col" >
+                                <div class="descCard myCard mx-auto">
                                     <div class="icon">
                                         <i class="bi bi-window-sidebar"></i>
                                     </div>
                                     <h4>Tournois</h4>
-                                    <p>Un aperçu des derniers tournois répertorié avec les équipes qui y participe</p>
+                                    <p>Un aperçu des derniers tournois répertorié avec les équipes qui y participe.</p>
                                 </div>
                             </div>
                             <div class="col " >
-                                <div class="descCard myCard">
+                                <div class="descCard myCard mx-auto">
                                     <div class="icon">
                                         <i class="bi bi-window-sidebar"></i>
                                     </div>
                                     <h4>Matchs</h4>
-                                    <p>Les derniers matchs avec toutes les informations et la possibilité de revoir le match</p>
+                                    <p>Les derniers matchs avec toutes les informations et la possibilité de revoir le match.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="row g-3">
-                            <div class="col " >
-                                <img class="floatImg" src="../assets/images/twisted.png" alt="twisted">
+                        <div class="row knows mt-5">
+                            <div class="d-none d-sm-block col-sm-2  col-md-4 col-xl-5 position-relative">
+                                <img src="../assets/images/dev.jpg" alt="twisted">
+                            </div>
+                            <div class="col" >
                                 <div class="step">
                                     <h3>Faite vous connaitre !</h3>
                                     <div class="wrap">
-                                        <div class="number">
-                                            <span>01</span>
+                                        <span>01</span>
+                                        <div>
+                                            <div class="title">Créer votre compte</div>
+                                            <div class="desc">Indispensable pour profiter des déférentes fonctionnalités.</div>
                                         </div>
-                                        <div class="title">Créer votre compte</div>
-                                        <div class="desc">Indispensable pour profiter des déférentes fonctionnalités</div>
+
                                     </div>
                                     <div class="wrap">
-                                        <div class="number">
-                                            <span>02</span>
+                                        <span>02</span>
+                                        <div>
+                                            <div class="title">Personnalisé votre profil</div>
+                                            <div class="desc">Ajouter  votre compte de jeu et vos réseaux sociaux pour une expérience optimale.</div>
                                         </div>
-                                        <div class="title">Personnalisé votre profil</div>
-                                        <div class="desc">Ajouter  votre compte de jeu et vos réseaux sociaux pour une expérience optimale</div>
                                     </div>
                                     <div class="wrap">
-                                        <div class="number">
-                                            <span>03</span>
+                                        <span>03</span>
+                                        <div>
+                                            <div class="title">Profiter d'une visibilité accru</div>
+                                            <div class="desc">Votre équipe, vos matchs, vos states et vos réseaux sont maintenant regroupé et visible de tous.</div>
                                         </div>
-                                        <div class="title">Profiter d'une visibilité accru</div>
-                                        <div class="desc">Votre équipe, vos matchs, vos states et vos réseaux sont maintenant regroupé et visible de tous</div>
                                     </div>
                                 </div>
-                                
                             </div>
-                            
                         </div>
-                    </div>    
+                        </div>
+                        <footer>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore consectetur quidem asperiores nulla nostrum distinctio dicta amet necessitatibus quis minima debitis eum aspernatur enim ad laboriosam, sint fugiat nisi molestias libero optio sed esse inventore! Inventore, minima. Praesentium voluptatibus nam vel sequi adipisci non mollitia dignissimos culpa, consequuntur veniam sed iure quos quidem fugit facere atque repellendus illo iusto voluptas hic. Illo, placeat, itaque iure quae sapiente dignissimos, cum officiis labore eum omnis optio minima dolore praesentium quidem. Dolores velit eius, nam, enim quam quos dolorem culpa possimus mollitia quo omnis harum totam atque nemo officiis! Illo quasi laudantium doloribus?</p>
+                        </footer>
                 </section>
 
             </main>
