@@ -238,6 +238,8 @@ section h1::first-letter {
 
 .matchCol {
   max-width: 400px;
+  min-width: 320px;
+  min-height: 215px;
 }
 
 .matchCol .matchCard {
@@ -246,6 +248,7 @@ section h1::first-letter {
   position: relative;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .matchCol .matchCard:hover {
@@ -333,7 +336,11 @@ section h1::first-letter {
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
-  border: 2px solid #fca311;
+  border: 2px solid transparent;
+}
+
+.matchCol .matchCard header .teamWrap .win {
+  border-color: #fca311;
 }
 
 .matchCol .matchCard header .teamWrap span {

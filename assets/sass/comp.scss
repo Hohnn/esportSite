@@ -182,11 +182,14 @@ section {
 
 .matchCol {
     max-width: 400px;
+    min-width: 320px;
+    min-height: 215px;
     .matchCard {
         padding: 1rem;
         overflow: hidden;
         position: relative;
         transition: 0.3s;
+        cursor: pointer;
         &:hover {
             color: white;
             .imgBack {
@@ -248,7 +251,10 @@ section {
                     height: 80px;
                     border-radius: 50%;
                     object-fit: cover;
-                    border: 2px solid $yellow;
+                    border: 2px solid transparent;
+                }
+                .win {
+                    border-color: $yellow;
                 }
                 span {
                     display: block;

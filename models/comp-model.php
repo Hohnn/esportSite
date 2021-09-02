@@ -43,18 +43,28 @@ class CompModel extends database
         return $result;
     }
 
-    public function getMatches(): array
+    public function getAllMatches(): array
     {
         $bdd = $this->connectDatabase();
-        $condition = "SELECT B.TEAM_NAME, C.TEAM_NAME, S.SCORE_TEAM1, S.SCORE_TEAM2, M.MAPS_NAME, T.TOURNAMENT_NAME, A.MATCH_DATE, A.MATCH_LINK_VOD
+        $condition = "SELECT A.MATCH_ID, B.TEAM_SHORTNAME as TEAM1, B.TEAM_LOGO as TEAM1_LOGO, C.TEAM_SHORTNAME as TEAM2, C.TEAM_LOGO as TEAM2_LOGO, T.TOURNAMENT_NAME, DATE_FORMAT(A.MATCH_DATE, '%d %M') as MATCH_DATE, A.MATCH_LINK_VOD
         FROM esport.matches as A
         left join teams as B on A.TEAM1_ID = B.TEAM_ID
         left join teams as C on A.TEAM2_ID = C.TEAM_ID
-        left join matches_score as S on A.MATCH_ID = S.MATCH_ID
-        left join maps as M on S.MAPS_ID = M.MAPS_ID
-        left join tournament as T on A.TOURNAMENT_ID = T.TOURNAMENT_NAME";
+        left join tournament as T on A.TOURNAMENT_ID = T.TOURNAMENT_ID;";
         $result = $bdd->query($condition)->fetchAll();
         return $result;
+    }
+
+    public function getMatchScore($id) {
+        $bdd = $this->connectDatabase();
+        $condition = "SELECT S.MATCH_ID, S.SCORE_TEAM1, S.SCORE_TEAM2, M.MAPS_NAME, M.MAPS_ID
+        FROM esport.matches_score as S
+        left join maps as M on S.MAPS_ID = M.MAPS_ID
+        where S.MATCH_ID = ? ;";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $id, PDO::PARAM_INT);
+        $result->execute();
+        return $result->fetchAll();
     }
 
     public function addMatch($team1, $team2, $date, $link, $tournament, $id)
@@ -82,5 +92,12 @@ class CompModel extends database
         $result->bindValue(3, $map, PDO::PARAM_INT);
         $result->bindValue(4, $match_id, PDO::PARAM_INT);
         $result->execute();
+    }
+
+    public function getAllTournament() {
+        $bdd = $this->connectDatabase();
+        $condition = "SELECT * FROM tournament";
+        $result = $bdd->query($condition)->fetchAll();
+        return $result;
     }
 }

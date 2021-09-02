@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__.'/../controllers/controller.php';
+require_once __DIR__.'/../controllers/comp_controller.php';
+
 
 
 ?>
@@ -109,6 +111,9 @@ require_once __DIR__.'/../controllers/controller.php';
                     <h1 class="text-uppercase">Matchs <span>récent<span></span></span></h1>
                     <div class="container-fluid  mt-5">
                         <div class="row g-3">
+                            <?php foreach($allMatches as $match){
+                                echo displayMatch($match);
+                            } ?>
                             <div class="col matchCol" >
                                 <div class="matchCard myCard">
                                     <div class="imgBack">

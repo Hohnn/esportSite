@@ -107,7 +107,7 @@
                                         
                                         <div class="row mt-2">
                                             <div class="col">
-                                                <select class="form-select" aria-label="Default select example" name="map3" required>
+                                                <select class="form-select" aria-label="Default select example" name="map3">
                                                     <option selected hidden>Carte n°3</option>
 <?php  foreach ($allMaps as $map) { ?>
                                                     <option value="<?= $map['MAPS_ID'] ?>"><?= $map['MAPS_NAME'] ?></option>
@@ -122,8 +122,12 @@
                                 <div class="col-12 g-3">
                                     <div class="row g-3">
                                     <div class="col minSet">
-                                        <input type="text" class="form-control" name="event" id="event" value="" placeholder="Evenement" required>
-                                        <div class="invalid-feedback ">Nom invalide</div>
+                                        <select class="form-select" aria-label="Default select example" name="event" required>
+                                            <option selected hidden>Evènement</option>
+<?php  foreach ($allTournament as $tournament) { ?>
+                                            <option value="<?= $tournament['TOURNAMENT_ID'] ?>"><?= $tournament['TOURNAMENT_NAME'] ?></option>
+<?php } ?>
+                                        </select>
                                     </div>
                                     <div class="col">
                                         <input type="date" class="form-control" name="match_date" id="match_date" value="" placeholder="Date" required>
