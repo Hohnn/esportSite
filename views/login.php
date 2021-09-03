@@ -61,7 +61,6 @@
                 <input type="email" class="form-control <?=isset($errorLog) ? 'is-invalid' : ''?>" id="email" name="mail" placeholder="name@example.com" value="<?= $_POST['login'] ?? '' ?>">
                 <label for="email" class="text-muted">Addresse mail</label>
                 <div class="form-text text-danger"><?=$errorLog ?? ''?></div>
-                <a href=""></a>
             </div>
             </div>
             <div class="modal-footer justify-content-between">

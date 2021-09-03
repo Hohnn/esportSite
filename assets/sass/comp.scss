@@ -204,18 +204,20 @@ section {
             left: 0;
             filter: opacity(25%) saturate(1.5);
             transition: 0.3s;
-            .maps {
+            .maps, .maps2 {
                 position: absolute;
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
                 top: 0;
                 left: 0;
+            }
+            .maps {
                 &:first-of-type {
                     width: 50%;
                     object-position: 75%;
                 }
-                &:nth-last-of-type(2){
+                &:nth-of-type(2){
                     z-index: 5;
                     width: 50%;
                     left: 50%;
@@ -230,6 +232,20 @@ section {
                     object-position: 25%;
                 }
             }
+            .maps2 {
+                &:first-of-type {
+                    width: 60%;
+                    object-position: 75%;
+                }
+                &:last-of-type {
+                    width: 57%;
+                    left: unset;
+                    right: 0;
+                    object-position: 25%;
+                    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+                }
+            }
+            
         
         }
         header, footer {
@@ -306,6 +322,18 @@ section {
                     font-weight: lighter;
                 }
             }
+        }
+    }
+    .admin {
+        position: absolute;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        a {
+            padding: 0.5rem;
         }
     }
 }

@@ -840,4 +840,24 @@ main .topMembers .scroll .profil .desc span {
   -webkit-box-shadow: 0 0px 5px 1px #9147FF;
           box-shadow: 0 0px 5px 1px #9147FF;
 }
+
+.bgYoutube {
+  background-color: #ff2e2e !important;
+  border-color: #ff2e2e;
+}
+
+.bgYoutube:hover {
+  border-color: #ff2e2e;
+  -webkit-box-shadow: 0 0px 5px 1px #ff2e2e;
+          box-shadow: 0 0px 5px 1px #ff2e2e;
+}
+
+.mySuccess {
+  background-color: rgba(2, 255, 2, 0.473);
+  border-color: green;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: normal;
+  color: white;
+}
 /*# sourceMappingURL=style.css.map */

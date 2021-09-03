@@ -19,8 +19,10 @@ function displayMatch($match) {
     $regexTwitch = "/http(?:s)?:\/\/(?:www\.)?twitch\.tv\/([a-zA-Z0-9_]+)/";
     if (isValid($regexTwitch, $match['MATCH_LINK_VOD'])) {
         $vod = 'VOD Twitch';
+        $vodClass = 'bgTwitch';
     } elseif (isValid($regexYoutube, $match['MATCH_LINK_VOD'])) {
         $vod = 'VOD Youtube';
+        $vodClass = 'bgYoutube';
     } else {
         $vod = 'No VOD';
     }
@@ -29,8 +31,13 @@ function displayMatch($match) {
         <a href="<?= $match['MATCH_LINK_VOD'] ?>"  target="_blank" rel="noopener noreferrer">
         <div class="matchCard myCard">
             <div class="imgBack">
-                <?php foreach($score as $round){ ?>
-                <img class="maps" src="../assets/images/<?= $round['MAPS_ID'] ?>.jpg" alt="">
+                <?php foreach($score as $round){ 
+                    if (count($score) < 3) {
+                        $class = 'maps2';
+                    } else {
+                        $class = 'maps';
+                    }?>
+                <img class=" <?= $class ?? '' ?>" src="../assets/images/<?= $round['MAPS_ID'] ?>.jpg" alt="">
                 <?php } ?>
             </div>
             <header>
@@ -59,9 +66,16 @@ function displayMatch($match) {
                 </div>
                 <div class="vodWrap">
                     <span><?= $vod ?></span>
-                    <a href="<?= $match['MATCH_LINK_VOD'] ?>" class="btn bgTwitch"  target="_blank" rel="noopener noreferrer"></a>
+                    <a href="<?= $match['MATCH_LINK_VOD'] ?>" class="btn <?= $vodClass ?? '' ?>"  target="_blank" rel="noopener noreferrer"></a>
                 </div>
             </footer>
+            <div class="admin">
+                <a href="../views/admin.php?match=edit&matchId=<?= $match['MATCH_ID'] ?>"><i class="bi bi-pencil-square"></i></a>
+                <form action="" method="POST">
+                    <input type="hidden" name="matchId" value="<?= $match['MATCH_ID'] ?>">
+                    <button type="submitDeleteMatch" class="btn btn-danger"><i class="bi bi-x-square"></i></button>
+                </form>
+            </div>
         </div>
         </a>
     </div>

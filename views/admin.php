@@ -20,28 +20,37 @@
 <?php require __DIR__.'/../components/header.php' ?>
                 <section class="actu">
                     <h1>ADMINISTRATION</h1>
-<?php if (isset($_GET['edit']) == 'match') { ?>
+<?php if (isset($_GET['match']) || empty($_GET)) { ?>
                     <div class="container-md">
                         <div class="row g-4">
                             <div class="col-12 col-xl-7">
-
                         
                         <form class="row pt-3 myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
                             <div class="col-sm-5">
                                 <select class="form-select" aria-label="Default select example" name="team1" required>
+                                    <?php if ($_GET['match'] != 'edit') { ?>
                                     <option selected hidden>équipe n°1</option>
-<?php  foreach ($allTeams as $team) { ?>
+                                    <?php } ?>
+<?php  foreach ($allTeams as $team) { 
+    if ($_GET['match'] != 'edit') { ?>
                                     <option value="<?= $team['TEAM_ID'] ?>"><?= $team['TEAM_NAME'] ?></option>
-<?php } ?>
+<?php   } else { ?>
+                                    <option <?= $match['TEAM1_ID'] == $team['TEAM_ID'] ? 'selected' : '' ?> value="<?= $team['TEAM_ID'] ?>"><?= $team['TEAM_NAME'] ?></option>
+<?php } }?>
                                 </select>
                             </div>
                             <div class="col-sm-2 d-flex justify-content-center align-items-center text-yellow">VS</div>
                             <div class="col-sm-5">
-                                <select class="form-select" aria-label="Default select example" name="team2" required>
-                                    <option selected hidden>équipe n°2</option>
-<?php  foreach ($allTeams as $team) { ?>
+                                <select class="form-select" aria-label="Default select example" name="team1" required>
+                                    <?php if (isset($_GET['match']) && $_GET['match'] != 'edit') { ?>
+                                    <option selected hidden>équipe n°1</option>
+                                    <?php } ?>
+<?php  foreach ($allTeams as $team) { 
+    if (isset($_GET['match']) && $_GET['match'] != 'edit') { ?>
                                     <option value="<?= $team['TEAM_ID'] ?>"><?= $team['TEAM_NAME'] ?></option>
-<?php } ?>
+<?php   } else { ?>
+                                    <option <?= $match['TEAM2_ID'] == $team['TEAM_ID'] ? 'selected' : '' ?> value="<?= $team['TEAM_ID'] ?>"><?= $team['TEAM_NAME'] ?></option>
+<?php } }?>
                                 </select>
                             </div>   
                             <div class="col-12 g-3 mb-0">
@@ -49,22 +58,27 @@
                                     <div class="col minSet">
                                         <div class="row g-2">
                                             <div class="col-5">
-                                                <input type="text" class="form-control" name="score1Team1" id="score1Team1" value="" placeholder="Score T1" required>
+                                                <input type="text" class="form-control" name="score1Team1" id="score1Team1" value="<?= $matchScore[0]['SCORE_TEAM1'] ?? '' ?>" placeholder="Score T1" required>
                                                 <div class="invalid-feedback ">non valide</div>
                                             </div>
                                             <div class="col-2 d-flex justify-content-center align-items-center text-yellow">/</div>
                                             <div class="col-5">
-                                                <input type="text" class="form-control" name="score1Team2" id="score1Team2" value="" placeholder="Score T2" required>
+                                                <input type="text" class="form-control" name="score1Team2" id="score1Team2" value="<?= $matchScore[0]['SCORE_TEAM2'] ?? '' ?>" placeholder="Score T2" required>
                                                 <div class="invalid-feedback ">non valide</div>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col">
                                                 <select class="form-select" aria-label="Default select example" name="map" required>
+                                                <?php if (isset($_GET['match']) && $_GET['match'] != 'edit') { ?>
                                                     <option selected hidden>Carte n°1</option>
-<?php  foreach ($allMaps as $map) { ?>
+                                                <?php } ?>    
+<?php  foreach ($allMaps as $map) { 
+    if (isset($_GET['match']) && $_GET['match'] != 'edit') { ?>
                                                     <option value="<?= $map['MAPS_ID'] ?>"><?= $map['MAPS_NAME'] ?></option>
-<?php } ?>
+<?php   } else { ?>
+                                                    <option <?= $matchScore[0]['MAPS_ID'] == $map['MAPS_ID'] ? 'selected' : '' ?> value="<?= $map['MAPS_ID'] ?>"><?= $map['MAPS_NAME'] ?></option>
+<?php } } ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -72,22 +86,27 @@
                                     <div class="col minSet">
                                         <div class="row g-2">
                                             <div class="col-5">
-                                                <input type="text" class="form-control" name="score2Team1" id="score2Team1" value="" placeholder="Score T1" required>
+                                                <input type="text" class="form-control" name="score2Team1" id="score2Team1" value="<?= $matchScore[1]['SCORE_TEAM1'] ?? '' ?>" placeholder="Score T1" required>
                                                 <div class="invalid-feedback ">Score invalide</div>
                                             </div>
                                             <div class="col-2 d-flex justify-content-center align-items-center text-yellow">/</div>
                                             <div class="col-5">
-                                                <input type="text" class="form-control" name="score2Team2" id="score2Team2" value="" placeholder="Score T2" required>
+                                                <input type="text" class="form-control" name="score2Team2" id="score2Team2" value="<?= $matchScore[1]['SCORE_TEAM2'] ?? '' ?>" placeholder="Score T2" required>
                                                 <div class="invalid-feedback ">Score invalide</div>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col">
-                                                <select class="form-select" aria-label="Default select example" name="map2" required>
+                                                <select class="form-select" aria-label="Default select example" name="map" required>
+                                                <?php if ($_GET['match'] != 'edit') { ?>
                                                     <option selected hidden>Carte n°2</option>
-<?php  foreach ($allMaps as $map) { ?>
+                                                <?php } ?>    
+<?php  foreach ($allMaps as $map) { 
+    if (isset($_GET['match']) && $_GET['match'] != 'edit') { ?>
                                                     <option value="<?= $map['MAPS_ID'] ?>"><?= $map['MAPS_NAME'] ?></option>
-<?php } ?>
+<?php   } else { ?>
+                                                    <option <?= $matchScore[1]['MAPS_ID'] == $map['MAPS_ID'] ? 'selected' : '' ?> value="<?= $map['MAPS_ID'] ?>"><?= $map['MAPS_NAME'] ?></option>
+<?php } } ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -95,23 +114,28 @@
                                     <div class="col minSet">
                                         <div class="row g-2">
                                             <div class="col-5">
-                                                <input type="text" class="form-control" name="score3Team1" id="score3Team1" value="" placeholder="Score T1" required>
+                                                <input type="text" class="form-control" name="score3Team1" id="score3Team1" value="<?= $matchScore[2]['SCORE_TEAM1'] ?? '' ?>" placeholder="Score T1" required>
                                                 <div class="invalid-feedback ">Score invalide</div>
                                             </div>
                                             <div class="col-2 d-flex justify-content-center align-items-center text-yellow">/</div>
                                             <div class="col-5">
-                                                <input type="text" class="form-control" name="score3Team2" id="score3Team2" value="" placeholder="Score T2" required>
+                                                <input type="text" class="form-control" name="score3Team2" id="score3Team2" value="<?= $matchScore[2]['SCORE_TEAM2'] ?? '' ?>" placeholder="Score T2" required>
                                                 <div class="invalid-feedback ">Score invalide</div>
                                             </div>
                                         </div>
                                         
                                         <div class="row mt-2">
                                             <div class="col">
-                                                <select class="form-select" aria-label="Default select example" name="map3">
+                                                <select class="form-select" aria-label="Default select example" name="map" required>
+                                                <?php if (isset($_GET['match']) && $_GET['match'] != 'edit' || empty($matchScore[2])) { ?>
                                                     <option selected hidden>Carte n°3</option>
-<?php  foreach ($allMaps as $map) { ?>
+                                                <?php } ?>    
+<?php  foreach ($allMaps as $map) { 
+    if (isset($_GET['match']) && $_GET['match'] != 'edit') { ?>
                                                     <option value="<?= $map['MAPS_ID'] ?>"><?= $map['MAPS_NAME'] ?></option>
-<?php } ?>
+<?php   } else { ?>
+                                                    <option <?= !empty($matchScore[2]['MAPS_ID']) ? ($matchScore[2]['MAPS_ID'] == $map['MAPS_ID'] ? 'selected' : '') : '' ?> value="<?= $map['MAPS_ID'] ?>"><?= $map['MAPS_NAME'] ?></option>
+<?php } } ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -123,25 +147,34 @@
                                     <div class="row g-3">
                                     <div class="col minSet">
                                         <select class="form-select" aria-label="Default select example" name="event" required>
+                                            <?php if ($_GET['match'] != 'edit') { ?>
                                             <option selected hidden>Evènement</option>
-<?php  foreach ($allTournament as $tournament) { ?>
+                                            <?php } ?>
+<?php  foreach ($allTournament as $tournament) {
+    if (isset($_GET['match']) && $_GET['match'] != 'edit') { ?>
                                             <option value="<?= $tournament['TOURNAMENT_ID'] ?>"><?= $tournament['TOURNAMENT_NAME'] ?></option>
-<?php } ?>
+<?php   } else { ?>
+                                            <option <?= !empty($match['TOURNAMENT_ID']) ? ($match['TOURNAMENT_ID'] == $tournament['TOURNAMENT_ID'] ? 'selected' : '') : '' ?> value="<?= $tournament['TOURNAMENT_ID'] ?>"><?= $tournament['TOURNAMENT_NAME'] ?></option>
+<?php } }?>
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <input type="date" class="form-control" name="match_date" id="match_date" value="" placeholder="Date" required>
+                                        <input type="date" class="form-control" name="match_date" id="match_date" value="<?= $match['MATCH_DATE'] ?? '' ?>" placeholder="Date" required>
                                         <div class="invalid-feedback ">Nom invalide</div>
                                     </div>
                                     <div class="col minSet">
-                                        <input type="link" class="form-control" name="link" id="link" value="" placeholder="Lien" required>
+                                        <input type="link" class="form-control" name="link" id="link" value="<?= $match['MATCH_LINK_VOD'] ?? '' ?>" placeholder="Lien" required>
                                         <div class="invalid-feedback ">Nom invalide</div>
                                     </div>
                                 </div>  
-                                </div>  
+                            </div> 
                                 
                             <div class="col d-flex mt-2">
-                                <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" id="submit" name="submitMatch" data-submit="<?= isset($count) && $count == 0 ? "valid" : "invalid" ?>">Valider</button>
+<?php if (isset($_GET['match']) && $_GET['match'] != 'edit') { ?>
+                                <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitMatch" >Ajouter</button>
+<?php } else { ?>
+                                <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitMatchUpdate" >Modifier</button>
+<?php } ?>
                             </div>
                         </form>
                         </div>
@@ -193,7 +226,7 @@
                             </div>
                         </div>
                     </div>
-<?php } else { ?>
+<?php } if(empty($_GET)) { ?>
                     <div class="container-fluid">
                         <div class="row mt-5">
                             <div class="title">News n°1</div>
@@ -299,9 +332,28 @@
     </div>
 
 
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 110">
+    <div id="liveToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+            Le match a été ajouté avec succès !
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
     <!-- Script -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    <script src="../assets/js/admin.js"></script>
+    <?php if(isset($mailSuccess)){ ?>
+        <script>
+        let myToast =  new bootstrap.Toast(document.getElementById('liveToast'))
+        myToast.show()
+        
+        </script>
+    <?php } ?>
+    
+        <!--    <script src="../assets/js/admin.js"></script> -->
 </body>
 </html>

@@ -162,7 +162,7 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                                 </div>
                             </div>
                             <div class="col matchCol position-relative">
-                                <a href="../views/admin.php?edit=match">
+                                <a href="../views/admin.php?match=add">
                                     <div class="addCard"></div>
                                 </a>
                             </div>

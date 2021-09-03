@@ -692,3 +692,20 @@ main {
         box-shadow: 0 0px 5px 1px $twitch;
     }
 }
+.bgYoutube {
+    background-color: $youtube !important;
+    border-color: $youtube;
+    &:hover {
+        border-color: $youtube;
+        box-shadow: 0 0px 5px 1px $youtube;
+    }
+}
+
+.mySuccess {
+    background-color: rgba(2, 255, 2, 0.473);
+    border-color: green;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: normal;
+    color: white;
+}

@@ -50,9 +50,24 @@ class CompModel extends database
         FROM esport.matches as A
         left join teams as B on A.TEAM1_ID = B.TEAM_ID
         left join teams as C on A.TEAM2_ID = C.TEAM_ID
-        left join tournament as T on A.TOURNAMENT_ID = T.TOURNAMENT_ID;";
+        left join tournament as T on A.TOURNAMENT_ID = T.TOURNAMENT_ID
+        ORDER BY MATCH_ID DESC;";
         $result = $bdd->query($condition)->fetchAll();
         return $result;
+    }
+
+    public function getMatchAllInfos($id): array
+    {
+        $bdd = $this->connectDatabase();
+        $condition = "SELECT * FROM esport.matches as A
+        left join teams as B on A.TEAM1_ID = B.TEAM_ID
+        left join teams as C on A.TEAM2_ID = C.TEAM_ID
+        left join tournament as T on A.TOURNAMENT_ID = T.TOURNAMENT_ID
+        WHERE MATCH_ID = ? ;";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $id, PDO::PARAM_INT);
+        $result->execute();
+        return $result->fetch();
     }
 
     public function getMatchScore($id) {
