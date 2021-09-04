@@ -432,7 +432,15 @@ section h1::first-letter {
 }
 
 .matchCol .admin a {
-  padding: 0.5rem;
+  border-radius: 1rem 0rem;
+}
+
+.matchCol .admin a:hover {
+  opacity: 0.8;
+}
+
+.matchCol .admin button {
+  border-radius: 0rem 1rem;
 }
 
 .addCard {

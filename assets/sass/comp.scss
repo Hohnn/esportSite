@@ -332,8 +332,14 @@ section {
         left: 0;
         display: flex;
         justify-content: space-between;
-        a {
-            padding: 0.5rem;
+        a {    
+            border-radius: 1rem 0rem;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+        button {
+            border-radius: 0rem 1rem;
         }
     }
 }
