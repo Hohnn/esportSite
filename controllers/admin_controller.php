@@ -46,4 +46,24 @@ if (isset($_POST['submitMatchUpdate'])) {
     $success = 'modifié';
 }
 
+if (isset($_POST['submitTournament'])) {
+    $
+    $Comp->addTournament($_POST['name'], $_FILES['logo']['name'], $_POST['format'], $_POST['date'], $_POST['status'], $_POST['teams'], $_SESSION['id']);
+    /* var_dump($_POST, $_FILES['logo']['name']); */
+}
+
+if (isset($_GET['tournament']) && $_GET['tournament'] == 'edit') {
+    $tournament = $Comp->getTournament($_GET['tournamentId']);
+}
+
+if (isset($_POST['submitTournamentUpdate'])) {
+    if (empty($_FILES['logo']['name'])) {
+        $logo = $_POST['tournamentOldLogo'];
+    } else {
+        $logo = $_FILES['logo']['name'];
+    }
+    $Comp->updateTournament($_POST['tournamentId'], $_POST['name'], $_FILES['logo']['name'], $_POST['format'], $_POST['date'], $_POST['status'], $_POST['teams'], $_SESSION['id']);
+}
+
+
 

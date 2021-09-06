@@ -138,6 +138,7 @@ main .active {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 0.5rem;
+  min-height: 100px;
 }
 
 .tournamentCard:hover {
@@ -145,7 +146,7 @@ main .active {
           transform: translate(0, -0.5rem);
 }
 
-.tournamentCard > div:not(:first-child) {
+.tournamentCard > .stuff:not(:first-child) {
   border-left: 1px solid #fca311;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -417,32 +418,6 @@ section h1::first-letter {
   font-weight: lighter;
 }
 
-.matchCol .admin {
-  position: absolute;
-  top: 0;
-  z-index: 100;
-  width: 100%;
-  left: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.matchCol .admin a {
-  border-radius: 1rem 0rem;
-}
-
-.matchCol .admin a:hover {
-  opacity: 0.8;
-}
-
-.matchCol .admin button {
-  border-radius: 0rem 1rem;
-}
-
 .addCard {
   border-radius: 1rem;
   border: 1px solid #b3b3b3;
@@ -489,5 +464,31 @@ section h1::first-letter {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   background-color: #b3b3b3;
+}
+
+.admin {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.admin a {
+  border-radius: 1rem 0rem;
+}
+
+.admin a:hover {
+  opacity: 0.8;
+}
+
+.admin button {
+  border-radius: 0rem 1rem;
 }
 /*# sourceMappingURL=comp.css.map */

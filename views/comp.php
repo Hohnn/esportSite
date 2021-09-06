@@ -70,6 +70,16 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                     <h1 class="text-uppercase">tournois</h1>
                     <div class="container-fluid  mt-5">
                         <div class="row g-3">
+                            <div class="col-4 position-relative">
+                                <div class="tournamentCard">
+                                    <a href="../views/admin.php?tournament=add">
+                                        <div class="addCard"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php foreach($allTournaments as $tournament){
+                                echo displayTournament($tournament);
+                            } ?>
                             <div class="col-12" >
                                 <div class="tournamentCard myCard">
                                     <div class="brand">
@@ -111,10 +121,15 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                     <h1 class="text-uppercase">Matchs <span>récent<span></span></span></h1>
                     <div class="container-fluid  mt-5">
                         <div class="row g-3">
+                            <div class="col matchCol position-relative">
+                                <a href="../views/admin.php?match=add">
+                                    <div class="addCard"></div>
+                                </a>
+                            </div>
                             <?php foreach($allMatches as $match){
                                 echo displayMatch($match);
                             } ?>
-                            <div class="col matchCol" >
+                            <!-- <div class="col matchCol" >
                                 <div class="matchCard myCard">
                                     <div class="imgBack">
                                         <img class="maps" src="../assets/images/1.jpg" alt="">
@@ -160,12 +175,8 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                                         </div>
                                     </footer>
                                 </div>
-                            </div>
-                            <div class="col matchCol position-relative">
-                                <a href="../views/admin.php?match=add">
-                                    <div class="addCard"></div>
-                                </a>
-                            </div>
+                            </div> -->
+                            
                         </div>
                     </div>    
                 </section>
@@ -176,16 +187,16 @@ require_once __DIR__.'/../controllers/comp_controller.php';
     <!-- Modal -->
 <div class="modal fade" id="matchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+    <div class="modal-content text-dark">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="exampleModalLabel">Attention !</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        Vous êtes sur le point de supprimer un match.
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Annuler</button>
         <form action="" method="POST">
             <input type="hidden" id="matchId" name="matchId" value="">
             <button type="submit" name="submitDeleteMatch" class="btn btn-danger">Supprimer</button>

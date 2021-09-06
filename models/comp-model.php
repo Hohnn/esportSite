@@ -111,7 +111,7 @@ class CompModel extends database
 
     public function getAllTournament() {
         $bdd = $this->connectDatabase();
-        $condition = "SELECT * FROM tournament";
+        $condition = "SELECT *, DATE_FORMAT(TOURNAMENT_START, '%d/%m/%Y') as date FROM tournament";
         $result = $bdd->query($condition)->fetchAll();
         return $result;
     }
@@ -166,4 +166,52 @@ class CompModel extends database
         $result->bindValue(1, $matchId, PDO::PARAM_INT);
         $result->execute();
     }
+
+    public function addTournament( $name, $logo, $format, $start, $status, $teamId, $userId) {
+        $bdd = $this->connectDatabase();
+        $condition = "INSERT INTO tournament (TOURNAMENT_NAME, TOURNAMENT_LOGO, TOURNAMENT_FORMAT, TOURNAMENT_START, TOURNAMENT_STATUS, TEAM_ID, USER_ID) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $name, PDO::PARAM_STR);
+        $result->bindValue(2, $logo, PDO::PARAM_STR);
+        $result->bindValue(3, $format, PDO::PARAM_STR);
+        $result->bindValue(4, $start, PDO::PARAM_STR);
+        $result->bindValue(5, $status, PDO::PARAM_STR);
+        $result->bindValue(6, $teamId, PDO::PARAM_STR);
+        $result->bindValue(7, $userId, PDO::PARAM_INT);
+        $result->execute();
+    }
+
+    public function getTournament($id) {
+        $bdd = $this->connectDatabase();
+        $condition = "SELECT * FROM tournament WHERE TOURNAMENT_ID = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $id, PDO::PARAM_INT);
+        $result->execute();
+        return $result->fetch();
+    }
+
+    public function updateTournament($id, $name, $logo, $format, $start, $status, $teamId, $userId) {
+        $bdd = $this->connectDatabase();
+        $condition = "UPDATE tournament SET TOURNAMENT_NAME = ?, TOURNAMENT_LOGO = ?, TOURNAMENT_FORMAT = ?, TOURNAMENT_START = ?, TOURNAMENT_STATUS = ?, TEAM_ID = ?, USER_ID = ? WHERE TOURNAMENT_ID = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $name, PDO::PARAM_STR);
+        $result->bindValue(2, $logo, PDO::PARAM_STR);
+        $result->bindValue(3, $format, PDO::PARAM_STR);
+        $result->bindValue(4, $start, PDO::PARAM_STR);
+        $result->bindValue(5, $status, PDO::PARAM_STR);
+        $result->bindValue(6, $teamId, PDO::PARAM_STR);
+        $result->bindValue(7, $userId, PDO::PARAM_INT);
+        $result->bindValue(8, $id, PDO::PARAM_INT);
+        $result->execute();
+    }
+
+    public function deleteTournament($id) {
+        $bdd = $this->connectDatabase();
+        $condition = "DELETE FROM tournament WHERE TOURNAMENT_ID = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $id, PDO::PARAM_INT);
+        $result->execute();
+    }
+
+
 }

@@ -20,6 +20,75 @@
 <?php require __DIR__.'/../components/header.php' ?>
                 <section class="actu">
                     <h1>ADMINISTRATION</h1>
+<?php if (isset($_GET['tournament']) || empty($_GET)) { ?>
+                    <div class="container-md">
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <form class="row myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
+                                <div class="col-12">    
+                                <div class="row mt-4">
+                                    <div class="col">
+                                        <input type="hidden" name="tournamentOldLogo" value="<?= $tournament['TOURNAMENT_LOGO'] ?? '' ?>">
+                                        <input type="file" class="form-control" name="logo" id="tournamentLogo" required>
+                                        <div class="invalid-feedback ">non valide</div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="hidden" name="tournamentId" value="<?= $tournament['TOURNAMENT_ID'] ?? '' ?>">
+                                        <input type="text" class="form-control" name="name" id="tournamentName" value="<?= $tournament['TOURNAMENT_NAME'] ?? '' ?>" placeholder="Tournoi..." required>
+                                        <div class="invalid-feedback ">non valide</div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="col-12">
+                                    <div class="row mt-4">
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="format" id="format" value="<?= $tournament['TOURNAMENT_FORMAT']  ?? '' ?>" placeholder="Format... ex: 6v6 conquête escoude" required>
+                                        <div class="invalid-feedback ">non valide</div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="date" class="form-control" name="date" id="tournamentDate" value="<?= $tournament['TOURNAMENT_START']  ?? '' ?>" required>
+                                        <div class="invalid-feedback ">non valide</div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="status" id="tournamentStatus" value="<?= $tournament['TOURNAMENT_STATUS'] ?? '' ?>" placeholder="Status... ex: en cours" required>
+                                        <div class="invalid-feedback ">non valide</div>
+                                    </div>
+                                    <div class="col-12">
+<?php  foreach ($allTeams as $team) { 
+    if ($_GET['tournament'] != 'edit') { ?>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="teams[]" value="<?= $team['TEAM_ID'] ?>" require>
+                                            <label class="form-check-label" for="inlineCheckbox1"><?= $team['TEAM_NAME'] ?></label>
+                                        </div>
+<?php   } else { 
+    foreach ($tournament['TOURNAMENT_STATUS'] as $teamId) {
+        if ($teamId == $team['TEAM_ID']) {
+            $checked = 'checked';
+        } else {
+            $checked = '';
+        }
+    } ?>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="teams[]" value="<?= $team['TEAM_ID'] ?>" <?= $checked ?? '' ?> require>
+                                            <label class="form-check-label" for="inlineCheckbox1"><?= $team['TEAM_NAME'] ?></label>
+                                        </div>
+<?php } }?>
+                                        
+                                    </div>
+                                    </div>
+                                    </div>                       
+                                    <div class="col d-flex mt-2">
+<?php if (isset($_GET['tournament']) && $_GET['tournament'] != 'edit') { ?>
+                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTournament" >Ajouter</button>
+<?php } else { ?>
+                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTournamentUpdate" value="<?= $match['MATCH_ID'] ?? '' ?>" >Modifier</button>
+<?php } ?>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+<?php } ?>
 <?php if (isset($_GET['match']) || empty($_GET)) { ?>
                     <div class="container-md">
                         <div class="row g-4">
