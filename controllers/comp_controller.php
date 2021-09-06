@@ -70,13 +70,21 @@ function displayMatch($match) {
                 </div>
             </footer>
             <div class="admin">
-                <a href="../views/admin.php?match=edit&matchId=<?= $match['MATCH_ID'] ?>"><i class="bi bi-pencil-square"></i></a>
-                <form action="" method="POST">
-                    <input type="hidden" name="matchId" value="<?= $match['MATCH_ID'] ?>">
-                    <button type="submitDeleteMatch" class="btn btn-danger"><i class="bi bi-x-square"></i></button>
-                </form>
+                <a href="../views/admin.php?match=edit&matchId=<?= $match['MATCH_ID'] ?>" class="btn bg-success text-white"><i class="bi bi-pencil-square"></i></a>
+                <button type="button" id="deleteMatch" value="<?= $match['MATCH_ID'] ?>" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#matchModal"><i class="bi bi-x-square"></i></button>
             </div>
         </div>
         </a>
     </div>
 <?php }
+
+if (isset($_POST['submitDeleteMatch'])) {
+    $Comp->deleteScore($_POST['matchId']);
+    $Comp->deleteMatch($_POST['matchId']);
+    header("Refresh:0");
+}
+
+/* <form action="" method="POST">
+                    <input type="hidden" name="matchId" value="<?= $match['MATCH_ID'] ?>">
+                    <button type="submitDeleteMatch" class="btn btn-danger"><i class="bi bi-x-square"></i></button>
+                </form> */

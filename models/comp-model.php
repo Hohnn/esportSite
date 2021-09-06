@@ -72,7 +72,7 @@ class CompModel extends database
 
     public function getMatchScore($id) {
         $bdd = $this->connectDatabase();
-        $condition = "SELECT S.MATCH_ID, S.SCORE_TEAM1, S.SCORE_TEAM2, M.MAPS_NAME, M.MAPS_ID
+        $condition = "SELECT S.MATCH_ID, S.SCORE_TEAM1, S.SCORE_TEAM2, M.MAPS_NAME, M.MAPS_ID, SCORE_ID
         FROM esport.matches_score as S
         left join maps as M on S.MAPS_ID = M.MAPS_ID
         where S.MATCH_ID = ? ;";
@@ -114,5 +114,56 @@ class CompModel extends database
         $condition = "SELECT * FROM tournament";
         $result = $bdd->query($condition)->fetchAll();
         return $result;
+    }
+
+    public function updateMatch($matchId, $team1, $team2, $date, $link, $tournament, $userId) {
+        $bdd = $this->connectDatabase();
+        $condition = "UPDATE matches SET TEAM1_ID = ?, TEAM2_ID = ?, MATCH_DATE = ?, MATCH_LINK_VOD = ?, TOURNAMENT_ID = ?, USER_ID = ? WHERE MATCH_ID = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $team1, PDO::PARAM_INT);
+        $result->bindValue(2, $team2, PDO::PARAM_INT);
+        $result->bindValue(3, $date, PDO::PARAM_STR);
+        $result->bindValue(4, $link, PDO::PARAM_STR);
+        $result->bindValue(5, $tournament, PDO::PARAM_INT);
+        $result->bindValue(6, $userId, PDO::PARAM_INT);
+        $result->bindValue(7, $matchId, PDO::PARAM_INT);
+        $result->execute();
+    }
+
+    public function updateMatchScore($team1, $team2, $map, $score_id): void
+    {
+        $bdd = $this->connectDatabase();
+        
+        $condition = "UPDATE matches_score SET SCORE_TEAM1 = ?, SCORE_TEAM2 = ?, MAPS_ID = ? WHERE SCORE_ID = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $team1, PDO::PARAM_INT);
+        $result->bindValue(2, $team2, PDO::PARAM_INT);
+        $result->bindValue(3, $map, PDO::PARAM_INT);
+        $result->bindValue(4, $score_id, PDO::PARAM_INT);
+        $result->execute();
+    }
+
+    public function deleteMatchScore($scoreId) {
+        $bdd = $this->connectDatabase();
+        $condition = "DELETE FROM matches_score WHERE SCORE_ID = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $scoreId, PDO::PARAM_INT);
+        $result->execute();
+    }
+
+    public function deleteMatch($matchId) {
+        $bdd = $this->connectDatabase();
+        $condition = "DELETE FROM matches WHERE MATCH_ID = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $matchId, PDO::PARAM_INT);
+        $result->execute();
+    }
+
+    public function deleteScore($matchId) {
+        $bdd = $this->connectDatabase();
+        $condition = "DELETE FROM matches_score WHERE MATCH_ID = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $matchId, PDO::PARAM_INT);
+        $result->execute();
     }
 }

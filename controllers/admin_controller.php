@@ -17,12 +17,33 @@ if (isset($_POST['submitMatch'])) {
         $Comp->addMatchScore($_POST['score3Team1'], $_POST['score3Team2'], $_POST['map3'], $match_id);
     }
 
-    $mailSuccess = 'Le match est bien ajouté';
+    $success = 'ajouté';
 }
 
 if (isset($_GET['match']) && $_GET['match'] == 'edit') {
     $match = $Comp->getMatchAllInfos($_GET['matchId']);
     $matchScore = $Comp->getMatchScore($_GET['matchId']);
+}
+
+if (isset($_POST['submitMatchUpdate'])) {
+    $match_id = $_POST['submitMatchUpdate'];
+    $Comp->updateMatch($match_id, $_POST['team1'], $_POST['team2'], $_POST['match_date'], $_POST['link'], $_POST['event'], $_SESSION['id']);
+
+    $Comp->updateMatchScore($_POST['score1Team1'], $_POST['score1Team2'], $_POST['map'], $_POST['score1Id']);
+    $Comp->updateMatchScore($_POST['score2Team1'], $_POST['score2Team2'], $_POST['map2'], $_POST['score2Id']);
+
+    if (empty($_POST['score3Id'])) {
+        if (strlen($_POST['score3Team1']) > 0 && strlen($_POST['score3Team2']) > 0) {
+            $Comp->addMatchScore($_POST['score3Team1'], $_POST['score3Team2'], $_POST['map3'], $match_id);
+        }
+    } else {
+        if (strlen($_POST['score3Team1']) > 0 && strlen($_POST['score3Team2']) > 0) {
+            $Comp->updateMatchScore($_POST['score3Team1'], $_POST['score3Team2'], $_POST['map3'], $_POST['score3Id']);
+        } else {
+            $Comp->deleteMatchScore($_POST['score3Id']);
+        }
+    }
+    $success = 'modifié';
 }
 
 
