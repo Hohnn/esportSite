@@ -80,7 +80,7 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                         <?php foreach($allTournaments as $tournament){
                                 echo displayTournament($tournament);
                             } ?>
-                            <div class="col-12" >
+                            <!-- <div class="col-12" >
                                 <div class="tournamentCard myCard">
                                     <div class="brand">
                                         <img src="../assets/images/teamLogo/daw.png" alt="" class="orgLogo">
@@ -112,7 +112,7 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                                     </div>
                                     <a href="#" class="link"></a>
                                 </div>
-                            </div>
+                            </div> -->
                         
                         </div>
                     </div>    
@@ -200,6 +200,28 @@ require_once __DIR__.'/../controllers/comp_controller.php';
         <form action="" method="POST">
             <input type="hidden" id="matchId" name="matchId" value="">
             <button type="submit" name="submitDeleteMatch" class="btn btn-danger">Supprimer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Modal -->
+<div class="modal fade" id="tournamentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content text-dark">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="exampleModalLabel">Attention !</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Vous êtes sur le point de supprimer un tournoi. <br> Tous les matchs associés seront également supprimés.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Annuler</button>
+        <form action="" method="POST">
+            <input type="hidden" id="tournamentId" name="tournamentId" value="">
+            <button type="submit" name="submitDeleteTournament" class="btn btn-danger">Supprimer</button>
         </form>
       </div>
     </div>

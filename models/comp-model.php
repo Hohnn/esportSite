@@ -167,17 +167,18 @@ class CompModel extends database
         $result->execute();
     }
 
-    public function addTournament( $name, $logo, $format, $start, $status, $teamId, $userId) {
+    public function addTournament( $name, $logo, $format, $start, $status, $link, $teamId, $userId) {
         $bdd = $this->connectDatabase();
-        $condition = "INSERT INTO tournament (TOURNAMENT_NAME, TOURNAMENT_LOGO, TOURNAMENT_FORMAT, TOURNAMENT_START, TOURNAMENT_STATUS, TEAM_ID, USER_ID) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $condition = "INSERT INTO tournament (TOURNAMENT_NAME, TOURNAMENT_LOGO, TOURNAMENT_FORMAT, TOURNAMENT_START, TOURNAMENT_STATUS, TOURNAMENT_LINK, TEAM_ID, USER_ID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $result = $bdd->prepare($condition);
         $result->bindValue(1, $name, PDO::PARAM_STR);
         $result->bindValue(2, $logo, PDO::PARAM_STR);
         $result->bindValue(3, $format, PDO::PARAM_STR);
         $result->bindValue(4, $start, PDO::PARAM_STR);
         $result->bindValue(5, $status, PDO::PARAM_STR);
-        $result->bindValue(6, $teamId, PDO::PARAM_STR);
-        $result->bindValue(7, $userId, PDO::PARAM_INT);
+        $result->bindValue(6, $link, PDO::PARAM_STR);
+        $result->bindValue(7, $teamId, PDO::PARAM_STR);
+        $result->bindValue(8, $userId, PDO::PARAM_INT);
         $result->execute();
     }
 
@@ -190,18 +191,19 @@ class CompModel extends database
         return $result->fetch();
     }
 
-    public function updateTournament($id, $name, $logo, $format, $start, $status, $teamId, $userId) {
+    public function updateTournament($id, $name, $logo, $format, $start, $status, $link, $teamId, $userId) {
         $bdd = $this->connectDatabase();
-        $condition = "UPDATE tournament SET TOURNAMENT_NAME = ?, TOURNAMENT_LOGO = ?, TOURNAMENT_FORMAT = ?, TOURNAMENT_START = ?, TOURNAMENT_STATUS = ?, TEAM_ID = ?, USER_ID = ? WHERE TOURNAMENT_ID = ?";
+        $condition = "UPDATE tournament SET TOURNAMENT_NAME = ?, TOURNAMENT_LOGO = ?, TOURNAMENT_FORMAT = ?, TOURNAMENT_START = ?, TOURNAMENT_STATUS = ?, TOURNAMENT_LINK = ?, TEAM_ID = ?, USER_ID = ? WHERE TOURNAMENT_ID = ?";
         $result = $bdd->prepare($condition);
         $result->bindValue(1, $name, PDO::PARAM_STR);
         $result->bindValue(2, $logo, PDO::PARAM_STR);
         $result->bindValue(3, $format, PDO::PARAM_STR);
         $result->bindValue(4, $start, PDO::PARAM_STR);
         $result->bindValue(5, $status, PDO::PARAM_STR);
-        $result->bindValue(6, $teamId, PDO::PARAM_STR);
-        $result->bindValue(7, $userId, PDO::PARAM_INT);
-        $result->bindValue(8, $id, PDO::PARAM_INT);
+        $result->bindValue(6, $link, PDO::PARAM_STR);
+        $result->bindValue(7, $teamId, PDO::PARAM_STR);
+        $result->bindValue(8, $userId, PDO::PARAM_INT);
+        $result->bindValue(9, $id, PDO::PARAM_INT);
         $result->execute();
     }
 

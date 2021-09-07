@@ -81,7 +81,7 @@ function displayMatch($match) {
 if (isset($_POST['submitDeleteMatch'])) {
     $Comp->deleteScore($_POST['matchId']);
     $Comp->deleteMatch($_POST['matchId']);
-    header("Refresh:0");
+    $allMatches = $Comp->getAllMatches();
 }
 
 function displayTournament($tournament) {
@@ -90,7 +90,7 @@ function displayTournament($tournament) {
     <div class="col-12" >
         <div class="tournamentCard myCard">
             <div class="brand stuff">
-                <img src="../assets/images/teamLogo/<?= $tournament['TOURNAMENT_LOGO'] ?>" alt="<?= $tournament['TOURNAMENT_LOGO'] ?>" class="orgLogo">
+                <img src="data:image/png;base64,<?= $tournament['TOURNAMENT_LOGO'] ?>" alt="<?= $tournament['TOURNAMENT_LOGO'] ?>" class="orgLogo">
                 <h4 class="orgName"><?= $tournament['TOURNAMENT_NAME'] ?></h4>
             </div>
             <div class="type stuff">
@@ -108,25 +108,25 @@ function displayTournament($tournament) {
             <div class="teams stuff">
                 <span>équipes</span> 
                 <div class="teamsWrap">
+                    <?php $teamArray = explode(',', $tournament['TEAM_ID']);
+                    foreach($teamArray as $teamId){ 
+                        $team = $Comp->getTeam($teamId);
+                    ?>
                     <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                    <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                    <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                    <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                    <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                    <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                    <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                    <?php } ?>
                 </div>
             </div>
             <div class="admin">
                 <a href="../views/admin.php?tournament=edit&tournamentId=<?= $tournament['TOURNAMENT_ID'] ?>" class="btn bg-success text-white"><i class="bi bi-pencil-square"></i></a>
-                <button type="button" id="deleteTournament" value="<?= $tournament['TOURNAMENT_ID'] ?>" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#matchModal"><i class="bi bi-x-square"></i></button>
+                <button type="button" id="deleteTournament" value="<?= $tournament['TOURNAMENT_ID'] ?>" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tournamentModal"><i class="bi bi-x-square"></i></button>
             </div>
             <a href="<?= $tournament['TOURNAMENT_LINK'] ?>" class="link"></a>
         </div>
     </div>
 <?php }
 
-if (isset($_POST['submitDeleteMatch'])) {
+if (isset($_POST['submitDeleteTournament'])) {
     $Comp->deleteTournament($_POST['tournamentId']);
-    header("Refresh:0");
+    $allTournaments = $Comp->getAllTournament();
+    $allMatches = $Comp->getAllMatches();
 }

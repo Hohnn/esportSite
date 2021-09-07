@@ -29,8 +29,8 @@
                                 <div class="row mt-4">
                                     <div class="col">
                                         <input type="hidden" name="tournamentOldLogo" value="<?= $tournament['TOURNAMENT_LOGO'] ?? '' ?>">
-                                        <input type="file" class="form-control" name="logo" id="tournamentLogo" required>
-                                        <div class="invalid-feedback ">non valide</div>
+                                        <input type="file"  class="form-control <?= !empty($verifUpload) ? 'is-invalid' : ''?>" name="logo" id="tournamentLogo" onchange="showPreview(event);"  required>
+                                        <div class="invalid-feedback "><?= $verifUpload[0] ?? '' ?></div>
                                     </div>
                                     <div class="col">
                                         <input type="hidden" name="tournamentId" value="<?= $tournament['TOURNAMENT_ID'] ?? '' ?>">
@@ -50,27 +50,34 @@
                                         <div class="invalid-feedback ">non valide</div>
                                     </div>
                                     <div class="col">
-                                        <input type="text" class="form-control" name="status" id="tournamentStatus" value="<?= $tournament['TOURNAMENT_STATUS'] ?? '' ?>" placeholder="Status... ex: en cours" required>
+                                        <select class="form-select" aria-label="Default select example" id="statusSelect" name="status" required>
+<?php if (isset($_GET['tournament']) && $_GET['tournament'] != 'edit') { ?>
+                                            <option selected hidden>Status</option> 
+<?php } ?>    
+                                            <option <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'A venir' ? 'selected' : '') : '' ?> >A venir</option>
+                                            <option <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'En cours' ? 'selected' : '') : ''  ?> >En cours</option>
+                                            <option <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'Terminé' ? 'selected' : '') : ''  ?> >Terminé</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <input type="link" class="form-control" name="link" id="link" value="<?= $tournament['TOURNAMENT_LINK']  ?? '' ?>" placeholder="Lien du tournoi" required>
                                         <div class="invalid-feedback ">non valide</div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12 mt-4">
 <?php  foreach ($allTeams as $team) { 
     if ($_GET['tournament'] != 'edit') { ?>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="teams[]" value="<?= $team['TEAM_ID'] ?>" require>
-                                            <label class="form-check-label" for="inlineCheckbox1"><?= $team['TEAM_NAME'] ?></label>
+                                            <input class="form-check-input" type="checkbox" id="checkbox<?= $team['TEAM_ID'] ?>" name="teams[]" value="<?= $team['TEAM_ID'] ?>" require>
+                                            <label class="form-check-label" for="checkbox<?= $team['TEAM_ID'] ?>"><?= $team['TEAM_NAME'] ?></label>
                                         </div>
 <?php   } else { 
-    foreach ($tournament['TOURNAMENT_STATUS'] as $teamId) {
-        if ($teamId == $team['TEAM_ID']) {
-            $checked = 'checked';
-        } else {
-            $checked = '';
-        }
+    $teamArray = explode(',', $tournament['TEAM_ID']);
+    foreach ($teamArray as $teamId) {
+        $teamId == $team['TEAM_ID'] ? $checked = 'checked' : $checked = '';
     } ?>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="teams[]" value="<?= $team['TEAM_ID'] ?>" <?= $checked ?? '' ?> require>
-                                            <label class="form-check-label" for="inlineCheckbox1"><?= $team['TEAM_NAME'] ?></label>
+                                            <input class="form-check-input" type="checkbox" id="checkbox<?= $team['TEAM_ID'] ?>" name="teams[]" value="<?= $team['TEAM_ID'] ?>" <?= $checked ?? '' ?> require>
+                                            <label class="form-check-label" for="checkbox<?= $team['TEAM_ID'] ?>"><?= $team['TEAM_NAME'] ?></label>
                                         </div>
 <?php } }?>
                                         
@@ -85,6 +92,39 @@
 <?php } ?>
                                     </div>
                                 </form>
+                            </div>
+                            <div class="col-12" >
+                                <div class="tournamentCard myCard">
+                                    <div class="brand stuff">
+                                        <img src="../assets/images/teamLogo/daw.png" id="tourLogo" alt="" class="orgLogo">
+                                        <h4 class="orgName" id="orgName">Tournoi BSP</h4>
+                                    </div>
+                                    <div class="type stuff">
+                                        <span>Format</span>
+                                        <div id="formatPreview"> 6 vs 6 Conquète escoude</div>
+                                    </div>
+                                    <div class="date stuff"> 
+                                        <span>Début</span> 
+                                        <div id="datePreview"> </div>
+                                    </div>
+                                    <div class="status stuff">
+                                        <span>Status</span> 
+                                        <div id="statusPreview"> </div>
+                                    </div>
+                                    <div class="teams stuff">
+                                        <span>équipes</span> 
+                                        <div class="teamsWrap">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                                        </div>
+                                    </div>
+                                    <a href="#" class="link"></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -408,7 +448,7 @@
     <div id="liveToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body">
-            Le match a été <?= $success ?> avec succès !
+            <?= $success ?>
             </div>
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -426,6 +466,6 @@
         </script>
     <?php } ?>
     
-        <!--    <script src="../assets/js/admin.js"></script> -->
+           <script src="../assets/js/admin.js"></script>
 </body>
 </html>

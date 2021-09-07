@@ -17,7 +17,7 @@ if (isset($_POST['submitMatch'])) {
         $Comp->addMatchScore($_POST['score3Team1'], $_POST['score3Team2'], $_POST['map3'], $match_id);
     }
 
-    $success = 'ajouté';
+    $success = 'Le match a été ajouté avec succès !';
 }
 
 if (isset($_GET['match']) && $_GET['match'] == 'edit') {
@@ -43,13 +43,20 @@ if (isset($_POST['submitMatchUpdate'])) {
             $Comp->deleteMatchScore($_POST['score3Id']);
         }
     }
-    $success = 'modifié';
+    $match = $Comp->getMatchAllInfos($_GET['matchId']);
+    $matchScore = $Comp->getMatchScore($_GET['matchId']);
+    $success = 'Le match a été modifié avec succès !';
 }
 
 if (isset($_POST['submitTournament'])) {
-    $
-    $Comp->addTournament($_POST['name'], $_FILES['logo']['name'], $_POST['format'], $_POST['date'], $_POST['status'], $_POST['teams'], $_SESSION['id']);
-    /* var_dump($_POST, $_FILES['logo']['name']); */
+    $verifUpload = uploadLogo($_FILES['logo']);
+    if (empty($verifUpload)) {
+        $logoEncode = base64_encode(file_get_contents($_FILES['logo']['tmp_name']));   
+        $teams = implode(',', $_POST['teams']);
+        $Comp->addTournament($_POST['name'], $logoEncode, $_POST['format'], $_POST['date'], $_POST['status'], $_POST['link'], $teams, $_SESSION['id']);
+        $success = 'Le tournoi a été ajouté avec succès !';
+    }
+
 }
 
 if (isset($_GET['tournament']) && $_GET['tournament'] == 'edit') {
@@ -58,11 +65,35 @@ if (isset($_GET['tournament']) && $_GET['tournament'] == 'edit') {
 
 if (isset($_POST['submitTournamentUpdate'])) {
     if (empty($_FILES['logo']['name'])) {
-        $logo = $_POST['tournamentOldLogo'];
+        $logoEncode = $_POST['tournamentOldLogo'];
     } else {
-        $logo = $_FILES['logo']['name'];
+        $verifUpload = uploadLogo($_FILES['logo']);
+        $logoEncode = base64_encode(file_get_contents($_FILES['logo']['tmp_name']));
     }
-    $Comp->updateTournament($_POST['tournamentId'], $_POST['name'], $_FILES['logo']['name'], $_POST['format'], $_POST['date'], $_POST['status'], $_POST['teams'], $_SESSION['id']);
+    if (empty($verifUpload)) {
+        $teams = implode(',', $_POST['teams']);
+        $Comp->updateTournament($_POST['tournamentId'], $_POST['name'], $logoEncode, $_POST['format'], $_POST['date'], $_POST['status'], $_POST['link'], $teams, $_SESSION['id']);
+        $tournament = $Comp->getTournament($_GET['tournamentId']);
+        $success = 'Le tournoi a été modifié avec succès !';
+    }
+}
+
+function uploadLogo($img_file, $type = "image", $size = 1000000)
+{
+   /*  $img_file = $_FILES[$img_file] ?? false; # on "identifie" $img_file */
+    $type = "/$type/"; # on prépare la regex
+    $msgArray = []; # notre liste de messages
+    
+    if ($img_file && $img_file["error"] == 0) {
+        if (!preg_match($type, mime_content_type($img_file["tmp_name"]))) { # si c'est pas une image
+            $msgArray[] = "Votre fichier n'est pas une image";
+        } elseif ($img_file["size"] > $size) { # si le fichier est plus grand que 1Mo
+            $msgArray[] = "Le fichier doit faire moins de 1 Mo";
+        }
+    } else {
+        $msgArray[] = "Veuillez séléctionner un fichier";
+    }
+    return $msgArray;
 }
 
 
