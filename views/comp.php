@@ -19,9 +19,12 @@ require_once __DIR__.'/../controllers/comp_controller.php';
     <title>DAW esport</title>
 </head>
 <?php require __DIR__.'/../components/header.php' ?>
+                <img src="../assets/images/banner_team.jpg" class="teamBackImg" alt="">
+
                 <section class="team">
+
                     <h1 class="text-uppercase">équipes</h1>
-                    <div class="container-fluid  mt-5">
+                    <div class="container-fluid mt-3">
                         <div class="row g-3" data-masonry='{"percentPosition": true }'>
                             <div class="col teamCol" >
                                 <div class="teamCard myCard">
@@ -69,9 +72,9 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                         </div>
                     </div>    
                 </section>
-                <section class="tournament mt-5">
+                <section class="tournament mt-4">
                     <h1 class="text-uppercase">tournois</h1>
-                    <div class="container-fluid  mt-5">
+                    <div class="container-fluid  mt-3">
                         <div class="row g-3">
                             
                         <?php foreach($allTournaments as $tournament){
@@ -121,9 +124,9 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                         </div>
                     </div>    
                 </section>
-                <section class="tournament mt-5">
+                <section class="tournament mt-4">
                     <h1 class="text-uppercase">Matchs <span>récent<span></span></span></h1>
-                    <div class="container-fluid  mt-5">
+                    <div class="container-fluid  mt-3">
                         <div class="row g-3">
                             
                             <?php foreach($allMatches as $match){

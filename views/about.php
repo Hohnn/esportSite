@@ -38,7 +38,7 @@ require_once __DIR__.'/../controllers/controller.php';
                         sur différente plate-forme</p>
                     </div>
                         <div class="row g-5">
-                            <div class="col " >
+                            <div class="col" >
                                 <div class="descCard myCard mx-auto">
                                     <div class="icon">
                                         <i class="bi bi-newspaper"></i>
@@ -48,7 +48,7 @@ require_once __DIR__.'/../controllers/controller.php';
                                 </div>
                             </div>
                             <div class="col " >
-                                <div class="descCard myCard mx-auto">
+                                <div class="descCard myCard d2 mx-auto">
                                     <div class="icon">
                                         <i class="bi bi-twitch"></i>
                                     </div>
@@ -57,7 +57,7 @@ require_once __DIR__.'/../controllers/controller.php';
                                 </div>
                             </div>
                             <div class="col " >
-                                <div class="descCard myCard mx-auto">
+                                <div class="descCard myCard d3 mx-auto">
                                     <div class="icon">
                                         <i class="bi bi-youtube"></i>
                                     </div>
@@ -66,7 +66,7 @@ require_once __DIR__.'/../controllers/controller.php';
                                 </div>
                             </div>
                             <div class="col " >
-                                <div class="descCard myCard mx-auto">
+                                <div class="descCard myCard d4 mx-auto">
                                     <div class="icon">
                                         <i class="bi bi-shield-shaded"></i>
                                     </div>
@@ -75,7 +75,7 @@ require_once __DIR__.'/../controllers/controller.php';
                                 </div>
                             </div>
                             <div class="col" >
-                                <div class="descCard myCard mx-auto">
+                                <div class="descCard myCard d5 mx-auto">
                                     <div class="icon">
                                         <i class="bi bi-window-sidebar"></i>
                                     </div>
@@ -84,7 +84,7 @@ require_once __DIR__.'/../controllers/controller.php';
                                 </div>
                             </div>
                             <div class="col " >
-                                <div class="descCard myCard mx-auto">
+                                <div class="descCard myCard d6 mx-auto">
                                     <div class="icon">
                                         <i class="bi bi-window-sidebar"></i>
                                     </div>

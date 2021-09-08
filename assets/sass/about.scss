@@ -73,14 +73,66 @@
             max-width: 1000px;
         }
     }
+    .d2 {
+        &::before {
+            background-image: url('../images/about/desc_2.jpg') !important;
+        }
+    }
+    .d3 {
+        &::before {
+            background-image: url('../images/about/desc_3.jpg') !important;
+        }
+    }
+    .d4 {
+        &::before {
+            background-image: url('../images/about/desc_5.jpg') !important;
+        }
+    }
+    .d5 {
+        &::before {
+            background-image: url('../images/about/desc_7.jpg') !important;
+        }
+    }
+    .d6 {
+        &::before {
+            background-image: url('../images/about/desc_4.jpg') !important;
+        }
+    }
+    
     .descCard {
         padding: 1rem;
         width: 300px;
+        overflow: hidden;
+        position: relative;
+        isolation: isolate;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('../images/about/desc.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            opacity: 0.6;
+            filter: blur(1px);
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                0deg,
+                rgba(7, 6, 0, 0.7),
+                rgba(0, 0, 0, 0)
+            );
+            z-index: -1;
+        }
         .icon {
             color: white;
             background-color: $yellow;
             border-radius: 0.5rem;
-            padding: 0.6rem 0.8rem;
+            padding: 0.6rem 0.9rem;
             width: max-content;
             height: max-content;
             font-size: 1.2rem;
@@ -94,6 +146,7 @@
         }
         p {
             font-weight: normal;
+            color: rgba(255, 255, 255, 0.788);
         }
     }
 }

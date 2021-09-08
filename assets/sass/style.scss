@@ -122,6 +122,7 @@ aside {
 
 main {
     width: 100%;
+    isolation: isolate;
     background-image: linear-gradient(hsl(204, 10%, 14%), hsl(210, 13%, 9%));
     position: relative;
     background-attachment: scroll;

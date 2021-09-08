@@ -48,7 +48,7 @@
                         </nav>
                     </div>
             </aside>
-            <main class="col">
+            <main class="col ">
                 <header>
                     <input type="search" placeholder="Rechercher" class="d-none d-sm-block  me-auto">
 <?php if (!isset($_SESSION['user'])) { ?>

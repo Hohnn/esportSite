@@ -150,6 +150,7 @@ aside nav .profilMenu2 button:hover {
 
 main {
   width: 100%;
+  isolation: isolate;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#202427), to(#14171a));
   background-image: linear-gradient(#202427, #14171a);
   position: relative;
