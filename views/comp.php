@@ -25,40 +25,43 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                         <div class="row g-3" data-masonry='{"percentPosition": true }'>
                             <div class="col teamCol" >
                                 <div class="teamCard myCard">
-                                    <div id="toggle" class="toggle"><i class="bi bi-plus-circle"></i></div>
-                                    <header>
-                                        <img src="../assets/images/teamLogo/daw.png" alt="" class="teamLogo">
-                                        <div class="wrap">
-                                            <h3 class="teamName">Daw </h3>
-                                            <img src="" alt="" class="flag">
-                                        </div>
-                                    </header>
-                                    <div class="teamMembers small">
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>                                        
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>                                        
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>                                        
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>                                        
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>                                        
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>                                      
+                                    <img src="../assets/images/teamLogo/daw.png" alt="" class="teamLogoBack">
+                                    <div class="onTop">
+                                        <div id="toggle" class="toggle"><i class="bi bi-plus-circle"></i></div>
+                                        <header>
+                                            <img src="../assets/images/teamLogo/daw.png" alt="" class="teamLogo">
+                                            <div class="wrap">
+                                                <h3 class="teamName">Daw </h3>
+                                                <img src="" alt="" class="flag">
+                                            </div>
+                                        </header>
+                                        <div class="teamMembers small">
+                                            <a href="#">
+                                                <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                                <h5 class="memberName">Hohnn</h5>
+                                            </a>
+                                            <a href="#">
+                                                <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                                <h5 class="memberName">Hohnn</h5>
+                                            </a>
+                                            <a href="#">
+                                                <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                                <h5 class="memberName">Hohnn</h5>
+                                            </a>
+                                            <a href="#">
+                                                <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                                <h5 class="memberName">Hohnn</h5>
+                                            </a>
+                                            <a href="#">
+                                                <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                                <h5 class="memberName">Hohnn</h5>
+                                            </a>
+                                            <a href="#">
+                                                <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                                <h5 class="memberName">Hohnn</h5>
+                                            </a>
                                         
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -70,16 +73,17 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                     <h1 class="text-uppercase">tournois</h1>
                     <div class="container-fluid  mt-5">
                         <div class="row g-3">
-                            <div class="col-4 position-relative">
-                                <div class="tournamentCard">
-                                    <a href="../views/admin.php?tournament=add">
-                                        <div class="addCard"></div>
-                                    </a>
-                                </div>
-                            </div>
+                            
                         <?php foreach($allTournaments as $tournament){
                                 echo displayTournament($tournament);
                             } ?>
+                            <div class="col-4 position-relative">
+                                <div class="tournamentCard">
+                                    <a href="../views/admin.php?tournament=add">
+                                        <div class="addCard">Ajouter un tournoi</div>
+                                    </a>
+                                </div>
+                            </div>
                             <!-- <div class="col-12" >
                                 <div class="tournamentCard myCard">
                                     <div class="brand">
@@ -121,14 +125,15 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                     <h1 class="text-uppercase">Matchs <span>récent<span></span></span></h1>
                     <div class="container-fluid  mt-5">
                         <div class="row g-3">
+                            
+                            <?php foreach($allMatches as $match){
+                                echo displayMatch($match);
+                            } ?>
                             <div class="col matchCol position-relative">
                                 <a href="../views/admin.php?match=add">
                                     <div class="addCard"></div>
                                 </a>
                             </div>
-                            <?php foreach($allMatches as $match){
-                                echo displayMatch($match);
-                            } ?>
                             <!-- <div class="col matchCol" >
                                 <div class="matchCard myCard">
                                     <div class="imgBack">

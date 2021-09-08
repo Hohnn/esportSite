@@ -8,11 +8,7 @@ $.ajax({
          xhr.setRequestHeader("Accept", "application/vnd.twitchtv.v5+json")
          xhr.setRequestHeader("Client-ID", "iguzmyofsjp2l6gru7d1q0kku4hg3e")
     }, success: function(data){
-        console.log(data);                         
-        //process the JSON data etc
-        console.log(data.streams);
         createContent(data);
-
     }
 })
 

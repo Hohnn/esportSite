@@ -12,7 +12,7 @@ if (!$session) {
 
 function store($tmp_name, $uid, $ext)
 {
-    move_uploaded_file($tmp_name, "./assets/images/user_logo/" . $uid . "." . $ext);
+    move_uploaded_file($tmp_name, "../assets/images/user_logo/" . $uid . "." . $ext);
 }
 
 // enregistre sur le server
@@ -42,8 +42,11 @@ function store($tmp_name, $uid, $ext)
                 $ext = pathinfo($img_file["name"])["extension"];
 /*                 $msgArray[] = "Le fichier " . $uid . "." . $ext . " a bien été uploadé."; */
                 $User = new UserModel();
+                $dir = scandir("../assets/images/user_logo");
                 $userLogoName = $User->getUserById($_SESSION['id'])['USER_LOGO'];
-                unlink("./assets/images/user_logo/$userLogoName");
+                if (in_array($userLogoName, $dir)) {
+                    unlink("../assets/images/user_logo/$userLogoName");
+                }
                 $User->setUpdateUserLogo($_SESSION['id'], "$uid.$ext");
                 store($img_file["tmp_name"], $uid, $ext);
                 /* $_SESSION['size'] = $_SESSION['size'] + $img_file["size"]; */

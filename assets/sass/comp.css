@@ -2,6 +2,26 @@
   position: relative;
   padding: 0;
   overflow: hidden;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}
+
+.teamCard .teamLogoBack {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 0.15;
+}
+
+.teamCard .onTop {
+  position: relative;
+  z-index: 1;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
 }
 
 .teamCard .toggle {
@@ -18,7 +38,7 @@
       -ms-flex-align: stretch;
           align-items: stretch;
   padding: 1rem;
-  background-color: #394146;
+  border-bottom: 1px solid #fca311;
 }
 
 .teamCard header .teamLogo {
@@ -164,6 +184,11 @@ main .active {
   padding-left: 1rem;
 }
 
+.tournamentCard .stuff {
+  width: 10%;
+  min-width: 200px;
+}
+
 .tournamentCard span {
   font-weight: lighter;
   color: #b3b3b3;
@@ -196,7 +221,7 @@ main .active {
 .tournamentCard .brand .orgLogo {
   width: 70px;
   height: 70px;
-  border-radius: 50%;
+  border-radius: 0.5rem;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -428,6 +453,16 @@ section h1::first-letter {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: lighter;
 }
 
 .addCard:hover {
@@ -445,7 +480,7 @@ section h1::first-letter {
 .addCard::before {
   content: '';
   position: absolute;
-  width: 60px;
+  width: 30px;
   height: 1px;
   top: 50%;
   left: 50%;
@@ -458,7 +493,7 @@ section h1::first-letter {
   content: '';
   position: absolute;
   width: 1px;
-  height: 50px;
+  height: 25px;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);

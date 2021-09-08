@@ -35,6 +35,16 @@ class CompModel extends database
         return $result;
     }
 
+    public function getMap($id)
+    {
+        $bdd = $this->connectDatabase();
+        $condition = "SELECT * FROM maps WHERE maps_id = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $id, PDO::PARAM_INT);
+        $result->execute();
+        return $result->fetch();
+    }
+
     public function getAllMaps()
     {
         $bdd = $this->connectDatabase();
@@ -111,7 +121,7 @@ class CompModel extends database
 
     public function getAllTournament() {
         $bdd = $this->connectDatabase();
-        $condition = "SELECT *, DATE_FORMAT(TOURNAMENT_START, '%d/%m/%Y') as date FROM tournament";
+        $condition = "SELECT *, DATE_FORMAT(TOURNAMENT_START, '%d/%m/%Y') as date FROM tournament order by tournament_id desc";
         $result = $bdd->query($condition)->fetchAll();
         return $result;
     }

@@ -42,7 +42,7 @@ function displayMatch($match) {
             </div>
             <header>
                 <div class="teamWrap">
-                    <img src="../assets/images/teamLogo/<?= $match['TEAM1_LOGO'] ?>" alt="team logo" class="teamLogo <?= $looseCount < 0 ? 'win' : '' ?>">
+                    <img src="data:image/png;base64,<?= $match['TEAM1_LOGO'] ?>" alt="team logo" class="teamLogo <?= $looseCount < 0 ? 'win' : '' ?>">
                     <span ><?= $match['TEAM1'] ?></span>
                 </div>
                 <div class="scoreWrap">
@@ -55,7 +55,7 @@ function displayMatch($match) {
                     <?php } ?>
                 </div>
                 <div class="teamWrap">
-                    <img src="../assets/images/teamLogo/<?= $match['TEAM1_LOGO'] ?>" alt="team logo" class="teamLogo <?= $looseCount > 0 ? 'win' : '' ?>">
+                    <img src="data:image/png;base64,<?= $match['TEAM2_LOGO'] ?>" alt="team logo" class="teamLogo <?= $looseCount > 0 ? 'win' : '' ?>">
                     <span ><?= $match['TEAM2'] ?></span>
                 </div>
             </header>
