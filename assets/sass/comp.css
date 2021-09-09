@@ -1,27 +1,9 @@
+/* $yellow: #fca311; */
 .teamCard {
   position: relative;
   padding: 0;
   overflow: hidden;
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
-}
-
-.teamCard .teamLogoBack {
-  width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  opacity: 0.15;
-}
-
-.teamCard .onTop {
-  position: relative;
-  z-index: 1;
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
 }
 
 .teamCard .toggle {
@@ -38,7 +20,25 @@
       -ms-flex-align: stretch;
           align-items: stretch;
   padding: 1rem;
-  border-bottom: 1px solid #fca311;
+  border-bottom: 1px solid #464646;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.teamCard header .teamLogoBack {
+  z-index: -1;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 0.2;
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
 }
 
 .teamCard header .teamLogo {
@@ -62,11 +62,25 @@
   width: 2rem;
   height: 1rem;
   border-radius: 5px;
+  position: relative;
+}
+
+.teamCard header .wrap .flag img {
+  width: 110%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .teamCard header .wrap .link {
   color: white;
-  background-color: #fca311;
+  background-color: RGB(106, 247, 151);
   font-size: 0.8rem;
   margin: 0;
   width: 100%;
@@ -110,6 +124,8 @@
 
 .teamCard .teamMembers a .memberName {
   margin-left: 0.5rem;
+  font-size: 1rem;
+  font-weight: normal;
   color: white;
   font-weight: lighter;
 }
@@ -146,19 +162,20 @@ main .active {
 }
 
 .tournamentCard {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   position: relative;
-  -ms-flex-negative: 1;
-      flex-shrink: 1;
   color: white;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  gap: 0.5rem;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: .75rem;
+  -ms-grid-columns: (minmax(9rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
   min-height: 100px;
+}
+
+.tournamentCard .addCard {
+  max-width: 500px !important;
 }
 
 .tournamentCard:hover {
@@ -167,7 +184,7 @@ main .active {
 }
 
 .tournamentCard > .stuff:not(:first-child) {
-  border-left: 1px solid #fca311;
+  border-left: 1px solid RGB(106, 247, 151);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -187,6 +204,7 @@ main .active {
 .tournamentCard .stuff {
   width: 10%;
   min-width: 200px;
+  overflow: hidden;
 }
 
 .tournamentCard span {
@@ -224,6 +242,7 @@ main .active {
   border-radius: 0.5rem;
   -o-object-fit: cover;
      object-fit: cover;
+  background-image: inherit;
 }
 
 .tournamentCard .brand .orgName {
@@ -259,7 +278,7 @@ section h1 {
 }
 
 section h1::first-letter {
-  color: #fca311;
+  color: RGB(106, 247, 151);
 }
 
 .matchCol {
@@ -332,13 +351,13 @@ section h1::first-letter {
      object-position: 25%;
 }
 
-.matchCol .matchCard .imgBack .maps2:first-of-type {
+.matchCol .matchCard .imgBack .maps2:first-child {
   width: 60%;
   -o-object-position: 75%;
      object-position: 75%;
 }
 
-.matchCol .matchCard .imgBack .maps2:last-of-type {
+.matchCol .matchCard .imgBack .maps2:nth-of-type(2) {
   width: 57%;
   left: unset;
   right: 0;
@@ -382,7 +401,7 @@ section h1::first-letter {
 }
 
 .matchCol .matchCard header .teamWrap .win {
-  border-color: #fca311;
+  border-color: RGB(106, 247, 151);
 }
 
 .matchCol .matchCard header .teamWrap span {
@@ -466,39 +485,7 @@ section h1::first-letter {
 }
 
 .addCard:hover {
-  border: 1px solid #fca311;
-}
-
-.addCard:hover::after {
-  background-color: #fca311;
-}
-
-.addCard:hover::before {
-  background-color: #fca311;
-}
-
-.addCard::before {
-  content: '';
-  position: absolute;
-  width: 30px;
-  height: 1px;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  background-color: #b3b3b3;
-}
-
-.addCard::after {
-  content: '';
-  position: absolute;
-  width: 1px;
-  height: 25px;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  background-color: #b3b3b3;
+  border: 1px solid RGB(106, 247, 151);
 }
 
 .admin {

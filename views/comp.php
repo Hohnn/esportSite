@@ -25,46 +25,48 @@ require_once __DIR__.'/../controllers/comp_controller.php';
 
                     <h1 class="text-uppercase">équipes</h1>
                     <div class="container-fluid mt-3">
-                        <div class="row g-3" data-masonry='{"percentPosition": true }'>
+                        <div class="row g-3" >
                             <div class="col teamCol" >
                                 <div class="teamCard myCard">
-                                    <img src="../assets/images/teamLogo/daw.png" alt="" class="teamLogoBack">
-                                    <div class="onTop">
-                                        <div id="toggle" class="toggle"><i class="bi bi-plus-circle"></i></div>
-                                        <header>
-                                            <img src="../assets/images/teamLogo/daw.png" alt="" class="teamLogo">
-                                            <div class="wrap">
-                                                <h3 class="teamName">Daw </h3>
-                                                <img src="" alt="" class="flag">
+                                    <div id="toggle" class="toggle"><i class="bi bi-plus-circle"></i></div>
+                                    <header>
+                                        <img src="../assets/images/teamLogo/daw.png" alt="" class="teamLogoBack">
+                                        <img src="../assets/images/teamLogo/daw.png" alt="" class="teamLogo">
+                                        <div class="wrap">
+                                            <h3 class="teamName">DAW esport</h3>
+                                            <div class="wrapDesc d-flex align-items-center">
+                                                <div class="flag">
+                                                    <img src="https://www.countryflags.io/fr/flat/64.png" alt="">
+                                                </div>
+                                                <div class="tag ms-3">[DAW]</div>
                                             </div>
-                                        </header>
-                                        <div class="teamMembers small">
-                                            <a href="#">
-                                                <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                                <h5 class="memberName">Hohnn</h5>
-                                            </a>
-                                            <a href="#">
-                                                <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                                <h5 class="memberName">Hohnn</h5>
-                                            </a>
-                                            <a href="#">
-                                                <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                                <h5 class="memberName">Hohnn</h5>
-                                            </a>
-                                            <a href="#">
-                                                <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                                <h5 class="memberName">Hohnn</h5>
-                                            </a>
-                                            <a href="#">
-                                                <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                                <h5 class="memberName">Hohnn</h5>
-                                            </a>
-                                            <a href="#">
-                                                <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                                <h5 class="memberName">Hohnn</h5>
-                                            </a>
-                                        
                                         </div>
+                                    </header>
+                                    <div class="teamMembers small">
+                                        <a href="#">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <h5 class="memberName">Hohnn</h5>
+                                        </a>
+                                        <a href="#">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <h5 class="memberName">Hohnn</h5>
+                                        </a>
+                                        <a href="#">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <h5 class="memberName">Hohnn</h5>
+                                        </a>
+                                        <a href="#">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <h5 class="memberName">Hohnn</h5>
+                                        </a>
+                                        <a href="#">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <h5 class="memberName">Hohnn</h5>
+                                        </a>
+                                        <a href="#">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <h5 class="memberName">Hohnn</h5>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -80,12 +82,10 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                         <?php foreach($allTournaments as $tournament){
                                 echo displayTournament($tournament);
                             } ?>
-                            <div class="col-4 position-relative">
-                                <div class="tournamentCard">
+                            <div class="col-12 tournamentCard position-relative">
                                     <a href="../views/admin.php?tournament=add">
                                         <div class="addCard">Ajouter un tournoi</div>
                                     </a>
-                                </div>
                             </div>
                             <!-- <div class="col-12" >
                                 <div class="tournamentCard myCard">
@@ -134,7 +134,7 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                             } ?>
                             <div class="col matchCol position-relative">
                                 <a href="../views/admin.php?match=add">
-                                    <div class="addCard"></div>
+                                    <div class="addCard">Ajouter un match</div>
                                 </a>
                             </div>
                             <!-- <div class="col matchCol" >

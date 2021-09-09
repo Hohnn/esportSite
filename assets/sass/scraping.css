@@ -1,3 +1,4 @@
+/* $yellow: #fca311; */
 .topStats {
   padding: 1rem;
   border-radius: 1rem;
@@ -50,7 +51,7 @@
 .topStats .mygrid .numbers .bottom .rank {
   font-size: .625rem;
   font-weight: 500;
-  color: #fca311;
+  color: RGB(106, 247, 151);
 }
 
 .mostUsed .stats {
@@ -80,6 +81,6 @@
   left: 0;
   width: 1px;
   height: 100%;
-  background-color: #fca311;
+  background-color: RGB(106, 247, 151);
 }
 /*# sourceMappingURL=scraping.css.map */

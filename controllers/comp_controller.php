@@ -112,7 +112,7 @@ function displayTournament($tournament) {
                     foreach($teamArray as $teamId){ 
                         $team = $Comp->getTeam($teamId);
                     ?>
-                    <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+                    <img src="data:image/png;base64,<?= $team['TEAM_LOGO'] ?>" alt="" class="teamLogo">
                     <?php } ?>
                 </div>
             </div>

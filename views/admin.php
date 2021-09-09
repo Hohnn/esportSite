@@ -28,7 +28,7 @@
 
                                 <form class="row myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
                                 <div class="col-12">    
-                                <div class="row mt-4">
+                                <div class="row mt-3">
                                     <div class="col">
                                         <input type="hidden" name="tournamentOldLogo" value="<?= $tournament['TOURNAMENT_LOGO'] ?? '' ?>">
                                         <input type="file"  class="form-control <?= !empty($verifUpload) ? 'is-invalid' : ''?>" name="logo" id="tournamentLogo" onchange="showPreview(event);"  required>
@@ -65,10 +65,11 @@
                                         <input type="link" class="form-control" name="link" id="link" value="<?= $tournament['TOURNAMENT_LINK']  ?? '' ?>" placeholder="Lien du tournoi" required>
                                         <div class="invalid-feedback ">non valide</div>
                                     </div>
-                                    <div class="col-12 mt-4">
+                                    <div class="col-12 mt-3">
+                                        <div class="mb-2">Equipe inscrite</div>
 <?php  foreach ($allTeams as $team) { 
     if (!isset($_GET['tournament']) || $_GET['tournament'] != 'edit') { ?>
-                                        <div class="form-check form-check-inline">
+                                        <div class="form-check form-check-inline fw-normal">
                                             <input class="form-check-input" type="checkbox" id="checkbox<?= $team['TEAM_ID'] ?>" name="teams[]" value="<?= $team['TEAM_ID'] ?>" require>
                                             <label class="form-check-label" for="checkbox<?= $team['TEAM_ID'] ?>"><?= $team['TEAM_NAME'] ?></label>
                                         </div>
@@ -77,7 +78,7 @@
     foreach ($teamArray as $teamId) {
         $teamId == $team['TEAM_ID'] ? $checked = 'checked' : $checked = '';
     } ?>
-                                        <div class="form-check form-check-inline">
+                                        <div class="form-check form-check-inline fw-normal">
                                             <input class="form-check-input" type="checkbox" id="checkbox<?= $team['TEAM_ID'] ?>" name="teams[]" value="<?= $team['TEAM_ID'] ?>" <?= $checked ?? '' ?> require>
                                             <label class="form-check-label" for="checkbox<?= $team['TEAM_ID'] ?>"><?= $team['TEAM_NAME'] ?></label>
                                         </div>
@@ -86,7 +87,7 @@
                                     </div>
                                     </div>
                                     </div>                       
-                                    <div class="col d-flex mt-2">
+                                    <div class="col d-flex my-3">
 <?php if (isset($_GET['tournament']) && $_GET['tournament'] != 'edit') { ?>
                                         <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTournament" >Ajouter</button>
 <?php } else { ?>
@@ -98,31 +99,31 @@
                             <div class="col-12" >
                                 <div class="tournamentCard myCard">
                                     <div class="brand stuff">
-                                        <img src="../assets/images/teamLogo/daw.png" id="tourLogo" alt="" class="orgLogo">
-                                        <h4 class="orgName" id="orgName">Tournoi BSP</h4>
+                                        <img src="data:image/png;base64,<?= $tournament['TOURNAMENT_LOGO'] ?? '' ?>" id="tourLogo" alt="Logo" class="orgLogo">
+                                        <h4 class="orgName" id="orgName"><?= $tournament['TOURNAMENT_NAME'] ?? 'Tournoi' ?></h4>
                                     </div>
                                     <div class="type stuff">
                                         <span>Format</span>
-                                        <div id="formatPreview"> 6 vs 6 Conquète escoude</div>
+                                        <div id="formatPreview"><?= $tournament['TOURNAMENT_FORMAT'] ?? '' ?></div>
                                     </div>
                                     <div class="date stuff"> 
                                         <span>Début</span> 
-                                        <div id="datePreview"> </div>
+                                        <div id="datePreview"><?= $tournament['DATE'] ?? '' ?></div>
                                     </div>
                                     <div class="status stuff">
                                         <span>Status</span> 
-                                        <div id="statusPreview"> </div>
+                                        <div id="statusPreview"><?= $tournament['TOURNAMENT_STATUS'] ?? '' ?></div>
                                     </div>
                                     <div class="teams stuff">
                                         <span>équipes</span> 
                                         <div class="teamsWrap">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
+<?php if (isset($_GET['tournament']) && $_GET['tournament'] != 'edit') {
+$teamArray = explode(',', $tournament['TEAM_ID']);
+foreach($teamArray as $teamId){ 
+    $team = $Comp->getTeam($teamId);
+?>
+                                            <img src="data:image/png;base64,<?= $team['TEAM_LOGO'] ?>" alt="" class="teamLogo">
+<?php } }?>
                                         </div>
                                     </div>
                                     <a href="#" class="link"></a>
@@ -295,45 +296,45 @@
                         <div class="col matchCol">
                             <div class="matchCard myCard">
                                     <div class="imgBack">
-                                        <img class="maps" id="map1Preview" >
-                                        <img class="maps" id="map2Preview" >
-                                        <img class="maps" id="map3Preview" >
+                                        <img <?= isset($matchScore[0]['MAPS_IMAGE']) ? 'src="../assets/images/maps/' . $matchScore[0]['MAPS_IMAGE'] . '"' : '' ?> class="<?= isset($matchScore[2]['MAPS_IMAGE']) ? 'maps' : 'maps2' ?>" id="map1Preview" >
+                                        <img <?= isset($matchScore[1]['MAPS_IMAGE']) ? 'src="../assets/images/maps/' . $matchScore[1]['MAPS_IMAGE'] . '"' : '' ?> class="<?= isset($matchScore[2]['MAPS_IMAGE']) ? 'maps' : 'maps2' ?>" id="map2Preview" >
+                                        <img <?= isset($matchScore[2]['MAPS_IMAGE']) ? 'src="../assets/images/maps/' . $matchScore[2]['MAPS_IMAGE'] . '"' : '' ?> class="<?= isset($matchScore[2]['MAPS_IMAGE']) ? 'maps' : 'maps d-none' ?>" id="map3Preview" >
                                     </div>
                                     <header>
                                         <div class="teamWrap">
-                                            <img id="logoTeam1"  class="teamLogo">
-                                            <span id="nameTeam1">TAG</span>
+                                            <img <?= isset($match['TEAM1_LOGO']) ? 'src="data:image/png;base64,' . $match['TEAM1_LOGO'] . '"' : '' ?> id="logoTeam1"  class="teamLogo">
+                                            <span id="nameTeam1"><?= $match['TEAM1_SHORTNAME'] ?? 'TAG' ?></span>
                                         </div>
                                         <div class="scoreWrap">
                                             <div class="score">
-                                                <span id="score1map1">0</span>
+                                                <span id="score1map1"><?= $matchScore[0]['SCORE_TEAM1'] ?? '0' ?></span>
                                                 <span>/</span>
-                                                <span id="score2map1">0</span>
+                                                <span id="score2map1"><?= $matchScore[0]['SCORE_TEAM2'] ?? '0' ?></span>
                                             </div>
                                             <div class="score">
-                                                <span id="score1map2">0</span>
+                                                <span id="score1map2"><?= $matchScore[1]['SCORE_TEAM1'] ?? '0' ?></span>
                                                 <span>/</span>
-                                                <span id="score2map2">0</span>
+                                                <span id="score2map2"><?= $matchScore[1]['SCORE_TEAM2'] ?? '0' ?></span>
                                             </div>
-                                            <div class="score">
-                                                <span id="score1map3">0</span>
+                                            <div id="score3" class="score <?= isset($matchScore[2]['SCORE_TEAM1']) ? '' : 'd-none' ?>">
+                                                <span id="score1map3"><?= $matchScore[2]['SCORE_TEAM1'] ?? '0' ?></span>
                                                 <span>/</span>
-                                                <span id="score2map3">0</span>
+                                                <span id="score2map3"><?= $matchScore[2]['SCORE_TEAM2'] ?? '0' ?></span>
                                             </div>
                                         </div>
                                         <div class="teamWrap">
-                                            <img id="logoTeam2"  class="teamLogo">
-                                            <span id="nameTeam2">TAG</span>
+                                            <img <?= isset($match['TEAM2_LOGO']) ? 'src="data:image/png;base64,' . $match['TEAM2_LOGO'] . '"' : '' ?> id="logoTeam2"  class="teamLogo">
+                                            <span id="nameTeam2"><?= $match['TEAM1_SHORTNAME'] ?? 'TAG' ?></span>
                                         </div>
                                     </header>
                                     <footer>
                                         <div class="typeWrap">
-                                            <span id="event">Tournoi BSP</span>
-                                            <div id="datePreview" class="date">25 mai</div>
+                                            <span id="event"><?= $match['TOURNAMENT_NAME'] ?? 'Tournoi' ?></span>
+                                            <div id="datePreview" class="date"><?= $match['MATCH_DATEFORMAT'] ?? 'Date' ?></div>
                                         </div>
                                         <div class="vodWrap">
-                                            <span id="vod"></span>
-                                            <a id="vodColor" href="#" class="btn"></a>
+                                            <span id="vod"><?= $vod ?? '' ?></span>
+                                            <a id="vodColor" href="#" class="btn <?= $vodClass ?? '' ?>"></a>
                                         </div>
                                     </footer>
                                 </div>
@@ -468,6 +469,10 @@
         </script>
     <?php } ?>
     
-           <script src="../assets/js/admin.js"></script>
+        <script src="../assets/js/admin.js"></script>
+        <?php if ( empty($_GET) || isset($_GET['match'])) { ?>
+        <script src="../assets/js/adminMatch.js"></script>
+<?php } ?>
+
 </body>
 </html>

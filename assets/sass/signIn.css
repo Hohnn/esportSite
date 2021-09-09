@@ -1,3 +1,4 @@
+/* $yellow: #fca311; */
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap");
 .body {
   display: -webkit-box;
@@ -50,8 +51,8 @@
 }
 
 .body .myForm form button {
-  background-color: #fca311;
-  border-color: #fca311;
+  background-color: RGB(106, 247, 151);
+  border-color: RGB(106, 247, 151);
 }
 
 .body .myModal {
@@ -105,7 +106,7 @@
 .brand-login {
   font-size: 2rem;
   font-weight: bold;
-  color: #fca311;
+  color: RGB(106, 247, 151);
   border: none;
 }
 

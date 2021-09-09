@@ -69,7 +69,7 @@ class CompModel extends database
     public function getMatchAllInfos($id): array
     {
         $bdd = $this->connectDatabase();
-        $condition = "SELECT * FROM esport.matches as A
+        $condition = "SELECT *, B.TEAM_SHORTNAME as TEAM1_SHORTNAME, C.TEAM_SHORTNAME as TEAM2_SHORTNAME, B.TEAM_LOGO as TEAM1_LOGO, C.TEAM_LOGO as TEAM2_LOGO, DATE_FORMAT(A.MATCH_DATE, '%d %M') as MATCH_DATEFORMAT FROM esport.matches as A
         left join teams as B on A.TEAM1_ID = B.TEAM_ID
         left join teams as C on A.TEAM2_ID = C.TEAM_ID
         left join tournament as T on A.TOURNAMENT_ID = T.TOURNAMENT_ID
@@ -82,7 +82,7 @@ class CompModel extends database
 
     public function getMatchScore($id) {
         $bdd = $this->connectDatabase();
-        $condition = "SELECT S.MATCH_ID, S.SCORE_TEAM1, S.SCORE_TEAM2, M.MAPS_NAME, M.MAPS_ID, SCORE_ID
+        $condition = "SELECT S.MATCH_ID, S.SCORE_TEAM1, S.SCORE_TEAM2, M.MAPS_NAME,M.MAPS_IMAGE, M.MAPS_ID, SCORE_ID
         FROM esport.matches_score as S
         left join maps as M on S.MAPS_ID = M.MAPS_ID
         where S.MATCH_ID = ? ;";
@@ -194,7 +194,7 @@ class CompModel extends database
 
     public function getTournament($id) {
         $bdd = $this->connectDatabase();
-        $condition = "SELECT * FROM tournament WHERE TOURNAMENT_ID = ?";
+        $condition = "SELECT *, DATE_FORMAT(TOURNAMENT_START, '%d/%m/%Y') as `DATE` FROM tournament WHERE TOURNAMENT_ID = ?";
         $result = $bdd->prepare($condition);
         $result->bindValue(1, $id, PDO::PARAM_INT);
         $result->execute();

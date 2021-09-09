@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+/* $yellow: #fca311; */
 body {
   color: #b3b3b3;
   font-family: 'Roboto', sans-serif;
@@ -13,7 +14,7 @@ a {
 }
 
 a:hover {
-  color: #fca311;
+  color: RGB(106, 247, 151);
 }
 
 aside {
@@ -36,7 +37,7 @@ aside .stick {
 aside .brand {
   font-size: 2em;
   font-weight: bold;
-  color: #fca311;
+  color: RGB(106, 247, 151);
   padding: 1em;
 }
 
@@ -79,7 +80,7 @@ aside nav .pages div::first-letter {
 
 aside nav .pages:hover {
   background-color: #2b2b2b;
-  border-color: #fca311;
+  border-color: RGB(106, 247, 151);
 }
 
 aside nav .active {
@@ -87,7 +88,7 @@ aside nav .active {
 }
 
 aside nav .active i {
-  color: #fca311;
+  color: RGB(106, 247, 151);
 }
 
 aside nav .active::before {
@@ -97,7 +98,7 @@ aside nav .active::before {
   left: 0;
   width: 2px;
   height: 100%;
-  background-color: #fca311;
+  background-color: RGB(106, 247, 151);
 }
 
 aside nav .plusPhone {
@@ -145,7 +146,7 @@ aside nav .profilMenu2 button {
 
 aside nav .profilMenu2 button:hover {
   background-color: #36393b;
-  color: #fca311;
+  color: RGB(106, 247, 151);
 }
 
 main {
@@ -192,7 +193,7 @@ main > header > * {
 }
 
 main > header > *:hover {
-  color: #fca311;
+  color: RGB(106, 247, 151);
 }
 
 main > header input[type="search"] {
@@ -216,7 +217,7 @@ main > header i {
 
 main > header i::after {
   content: '';
-  background-color: #fca311;
+  background-color: RGB(106, 247, 151);
   position: absolute;
   width: 10px;
   height: 10px;
@@ -238,7 +239,7 @@ main > header button, main > header a {
 
 main > header button:hover, main > header a:hover {
   background-color: transparent;
-  color: #fca311;
+  color: RGB(106, 247, 151);
 }
 
 main > header .focused {
@@ -268,7 +269,7 @@ main > header .userInfos .profilLogo {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 2px solid #fca311;
+  border: 2px solid RGB(106, 247, 151);
   -o-object-fit: cover;
      object-fit: cover;
   margin-left: 1rem;
@@ -287,7 +288,7 @@ main section h1 {
 }
 
 main section h1::first-letter {
-  color: #fca311;
+  color: RGB(106, 247, 151);
 }
 
 main section h1 span {
@@ -334,7 +335,7 @@ main .actu .card .desc .sujet {
 
 main .actu .card .desc a {
   border: none;
-  background-color: #fca311;
+  background-color: RGB(106, 247, 151);
   padding: 0.5em 2.5em;
   color: white;
   border-radius: 5px;
@@ -435,7 +436,7 @@ main .twitch nav ul li {
 }
 
 main .twitch nav ul .active {
-  border-color: #fca311;
+  border-color: RGB(106, 247, 151);
 }
 
 main .twitch nav ul .active a {
@@ -506,7 +507,7 @@ main .twitch .scroll::-webkit-scrollbar-thumb {
 }
 
 main .twitch .scroll::-webkit-scrollbar-thumb:hover {
-  background: #fca311;
+  background: RGB(106, 247, 151);
 }
 
 main .twitch .scroll::-webkit-scrollbar-track {
@@ -733,14 +734,14 @@ main .topMembers .scroll .profil .desc span {
 }
 
 .bgYellow {
-  background-color: #fca311 !important;
-  border-color: #fca311;
+  background-color: RGB(106, 247, 151) !important;
+  border-color: RGB(106, 247, 151);
 }
 
 .bgYellow:hover {
-  border-color: #fca311;
-  -webkit-box-shadow: 0 0px 5px 1px #fca311;
-          box-shadow: 0 0px 5px 1px #fca311;
+  border-color: RGB(106, 247, 151);
+  -webkit-box-shadow: 0 0px 5px 1px RGB(106, 247, 151);
+          box-shadow: 0 0px 5px 1px RGB(106, 247, 151);
 }
 
 .border_red {
@@ -748,7 +749,7 @@ main .topMembers .scroll .profil .desc span {
 }
 
 .border_yellow {
-  border: 2px solid #fca311;
+  border: 2px solid RGB(106, 247, 151);
 }
 
 #plusArticle {
@@ -756,7 +757,7 @@ main .topMembers .scroll .profil .desc span {
 }
 
 #plusArticle:hover {
-  color: #fca311;
+  color: RGB(106, 247, 151);
 }
 
 .plusSug {
@@ -780,9 +781,9 @@ main .topMembers .scroll .profil .desc span {
 }
 
 #carousel .carousel-indicators .active {
-  border: 1px solid #fca311;
-  -webkit-box-shadow: 0 0 10px #fca311;
-          box-shadow: 0 0 10px #fca311;
+  border: 1px solid RGB(106, 247, 151);
+  -webkit-box-shadow: 0 0 10px RGB(106, 247, 151);
+          box-shadow: 0 0 10px RGB(106, 247, 151);
 }
 
 #carousel .carousel-indicators button {

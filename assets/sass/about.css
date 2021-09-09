@@ -1,3 +1,4 @@
+/* $yellow: #fca311; */
 .floatImg {
   width: 300px;
   height: 400px;
@@ -34,7 +35,7 @@
 }
 
 .about .header h1 span {
-  color: #fca311;
+  color: RGB(106, 247, 151);
 }
 
 .about .header .subtitle {
@@ -57,7 +58,7 @@
   left: 0;
   width: 2px;
   height: 100%;
-  background-color: #fca311;
+  background-color: RGB(106, 247, 151);
 }
 
 .about .fullImg {
@@ -134,7 +135,7 @@
 
 .about .descCard .icon {
   color: white;
-  background-color: #fca311;
+  background-color: RGB(106, 247, 151);
   border-radius: 0.5rem;
   padding: 0.6rem 0.9rem;
   width: -webkit-max-content;
@@ -196,8 +197,8 @@
 }
 
 .knows .step .wrap span {
-  color: #fca311;
-  border: 1px solid #fca311;
+  color: RGB(106, 247, 151);
+  border: 1px solid RGB(106, 247, 151);
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   margin-right: 1rem;

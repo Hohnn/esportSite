@@ -68,87 +68,23 @@ function showPreview(event){
     }
 }
 
-/* previewText(tournamentName, orgName)
+previewText(tournamentName, orgName)
 previewText(format, formatPreview)
 previewSelect(statusSelect, statusPreview)
-previewDate(tournamentDate, datePreview) */
+previewDate(tournamentDate, datePreview)
 
-const team1 = document.getElementById('team1')
-const team2 = document.getElementById('team2')
-
-team1.addEventListener('change', ( ) => {
-    let teamId = team1.value;
-    fetch(`../controllers/ajax_controller.php?teamId=${teamId}`)
-    .then(response => response.json())
-    .then(data => {
-        logoTeam1.src = `data:image/png;base64,${data.TEAM_LOGO}`;
-        nameTeam1.innerHTML = data.TEAM_SHORTNAME;
-})
-.catch(error => console.error(error))
-})
-team2.addEventListener('change', ( ) => {
-    let teamId = team2.value;
-    fetch(`../controllers/ajax_controller.php?teamId=${teamId}`)
-    .then(response => response.json())
-    .then(data => {
-        logoTeam2.src = `data:image/png;base64,${data.TEAM_LOGO}`;
-        nameTeam2.innerHTML = data.TEAM_SHORTNAME;
-})
-.catch(error => console.error(error))
-})
-
-previewText(score1Team1, score1map1)
-previewText(score1Team2, score2map1)
-previewText(score2Team1, score1map2)
-previewText(score2Team2, score2map2)
-previewText(score3Team1, score1map3)
-previewText(score3Team2, score2map3)
-
-map1.addEventListener('change', ( ) => {
-    let mapId = map1.value;
-    fetch(`../controllers/ajax_controller.php?mapId=${mapId}`)
-    .then(response => response.json())
-    .then(data => {
-        map1Preview.src = `../assets/images/maps/${data.MAPS_IMAGE}`;
-})
-.catch(error => console.error(error))
-})
-
-map2.addEventListener('change', ( ) => {
-    let mapId = map2.value;
-    fetch(`../controllers/ajax_controller.php?mapId=${mapId}`)
-    .then(response => response.json())
-    .then(data => {
-        map2Preview.src = `../assets/images/maps/${data.MAPS_IMAGE}`;
-})
-.catch(error => console.error(error))
-})
-
-map3.addEventListener('change', ( ) => {
-    let mapId = map3.value;
-    fetch(`../controllers/ajax_controller.php?mapId=${mapId}`)
-    .then(response => response.json())
-    .then(data => {
-        map3Preview.src = `../assets/images/maps/${data.MAPS_IMAGE}`;
-})
-.catch(error => console.error(error))
-})
-
-selectTournament.addEventListener('change', ( ) => {
-    const selectTournament = document.getElementById('selectTournament')
-    const options = selectTournament.getElementsByTagName("option")
-    const id = selectTournament.selectedIndex
-    const selectedOptionInnerHTML = options[id].innerHTML
-    const event = document.getElementById('event')
-    event.innerHTML = selectedOptionInnerHTML
-})
-
-const matchDate = document.getElementById('match_date')
-matchDate.addEventListener('change', ( ) => {
-    let dateValue = matchDate.value;
-    let date = new Date(dateValue);
-    datePreview.innerHTML = date.toLocaleDateString('fr-FR', {day: 'numeric',month: 'long'});
-})
+const checkButton = document.querySelectorAll('input[type="checkbox"]');
+console.log(checkButton);
+checkButton.forEach(function(check){
+    check.addEventListener('change', function(){
+        if(check.checked){
+            check.parentElement.classList.add('checked');
+        } else {
+            check.parentElement.classList.remove('checked');
+        }
+    })
+}
+)
 
 
 

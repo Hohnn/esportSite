@@ -23,6 +23,27 @@ if (isset($_POST['submitMatch'])) {
 if (isset($_GET['match']) && $_GET['match'] == 'edit') {
     $match = $Comp->getMatchAllInfos($_GET['matchId']);
     $matchScore = $Comp->getMatchScore($_GET['matchId']);
+    $team1Loose = 0;
+    $team2Loose = 0;
+    foreach ($matchScore as $round) {
+        if ($round['SCORE_TEAM1'] - $round['SCORE_TEAM2'] < 0) {
+            $team1Loose ++;
+        } else {
+            $team2Loose ++;
+        }
+    }
+    $looseCount = $team1Loose - $team2Loose;
+    $regexYoutube = "/http(?:s)?:\/\/(?:www\.)?youtube\.com\/([a-zA-Z0-9_]+)/";
+    $regexTwitch = "/http(?:s)?:\/\/(?:www\.)?twitch\.tv\/([a-zA-Z0-9_]+)/";
+    if (isValid($regexTwitch, $match['MATCH_LINK_VOD'])) {
+        $vod = 'VOD Twitch';
+        $vodClass = 'bgTwitch';
+    } elseif (isValid($regexYoutube, $match['MATCH_LINK_VOD'])) {
+        $vod = 'VOD Youtube';
+        $vodClass = 'bgYoutube';
+    } else {
+        $vod = 'No VOD';
+    }
 }
 
 if (isset($_POST['submitMatchUpdate'])) {

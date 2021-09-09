@@ -6,20 +6,6 @@
     padding: 0;
     overflow: hidden;
     text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
-    .teamLogoBack {
-        width: 100%;
-        object-fit: contain;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0.15;
-    }
-    .onTop {
-        position: relative;
-        z-index: 1;
-        backdrop-filter: blur(2px);
-    }
     .toggle {
         position: absolute;
         bottom: 0.6rem;
@@ -29,7 +15,21 @@
         display: flex;
         align-items: stretch;
         padding: 1rem;
-        border-bottom: 1px solid $yellow;
+        border-bottom: 1px solid #464646;
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        .teamLogoBack {
+            z-index: -1;
+            width: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.2;
+            filter: blur(5px);
+        }
         .teamLogo {
             width: 80px;
             height: 80px;
@@ -46,6 +46,16 @@
                 width: 2rem;
                 height: 1rem;
                 border-radius: 5px;
+                position: relative;
+                img {
+                    width: 110%;
+                    object-fit: cover;
+                    object-position: center;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
             }
             .link {
                 color: white;
@@ -84,6 +94,8 @@
             }
             .memberName { 
                 margin-left: 0.5rem;
+                font-size: 1rem;
+                font-weight: normal;
                 color: white;
                 font-weight: lighter;
             }
@@ -117,14 +129,16 @@ main {
 }
 
 .tournamentCard {
-    display: flex;
     position: relative;
-    flex-shrink: 1;
     color: white;
     transition: 0.3s ease-in-out ;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    display: grid;
+    grid-gap: .75rem;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
     min-height: 100px;
+    .addCard {
+        max-width: 500px !important;
+    }
     &:hover {
         transform: translate(0, -0.5rem);
     }
@@ -140,6 +154,7 @@ main {
     .stuff {
         width: 10%;
         min-width: 200px;
+        overflow: hidden;
     }
     span {
         font-weight: lighter;
@@ -164,6 +179,7 @@ main {
             height: 70px;
             border-radius: 0.5rem;
             object-fit: cover;
+            background-image: inherit;
         }
         .orgName {
             margin-left: 0.8rem;
@@ -251,11 +267,11 @@ section {
                 }
             }
             .maps2 {
-                &:first-of-type {
+                &:first-child {
                     width: 60%;
                     object-position: 75%;
                 }
-                &:last-of-type {
+                &:nth-of-type(2) {
                     width: 57%;
                     left: unset;
                     right: 0;
@@ -360,33 +376,8 @@ section {
     font-weight: lighter;
     &:hover {
         border: 1px solid $yellow;
-        &::after { 
-            background-color: $yellow;
-        }
-        &::before { 
-            background-color: $yellow;
-        }
     }
-    &::before {
-        content: '';
-        position: absolute;
-        width: 30px;
-        height: 1px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: $grey;
-    }
-    &::after {
-        content: '';
-        position: absolute;
-        width: 1px;
-        height: 25px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: $grey;
-    }
+
 }
 
 .admin {
