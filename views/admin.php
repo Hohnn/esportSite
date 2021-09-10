@@ -20,7 +20,128 @@
 <?php require __DIR__.'/../components/header.php' ?>
                 <section class="actu mt-0">
                     <h1>ADMINISTRATION</h1>
-<?php if (isset($_GET['tournament']) || empty($_GET)) { ?>
+<?php if (isset($_GET['team']) || empty($_GET)) { ?>
+    <div class="container-md mb-5 mt-3">
+                        <div class="row g-4">
+                            <div class="title">Gestion des équipes</div>
+                            <div class="col-12 col-xl-7">
+                                <form class="row myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
+                                <div class="col-12">    
+                                <div class="row mt-3">
+                                    <div class="col">
+                                        <input type="hidden" name="teamOldLogo" value="<?= $team['TEAM_LOGO'] ?? '' ?>">
+                                        <input type="file"  class="form-control <?= !empty($verifUpload) ? 'is-invalid' : ''?>" name="logo" onchange="showPreviewTeamLogo(event);"  required>
+                                        <div class="invalid-feedback "><?= $verifUpload[0] ?? '' ?></div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="hidden" name="teamId" value="<?= $team['TEAM_ID'] ?? '' ?>">
+                                        <input type="text" class="form-control" name="name" id="teamName" value="<?= $team['TEAM_NAME'] ?? '' ?>" placeholder="Nom d'équipe" required>
+                                        <div class="invalid-feedback ">non valide</div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row mt-4">
+                                        <div class="col">
+                                        <select class="form-select" aria-label="Default select example" id="statusSelect" name="country" required >
+<?php if (isset($_GET['team']) && $_GET['team'] != 'edit') { ?>
+                                            <option selected hidden>Pays</option> 
+<?php } foreach($country as $tag => $countryName) { ?>
+                                            <option <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'A venir' ? 'selected' : '') : '' ?> value="<?= $tag ?>" ><?= $countryName ?></option>
+<?php } ?>    
+                                        </select>
+                                        </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="tag" id="tag" value="<?= $team['TEAM_FORMAT']  ?? '' ?>" placeholder="TAG de l'équipe" required>
+                                        <div class="invalid-feedback ">non valide</div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4 g-2" id="playersContainer">
+                                <div class="mb-2">Joueurs</div>
+
+                                    <div class="col-6">
+                                        <select class="form-select" aria-label="Default select example" id="userSelect" name="userId" required data-user-select="1" >
+                                        <option value="0">Autre</option>
+
+                                        <?php if (isset($_GET['team']) && $_GET['team'] != 'edit') { ?>
+                                            <option selected hidden>Joueurs inscrit</option> 
+<?php } foreach($allUsers as $user) { ?>
+                                            <option <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'A venir' ? 'selected' : '') : '' ?> value="<?= $user['USER_ID'] ?>" ><?= $user['USER_USERNAME'] ?></option>
+<?php } ?>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-6 ">
+                                        <input type="text" class="form-control d-none" name="playerName" id="playerName" value="<?= $tournament['TOURNAMENT_LINK']  ?? '' ?>" placeholder="Nom du joueur" required data-player-name >
+                                        <div class="invalid-feedback ">non valide</div>
+                                    </div>
+                                    
+                                
+                                    </div>
+                                    <div class="row mt-2">
+                                    <div class="col-12">
+                                        <button type="button" class="btn btn-sm btn-primary bgYellow px-3 mw-25" id="plusPlayer">+</button>
+                                    </div>
+                                    </div>
+                                    </div>                       
+                                    <div class="col d-flex my-3">
+<?php if (isset($_GET['team']) && $_GET['team'] != 'edit') { ?>
+                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeam">Ajouter</button>
+<?php } else { ?>
+                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeamUpdate" value="<?= $match['MATCH_ID'] ?? '' ?>" >Modifier</button>
+<?php } ?>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- Preview TEAM -->
+                            <div class="col teamCol" >
+                                <div class="teamCard myCard">
+                                    <div id="toggle" class="toggle"><i class="bi bi-plus-circle"></i></div>
+                                    <header>
+                                        <img src="../assets/images/teamLogo/daw.png" alt="" id="backTeamLogo" class="teamLogoBack">
+                                        <img src="../assets/images/teamLogo/daw.png" alt="" id="teamLogo" class="teamLogo">
+                                        <div class="wrap">
+                                            <h3 class="teamName">DAW esport</h3>
+                                            <div class="wrapDesc d-flex align-items-center">
+                                                <div class="flag">
+                                                    <img src="https://www.countryflags.io/fr/flat/64.png" alt="">
+                                                </div>
+                                                <div class="tag ms-3">[DAW]</div>
+                                            </div>
+                                        </div>
+                                    </header>
+                                    <div class="teamMembers small">
+                                        <a href="#">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <h5 class="memberName">Hohnn</h5>
+                                        </a>
+                                        <a href="#">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <h5 class="memberName">Hohnn</h5>
+                                        </a>
+                                        <a href="#">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <h5 class="memberName">Hohnn</h5>
+                                        </a>
+                                        <a href="#">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <h5 class="memberName">Hohnn</h5>
+                                        </a>
+                                        <a href="#">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <h5 class="memberName">Hohnn</h5>
+                                        </a>
+                                        <a href="#">
+                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <h5 class="memberName">Hohnn</h5>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+<?php } if (isset($_GET['tournament']) || empty($_GET)) { ?>
                     <div class="container-md mb-5 mt-3">
                         <div class="row g-4">
                             <div class="col-12">
@@ -82,7 +203,7 @@
                                             <input class="form-check-input" type="checkbox" id="checkbox<?= $team['TEAM_ID'] ?>" name="teams[]" value="<?= $team['TEAM_ID'] ?>" <?= $checked ?? '' ?> require>
                                             <label class="form-check-label" for="checkbox<?= $team['TEAM_ID'] ?>"><?= $team['TEAM_NAME'] ?></label>
                                         </div>
-<?php } }?>
+<?php } } ?>
                                         
                                     </div>
                                     </div>
@@ -117,7 +238,7 @@
                                     <div class="teams stuff">
                                         <span>équipes</span> 
                                         <div class="teamsWrap">
-<?php if (isset($_GET['tournament']) && $_GET['tournament'] != 'edit') {
+<?php if (isset($_GET['tournament']) && $_GET['tournament'] == 'edit') {
 $teamArray = explode(',', $tournament['TEAM_ID']);
 foreach($teamArray as $teamId){ 
     $team = $Comp->getTeam($teamId);
@@ -468,10 +589,13 @@ foreach($teamArray as $teamId){
         
         </script>
     <?php } ?>
-    
+        <script type='text/javascript'> var allUsers = <?= json_encode($allUsers) ?>;  </script>
         <script src="../assets/js/admin.js"></script>
         <?php if ( empty($_GET) || isset($_GET['match'])) { ?>
         <script src="../assets/js/adminMatch.js"></script>
+<?php } ?>
+        <?php if ( empty($_GET) || isset($_GET['tournament'])) { ?>
+        <script src="../assets/js/adminTournament.js"></script>
 <?php } ?>
 
 </body>

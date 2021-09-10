@@ -159,6 +159,7 @@ main .active {
   max-width: -moz-fit-content;
   max-width: fit-content;
   min-width: 300px;
+  min-height: 180px;
 }
 
 .tournamentCard {

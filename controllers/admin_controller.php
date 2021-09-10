@@ -1,11 +1,13 @@
 <?php
 
 $Comp = new CompModel();
+$User = new UserModel();
 
 $allTeams = $Comp->getAllTeams();
 $allMaps = $Comp->getAllMaps();
 $allTournament = $Comp->getAllTournament();
 $allMatches = $Comp->getAllMatches();
+$allUsers = $User->getAllUser();
 
 if (isset($_POST['submitMatch'])) {
     $match_id = $Comp->addMatch($_POST['team1'], $_POST['team2'], $_POST['match_date'], $_POST['link'], $_POST['event'], $_SESSION['id']);
@@ -77,7 +79,6 @@ if (isset($_POST['submitTournament'])) {
         $Comp->addTournament($_POST['name'], $logoEncode, $_POST['format'], $_POST['date'], $_POST['status'], $_POST['link'], $teams, $_SESSION['id']);
         $success = 'Le tournoi a été ajouté avec succès !';
     }
-
 }
 
 if (isset($_GET['tournament']) && $_GET['tournament'] == 'edit') {
@@ -117,5 +118,16 @@ function uploadLogo($img_file, $type = "image", $size = 1000000)
     return $msgArray;
 }
 
+if (isset($_POST['submitTeam'])) {
+    $verifUpload = uploadLogo($_FILES['logo']);
+    if (empty($verifUpload)) {
+        $logoEncode = base64_encode(file_get_contents($_FILES['logo']['tmp_name']));   
+        $Comp->setTeam($_POST['name'], $logoEncode, $_POST['country'], $_SESSION['id'], $_POST['tag']);
 
+        $success = 'L\'équipe a été ajoutée avec succès !';
+    }
+}
 
+if (isset($_GET['team']) || empty($_GET)) {
+    $country = json_decode(file_get_contents('../assets/json/country.json'));
+}

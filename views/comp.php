@@ -70,6 +70,12 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col teamCol position-relative">
+                                <a href="../views/admin.php?team=add">
+                                    <div class="addCard">Ajouter un match</div>
+                                </a>
+                            </div>
                         
                         </div>
                     </div>    
