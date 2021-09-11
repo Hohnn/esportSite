@@ -14,7 +14,7 @@ class CompModel extends database
         $result->bindValue(4, $user_id, PDO::PARAM_INT);
         $result->bindValue(5, $shortname, PDO::PARAM_STR);
         $result->execute();
-        return $result;
+        return $bdd->lastInsertId();
     }
 
     public function getTeam($id)
@@ -32,6 +32,29 @@ class CompModel extends database
         $bdd = $this->connectDatabase();
         $condition = "SELECT * FROM teams";
         $result = $bdd->query($condition)->fetchAll();
+        return $result;
+    }
+
+    public function getAllplayerByTeam($teamId)
+    {
+        $bdd = $this->connectDatabase();
+        $condition = "SELECT * FROM player as P LEFT JOIN user as U ON U.USER_ID = P.USER_ID WHERE team_id = ? ";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $teamId, PDO::PARAM_INT);
+        $result->execute();
+        return $result->fetchAll();
+    }
+
+
+    public function setPlayer($playerName, $lastId, $user_id)
+    {
+        $bdd = $this->connectDatabase();
+        $condition = "INSERT INTO player (player_name, team_id, user_id) VALUES (?, ?, ?)";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $playerName, PDO::PARAM_STR);
+        $result->bindValue(2, $lastId, PDO::PARAM_INT);
+        $result->bindValue(3, $user_id, PDO::PARAM_INT);
+        $result->execute();
         return $result;
     }
 

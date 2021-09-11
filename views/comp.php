@@ -26,7 +26,10 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                     <h1 class="text-uppercase">équipes</h1>
                     <div class="container-fluid mt-3">
                         <div class="row g-3" >
-                            <div class="col teamCol" >
+                        <?php foreach($allTeams as $team){
+                                echo displayTeam($team);
+                            } ?>
+                            <!-- <div class="col teamCol" >
                                 <div class="teamCard myCard">
                                     <div id="toggle" class="toggle"><i class="bi bi-plus-circle"></i></div>
                                     <header>
@@ -69,11 +72,11 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="col teamCol position-relative">
                                 <a href="../views/admin.php?team=add">
-                                    <div class="addCard">Ajouter un match</div>
+                                    <div class="addCard">Ajouter une équipe</div>
                                 </a>
                             </div>
                         

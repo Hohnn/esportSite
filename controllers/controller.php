@@ -57,7 +57,7 @@ if (isset($_POST['submitLogin'])) {
         if (password_verify($password, $user['USER_PASSWORD'])) {
             $_SESSION['user'] = $user['USER_USERNAME'];
             $_SESSION['id'] = $user['USER_ID'];
-            header('Location: ../views/user.php');
+            header('Location: ../index.php');
         } else {
             $errorPass = 'Ce mot de passe n’est pas valide.';
         }
