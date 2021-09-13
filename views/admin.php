@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="col">
                                         <input type="hidden" id="playerCount" name="playerCount" value="">
-                                        <input type="hidden" name="teamId" value="<?= $team['TEAM_ID'] ?? '' ?>">
+                                        <input type="hidden" id="teamId" name="teamId" value="<?= $team['TEAM_ID'] ?? '' ?>">
                                         <input type="text" class="form-control" name="name" id="teamName" value="<?= $team['TEAM_NAME'] ?? '' ?>" placeholder="Nom d'équipe" required>
                                         <div class="invalid-feedback ">non valide</div>
                                     </div>
@@ -45,7 +45,7 @@
                                     <div class="row mt-4">
                                         <div class="col">
                                         <select class="form-select" aria-label="Default select example" id="flagSelect" name="country" required >
-<?php if (isset($_GET['team']) && $_GET['team'] != 'edit') { ?>
+<?php if ( $_GET['team'] != 'edit') { ?>
                                             <option selected hidden>Pays</option> 
 <?php } foreach($country as $tag => $countryName) { 
         ?>
@@ -61,11 +61,12 @@
                                 <div class="row mt-4 g-2" id="playersContainer">
                                 <div class="mb-2">Joueurs</div>
 
+
                                     <div class="col-6">
                                         <select class="form-select" aria-label="Default select example" id="userSelect" name="userId1" required data-user-select="1" >
                                         <option value="" >Autre</option>
 
-                                        <?php if (isset($_GET['team']) && $_GET['team'] != 'edit') { ?>
+<?php if ( $_GET['team'] != 'edit') { ?>
                                             <option selected hidden>Joueurs inscrit</option> 
 <?php } foreach($allUsers as $user) { ?>
                                             <option <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'A venir' ? 'selected' : '') : '' ?> value="<?= $user['USER_ID'] ?>" ><?= $user['USER_USERNAME'] ?></option>
@@ -74,7 +75,10 @@
                                     </div>
                                     
                                     <div class="col-6 ">
-                                        <input type="text" class="form-control d-none" name="playerName" id="playerName1" value="<?= $tournament['TOURNAMENT_LINK']  ?? '' ?>" placeholder="Nom du joueur" required data-player-name >
+                                        <div class="d-flex">
+                                            <input type="text" class="form-control d-none me-1" name="playerName" id="playerName1"  placeholder="Nom du joueur" required data-player-name >
+                                            <button type="button" data-delete value="player_1" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#teamModal"><i class="bi bi-x-square"></i></button>
+                                        </div>
                                         <div class="invalid-feedback ">non valide</div>
                                     </div>
                                     
@@ -87,10 +91,11 @@
                                     </div>
                                     </div>                       
                                     <div class="col d-flex my-3">
-<?php if (isset($_GET['team']) && $_GET['team'] != 'edit') { ?>
-                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeam">Ajouter</button>
+<?php if (isset($_GET['team']) && $_GET['team'] == 'edit') { ?>
+                                    <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeamUpdate" value="<?= $match['MATCH_ID'] ?? '' ?>" >Modifier</button>
 <?php } else { ?>
-                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeamUpdate" value="<?= $match['MATCH_ID'] ?? '' ?>" >Modifier</button>
+                                    <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeam">Ajouter</button>
+
 <?php } ?>
                                     </div>
                                 </form>

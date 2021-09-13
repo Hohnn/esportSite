@@ -4,7 +4,7 @@ class UserModel extends database {
 
     public function setUser($username, $mail, $password, $status, $avatar) {
         $bdd = $this->connectDatabase();
-        $condition = "INSERT INTO user (user_username, user_mail, user_password, status_id, defaultlogo_id)
+        $condition = "INSERT INTO user (user_username, user_mail, user_password, status_id, user_logo)
         VALUES (?, ?, ?, ?, ?)";
         $result = $bdd->prepare($condition);
         $result->bindValue(1, $username, PDO::PARAM_STR);
@@ -18,7 +18,7 @@ class UserModel extends database {
 
     public function getAllUser() {
         $bdd = $this->connectDatabase();
-        $condition = "SELECT * FROM user NATURAL JOIN `status` NATURAL JOIN `defaultlogo` ";
+        $condition = "SELECT * FROM user NATURAL JOIN `status` ";
         $result = $bdd->query($condition)->fetchAll();
         return $result;
     }
@@ -34,7 +34,7 @@ class UserModel extends database {
 
     public function getUserByMail($mail) {
         $bdd = $this->connectDatabase();
-        $condition = "SELECT * FROM user NATURAL JOIN `status` NATURAL JOIN `defaultlogo` WHERE user_mail = ? ";
+        $condition = "SELECT * FROM user NATURAL JOIN `status`  WHERE user_mail = ? ";
         $result = $bdd->prepare($condition);
         $result->bindValue(1, $mail, PDO::PARAM_STR);
         $result->execute();
@@ -44,7 +44,7 @@ class UserModel extends database {
 
     public function getUserByUsername($username) {
         $bdd = $this->connectDatabase();
-        $condition = "SELECT * FROM user NATURAL JOIN `status` NATURAL JOIN `defaultlogo` WHERE user_username = ? ";
+        $condition = "SELECT * FROM user NATURAL JOIN `status` WHERE user_username = ? ";
         $result = $bdd->prepare($condition);
         $result->bindValue(1, $username, PDO::PARAM_STR);
         $result->execute();

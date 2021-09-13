@@ -17,6 +17,20 @@ class CompModel extends database
         return $bdd->lastInsertId();
     }
 
+    public function updateTeam($teamId, $name, $logo, $country, $shortname, $user_id)
+    {
+        $bdd = $this->connectDatabase();
+        $condition = "UPDATE teams SET team_name = ?, team_logo = ?, team_country = ?, user_id = ?, team_shortname = ? WHERE team_id = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $name, PDO::PARAM_STR);
+        $result->bindValue(2, $logo, PDO::PARAM_STR);
+        $result->bindValue(3, $country, PDO::PARAM_STR);
+        $result->bindValue(4, $user_id, PDO::PARAM_INT);
+        $result->bindValue(5, $shortname, PDO::PARAM_STR);
+        $result->bindValue(6, $teamId, PDO::PARAM_INT);
+        $result->execute();
+    }
+
     public function getTeam($id)
     {
         $bdd = $this->connectDatabase();
@@ -45,17 +59,25 @@ class CompModel extends database
         return $result->fetchAll();
     }
 
-
-    public function setPlayer($playerName, $lastId, $user_id)
+    public function setPlayer($playerName, $teamId, $user_id)
     {
         $bdd = $this->connectDatabase();
         $condition = "INSERT INTO player (player_name, team_id, user_id) VALUES (?, ?, ?)";
         $result = $bdd->prepare($condition);
         $result->bindValue(1, $playerName, PDO::PARAM_STR);
-        $result->bindValue(2, $lastId, PDO::PARAM_INT);
+        $result->bindValue(2, $teamId, PDO::PARAM_INT);
         $result->bindValue(3, $user_id, PDO::PARAM_INT);
         $result->execute();
         return $result;
+    }
+
+    public function deletePlayerByTeam($teamId)
+    {
+        $bdd = $this->connectDatabase();
+        $condition = "DELETE FROM player WHERE team_id = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $teamId, PDO::PARAM_INT);
+        $result->execute();
     }
 
     public function getMap($id)

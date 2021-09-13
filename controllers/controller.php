@@ -42,6 +42,7 @@ if (isset($_POST['submitSignin'])) {
     $passHash = password_hash($password, PASSWORD_DEFAULT);
     //random number for avatar
     $avatar = rand(1, 5);
+    $avatar = "default_".$avatar.".png";
     $user = $User->setUser($username, $email, $passHash, 1, $avatar);
     $_SESSION['user'] = $username;
     $user = $User->getUserByMail($email);
