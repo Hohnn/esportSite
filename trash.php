@@ -29,3 +29,31 @@
                                             <?= $value ?>
                                         <?php } ?>
                                 </div>
+
+
+                                
+                                <?php } else {
+    $allPlayers = $Comp->getAllplayerByTeam($_GET['teamId']);
+    $count = 0;
+    foreach($allPlayers as $player) {
+        $count++;
+    ?>
+    <div class="col-6">
+                                        <select class="form-select" aria-label="Default select example" id="userSelect" name="userId1" required data-user-select="<?= $count ?>" >
+                                        <option value="" >Autre</option>
+
+<?php if ( $_GET['team'] != 'edit') { ?>
+                                            <option selected hidden>Joueurs inscrit</option> 
+<?php } foreach($allUsers as $user) { ?>
+                                            <option <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'A venir' ? 'selected' : '') : '' ?> value="<?= $user['USER_ID'] ?>" ><?= $user['USER_USERNAME'] ?></option>
+<?php } ?>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-6 ">
+                                        <input type="text" class="form-control d-none" name="playerName" id="playerName1" value="<?= $tournament['TOURNAMENT_LINK']  ?? '' ?>" placeholder="Nom du joueur" required data-player-name >
+                                        <div class="invalid-feedback ">non valide</div>
+                                    </div>
+
+<?php } } ?>
+                                    

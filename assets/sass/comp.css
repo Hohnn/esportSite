@@ -162,6 +162,10 @@ main .active {
   min-height: 180px;
 }
 
+.teamCol .addCard {
+  max-height: 126px;
+}
+
 .tournamentCard {
   position: relative;
   color: white;
@@ -530,9 +534,10 @@ section h1::first-letter {
   -webkit-filter: saturate(120%);
           filter: saturate(120%);
   inset: 0;
-  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, black), to(rgba(0, 0, 0, 0)));
-  -webkit-mask-image: linear-gradient(to bottom, black 50%, rgba(0, 0, 0, 0));
-          mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, black), to(rgba(0, 0, 0, 0)));
-          mask-image: linear-gradient(to bottom, black 50%, rgba(0, 0, 0, 0));
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0));
+          mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+          mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0));
+  display: none;
 }
 /*# sourceMappingURL=comp.css.map */

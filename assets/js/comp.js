@@ -30,4 +30,13 @@ deleteBtnTour.forEach(btn => {
 }
 )
 
+const deleteBtnTeam = document.querySelectorAll('[data-bs-target="#teamModal"]');
+const inputTeamId = document.getElementById('teamId');
+deleteBtnTeam.forEach(btn => {
+    btn.addEventListener('click', function() {
+        let teamId = this.value
+        inputTeamId.value = teamId;
+    })
+}   )
+
 

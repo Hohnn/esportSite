@@ -26,7 +26,10 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                     <h1 class="text-uppercase">équipes</h1>
                     <div class="container-fluid mt-3">
                         <div class="row g-3" >
-                            <div class="col teamCol" >
+                        <?php foreach($allTeams as $team){
+                                echo displayTeam($team);
+                            } ?>
+                            <!-- <div class="col teamCol" >
                                 <div class="teamCard myCard">
                                     <div id="toggle" class="toggle"><i class="bi bi-plus-circle"></i></div>
                                     <header>
@@ -69,11 +72,11 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="col teamCol position-relative">
                                 <a href="../views/admin.php?team=add">
-                                    <div class="addCard">Ajouter un match</div>
+                                    <div class="addCard">Ajouter une équipe</div>
                                 </a>
                             </div>
                         
@@ -198,6 +201,28 @@ require_once __DIR__.'/../controllers/comp_controller.php';
         </div>
     </div>
 
+    <!-- Modal -->
+<div class="modal fade" id="teamModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content text-dark">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="exampleModalLabel">Attention !</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Vous êtes sur le point de supprimer une équipe. <br>
+        ainsi que tous les matchs de cette équipe.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Annuler</button>
+        <form action="" method="POST">
+            <input type="hidden" id="teamId" name="teamId" value="">
+            <button type="submit" name="submitDeleteTeam" class="btn btn-danger">Supprimer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- Modal -->
 <div class="modal fade" id="matchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

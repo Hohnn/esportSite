@@ -21,7 +21,7 @@
                 <section class="actu mt-0">
                     <h1>ADMINISTRATION</h1>
 <?php if (isset($_GET['team']) || empty($_GET)) { ?>
-    <div class="container-md mb-5 mt-3">
+                    <div class="container-md mb-5 mt-3">
                         <div class="row g-4">
                             <div class="title">Gestion des équipes</div>
                             <div class="col-12 col-xl-7">
@@ -29,12 +29,13 @@
                                 <div class="col-12">    
                                 <div class="row mt-3">
                                     <div class="col">
-                                        <input type="hidden" name="teamOldLogo" value="<?= $team['TEAM_LOGO'] ?? '' ?>">
+                                        <input type="hidden" id="oldLogo" name="teamOldLogo" value="<?= $team['TEAM_LOGO'] ?? '' ?>">
                                         <input type="file"  class="form-control <?= !empty($verifUpload) ? 'is-invalid' : ''?>" name="logo" onchange="showPreviewTeamLogo(event);"  required>
                                         <div class="invalid-feedback "><?= $verifUpload[0] ?? '' ?></div>
                                     </div>
                                     <div class="col">
-                                        <input type="hidden" name="teamId" value="<?= $team['TEAM_ID'] ?? '' ?>">
+                                        <input type="hidden" id="playerCount" name="playerCount" value="">
+                                        <input type="hidden" id="teamId" name="teamId" value="<?= $team['TEAM_ID'] ?? '' ?>">
                                         <input type="text" class="form-control" name="name" id="teamName" value="<?= $team['TEAM_NAME'] ?? '' ?>" placeholder="Nom d'équipe" required>
                                         <div class="invalid-feedback ">non valide</div>
                                     </div>
@@ -43,27 +44,29 @@
                                 <div class="col-12">
                                     <div class="row mt-4">
                                         <div class="col">
-                                        <select class="form-select" aria-label="Default select example" id="statusSelect" name="country" required >
-<?php if (isset($_GET['team']) && $_GET['team'] != 'edit') { ?>
+                                        <select class="form-select" aria-label="Default select example" id="flagSelect" name="country" required >
+<?php if ( $_GET['team'] != 'edit') { ?>
                                             <option selected hidden>Pays</option> 
-<?php } foreach($country as $tag => $countryName) { ?>
-                                            <option <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'A venir' ? 'selected' : '') : '' ?> value="<?= $tag ?>" ><?= $countryName ?></option>
+<?php } foreach($country as $tag => $countryName) { 
+        ?>
+                                            <option <?= isset($team) ? ($tag == $team['TEAM_COUNTRY'] ? 'selected' : '') : '' ?> <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'A venir' ? 'selected' : '') : '' ?> value="<?= $tag ?>" ><?= $countryName ?></option>
 <?php } ?>    
                                         </select>
                                         </div>
                                     <div class="col">
-                                        <input type="text" class="form-control" name="tag" id="tag" value="<?= $team['TEAM_FORMAT']  ?? '' ?>" placeholder="TAG de l'équipe" required>
+                                        <input type="text" class="form-control" name="tag" id="tag" maxlength="6" value="<?= $team['TEAM_SHORTNAME']  ?? '' ?>" placeholder="TAG de l'équipe" required>
                                         <div class="invalid-feedback ">non valide</div>
                                     </div>
                                 </div>
                                 <div class="row mt-4 g-2" id="playersContainer">
                                 <div class="mb-2">Joueurs</div>
 
-                                    <div class="col-6">
-                                        <select class="form-select" aria-label="Default select example" id="userSelect" name="userId" required data-user-select="1" >
-                                        <option value="0">Autre</option>
 
-                                        <?php if (isset($_GET['team']) && $_GET['team'] != 'edit') { ?>
+                                    <div class="col-6">
+                                        <select class="form-select" aria-label="Default select example" id="userSelect" name="userId1" required data-user-select="1" >
+                                        <option value="" >Autre</option>
+
+<?php if ( $_GET['team'] != 'edit') { ?>
                                             <option selected hidden>Joueurs inscrit</option> 
 <?php } foreach($allUsers as $user) { ?>
                                             <option <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'A venir' ? 'selected' : '') : '' ?> value="<?= $user['USER_ID'] ?>" ><?= $user['USER_USERNAME'] ?></option>
@@ -72,7 +75,10 @@
                                     </div>
                                     
                                     <div class="col-6 ">
-                                        <input type="text" class="form-control d-none" name="playerName" id="playerName" value="<?= $tournament['TOURNAMENT_LINK']  ?? '' ?>" placeholder="Nom du joueur" required data-player-name >
+                                        <div class="d-flex">
+                                            <input type="text" class="form-control d-none me-1" name="playerName" id="playerName1"  placeholder="Nom du joueur" required data-player-name="1" >
+                                            <button type="button" data-delete value="player_1" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#teamModal"><i class="bi bi-x-square"></i></button>
+                                        </div>
                                         <div class="invalid-feedback ">non valide</div>
                                     </div>
                                     
@@ -85,10 +91,11 @@
                                     </div>
                                     </div>                       
                                     <div class="col d-flex my-3">
-<?php if (isset($_GET['team']) && $_GET['team'] != 'edit') { ?>
-                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeam">Ajouter</button>
+<?php if (isset($_GET['team']) && $_GET['team'] == 'edit') { ?>
+                                    <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeamUpdate" value="<?= $match['MATCH_ID'] ?? '' ?>" >Modifier</button>
 <?php } else { ?>
-                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeamUpdate" value="<?= $match['MATCH_ID'] ?? '' ?>" >Modifier</button>
+                                    <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeam">Ajouter</button>
+
 <?php } ?>
                                     </div>
                                 </form>
@@ -98,41 +105,21 @@
                                 <div class="teamCard myCard">
                                     <div id="toggle" class="toggle"><i class="bi bi-plus-circle"></i></div>
                                     <header>
-                                        <img src="../assets/images/teamLogo/daw.png" alt="" id="backTeamLogo" class="teamLogoBack">
-                                        <img src="../assets/images/teamLogo/daw.png" alt="" id="teamLogo" class="teamLogo">
+                                        <img id="backTeamLogo" class="teamLogoBack">
+                                        <img id="teamLogo" class="teamLogo">
                                         <div class="wrap">
-                                            <h3 class="teamName">DAW esport</h3>
+                                            <h3 class="teamName" id="teamNamePreview">DAW esport</h3>
                                             <div class="wrapDesc d-flex align-items-center">
                                                 <div class="flag">
-                                                    <img src="https://www.countryflags.io/fr/flat/64.png" alt="">
+                                                    <img id="teamCountryPreview" src="https://www.countryflags.io/fr/flat/64.png" alt="">
                                                 </div>
-                                                <div class="tag ms-3">[DAW]</div>
+                                                <div class="tag ms-3" id="teamTagPreview">[DAW]</div>
                                             </div>
                                         </div>
                                     </header>
-                                    <div class="teamMembers small">
+                                    <div class="teamMembers small" id="teamPlayerContainer">
                                         <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
+                                            <img src="data:image/png;base64,<?= $defaultLogoBase64 ?>" alt="" class="memberLogo">
                                             <h5 class="memberName">Hohnn</h5>
                                         </a>
                                     </div>
@@ -568,7 +555,7 @@ foreach($teamArray as $teamId){
     </div>
 
 <!-- Toast -->
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 110">
+<div class="position-fixed bottom-0 end-0 p-3 myToast" style="z-index: 110">
     <div id="liveToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body">

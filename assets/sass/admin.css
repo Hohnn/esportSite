@@ -64,4 +64,12 @@ section form .wrap input {
 .matchCol .matchCard .teamLogo {
   background-color: #333333;
 }
+
+.myToast {
+  pointer-events: none;
+}
+
+.myToast > * {
+  pointer-events: none;
+}
 /*# sourceMappingURL=admin.css.map */

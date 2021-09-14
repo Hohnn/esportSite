@@ -42,6 +42,7 @@ if (isset($_POST['submitSignin'])) {
     $passHash = password_hash($password, PASSWORD_DEFAULT);
     //random number for avatar
     $avatar = rand(1, 5);
+    $avatar = "default_".$avatar.".png";
     $user = $User->setUser($username, $email, $passHash, 1, $avatar);
     $_SESSION['user'] = $username;
     $user = $User->getUserByMail($email);
@@ -57,7 +58,7 @@ if (isset($_POST['submitLogin'])) {
         if (password_verify($password, $user['USER_PASSWORD'])) {
             $_SESSION['user'] = $user['USER_USERNAME'];
             $_SESSION['id'] = $user['USER_ID'];
-            header('Location: ../views/user.php');
+            header('Location: ../index.php');
         } else {
             $errorPass = 'Ce mot de passe n’est pas valide.';
         }
