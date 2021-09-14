@@ -300,16 +300,22 @@ main .actu {
 }
 
 main .actu .card {
-  border: none;
-  height: 500px;
-  min-width: 300px;
-  position: relative;
-  overflow: hidden;
-  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.575);
-          box-shadow: 0 0 15px rgba(0, 0, 0, 0.575);
-  background-size: cover;
-  background-position: center;
-  background-image: url(../images/broken-fire.jpg);
+  /*             border: none;
+            height: 500px;
+            min-width: 300px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.575);
+            background-size: cover;
+            background-position: center;
+            background-image: url(../images/broken-fire.jpg); */
+  /*             &::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(#00000000 40%, #000000e0);
+            } */
 }
 
 main .actu .card .desc {
@@ -340,15 +346,6 @@ main .actu .card .desc a {
   color: white;
   border-radius: 5px;
   margin-top: 2em;
-}
-
-main .actu .card::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(40%, #00000000), to(#000000e0));
-  background-image: linear-gradient(#00000000 40%, #000000e0);
 }
 
 main .actu .Mini {

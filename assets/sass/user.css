@@ -273,4 +273,8 @@ body {
   font-weight: lighter;
   margin-left: 2.2rem;
 }
+
+.mailInput {
+  max-width: 400px;
+}
 /*# sourceMappingURL=user.css.map */

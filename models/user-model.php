@@ -32,6 +32,15 @@ class UserModel extends database {
         return $result->fetch();
     }
 
+    public function getUserPassword($userId) {
+        $bdd = $this->connectDatabase();
+        $condition = "SELECT user_password FROM user WHERE user_id = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $userId, PDO::PARAM_INT);
+        $result->execute();
+        return $result->fetch();
+    }
+
     public function getUserByMail($mail) {
         $bdd = $this->connectDatabase();
         $condition = "SELECT * FROM user NATURAL JOIN `status`  WHERE user_mail = ? ";
@@ -120,6 +129,16 @@ class UserModel extends database {
         $condition = "UPDATE user SET user_token = NULL WHERE user_token = ?";
         $result = $bdd->prepare($condition);
         $result->bindValue(1, $token, PDO::PARAM_STR);
+        $result->execute();
+        return $result;
+    }
+
+    public function updateMail($newMail, $userId) {
+        $bdd = $this->connectDatabase();
+        $condition = "UPDATE user SET user_mail = ? WHERE user_id = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $newMail, PDO::PARAM_STR);
+        $result->bindValue(2, $userId, PDO::PARAM_INT);
         $result->execute();
         return $result;
     }

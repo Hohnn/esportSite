@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__.'/../controllers/controller.php';
     require __DIR__.'/../controllers/scraping_controller.php';
+    require __DIR__.'/../controllers/user_controller.php';
 ?>
 
 
@@ -122,6 +123,65 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-12">
+                                <p>
+                                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Modifier l'adresse mail</a>
+                                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Modifier le mot de passe</button>
+                                </p>
+                                <div class="row g-3">
+                                    <div class="col-12 col-md-6">
+                                        <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                            <div class="card myCard p-3 profilDesc">
+                                                <div class="title">Modification de l'adresse mail</div>
+                                                <form action="" method="POST" class="row fw-normal g-3">
+                                                    <div class="mailInput col-12">
+                                                        <label for="mail">Nouvelle adresse mail</label>
+                                                        <input type="text" class="form-control" name="newMail" id="mail" value="<?= $_POST['newMail'] ?? '' ?>" placeholder="Macron@gmail.com" required>
+                                                        <div class="invalid-feedback ">non valide</div>
+                                                    </div>
+                                                    <div class="mailInput col-12">
+                                                        <label for="password">Mot de passe</label>
+                                                        <input type="password" class="form-control" name="password" id="password" placeholder="" required>
+                                                        <div class="invalid-feedback ">non valide</div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <button type="submit" name="submitNewMail" class="btn btn-sm btn-primary bgYellow px-3 text-dark">Modifier</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="collapse multi-collapse" id="multiCollapseExample2">
+                                            <div class="card myCard p-3 profilDesc">
+                                                    <div class="title">Modification du mot de passe</div>
+                                                    <form action="" method="POST" class="row fw-normal g-3">
+                                                        <div class="mailInput col-12">
+                                                            <label for="oldPassword">Ancien mot de passe</label>
+                                                            <input type="text" class="form-control" name="oldPassword" id="oldPassword" value="<?= $_POST['oldPassword'] ?? '' ?>" placeholder="" required>
+                                                            <div class="invalid-feedback ">non valide</div>
+                                                        </div>
+                                                        <div class="mailInput col-12">
+                                                            <label for="password">Nouveau mot de passe</label>
+                                                            <input type="password" class="form-control" name="password" id="password" placeholder="" required>
+                                                            <div class="invalid-feedback ">non valide</div>
+                                                        </div>
+                                                        <div class="mailInput col-12">
+                                                            <label for="confirmPassword">Confirmer le nouveau mot de passe</label>
+                                                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="" required>
+                                                            <div class="invalid-feedback ">non valide</div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button type="submit" name="submitNewPassword" class="btn btn-sm btn-primary bgYellow px-3 text-dark">Modifier</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </section>
