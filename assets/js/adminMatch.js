@@ -93,7 +93,6 @@ matchDate.addEventListener('change', ( ) => {
     let date = new Date(dateValue);
     datePreview.innerHTML = date.toLocaleDateString('fr-FR', {day: 'numeric',month: 'long'});
 })
-
 link.addEventListener('change', ( ) => {
     let linkValue = link.value;
     let twitch = linkValue.includes('twitch.tv');

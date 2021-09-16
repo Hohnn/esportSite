@@ -12,7 +12,6 @@ function showPreview(event){
 }
 
 const checkButton = document.querySelectorAll('input[type="checkbox"]');
-console.log(checkButton);
 checkButton.forEach(function(check){
     check.addEventListener('change', function(){
         if(check.checked){

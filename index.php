@@ -1,6 +1,7 @@
 <?php
 require './controllers/controller.php';
 include './controllers/member_controller.php';
+include './controllers/index_controller.php';
 ?>
 
 <!DOCTYPE html>
@@ -18,44 +19,33 @@ include './controllers/member_controller.php';
             <div class="container-fluid">
                 <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"><img src="assets\images\1.jpg" alt=""></button>
-                        <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"><img src="assets\images\2.jpg" alt=""></button>
-                        <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"><img src="assets\images\3.jpg" alt=""></button>
+                        <?php 
+                        $count = 0;
+                        foreach($allNews as $news){ ?>
+                        <button type="button" data-bs-target="#carousel" data-bs-slide-to="<?= $count ?>" class="active" aria-current="true" aria-label="Slide <?= $count + 1 ?>"><img src="../assets/images/news_images/<?= $news['ARTICLE_IMAGE'] ?>" alt=""></button>
+                        <?php $count++; } ?>
                     </div>
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="assets\images\1.jpg" class="d-block w-100" alt="...">
+                    <?php 
+                        $count = 0;
+                        foreach($allNews as $news){ ?>
+                        <div class="carousel-item <?= $count == 0 ? 'active' : '' ?>">
+                            <img src="../assets/images/news_images/<?= $news['ARTICLE_IMAGE'] ?>" class="d-block w-100" style="z-index: 110" alt="...">
                             <div class="carousel-caption">
-                                <h2>First slide label</h2>
-                                <p>Some representative placeholder content for the first slide.</p>
-                                <a href="#" class="btn bgYellow text-white">Afficher <i class="bi bi-box-arrow-in-right"></i></a>
+                                <h2><?= $news['ARTICLE_TITLE'] ?></h2>
+                                <p><?= $news['ARTICLE_SUBTITLE'] ?></p>
+                                <a href="<?= $news['ARTICLE_LINK'] ?>" class="btn bgYellow text-white">Afficher <i class="bi bi-box-arrow-in-right"></i></a>
                             </div>
-                            <div class="carousel-caption mycaption-top">
-                                <p><i class="bi bi-bookmark-fill"></i> TEST</p>
+                            <div class="carousel-caption mycaption-top" style="z-index: 0">
+                                <p><i class="bi bi-bookmark-fill"></i> <?= $news['ARTICLE_TYPE'] ?></p>
+                            </div>
+                            <div class="admin">
+                                <a href="../views/admin.php?news=edit&newsId=<?= $news['ARTICLE_ID'] ?>" class="btn bg-success text-white"><i class="bi bi-pencil-square"></i></a>
+                                <button type="button" id="deleteNews" value="<?= $news['ARTICLE_ID'] ?>" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#newsModal"><i class="bi bi-x-square"></i></button>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <img src="assets\images\2.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption">
-                                <h2>Second slide label</h2>
-                                <p>Some representative placeholder content for the second slide.</p>
-                                <a href="#" class="btn bgYellow text-white">Afficher <i class="bi bi-box-arrow-in-right"></i></a>
-                            </div>
-                            <div class="carousel-caption mycaption-top">
-                                <p><i class="bi bi-bookmark-fill"></i> TEST</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="assets\images\3.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption">
-                                <h2>Third slide label</h2>
-                                <p>Some representative placeholder content for the third slide.</p>
-                                <a href="#" class="btn bgYellow text-white">Afficher <i class="bi bi-box-arrow-in-right"></i></a>
-                            </div>
-                            <div class="carousel-caption mycaption-top">
-                                <p><i class="bi bi-bookmark-fill"></i> TEST</p>
-                            </div>
-                        </div>
+                        <?php $count++; } ?>
+
                     </div>
                 </div>
                     <div class="d-flex justify-content-end position-relative">
@@ -127,6 +117,41 @@ include './controllers/member_controller.php';
         </div>
     </div>  
 
+        <!-- Modal -->
+<div class="modal fade" id="newsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content text-dark">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="exampleModalLabel">Attention !</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Vous êtes sur le point de supprimer un article.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Annuler</button>
+        <form action="" method="POST">
+            <input type="hidden" id="newsId" name="newsId" value="">
+            <button type="submit" name="submitDeleteNews" class="btn btn-danger">Supprimer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="position-fixed bottom-0 end-0 p-3 myToast" style="z-index: 110">
+    <div id="liveToast" class="toast align-items-center text-white <?= $color ?? 'bg-success' ?> border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+            <?= $success ?>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
+
 
     <!-- Script -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -134,5 +159,11 @@ include './controllers/member_controller.php';
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/test.js"></script>
     <script src="./assets/js/apiTwitch.js"></script>
+    <?php if(isset($success)){ ?>
+        <script>
+        let myToast =  new bootstrap.Toast(document.getElementById('liveToast'))
+        myToast.show()
+        </script>
+    <?php } ?>
 </body>
 </html>

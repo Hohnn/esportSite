@@ -632,6 +632,7 @@ main {
     border-radius: 1rem;
     overflow: hidden;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+    isolation: isolate;
     .carousel-indicators {
         left: unset;
         margin-right: 5%;
@@ -676,6 +677,7 @@ main {
     .mycaption-top {
         top: 3%;
         text-transform: uppercase;
+        height: 50%;
     }
 }
 
@@ -709,4 +711,23 @@ main {
     border-radius: 0.25rem;
     font-weight: normal;
     color: white;
+}
+
+.admin {
+    position: absolute;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    a {    
+        border-radius: 1rem 0rem;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    button {
+        border-radius: 0rem 1rem;
+    }
 }

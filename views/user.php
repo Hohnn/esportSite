@@ -123,10 +123,12 @@
                                     </div>
                                 </div>
                             </div>
+<?php if (isset($showModif) && $showModif == true) { ?>
+                                
                             <div class="col-12">
                                 <p>
-                                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Modifier l'adresse mail</a>
-                                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Modifier le mot de passe</button>
+                                    <a class="btn btn-primary btn-sm btn-dark" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Modifier l'adresse mail</a>
+                                    <button class="btn btn-primary btn-sm btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Modifier le mot de passe</button>
                                 </p>
                                 <div class="row g-3">
                                     <div class="col-12 col-md-6">
@@ -136,12 +138,12 @@
                                                 <form action="" method="POST" class="row fw-normal g-3">
                                                     <div class="mailInput col-12">
                                                         <label for="mail">Nouvelle adresse mail</label>
-                                                        <input type="text" class="form-control" name="newMail" id="mail" value="<?= $_POST['newMail'] ?? '' ?>" placeholder="Macron@gmail.com" required>
+                                                        <input type="text" class="form-control" name="newMail" id="mail" value="<?= $user['USER_MAIL'] ?? '' ?>" placeholder="Macron@gmail.com" required>
                                                         <div class="invalid-feedback ">non valide</div>
                                                     </div>
                                                     <div class="mailInput col-12">
                                                         <label for="password">Mot de passe</label>
-                                                        <input type="password" class="form-control" name="password" id="password" placeholder="" required>
+                                                        <input type="password" class="form-control <?= $error ?? '' ?>" name="password" id="password" placeholder="" required>
                                                         <div class="invalid-feedback ">non valide</div>
                                                     </div>
                                                     <div class="col-12">
@@ -158,17 +160,17 @@
                                                     <form action="" method="POST" class="row fw-normal g-3">
                                                         <div class="mailInput col-12">
                                                             <label for="oldPassword">Ancien mot de passe</label>
-                                                            <input type="text" class="form-control" name="oldPassword" id="oldPassword" value="<?= $_POST['oldPassword'] ?? '' ?>" placeholder="" required>
+                                                            <input type="password" class="form-control <?= $errorOld ?? '' ?>" name="oldPassword" id="oldPassword"  placeholder="" required>
                                                             <div class="invalid-feedback ">non valide</div>
                                                         </div>
                                                         <div class="mailInput col-12">
                                                             <label for="password">Nouveau mot de passe</label>
-                                                            <input type="password" class="form-control" name="password" id="password" placeholder="" required>
+                                                            <input type="password" class="form-control <?= $errorPass ?? '' ?>" name="password" id="password" placeholder="" required>
                                                             <div class="invalid-feedback ">non valide</div>
                                                         </div>
                                                         <div class="mailInput col-12">
                                                             <label for="confirmPassword">Confirmer le nouveau mot de passe</label>
-                                                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="" required>
+                                                            <input type="password" class="form-control <?= $errorConf ?? '' ?>" name="confirmPassword" id="confirmPassword" placeholder="" required>
                                                             <div class="invalid-feedback ">non valide</div>
                                                         </div>
                                                         <div class="col-12">
@@ -180,6 +182,7 @@
                                         </div>
                                     </div>
                                 </div>
+<?php } ?>
                             </div>
                             
                         </div>
@@ -189,10 +192,29 @@
         </div>
     </div>
 
+    <!-- Toast -->
+<div class="position-fixed bottom-0 end-0 p-3 myToast" style="z-index: 110">
+    <div id="liveToast" class="toast align-items-center text-white <?= $toastColor ?? '' ?> border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+            <?= $succes ?? '' ?>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
     <!-- Script -->
+    
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="../assets/js/user.js"></script>
+    <?php if(isset($succes)){ ?>
+        <script>
+        let myToast =  new bootstrap.Toast(document.getElementById('liveToast'))
+        myToast.show()
+        </script>
+    <?php } ?>
     
 </body>
 </html>

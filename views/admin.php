@@ -20,7 +20,67 @@
 <?php require __DIR__.'/../components/header.php' ?>
                 <section class="actu mt-0">
                     <h1>ADMINISTRATION</h1>
-<?php if (isset($_GET['team']) || empty($_GET)) { ?>
+                    <div class="container-md mt-4">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card myCard">
+                                    <a href="?news">
+                                        <div class="card-body text-center">
+                                            <div class="card-header">
+                                                <h3>Articles</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>Ajouter un article</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card myCard">
+                                    <a href="?team">
+                                        <div class="card-body text-center">
+                                            <div class="card-header">
+                                                <h3>Equipes</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>Ajouter une équipe</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card myCard">
+                                    <a href="?tournament">
+                                        <div class="card-body text-center">
+                                            <div class="card-header">
+                                                <h3>Tournois</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>Ajouter un tournoi</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card myCard">
+                                    <a href="?match">
+                                        <div class="card-body text-center">
+                                            <div class="card-header">
+                                                <h3>Matchs</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>Ajouter un match</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<?php if (isset($_GET['team'])) { ?>
                     <div class="container-md mb-5 mt-3">
                         <div class="row g-4">
                             <div class="title">Gestion des équipes</div>
@@ -128,7 +188,7 @@
 
 
 
-<?php } if (isset($_GET['tournament']) || empty($_GET)) { ?>
+<?php } if (isset($_GET['tournament'])) { ?>
                     <div class="container-md mb-5 mt-3">
                         <div class="row g-4">
                             <div class="col-12">
@@ -240,7 +300,7 @@ foreach($teamArray as $teamId){
                         </div>
                     </div>
 <?php } ?>
-<?php if (isset($_GET['match']) || empty($_GET)) { ?>
+<?php if (isset($_GET['match'])) { ?>
                     <div class="container-md mb-5">
                         <div class="row g-4">
                             <div class="title mb-0">Gestion des tournois</div>
@@ -449,105 +509,78 @@ foreach($teamArray as $teamId){
                             </div>
                         </div>
                     </div>
-<?php } if(empty($_GET)) { ?>
+<?php } if(isset($_GET['news'])) { ?>
                     <div class="container-md">
-                        <div class="row mt-5">
-                            <div class="title">News n°1</div>
-                            <div class="col">
-                                <div class="card " id="backImage">
-                                    <div class="desc text-white">
-                                        <h2 class="title" id="titlePreview">Death Stranding</h2>
-                                        <div class="date" id="datePreview">25/05/1992</div>
-                                        <div class="sujet" id="typePreview">News</div>
-                                        <div class="auteur" id="authorPreview">Hohnn</div>
-                                        <button type="button">Voir</button>
+                    <div class="row mt-0 g-5 fw-normal">
+                        <div class="title">Gestion des articles</div>
+                            <div class="col-12 mt-3 mt-sm-0 myCard p-3 col-xl-6">
+                                <form action="" method="POST" enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                        <label for="title" >Titre de l'article</label>
+                                        <input type="hidden" name="newsId" value="<?= $singleNews['ARTICLE_ID'] ?? '' ?>">
+                                        <input type="text" class="form-control <?=isset($errorTitle) ? 'is-invalid' : ''?>" id="newsTitle" name="title" placeholder="titre" value="<?= isset($_POST['title']) ? $_POST['title'] : ( $singleNews['ARTICLE_TITLE'] ?? '' ) ?>">
+                                        <div class="form-text text-danger"><?=$errorTitle ?? '' ?></div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="subTitle">Sous-titre</label>
+                                        <input type="text" class="form-control <?=isset($errorSubTitle) ? 'is-invalid' : ''?>" id="newsSubTitle" name="subTitle" placeholder="Sous-titre" value="<?= isset($_POST['subTitle']) ? $_POST['subTitle'] : ( $singleNews['ARTICLE_SUBTITLE'] ?? '' ) ?>" require>
+                                        <div class="form-text text-danger"><?=$errorSubTitle ?? '' ?></div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="floatingSelect">Type d'article</label>
+                                        <select class="form-select" id="type" name="type">
+                                            <option selected value="Article">Article</option>
+                                            <option <?= isset($singleNews['ARTICLE_TYPE']) ? ( $singleNews['ARTICLE_TYPE'] == 'Test' ? 'selected' : '' ) : '' ?> value="Test">Test</option>
+                                            <option <?= isset($singleNews['ARTICLE_TYPE']) ? ( $singleNews['ARTICLE_TYPE'] == 'Actu' ? 'selected' : '' ) : '' ?> value="Actu">Actu</option>
+                                            <option <?= isset($singleNews['ARTICLE_TYPE']) ? ( $singleNews['ARTICLE_TYPE'] == 'Promo' ? 'selected' : '' ) : '' ?> value="Promo">Promo</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="source" >Lien de l'article</label>
+                                        <input type="url" class="form-control <?=isset($errorSource) ? 'is-invalid' : ''?>"" id="newsSource" name="source" value="<?= isset($_POST['source']) ? $_POST['source'] : ( $singleNews['ARTICLE_LINK'] ?? '' ) ?>" placeholder="Source" require>
+                                        <div class="form-text text-danger"><?=$errorSource ?? '' ?></div>
+                                    </div>
+                                    <div class=" mb-3">
+                                        <label class="" for="fileToUpload">Image d'illustration</label>
+                                        <input type="hidden" name="oldImage" value="<?= $singleNews['ARTICLE_IMAGE'] ?? '' ?>">
+                                        <input type="file" name="img" class="form-control <?= isset($errorUploadNews) ? 'is-invalid' : '' ?>" id="fileToUpload" accept="image/png, image/jpg, image/jpeg" require>
+                                        <div class="form-text text-danger"><?=$errorUploadNews ?? '' ?></div>
+                                    </div>
+
+                                    <div class="w-100 d-flex mt-2">
+<?php if (isset($_GET['news']) && $_GET['news'] != 'edit') { ?>
+                                        <button class="btn btn-sm btn-primary ms-auto bgYellow px-3" type="submit" id="newsSubmit" name="submitNews" data-submit="<?= isset($count) && $count == 0 ? "valid" : "invalid" ?>">Valider</button>
+<?php } else { ?>
+                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitNewsUpdate" value="<?= $singleNews['ARTICLE_ID'] ?? '' ?>" >Modifier</button>
+<?php } ?>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-12 col-xl-6 mt-3 mt-xl-0">
+                                <!-- Preview Carousel -->
+                            <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"><img id="previewNewsMiniImage" src="../assets/images/news_images/<?= $singleNews['ARTICLE_IMAGE'] ?? '1.jpg' ?>" alt=""></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img id="previewNewsBigImage" src="../assets/images/news_images/<?= $singleNews['ARTICLE_IMAGE'] ?? '1.jpg' ?>" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption">
+                                            <h2 id="previewNewstitle">First slide label</h2>
+                                            <p id="previewNewsSubtitle">Some representative placeholder content for the first slide.</p>
+                                            <a href="#" class="btn bgYellow text-white">Afficher <i class="bi bi-box-arrow-in-right"></i></a>
+                                        </div>
+                                        <div class="carousel-caption mycaption-top">
+                                            <p id="previewNewsType"><i class="bi bi-bookmark-fill"></i> TEST</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            </div>
 
-                            <div class="col d-flex mt-3 mt-sm-0">
-                                <form action="admin.php" method="POST">
-                                    <input class="form-control form-control-sm" id="title" type="text" placeholder="Titre">
-                                    <div class="wrap d-flex mt-2">
-                                        <input class="form-control form-control-sm" id="date" type="text" placeholder="Date">
-                                        <input class="form-control form-control-sm" id="type" type="text" placeholder="Type">
-                                        <input class="form-control form-control-sm" id="author" type="text" placeholder="Auteur">
-                                    </div>
-                                    <input class="form-control form-control-sm mt-2" id="Source" type="text" placeholder="Lien source">
-                                    <input class="form-control form-control-sm mt-2" id="fileToUpload" type="file">
-                                    <div class="w-100 d-flex mt-2">
-                                        <button class="btn btn-sm btn-primary ms-auto bgYellow px-3" type="submit">Valider</button>
-                                    </div>
-                        
-                                </form>
-                            </div>
                         </div>
-
-                        <div class="row mt-4">
-                            <div class="title">News n°2</div>
-                            <div class="col d-flex">
-                                <form action="">
-                                    <input class="form-control form-control-sm" id="title2" type="text" placeholder="Titre">
-                                    <div class="wrap d-flex mt-2">
-                                        <input class="form-control form-control-sm" id="date2" type="text" placeholder="Date">
-                                        <input class="form-control form-control-sm" id="type2" type="text" placeholder="Type">
-                                        <input class="form-control form-control-sm" id="author2" type="text" placeholder="Auteur">
-                                    </div>
-                                    <input class="form-control form-control-sm mt-2" id="Source2" type="text" placeholder="Lien source">
-                                    <input class="form-control form-control-sm mt-2" id="fileToUpload2" type="file">
-                                    <div class="w-100 d-flex mt-2">
-                                        <button class="btn btn-sm btn-primary ms-auto bgYellow px-3" type="submit">Valider</button>
-                                    </div>
-                        
-                                </form>
-                            </div>
-                            <div class="col  mt-3 mt-sm-0">
-                                <div class="card Mini">
-                                    <div class="image" id="backImage2"></div>
-                                    <div class="desc text-white">
-                                        <h3 class="title" id="titlePreview2">Death Stranding</h3>
-                                        <div class="date" id="datePreview2">25/05/1992</div>
-                                        <div class="sujet" id="typePreview2">News</div>
-                                        <div class="auteur" id="authorPreview2">Hohnn</div>
-                                        <button type="button">Voir</button>
-                                    </div>
-                                </div>
-                                
-                            </div>
                         </div>
-
-                        <div class="row mt-4">
-                            <div class="title">News n°3</div>
-                            <div class="col d-flex">
-                                <form action="">
-                                    <input class="form-control form-control-sm" id="title3" type="text" placeholder="Titre">
-                                    <div class="wrap d-flex mt-2">
-                                        <input class="form-control form-control-sm" id="date3" type="text" placeholder="Date">
-                                        <input class="form-control form-control-sm" id="type3" type="text" placeholder="Type">
-                                        <input class="form-control form-control-sm" id="author3" type="text" placeholder="Auteur">
-                                    </div>
-                                    <input class="form-control form-control-sm mt-2" id="Source3" type="text" placeholder="Lien source">
-                                    <input class="form-control form-control-sm mt-2" id="fileToUpload3" type="file">
-                                    <div class="w-100 d-flex mt-2">
-                                        <button class="btn btn-sm btn-primary ms-auto bgYellow px-3" type="submit">Valider</button>
-                                    </div>
-                        
-                                </form>
-                            </div>
-                            <div class="col  mt-3 mt-sm-0">
-                                <div class="card Mini">
-                                    <div class="image" id="backImage3"></div>
-                                    <div class="desc text-white">
-                                        <h3 class="title" id="titlePreview3">Death Stranding</h3>
-                                        <div class="date" id="datePreview3">25/05/1992</div>
-                                        <div class="sujet" id="typePreview3">News</div>
-                                        <div class="auteur" id="authorPreview3">Hohnn</div>
-                                        <button type="button">Voir</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 <?php } ?>
                 </section>
             </main>
@@ -556,7 +589,7 @@ foreach($teamArray as $teamId){
 
 <!-- Toast -->
 <div class="position-fixed bottom-0 end-0 p-3 myToast" style="z-index: 110">
-    <div id="liveToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div id="liveToast" class="toast align-items-center text-white <?= $color ?? 'bg-success' ?> border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body">
             <?= $success ?>
@@ -578,11 +611,17 @@ foreach($teamArray as $teamId){
     <?php } ?>
         <script type='text/javascript'> var allUsers = <?= json_encode($allUsers) ?>;  </script>
         <script src="../assets/js/admin.js"></script>
-        <?php if ( empty($_GET) || isset($_GET['match'])) { ?>
+        <?php if ( isset($_GET['match'])) { ?>
         <script src="../assets/js/adminMatch.js"></script>
 <?php } ?>
-        <?php if ( empty($_GET) || isset($_GET['tournament'])) { ?>
+        <?php if ( isset($_GET['tournament'])) { ?>
         <script src="../assets/js/adminTournament.js"></script>
+<?php } ?>
+        <?php if ( isset($_GET['team'])) { ?>
+        <script src="../assets/js/adminTeam.js"></script>
+<?php } ?>
+        <?php if ( isset($_GET['news'])) { ?>
+        <script src="../assets/js/adminNews.js"></script>
 <?php } ?>
 
 </body>

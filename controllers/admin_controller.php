@@ -2,6 +2,7 @@
 
 $Comp = new CompModel();
 $User = new UserModel();
+$News = new NewsModel();
 
 $allTeams = $Comp->getAllTeams();
 $allMaps = $Comp->getAllMaps();
@@ -174,5 +175,74 @@ if (isset($_POST['submitTeamUpdate'])) {
         }
 
         $success = 'Le tournoi a été modifié avec succès !';
+    }
+}
+
+// register new article
+if (isset($_POST['submitNews'])) {
+    $title = htmlspecialchars($_POST['title']);
+    $subTitle = htmlspecialchars($_POST['subTitle']);
+    $type = htmlspecialchars($_POST['type']);
+    $source = htmlspecialchars($_POST['source']);
+    $verifUpload = uploadLogo($_FILES['img'], 'image', 10000000);
+    if (empty($verifUpload)) {
+        $img_file = $_FILES['img'];
+        $uid = uniqid();
+        $uid = $_SESSION['user'] . $uid;
+        $ext = pathinfo($img_file["name"])["extension"];
+        if ($News->setNews($_SESSION['id'], "$uid.$ext", $title, $subTitle, $type, $source)) {
+            move_uploaded_file($img_file["tmp_name"], "../assets/images/news_images/" . $uid . "." . $ext);
+            $success = 'L\'article à bien été ajouté !';
+            $color = 'bg-success';
+        } else {
+            $success = 'Une erreur est survenue !';
+            $color = 'bg-danger';
+        }
+    } else {
+        $errorUploadNews = $verifUpload[0];
+    }
+}
+
+if (isset($_GET['news'])) {
+    if (isset($_GET['newsId'])) {
+        $singleNews = $News->getNewsById($_GET['newsId']);
+    }
+}
+
+if (isset($_POST['submitNewsUpdate'])) {
+    $title = htmlspecialchars($_POST['title']);
+    $subTitle = htmlspecialchars($_POST['subTitle']);
+    $type = htmlspecialchars($_POST['type']);
+    $source = htmlspecialchars($_POST['source']);
+    $newsId = htmlspecialchars($_POST['newsId']);
+    $oldImage = $_POST['oldImage'];
+    if (empty($_FILES['img']['name'])) {
+        $imgEncode = $_POST['oldImage'];
+    } else {
+        $verifUpload = uploadLogo($_FILES['img'], 'image', 10000000);
+        $img_file = $_FILES['img'];
+        $uid = uniqid();
+        $uid = $_SESSION['user'] . $uid;
+        $ext = pathinfo($img_file["name"])["extension"];
+        $imgEncode = "$uid.$ext";
+        if (empty($verifUpload)) {
+            move_uploaded_file($img_file["tmp_name"], "../assets/images/news_images/" . $uid . "." . $ext);
+            $dir = scandir("../assets/images/news_images");
+            if (in_array($oldImage, $dir)) {
+                unlink("../assets/images/news_images/$oldImage");
+            }
+        }
+    }
+    if (empty($verifUpload)) {
+        if ($News->updateNews($_SESSION['id'], $imgEncode, $title, $subTitle, $type, $source, $newsId)) {
+            $success = 'L\'article à bien été modifié !';
+            $color = 'bg-success';
+            $singleNews = $News->getNewsById($_GET['newsId']);
+        } else {
+            $success = 'Une erreur est survenue !';
+            $color = 'bg-danger';
+        }
+    } else {
+        $errorUploadNews = $verifUpload[0];
     }
 }

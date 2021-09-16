@@ -2,6 +2,7 @@
 require_once __DIR__.'/database.php';
 require_once __DIR__.'/../models/user-model.php';
 require_once __DIR__.'/../models/comp-model.php';
+require_once __DIR__.'/../models/news-model.php';
 require_once __DIR__.'/upload_controller.php';
 require_once __DIR__.'/login_controller.php';
 require_once __DIR__.'/signin_controller.php';

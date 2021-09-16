@@ -769,6 +769,7 @@ main .topMembers .scroll .profil .desc span {
   overflow: hidden;
   -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+  isolation: isolate;
 }
 
 #carousel .carousel-indicators {
@@ -821,6 +822,7 @@ main .topMembers .scroll .profil .desc span {
 #carousel .mycaption-top {
   top: 3%;
   text-transform: uppercase;
+  height: 50%;
 }
 
 .myCard {
@@ -858,5 +860,31 @@ main .topMembers .scroll .profil .desc span {
   border-radius: 0.25rem;
   font-weight: normal;
   color: white;
+}
+
+.admin {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.admin a {
+  border-radius: 1rem 0rem;
+}
+
+.admin a:hover {
+  opacity: 0.8;
+}
+
+.admin button {
+  border-radius: 0rem 1rem;
 }
 /*# sourceMappingURL=style.css.map */

@@ -20,12 +20,6 @@ toggleMenu(profilLogo)
 removeMenu(profilLogo) */
 
 
-const plusSug = document.getElementById('plusSug')
-const plusArticle = document.getElementById('plusArticle')
-plusArticle.addEventListener('click', () => {
-    plusSug.classList.toggle('d-none')
-})
-
 const twitchMenu = document.querySelectorAll('.twitch li')
 twitchMenu.forEach(element => {
     element.addEventListener('click', function () {
@@ -35,3 +29,12 @@ twitchMenu.forEach(element => {
         this.classList.add('active')
     })
 });
+
+const newsDeleteBtn = document.querySelectorAll('[data-bs-target="#newsModal"]');
+const inputNewsId = document.getElementById('newsId');
+newsDeleteBtn.forEach(btn => {
+    btn.addEventListener('click', function() {
+        let teamId = this.value
+        inputNewsId.value = teamId;
+    })
+})

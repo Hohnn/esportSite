@@ -124,6 +124,20 @@ class UserModel extends database {
 
     }
 
+    public function updatePassword($password, $userId) {
+        $bdd = $this->connectDatabase();
+        $condition = "UPDATE user SET user_password = ? WHERE user_id = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $password, PDO::PARAM_STR);
+        $result->bindValue(2, $userId, PDO::PARAM_INT);
+        $result->execute();
+        if ($result->rowCount() == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function removeUserToken($token) {
         $bdd = $this->connectDatabase();
         $condition = "UPDATE user SET user_token = NULL WHERE user_token = ?";
@@ -142,4 +156,6 @@ class UserModel extends database {
         $result->execute();
         return $result;
     }
+
+
 }
