@@ -72,4 +72,60 @@ section form .wrap input {
 .myToast > * {
   pointer-events: none;
 }
+
+.userCol .logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.adminMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.adminMenu .myCard {
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: normal;
+  width: 200px;
+  padding: 0;
+}
+
+.adminMenu .myCard:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.adminMenu .myCard a {
+  padding: 0.5rem 1rem;
+}
+
+tr {
+  cursor: pointer;
+}
+
+tr td img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+tr td div {
+  overflow-x: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+tr td div .twitch, tr td div .youtube, tr td div .twitter {
+  font-size: 0.9rem;
+}
 /*# sourceMappingURL=admin.css.map */

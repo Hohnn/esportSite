@@ -120,8 +120,21 @@ class UserModel extends database {
         }
     }
 
-    public function setUpdateUserStatus($id, $status) {
+    public function getAllStatus() {
+        $bdd = $this->connectDatabase();
+        $condition = "SELECT * FROM status";
+        $result = $bdd->query($condition)->fetchAll();
+        return $result;
+    }
 
+    public function setUpdateUserStatus($id, $status) {
+        $bdd = $this->connectDatabase();
+        $condition = "UPDATE user SET status_id = ? WHERE user_id = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $status, PDO::PARAM_INT);
+        $result->bindValue(2, $id, PDO::PARAM_INT);
+        $result->execute();
+        return $result;
     }
 
     public function updatePassword($password, $userId) {

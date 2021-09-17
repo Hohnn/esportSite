@@ -5,8 +5,8 @@
 $.ajax({
     url: 'https://api.twitch.tv/kraken/streams/?game=Battlefield%20V&language=fr&broadcast_platform=live',
     beforeSend: function(xhr) {
-         xhr.setRequestHeader("Accept", "application/vnd.twitchtv.v5+json")
-         xhr.setRequestHeader("Client-ID", "iguzmyofsjp2l6gru7d1q0kku4hg3e")
+        xhr.setRequestHeader("Accept", "application/vnd.twitchtv.v5+json")
+        xhr.setRequestHeader("Client-ID", "iguzmyofsjp2l6gru7d1q0kku4hg3e")
     }, success: function(data){
         createContent(data);
     }
@@ -50,9 +50,8 @@ $.ajax({
     url: `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=15&playlistId=${playlistId}&${filter}&key=AIzaSyBLvgZi6dAuc5mbmGFitVzFwLAOz9jAciM`,
     beforeSend: function(xhr) {
         xhr.setRequestHeader("Accept", "application/json")
-   }, 
+    },
     success: function(data){
-        console.log(data.items); 
         createContentYT(data)                        
     }
 })

@@ -246,3 +246,7 @@ if (isset($_POST['submitNewsUpdate'])) {
         $errorUploadNews = $verifUpload[0];
     }
 }
+
+if (isset($_GET['user'])) {
+    $allStatus = $User->getAllStatus();
+}

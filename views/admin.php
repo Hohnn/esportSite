@@ -20,63 +20,22 @@
 <?php require __DIR__.'/../components/header.php' ?>
                 <section class="actu mt-0">
                     <h1>ADMINISTRATION</h1>
-                    <div class="container-md mt-4">
-                        <div class="row">
-                            <div class="col">
+                    <div class="container-md my-4">
+                        <div class="adminMenu">
                                 <div class="card myCard">
-                                    <a href="?news">
-                                        <div class="card-body text-center">
-                                            <div class="card-header">
-                                                <h3>Articles</h3>
-                                            </div>
-                                            <div class="card-body">
-                                                <p>Ajouter un article</p>
-                                            </div>
-                                        </div>
-                                    </a>
+                                    <a href="?news"><i class="bi bi-newspaper me-2"></i>Ajouter un article</a>
                                 </div>
-                            </div>
-                            <div class="col">
                                 <div class="card myCard">
-                                    <a href="?team">
-                                        <div class="card-body text-center">
-                                            <div class="card-header">
-                                                <h3>Equipes</h3>
-                                            </div>
-                                            <div class="card-body">
-                                                <p>Ajouter une équipe</p>
-                                            </div>
-                                        </div>
-                                    </a>
+                                    <a href="?team"><i class="bi bi-card-heading me-2"></i>Ajouter une équipe</a>
                                 </div>
-                            </div>
-                            <div class="col">
                                 <div class="card myCard">
-                                    <a href="?tournament">
-                                        <div class="card-body text-center">
-                                            <div class="card-header">
-                                                <h3>Tournois</h3>
-                                            </div>
-                                            <div class="card-body">
-                                                <p>Ajouter un tournoi</p>
-                                            </div>
-                                        </div>
-                                    </a>
+                                    <a href="?tournament"><i class="bi bi-trophy me-2"></i>Ajouter un tournoi</a>
                                 </div>
-                            </div>
-                            <div class="col">
                                 <div class="card myCard">
-                                    <a href="?match">
-                                        <div class="card-body text-center">
-                                            <div class="card-header">
-                                                <h3>Matchs</h3>
-                                            </div>
-                                            <div class="card-body">
-                                                <p>Ajouter un match</p>
-                                            </div>
-                                        </div>
-                                    </a>
+                                    <a href="?match"><i class="bi bi-controller me-2"></i>Ajouter un match</a>
                                 </div>
+                                <div class="card myCard">
+                                    <a href="?user"><i class="bi bi-person-square me-2"></i>Gestion des utilisateur</a>
                             </div>
                         </div>
                     </div>
@@ -212,7 +171,11 @@
                                     <div class="col-12">
                                     <div class="row mt-4">
                                     <div class="col">
-                                        <input type="text" class="form-control" name="format" id="format" value="<?= $tournament['TOURNAMENT_FORMAT']  ?? '' ?>" placeholder="Format... ex: 6v6 conquête escoude" required>
+                                        <input list="formats" type="text" class="form-control" name="format" id="format" value="<?= $tournament['TOURNAMENT_FORMAT']  ?? '' ?>" placeholder="Format... ex: 6v6 conquête escoude" required>
+                                        <datalist id="formats">
+                                            <option value="6v6 conquête escoude"></option>
+                                            <option value="6v6 domination"></option>
+                                        </datalist>
                                         <div class="invalid-feedback ">non valide</div>
                                     </div>
                                     <div class="col">
@@ -303,7 +266,7 @@ foreach($teamArray as $teamId){
 <?php if (isset($_GET['match'])) { ?>
                     <div class="container-md mb-5">
                         <div class="row g-4">
-                            <div class="title mb-0">Gestion des tournois</div>
+                            <div class="title mb-0">Gestion des matchs</div>
                             <div class="col-12 col-xl-7">                        
                         <form class="row pt-3 myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
                             <div class="col-sm-5">
@@ -511,7 +474,7 @@ foreach($teamArray as $teamId){
                     </div>
 <?php } if(isset($_GET['news'])) { ?>
                     <div class="container-md">
-                    <div class="row mt-0 g-5 fw-normal">
+                    <div class="row fw-normal">
                         <div class="title">Gestion des articles</div>
                             <div class="col-12 mt-3 mt-sm-0 myCard p-3 col-xl-6">
                                 <form action="" method="POST" enctype="multipart/form-data">
@@ -578,9 +541,82 @@ foreach($teamArray as $teamId){
                                 </div>
                             </div>
                             </div>
+                        </div>
+                        </div>
+<?php } if(isset($_GET['user'])) { ?>
+                        <div class="container-md">
+                            <div class="row fw-normal">
+                                <div class="title">Gestion des utilisateur</div>
+                                <div class="table-responsive">
+                                <table class="table table-dark table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Logo</th>
+                                            <th scope="col">Pseudo</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Origin ID</th>
+                                            <th scope="col">Réseaux</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+<?php foreach($allUsers as $user){ ?>
+                                        <tr>
+                                            <th scope="row"><?= $user['USER_ID'] ?></th>
+                                            <td><img src="../assets/images/user_logo/<?= $user['USER_LOGO'] ?>" alt="user logo"></td>
+                                            <td><?= $user['USER_USERNAME'] ?></td>
+                                            <td> 
+                                                <div class="role"><?= $user['STATUS_ROLE'] ?></div> 
+                                                <form class="roleSelect d-none" action="" method="post" class="form-horizontal">
+                                                    <select class="form-select" name="role" id="">
+<?php foreach($allStatus as $status){ ?>
+                                                        <option value="<?= $status['STATUS_ID'] ?>"><?= $status['STATUS_ROLE'] ?></option>
+<?php } ?>
+                                                    </select>
+                                                    <button type="submit" name="submitUpdateRole" class="btn btn-sm btn-primary ms-auto bgYellow px-3 mt-2">Valider</button>
+                                                </form>
+                                            </td>
+                                            <td><?= $user['USER_ORIGIN_ID'] ?></td>
+                                            <td class="d-flex"> 
+                                                <div><?= empty($user['USER_TWITTER']) ? '' : '<i class="bi bi-twitter me-2"></i>'?> <div class="twitter d-none"><?= $user['USER_TWITTER'] ?? '' ?></div></div> 
+                                                <div><?= empty($user['USER_YOUTUBE']) ? '' : '<i class="bi bi-youtube me-2"></i>' ?><div class="youtube d-none"><?= $user['USER_YOUTUBE'] ?? '' ?></div></div> 
+                                                <div><?= empty($user['USER_TWITCH']) ? '' : '<i class="bi bi-twitch me-2"></i>' ?><div class="twitch d-none"><?= $user['USER_twitch'] ?? '' ?></div></div>
+                                            </td>
+                                            <td class="d-flex justify-content-end"><button type="button" id="deleteNews" value="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#newsModal"><i class="bi bi-x-square"></i></button></td>
+                                        </tr>
+<?php } ?>
+                                    </tbody>
+                                </table>
+                                </div>
 
+                                <div class="col-6">
+                                    <div class="row myCard userCol">
+                                        <div class="col logo">
+                                            <img src="../assets/images/1.jpg" alt="">
+                                        </div>
+                                        <div class="col descUser">
+                                            <div class="">Hohnn</div>
+                                            <div class="">Hohnn</div>
+                                            <form action="" method="post" class="form-horizontal">
+                                                <select class="form-select" name="role" id="">
+<?php foreach($allStatus as $status){ ?>
+                                                    <option value="<?= $status['STATUS_ID'] ?>"><?= $status['STATUS_ROLE'] ?></option>
+<?php } ?>
+                                                </select>
+                                            </form>
+                                        </div>
+                                        <div class="col descSocial">
+                                            <div class=""><i class="bi bi-twitter"></i>Hohnn</div>
+                                            <div class=""><i class="bi bi-youtube"></i>Hohnn</div>
+                                            <div class=""><i class="bi bi-twitch"></i>Hohnn</div>
+                                        </div>                                                
+                                        
+                                </div>
+
+                            </div>
                         </div>
-                        </div>
+
 <?php } ?>
                 </section>
             </main>
@@ -592,7 +628,7 @@ foreach($teamArray as $teamId){
     <div id="liveToast" class="toast align-items-center text-white <?= $color ?? 'bg-success' ?> border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body">
-            <?= $success ?>
+            <?= $success ?? '' ?>
             </div>
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
