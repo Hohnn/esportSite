@@ -26,9 +26,10 @@ body {
   display: flex;
 }
 
-.profilDesc .title i, .topWeapon .title i {
+.profilDesc .title #edit, .topWeapon .title #edit {
   margin-left: auto;
   cursor: pointer;
+  font-weight: normal;
 }
 
 .profilDesc .wrap, .topWeapon .wrap {

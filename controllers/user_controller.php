@@ -5,45 +5,64 @@ if (isset($_SESSION['user'])) {
         $user = $User->getUserById($_SESSION['id']);
     }
     if (isset($_POST['submitNewMail']) && !empty($_POST['newMail'])) {
-        $newMail = $_POST['newMail'];
-        $password = $_POST['password'];
+        $newMail = htmlspecialchars($_POST['newMail']);
+        $password = htmlspecialchars($_POST['password']);
         $userPass = $User->getUserPassword($_SESSION['id'])[0];
-        if (password_verify($password, $userPass)) {
-            if ($User->updateMail($newMail, $_SESSION['id'])) {
-                $succes = 'Votre email a été modifié avec succès !';
-                $toastColor = 'bg-success';
+        if (isValid($regexMail, $newMail)) {
+            if (password_verify($password, $userPass)) {
+                if ($User->updateMail($newMail, $_SESSION['id'])) {
+                    $succes = 'Votre email a été modifié avec succès !';
+                    $toastColor = 'bg-success';
+                }
             }
-        }
-        else {
-            $error = 'is-invalid';
-            $succes = 'le mot de passe est incorrect';
+            else {
+                $errorPass = 'is-invalid';
+                $succes = 'le mot de passe est incorrect';
+                $toastColor = 'bg-danger';
+            }
+        } else {
+            $errorMail = 'is-invalid';
+            $succes = 'L\'email est invalide';
             $toastColor = 'bg-danger';
         }
     }
     if (isset($_POST['submitNewPassword']) && !empty($_POST['password'])) {
-        $oldPassword = $_POST['oldPassword'];
-        $password = $_POST['password'];
-        $confirmPassword = $_POST['confirmPassword'];
+        $oldPassword = htmlspecialchars($_POST['oldPassword']);
+        $password = htmlspecialchars($_POST['password']);
+        $confirmPassword = htmlspecialchars($_POST['confirmPassword']);
         $userPass = $User->getUserPassword($_SESSION['id'])[0];
-        if (password_verify($oldPassword, $userPass)) {
-            if (isSame($password, $confirmPassword)) {
-                $password = password_hash($password, PASSWORD_DEFAULT);
-                if ($User->updatePassword($password, $_SESSION['id'])) {
-                    $succes = 'Votre mot de passe a été modifié avec succès !';
-                    $toastColor = 'bg-success';
+        if (isValid($regexPassword, $password)) {
+            if (password_verify($oldPassword, $userPass)) {
+                if (isSame($password, $confirmPassword)) {
+                    $password = password_hash($password, PASSWORD_DEFAULT);
+                    if ($User->updatePassword($password, $_SESSION['id'])) {
+                        $succes = 'Votre mot de passe a été modifié avec succès !';
+                        $toastColor = 'bg-success';
+                    } else {
+                        $succes = 'Une erreur est survenu lors de l\'enregistrement!';
+                        $toastColor = 'bg-danget';
+                    }           
                 } else {
-                    $succes = 'Une erreur est survenu lors de l\'enregistrement!';
-                    $toastColor = 'bg-danget';
-                }           
+                    $errorConf = 'is-invalid';
+                    $succes = 'le mot de passe et sa confirmation ne sont pas identiques';
+                    $toastColor = 'bg-danger';
+                }
             } else {
-                $errorConf = 'is-invalid';
-                $succes = 'le mot de passe et sa confirmation ne sont pas identiques';
+                $errorOld = 'is-invalid';
+                $succes = 'l\'ancien mot de passe est incorrect';
                 $toastColor = 'bg-danger';
             }
         } else {
-            $errorOld = 'is-invalid';
-            $succes = 'l\'ancien mot de passe est incorrect';
+            $errorPass = 'is-invalid';
+            $succes = 'le mot de passe est invalide';
             $toastColor = 'bg-danger';
         }
     }
+}
+
+$User = new UserModel();
+
+if (isset($_POST['originId'])) {
+    $originId = htmlspecialchars($_POST['originId']); 
+    $User->setUserOriginID( $_SESSION['id'], $originId);
 }

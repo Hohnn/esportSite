@@ -23,6 +23,13 @@ class UserModel extends database {
         return $result;
     }
 
+    public function getAllUserMail() {
+        $bdd = $this->connectDatabase();
+        $condition = "SELECT user_mail FROM user";
+        $result = $bdd->query($condition)->fetchAll();
+        return $result;
+    }
+
     public function getUserById($id) {
         $bdd = $this->connectDatabase();
         $condition = "SELECT * FROM user NATURAL JOIN `status` WHERE user_id = ?";

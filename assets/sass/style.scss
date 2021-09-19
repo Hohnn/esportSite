@@ -8,8 +8,8 @@ body {
     color: $grey;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 18px;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 a {
@@ -540,6 +540,7 @@ main {
     }
     main {
         padding: 0 !important;
+        margin-bottom: 3rem;
         .phone {
             padding: 0 !important;
         }
@@ -730,4 +731,8 @@ main {
     button {
         border-radius: 0rem 1rem;
     }
+}
+
+.invalid-feedback {
+    font-weight: lighter !important;
 }

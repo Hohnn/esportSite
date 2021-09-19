@@ -93,6 +93,10 @@ section {
 }
 tr {
     cursor: pointer;
+    .social {
+        display: flex;
+        flex-direction: row;
+    }
     td {
         img {
             width: 30px;
@@ -106,6 +110,10 @@ tr {
             .twitch, .youtube, .twitter {
                 font-size: 0.9rem;
             }
+        }
+        .roleSelect {
+            width: max-content;
+            margin : 0;
         }
     }
 }

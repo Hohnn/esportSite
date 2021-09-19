@@ -18,9 +18,10 @@ body {
         padding-bottom: 1rem;
         margin-bottom: 1rem;
         display: flex;
-        i {
+        #edit {
             margin-left: auto;
             cursor: pointer;
+            font-weight: normal;
         }
     }
     .wrap {

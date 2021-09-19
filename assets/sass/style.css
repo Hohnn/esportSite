@@ -4,8 +4,8 @@ body {
   color: #b3b3b3;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
-  font-size: 18px;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -662,6 +662,7 @@ main .topMembers .scroll .profil .desc span {
   }
   main {
     padding: 0 !important;
+    margin-bottom: 3rem;
   }
   main .phone {
     padding: 0 !important;
@@ -886,5 +887,9 @@ main .topMembers .scroll .profil .desc span {
 
 .admin button {
   border-radius: 0rem 1rem;
+}
+
+.invalid-feedback {
+  font-weight: lighter !important;
 }
 /*# sourceMappingURL=style.css.map */

@@ -12,6 +12,12 @@ if(!isset($_SESSION)) {
     session_start();
 }
 
+$regexMail = "/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/";
+$regexPassword = "/^(?=.*?[A-Z])(?=.*?[a-z]).{5,}$/";
+$regexNickname = "/^[^0-9]\w+$/";
+$regexText = "/./";
+$regexUrl = "/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/";
+
 function isValid($pattern, $subject){ //vérifie la regex puis renvoi vrai ou faux
     if (preg_match($pattern, $subject)) {
         return true;
@@ -36,41 +42,11 @@ function isSame($value1, $value2){ //compart si les mdp sont identique
 
 $User = new UserModel();
 
-if (isset($_POST['submitSignin'])) {
-    $username = $_POST['nickname'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $passHash = password_hash($password, PASSWORD_DEFAULT);
-    //random number for avatar
-    $avatar = rand(1, 5);
-    $avatar = "default_".$avatar.".png";
-    $user = $User->setUser($username, $email, $passHash, 1, $avatar);
-    $_SESSION['user'] = $username;
-    $user = $User->getUserByMail($email);
-    $_SESSION['id'] = $user['USER_ID'];
-    header('Location: ../index.php');
-}
 
-if (isset($_POST['submitLogin'])) {
-    $mail = $_POST['mail'];
-    $password = $_POST['password'];
-    $user = $User->getUserByMail($mail);
-    if ($user) {
-        if (password_verify($password, $user['USER_PASSWORD'])) {
-            $_SESSION['user'] = $user['USER_USERNAME'];
-            $_SESSION['id'] = $user['USER_ID'];
-            header('Location: ../index.php');
-        } else {
-            $errorPass = 'Ce mot de passe n’est pas valide.';
-        }
-    } else {
-        $errorLog = 'Mauvaise adresse mail';
-    }
-}
 
-if (isset($_POST['originId'])) {
-    $User->setUserOriginID( $_SESSION['id'], $_POST['originId']);
-}
+
+
+
 
 $regexNickname = "/^[^0-9]\w+$/";
 $regexTwitter = "/http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)/";
@@ -122,6 +98,7 @@ if (isset($_POST['submitEdit'])) {
     if ($count == 0) {
         $User->setUpdateUser($_SESSION['id'], $username, $originId, $twitter, $youtube, $twitch);
         $uploaded = upload("logo");
+        var_dump($uploaded);
         if (empty($uploaded)) {
             $goodUpload = true;
         } else {
@@ -144,7 +121,5 @@ function displayLogError($errorLog) {
     }
 }
 
-/* $test = file_get_contents("https://battlefieldtracker.com/bfv/profile/origin/hohnn/overview");
-var_dump($test); */
 
 ?> 

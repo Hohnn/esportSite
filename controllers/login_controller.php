@@ -5,38 +5,35 @@ use PHPMailer\PHPMailer\Exception;
 require __DIR__.'/../vendor/PHPMailer-master/src/Exception.php';
 require __DIR__.'/../vendor/PHPMailer-master/src/PHPMailer.php';
 require __DIR__.'/../vendor/PHPMailer-master/src/SMTP.php';
-/* $members = file_get_contents('./assets/json/members.json');
-$membersList = json_decode($members)->members; */
 
-/* if (isset($_POST['login']) && isset($_POST['password'])) {
-    $login = $_POST['login'];
-    $password = $_POST['password'];
-    foreach($membersList as $member) {
-        if ($login == $member->mail) {
-            if (password_verify($password, $member->password)) {
-                $_SESSION['nickname'] = $member->nickname;
-                $_SESSION['image'] = $member->image;
-                $_SESSION['role'] = $member->role;
-                header('location: index.php');
-            } else {
-                $errorPass = 'Ce mot de passe n’est pas correct.';
-            }
-        } else {
-            $errorLog = 'Mauvaise adresse mail';
-        }
-    }
-} */
+$User = new UserModel();
 
+//logout
 if (isset($_POST['logout'])) {
     session_unset();
     session_destroy();
     header('location: ../index.php');
 }
 
-                            //Préciser qu'il faut utiliser le texte brut
+// login and create session
+if (isset($_POST['submitLogin'])) {
+    $mail = htmlspecialchars($_POST['mail']);
+    $password = htmlspecialchars($_POST['password']);
+    $user = $User->getUserByMail($mail);
+    if ($user) {
+        if (password_verify($password, $user['USER_PASSWORD'])) {
+            $_SESSION['user'] = $user['USER_USERNAME'];
+            $_SESSION['id'] = $user['USER_ID'];
+            header('Location: ../index.php');
+        } else {
+            $errorPass = 'Ce mot de passe n’est pas valide.';
+        }
+    } else {
+        $errorLog = 'Mauvaise adresse mail';
+    }
+}
 
-$User = new UserModel();
-
+//send mail for reset password
 if (isset($_POST['submitForgetMdp'])) {
     $email = htmlspecialchars($_POST['mail']) ?? '';
     $user = $User->getUserByMail($email) ?? false;
@@ -74,16 +71,19 @@ if (isset($_POST['submitNewMdp'])) {
     $token = htmlspecialchars($_POST['token']) ?? '';
     $pass = htmlspecialchars($_POST['password']) ?? '';
     $confirmPass = htmlspecialchars($_POST['confirmPassword']) ?? '';
-    if (!empty($pass) && $pass == $confirmPass) {
-        $passHash = password_hash($pass, PASSWORD_DEFAULT);
-        if ($User->setUpdateUserPassword($token, $passHash)) {
-            $User->removeUserToken($token);
-            header('location: /views/login.php?updatePass=success');
+    if (isValid($regexPassword, $pass)) {
+        if (!empty($pass) && $pass == $confirmPass) {
+            $passHash = password_hash($pass, PASSWORD_DEFAULT);
+            if ($User->setUpdateUserPassword($token, $passHash)) {
+                $User->removeUserToken($token);
+                header('location: /views/login.php?updatePass=success');
+            } else {
+                header('location: /views/login.php?updatePass=error');
+            }
         } else {
-            header('location: /views/login.php?updatePass=error');
+            $errorConfirmPass = 'Les mots de passe ne correspondent pas';
         }
-    } else {
-        $errorConfirmPass = 'Les mots de passe ne correspondent pas';
     }
+    
 }
 ?>

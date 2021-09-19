@@ -27,7 +27,8 @@
                                 <div class="profilDesc myCard">
                                     <div class="title">Compte 
 <?php if(isset($_SESSION['user']) == $_GET['nickname']){ ?>
-                                        <i id="edit" class="bi bi-pencil-square"></i>
+                                        <div id="edit">Modifier <i class="bi bi-pencil-square"></i></div>
+                                        
 <?php }?>
                                     </div>
                                     <div class="wrap">
@@ -75,7 +76,7 @@
                                         <div id="desc" class="infos <?= isset($goodUpload) && $goodUpload == false ? 'd-none' : '' ?>">
                                             <ul>
                                                 <li><i class="bi bi-person me-3"></i><?= $user['USER_USERNAME'] ?></li>
-                                                <li><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/><?= $user['USER_ORIGIN_ID'] ?? 'Inconnu' ?></li>
+                                                <li><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/><?= !empty($user['USER_ORIGIN_ID']) ? $user['USER_ORIGIN_ID'] : 'Inconnu' ?></li>
                                                 <li><i class="bi bi-person-bounding-box me-3"></i><?= $user['STATUS_ROLE'] ?></li>
                                                 <li class="social">
                                                     <a class="<?= $user['USER_TWITTER'] ? '' : 'none' ?>" href="<?= $user['USER_TWITTER'] ?? '' ?>"><i class="bi bi-twitter"></i></a>
@@ -97,7 +98,7 @@
                                 <div class="topStats myCard">
 <?php if(isset($_SESSION['user']) == $_GET['nickname']){ ?>
                                     <form class="noOrigin <?= $showInput ?? 'd-none' ?>" action="" method="POST">
-                                        <p class="desc">Enter votre Origin ID pour compléter votre profil</p>
+                                        <p class="desc">Enter votre Origin ID pour afficher vos stats</p>
                                         <input type="text" name="originId" placeholder="Origin ID">
                                     </form>
 <?php } elseif (!$user['USER_ORIGIN_ID']) { ?>
@@ -127,8 +128,8 @@
                                 
                             <div class="col-12">
                                 <p>
-                                    <a class="btn btn-primary btn-sm btn-dark" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Modifier l'adresse mail</a>
-                                    <button class="btn btn-primary btn-sm btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Modifier le mot de passe</button>
+                                    <a class="btn btn-primary btn-sm btn-dark" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Modifier votre adresse mail</a>
+                                    <button class="btn btn-primary btn-sm btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Modifier votre mot de passe</button>
                                 </p>
                                 <div class="row g-3">
                                     <div class="col-12 col-md-6">
@@ -138,13 +139,13 @@
                                                 <form action="" method="POST" class="row fw-normal g-3">
                                                     <div class="mailInput col-12">
                                                         <label for="mail">Nouvelle adresse mail</label>
-                                                        <input type="text" class="form-control" name="newMail" id="mail" value="<?= $user['USER_MAIL'] ?? '' ?>" placeholder="Macron@gmail.com" required>
-                                                        <div class="invalid-feedback ">non valide</div>
+                                                        <input type="text" class="form-control <?= $errorMail ?? '' ?>" name="newMail" id="mail" value="<?= $user['USER_MAIL'] ?? '' ?>" placeholder="Macron@gmail.com" required>
+                                                        <div class="invalid-feedback ">Non valide</div>
                                                     </div>
                                                     <div class="mailInput col-12">
                                                         <label for="password">Mot de passe</label>
-                                                        <input type="password" class="form-control <?= $error ?? '' ?>" name="password" id="password" placeholder="" required>
-                                                        <div class="invalid-feedback ">non valide</div>
+                                                        <input type="password" class="form-control <?= $errorPass ?? '' ?>" name="password" id="password" placeholder="" required>
+                                                        <div class="invalid-feedback ">Non valide</div>
                                                     </div>
                                                     <div class="col-12">
                                                         <button type="submit" name="submitNewMail" class="btn btn-sm btn-primary bgYellow px-3 text-dark">Modifier</button>
@@ -161,17 +162,17 @@
                                                         <div class="mailInput col-12">
                                                             <label for="oldPassword">Ancien mot de passe</label>
                                                             <input type="password" class="form-control <?= $errorOld ?? '' ?>" name="oldPassword" id="oldPassword"  placeholder="" required>
-                                                            <div class="invalid-feedback ">non valide</div>
+                                                            <div class="invalid-feedback ">Non valide</div>
                                                         </div>
                                                         <div class="mailInput col-12">
                                                             <label for="password">Nouveau mot de passe</label>
                                                             <input type="password" class="form-control <?= $errorPass ?? '' ?>" name="password" id="password" placeholder="" required>
-                                                            <div class="invalid-feedback ">non valide</div>
+                                                            <div class="invalid-feedback ">Non valide</div>
                                                         </div>
                                                         <div class="mailInput col-12">
                                                             <label for="confirmPassword">Confirmer le nouveau mot de passe</label>
                                                             <input type="password" class="form-control <?= $errorConf ?? '' ?>" name="confirmPassword" id="confirmPassword" placeholder="" required>
-                                                            <div class="invalid-feedback ">non valide</div>
+                                                            <div class="invalid-feedback ">Non valide</div>
                                                         </div>
                                                         <div class="col-12">
                                                             <button type="submit" name="submitNewPassword" class="btn btn-sm btn-primary bgYellow px-3 text-dark">Modifier</button>
@@ -193,7 +194,7 @@
     </div>
 
     <!-- Toast -->
-<div class="position-fixed bottom-0 end-0 p-3 myToast" style="z-index: 110">
+<div class="position-fixed top-0 end-0 p-3 myToast" style="z-index: 110">
     <div id="liveToast" class="toast align-items-center text-white <?= $toastColor ?? '' ?> border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body">

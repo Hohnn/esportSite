@@ -36,6 +36,10 @@
             border-radius: 50%;
             object-fit: cover;
         }
+        .teamName {
+            max-width: 150px;
+            white-space: nowrap;
+        }
         .wrap {
             margin-left: 1rem;
             h3 {
@@ -103,6 +107,7 @@
     }
     .small {
         display: flex;
+        height: 72px;
         a {
             margin-bottom: 0rem;
         }
@@ -419,3 +424,10 @@ isolation: isolate;
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 50%, rgba(0,0,0,0));
     display: none;
   }
+
+label {
+    font-weight: normal;
+    color: white;
+    margin-bottom: 0.2rem;
+    font-size: 0.9rem;
+}

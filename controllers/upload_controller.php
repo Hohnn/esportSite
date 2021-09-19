@@ -4,25 +4,16 @@ if (!$session) {
     session_start();
 }
 
-/* if (!isset($_SESSION['user'])) {
-    header('location: login.php');
-    return false;
-} */
-
 
 function store($tmp_name, $uid, $ext)
 {
     move_uploaded_file($tmp_name, "../assets/images/user_logo/" . $uid . "." . $ext);
 }
 
-// enregistre sur le server
-/* if (isset($count) && $count == 0) { */
 
     function upload($img_file, $type = "image", $size = 1000000)
     {
-/*         if (!isset($_POST["submit"])) {
-            return false;
-        } */
+
 
         $img_file = $_FILES[$img_file] ?? false; # on "identifie" $img_file
         $type = "/$type/"; # on prépare la regex
@@ -40,7 +31,6 @@ function store($tmp_name, $uid, $ext)
                 $uid = uniqid();
                 $uid = $_SESSION['user'] . $uid;
                 $ext = pathinfo($img_file["name"])["extension"];
-/*                 $msgArray[] = "Le fichier " . $uid . "." . $ext . " a bien été uploadé."; */
                 $User = new UserModel();
                 $dir = scandir("../assets/images/user_logo");
                 $userLogoName = $User->getUserById($_SESSION['id'])['USER_LOGO'];
@@ -49,23 +39,10 @@ function store($tmp_name, $uid, $ext)
                 }
                 $User->setUpdateUserLogo($_SESSION['id'], "$uid.$ext");
                 store($img_file["tmp_name"], $uid, $ext);
-                /* $_SESSION['size'] = $_SESSION['size'] + $img_file["size"]; */
             }
         }
 
-/*         if ($img_file["error"] == 4) {
-            $msgArray[] = "Veuillez choisir un fichier.";
-        } */
-/*         $res = "";
-        foreach ($msgArray as $msg) {
-            $res .= "<p>" . $msg . "</p>";
-        } */
-        
         return $msgArray;
     }
-/* 
-$uploaded = upload("img");
-
-} */
 
 ?>

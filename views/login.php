@@ -34,7 +34,7 @@
                 <div class="mb-3 form-floating">
                     <input type="password" class="form-control <?=isset($errorPass) ? 'is-invalid' : ''?>"" id="password" name="password" placeholder="Mot de passe">
                     <label for="password" class="text-muted">Mot de passe</label>
-                    <div class="form-text text-danger"><?=$errorPass ?? ''?></div>
+                    <div class="form-text text-danger"><?=$errorPass ?? ''?>dsqd</div>
                 </div>
                 <div class="mb-3 form-floating">
                     <input type="password" class="form-control <?=isset($errorConfirmPass) ? 'is-invalid' : ''?>"" id="confirmPassword" name="confirmPassword" placeholder="Mot de passe">

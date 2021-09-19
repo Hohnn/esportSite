@@ -27,23 +27,23 @@
   
         <div class="mb-3">
             <label for="nickname" class="form-label">Nom d'utilisateur</label>
-            <input placeholder="Votre pseudo..." type="text" class="form-control <?=$classNickname ?? ''?>" id="nickname" name="nickname" required value="<?=$_POST['nickname'] ?? '';?>">
+            <input placeholder="John55" type="text" class="form-control <?=$classNickname ?? ''?>" id="nickname" name="nickname" required value="<?=$_POST['nickname'] ?? '';?>">
             <div class="form-text text-danger"><?=$errorNickname ?? ''?></div>
         </div>
 
         <div class="mb-3">
             <label for="email" class="form-label">Adresse mail</label>
-            <input placeholder="Adresse mail..." type="email" class="form-control <?=$classMail ?? ''?>" id="email" name="email" aria-describedby="emailHelp" required value="<?=$_POST['email'] ?? '';?>">
+            <input placeholder="john@gmail.com" type="email" class="form-control <?=$classMail ?? ''?>" id="email" name="email" aria-describedby="emailHelp" required value="<?=$_POST['email'] ?? '';?>">
             <div class="form-text text-danger"><?=$errorMail ?? ''?></div>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Mot de passe</label>
-            <input placeholder="mot de passe..." type="password" class="form-control <?=$classMdp ?? ''?>" id="password" name="password" aria-describedby="emailHelp" required value="<?=$_POST['password'] ?? '';?>">
+            <input placeholder="jhgkK25" type="password" class="form-control <?=$classMdp ?? ''?>" id="password" name="password" aria-describedby="emailHelp" required value="<?=$_POST['password'] ?? '';?>">
             <div class="form-text text-danger"><?=$errorMdp ?? ''?></div>
         </div>
         <div class="mb-3">
             <label for="confirm" class="form-label">Confirmer le mot de passe</label>
-            <input placeholder="Confirmer votre mot de passe" type="password" class="form-control <?= $classPassword ?? '' ?>" id="confirm" name="confirm" required>
+            <input  type="password" class="form-control <?= $classPassword ?? '' ?>" id="confirm" name="confirm" required>
             <div class="form-text text-danger"><?= $errorPassword ?? '' ?></div>
         </div>
         <div class="mb-3">

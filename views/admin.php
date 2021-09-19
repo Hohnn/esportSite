@@ -48,24 +48,27 @@
                                 <div class="col-12">    
                                 <div class="row mt-3">
                                     <div class="col">
+                                        <label for="teamLogo">logo de l'équipe</label>
                                         <input type="hidden" id="oldLogo" name="teamOldLogo" value="<?= $team['TEAM_LOGO'] ?? '' ?>">
-                                        <input type="file"  class="form-control <?= !empty($verifUpload) ? 'is-invalid' : ''?>" name="logo" onchange="showPreviewTeamLogo(event);"  required>
+                                        <input type="file" accept="image/png, image/jpg, image/jpeg" class="form-control <?= !empty($verifUpload) ? 'is-invalid' : ''?>" name="logo" id="teamLogo" onchange="showPreviewTeamLogo(event);"  required>
                                         <div class="invalid-feedback "><?= $verifUpload[0] ?? '' ?></div>
                                     </div>
                                     <div class="col">
+                                        <label for="teamName">Nom de l'équipe</label>
                                         <input type="hidden" id="playerCount" name="playerCount" value="">
                                         <input type="hidden" id="teamId" name="teamId" value="<?= $team['TEAM_ID'] ?? '' ?>">
-                                        <input type="text" class="form-control" name="name" id="teamName" value="<?= $team['TEAM_NAME'] ?? '' ?>" placeholder="Nom d'équipe" required>
-                                        <div class="invalid-feedback ">non valide</div>
+                                        <input type="text" class="form-control <?= isset($errorTeamName) ? 'is-invalid' : '' ?>" name="name" id="teamName" value="<?= $team['TEAM_NAME'] ?? '' ?>" placeholder="Vitality..." required>
+                                        <div class="invalid-feedback ">Champ obligatoire</div>
                                     </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="row mt-4">
                                         <div class="col">
+                                            <label for="flagSelect">Drapeau</label>
                                         <select class="form-select" aria-label="Default select example" id="flagSelect" name="country" required >
 <?php if ( $_GET['team'] != 'edit') { ?>
-                                            <option selected hidden>Pays</option> 
+                                            <option selected hidden disabled>Choisir un drapeau</option> 
 <?php } foreach($country as $tag => $countryName) { 
         ?>
                                             <option <?= isset($team) ? ($tag == $team['TEAM_COUNTRY'] ? 'selected' : '') : '' ?> <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'A venir' ? 'selected' : '') : '' ?> value="<?= $tag ?>" ><?= $countryName ?></option>
@@ -73,42 +76,20 @@
                                         </select>
                                         </div>
                                     <div class="col">
-                                        <input type="text" class="form-control" name="tag" id="tag" maxlength="6" value="<?= $team['TEAM_SHORTNAME']  ?? '' ?>" placeholder="TAG de l'équipe" required>
+                                        <label for="tag">Tag de l'équipe</label>
+                                        <input type="text" class="form-control" name="tag" id="tag" maxlength="6" value="<?= $team['TEAM_SHORTNAME']  ?? '' ?>" placeholder="VIT" required>
                                         <div class="invalid-feedback ">non valide</div>
                                     </div>
                                 </div>
                                 <div class="row mt-4 g-2" id="playersContainer">
-                                <div class="mb-2">Joueurs</div>
-
-
-                                    <div class="col-6">
-                                        <select class="form-select" aria-label="Default select example" id="userSelect" name="userId1" required data-user-select="1" >
-                                        <option value="" >Autre</option>
-
-<?php if ( $_GET['team'] != 'edit') { ?>
-                                            <option selected hidden>Joueurs inscrit</option> 
-<?php } foreach($allUsers as $user) { ?>
-                                            <option <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'A venir' ? 'selected' : '') : '' ?> value="<?= $user['USER_ID'] ?>" ><?= $user['USER_USERNAME'] ?></option>
-<?php } ?>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="col-6 ">
-                                        <div class="d-flex">
-                                            <input type="text" class="form-control d-none me-1" name="playerName" id="playerName1"  placeholder="Nom du joueur" required data-player-name="1" >
-                                            <button type="button" data-delete value="player_1" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#teamModal"><i class="bi bi-x-square"></i></button>
-                                        </div>
-                                        <div class="invalid-feedback ">non valide</div>
-                                    </div>
-                                    
-                                
-                                    </div>
-                                    <div class="row mt-2">
+                                    <div class="mb-2">Joueurs</div>
+                                </div>
+                                <div class="row mt-2">
                                     <div class="col-12">
-                                        <button type="button" class="btn btn-sm btn-primary bgYellow px-3 mw-25" id="plusPlayer">+</button>
+                                        <button type="button" class="btn btn-sm btn-primary bgYellow px-3 mw-25" id="plusPlayer">Ajouter un joueur</button>
                                     </div>
-                                    </div>
-                                    </div>                       
+                                </div>
+                                </div>                       
                                     <div class="col d-flex my-3">
 <?php if (isset($_GET['team']) && $_GET['team'] == 'edit') { ?>
                                     <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeamUpdate" value="<?= $match['MATCH_ID'] ?? '' ?>" >Modifier</button>
@@ -125,7 +106,7 @@
                                     <div id="toggle" class="toggle"><i class="bi bi-plus-circle"></i></div>
                                     <header>
                                         <img id="backTeamLogo" class="teamLogoBack">
-                                        <img id="teamLogo" class="teamLogo">
+                                        <img id="teamLogoPreview" class="teamLogo">
                                         <div class="wrap">
                                             <h3 class="teamName" id="teamNamePreview">DAW esport</h3>
                                             <div class="wrapDesc d-flex align-items-center">
@@ -137,10 +118,7 @@
                                         </div>
                                     </header>
                                     <div class="teamMembers small" id="teamPlayerContainer">
-                                        <a href="#">
-                                            <img src="data:image/png;base64,<?= $defaultLogoBase64 ?>" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -567,21 +545,21 @@ foreach($teamArray as $teamId){
                                             <td><img src="../assets/images/user_logo/<?= $user['USER_LOGO'] ?>" alt="user logo"></td>
                                             <td><?= $user['USER_USERNAME'] ?></td>
                                             <td> 
-                                                <div class="role"><?= $user['STATUS_ROLE'] ?></div> 
-                                                <form class="roleSelect d-none" action="" method="post" class="form-horizontal">
+                                                <form class="roleSelect x" action="" method="post" class="form-horizontal">
                                                     <select class="form-select" name="role" id="">
 <?php foreach($allStatus as $status){ ?>
-                                                        <option value="<?= $status['STATUS_ID'] ?>"><?= $status['STATUS_ROLE'] ?></option>
+                                                        <option <?= $user['STATUS_ID'] == $status['STATUS_ID'] ? 'selected' : '' ?> value="<?= $status['STATUS_ID'] ?>"><?= $status['STATUS_ROLE'] ?></option>
 <?php } ?>
                                                     </select>
-                                                    <button type="submit" name="submitUpdateRole" class="btn btn-sm btn-primary ms-auto bgYellow px-3 mt-2">Valider</button>
                                                 </form>
                                             </td>
                                             <td><?= $user['USER_ORIGIN_ID'] ?></td>
-                                            <td class="d-flex"> 
-                                                <div><?= empty($user['USER_TWITTER']) ? '' : '<i class="bi bi-twitter me-2"></i>'?> <div class="twitter d-none"><?= $user['USER_TWITTER'] ?? '' ?></div></div> 
-                                                <div><?= empty($user['USER_YOUTUBE']) ? '' : '<i class="bi bi-youtube me-2"></i>' ?><div class="youtube d-none"><?= $user['USER_YOUTUBE'] ?? '' ?></div></div> 
-                                                <div><?= empty($user['USER_TWITCH']) ? '' : '<i class="bi bi-twitch me-2"></i>' ?><div class="twitch d-none"><?= $user['USER_twitch'] ?? '' ?></div></div>
+                                            <td>
+                                                <div class="social">
+                                                    <div><?= empty($user['USER_TWITTER']) ? '' : '<i class="bi bi-twitter me-2"></i>'?> <div class="twitter d-none"><?= $user['USER_TWITTER'] ?? '' ?></div></div> 
+                                                    <div><?= empty($user['USER_YOUTUBE']) ? '' : '<i class="bi bi-youtube me-2"></i>' ?><div class="youtube d-none"><?= $user['USER_YOUTUBE'] ?? '' ?></div></div> 
+                                                    <div><?= empty($user['USER_TWITCH']) ? '' : '<i class="bi bi-twitch me-2"></i>' ?><div class="twitch d-none"><?= $user['USER_twitch'] ?? '' ?></div></div>
+                                                </div> 
                                             </td>
                                             <td class="d-flex justify-content-end"><button type="button" id="deleteNews" value="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#newsModal"><i class="bi bi-x-square"></i></button></td>
                                         </tr>
@@ -589,32 +567,6 @@ foreach($teamArray as $teamId){
                                     </tbody>
                                 </table>
                                 </div>
-
-                                <div class="col-6">
-                                    <div class="row myCard userCol">
-                                        <div class="col logo">
-                                            <img src="../assets/images/1.jpg" alt="">
-                                        </div>
-                                        <div class="col descUser">
-                                            <div class="">Hohnn</div>
-                                            <div class="">Hohnn</div>
-                                            <form action="" method="post" class="form-horizontal">
-                                                <select class="form-select" name="role" id="">
-<?php foreach($allStatus as $status){ ?>
-                                                    <option value="<?= $status['STATUS_ID'] ?>"><?= $status['STATUS_ROLE'] ?></option>
-<?php } ?>
-                                                </select>
-                                            </form>
-                                        </div>
-                                        <div class="col descSocial">
-                                            <div class=""><i class="bi bi-twitter"></i>Hohnn</div>
-                                            <div class=""><i class="bi bi-youtube"></i>Hohnn</div>
-                                            <div class=""><i class="bi bi-twitch"></i>Hohnn</div>
-                                        </div>                                                
-                                        
-                                </div>
-
-                            </div>
                         </div>
 
 <?php } ?>
@@ -658,6 +610,9 @@ foreach($teamArray as $teamId){
 <?php } ?>
         <?php if ( isset($_GET['news'])) { ?>
         <script src="../assets/js/adminNews.js"></script>
+<?php } ?>
+        <?php if ( isset($_GET['user'])) { ?>
+        <script src="../assets/js/adminUser.js"></script>
 <?php } ?>
 
 </body>

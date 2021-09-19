@@ -110,6 +110,16 @@ tr {
   cursor: pointer;
 }
 
+tr .social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
 tr td img {
   width: 30px;
   height: 30px;
@@ -127,5 +137,12 @@ tr td div {
 
 tr td div .twitch, tr td div .youtube, tr td div .twitter {
   font-size: 0.9rem;
+}
+
+tr td .roleSelect {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: 0;
 }
 /*# sourceMappingURL=admin.css.map */
