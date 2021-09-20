@@ -1,4 +1,16 @@
 <?php
+
+if ($User->getUserByUsername($_GET['nickname'])['USER_ORIGIN_ID']) {
+    $user = $User->getUserByUsername($_GET['nickname'])['USER_ORIGIN_ID'];
+    $showStats = '';
+} else {
+    $showInput = '';
+}
+
+$User = new UserModel();
+$userStats = $User->getUserStats($_GET['nickname']);
+$userStats = explode('|', $userStats[0]);
+
 if (isset($_SESSION['user'])) {
     if ($_SESSION['user'] == $_GET['nickname']) {
         $showModif = true;

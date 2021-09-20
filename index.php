@@ -31,7 +31,7 @@ include './controllers/index_controller.php';
                         foreach($allNews as $news){ ?>
                         <div class="carousel-item <?= $count == 0 ? 'active' : '' ?>">
                             <img src="../assets/images/news_images/<?= $news['ARTICLE_IMAGE'] ?>" class="d-block w-100" style="z-index: 110" alt="...">
-                            <div class="carousel-caption">
+                            <div class="carousel-caption myTextShadow">
                                 <h2><?= $news['ARTICLE_TITLE'] ?></h2>
                                 <p><?= $news['ARTICLE_SUBTITLE'] ?></p>
                                 <a href="<?= $news['ARTICLE_LINK'] ?>" class="btn bgYellow text-white">Afficher <i class="bi bi-box-arrow-in-right"></i></a>
@@ -39,7 +39,7 @@ include './controllers/index_controller.php';
                             <div class="carousel-caption mycaption-top" style="z-index: 0">
                                 <p><i class="bi bi-bookmark-fill"></i> <?= $news['ARTICLE_TYPE'] ?></p>
                             </div>
-                            <div class="admin">
+                            <div class="admin <?= $access ?>">
                                 <a href="../views/admin.php?news=edit&newsId=<?= $news['ARTICLE_ID'] ?>" class="btn bg-success text-white"><i class="bi bi-pencil-square"></i></a>
                                 <button type="button" id="deleteNews" value="<?= $news['ARTICLE_ID'] ?>" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#newsModal"><i class="bi bi-x-square"></i></button>
                             </div>

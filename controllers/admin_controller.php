@@ -116,8 +116,10 @@ function uploadLogo($img_file, $type = "image", $size = 1000000)
         } elseif ($img_file["size"] > $size) { # si le fichier est plus grand que 1Mo
             $msgArray[] = "Le fichier doit faire moins de 1 Mo";
         }
+    } elseif ($img_file["error"] == 4) {
+        $msgArray[] = "Veuillez séléctionner un fichier";
     } else {
-        $msgArray[] = "Veuillez séléctionner un fichier valide";
+        $msgArray[] = "Veuillez séléctionner un fichier moins volumineux";
     }
     return $msgArray;
 }

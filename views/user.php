@@ -1,6 +1,5 @@
 <?php
     require_once __DIR__.'/../controllers/controller.php';
-    require __DIR__.'/../controllers/scraping_controller.php';
     require __DIR__.'/../controllers/user_controller.php';
 ?>
 
@@ -106,12 +105,15 @@
 <?php } ?>
                                     <div class="<?= $showStats ?? 'd-none' ?>">
                                         <div class="heures ps-2 text-white">
-                                            Temps de jeu : <?= $displayLifetime ?> 
+                                            Temps de jeu : <?= $userStats[0] ?>
                                         </div>
                                         <div class="row mygrid">
-<?php foreach ($displayTopStats as $key => $value) { ?>
-                                                    <?= $value ?>
-<?php } ?>
+<?php foreach ($userStats as $key => $value) {
+    if ($key > 0) {
+
+                                            echo $value;    
+    }             
+} ?>
                                         </div>
                                     </div>
                                 </div>
@@ -120,7 +122,6 @@
                                 <div class="topWeapon myCard d-none">
                                     <div class="title">Arme favorite</div>
                                     <div class="mostUsed">
-                                        <?php statsWeapon($user) ?>
                                     </div>
                                 </div>
                             </div>

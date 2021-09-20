@@ -33,14 +33,15 @@ function displayStats($user){
     return $array;
 }
 
-if ($User->getUserByUsername($_GET['nickname'])['USER_ORIGIN_ID']) {
-    $user = $User->getUserByUsername($_GET['nickname'])['USER_ORIGIN_ID'];
-    $scrap = displayStats($user);
-    $showStats = '';
-} else {
-    $showInput = '';
+
+$User = new UserModel();
+$allUser = $User->getAllUser();
+foreach($allUser as $user){
+    if ($user['USER_ORIGIN_ID'] != NULL) {
+        $scrap = displayStats($user['USER_ORIGIN_ID']);
+        $test = [$scrap[0], implode('|', $scrap[1])];
+        $User->setUserStats($user['USER_ID'], $stats);
+    }
 }
 
-$displayLifetime = $scrap[0] ?? '';
-$displayTopStats = $scrap[1] ?? '';
 ?>

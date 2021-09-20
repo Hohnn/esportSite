@@ -469,7 +469,7 @@ foreach($teamArray as $teamId){
                                     </div>
                                     <div class="mb-3">
                                         <label for="floatingSelect">Type d'article</label>
-                                        <select class="form-select" id="type" name="type">
+                                        <select class="form-select maxContent" id="type" name="type">
                                             <option selected value="Article">Article</option>
                                             <option <?= isset($singleNews['ARTICLE_TYPE']) ? ( $singleNews['ARTICLE_TYPE'] == 'Test' ? 'selected' : '' ) : '' ?> value="Test">Test</option>
                                             <option <?= isset($singleNews['ARTICLE_TYPE']) ? ( $singleNews['ARTICLE_TYPE'] == 'Actu' ? 'selected' : '' ) : '' ?> value="Actu">Actu</option>
@@ -483,9 +483,9 @@ foreach($teamArray as $teamId){
                                         <div class="form-text text-danger"><?=$errorSource ?? '' ?></div>
                                     </div>
                                     <div class=" mb-3">
-                                        <label class="" for="fileToUpload">Image d'illustration</label>
+                                        <label for="fileToUpload">Image d'illustration</label>
                                         <input type="hidden" name="oldImage" value="<?= $singleNews['ARTICLE_IMAGE'] ?? '' ?>">
-                                        <input type="file" name="img" class="form-control <?= isset($errorUploadNews) ? 'is-invalid' : '' ?>" id="fileToUpload" accept="image/png, image/jpg, image/jpeg" require>
+                                        <input type="file" name="img" class="form-control maxContent <?= isset($errorUploadNews) ? 'is-invalid' : '' ?>" id="fileToUpload" accept="image/png, image/jpg, image/jpeg" require>
                                         <div class="form-text text-danger"><?=$errorUploadNews ?? '' ?></div>
                                     </div>
 
@@ -507,7 +507,7 @@ foreach($teamArray as $teamId){
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <img id="previewNewsBigImage" src="../assets/images/news_images/<?= $singleNews['ARTICLE_IMAGE'] ?? '1.jpg' ?>" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption">
+                                        <div class="carousel-caption myTextShadow">
                                             <h2 id="previewNewstitle">First slide label</h2>
                                             <p id="previewNewsSubtitle">Some representative placeholder content for the first slide.</p>
                                             <a href="#" class="btn bgYellow text-white">Afficher <i class="bi bi-box-arrow-in-right"></i></a>

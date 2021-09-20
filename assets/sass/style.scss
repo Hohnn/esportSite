@@ -736,3 +736,13 @@ main {
 .invalid-feedback {
     font-weight: lighter !important;
 }
+
+.myTextShadow {
+    h2, p {
+        text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.maxContent {
+    width: max-content;
+}

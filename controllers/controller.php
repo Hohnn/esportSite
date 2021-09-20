@@ -7,6 +7,14 @@ require_once __DIR__.'/upload_controller.php';
 require_once __DIR__.'/login_controller.php';
 require_once __DIR__.'/signin_controller.php';
 
+$access = 'd-none';
+if(isset($_SESSION['user'])) {
+    $user = $User->getUserByUsername($_SESSION['user']);
+    if($user['STATUS_ROLE'] == 'administrateur'){
+        $access = '';
+    }
+}
+
 
 if(!isset($_SESSION)) {
     session_start();
@@ -41,11 +49,6 @@ function isSame($value1, $value2){ //compart si les mdp sont identique
 }
 
 $User = new UserModel();
-
-
-
-
-
 
 
 $regexNickname = "/^[^0-9]\w+$/";

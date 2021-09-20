@@ -1,11 +1,5 @@
 <?php
-$access = 'd-none';
-if(isset($_SESSION['user'])) {
-    $user = $User->getUserByUsername($_SESSION['user']);
-    if($user['STATUS_ROLE'] == 'administrateur'){
-        $access = '';
-    }
-}
+
 
 $Comp = new CompModel();
 

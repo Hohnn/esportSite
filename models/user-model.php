@@ -177,5 +177,24 @@ class UserModel extends database {
         return $result;
     }
 
+    public function setUserStats($userId, $stats) {
+        $bdd = $this->connectDatabase();
+        $condition = "UPDATE user SET stats = ? WHERE user_id = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $stats);
+        $result->bindValue(2, $userId, PDO::PARAM_INT);
+        $result->execute();
+        return $result;
+    }
+
+    public function getUserStats($userId) {
+        $bdd = $this->connectDatabase();
+        $condition = "SELECT stats FROM user WHERE user_username = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $userId, PDO::PARAM_INT);
+        $result->execute();
+        return $result->fetch();
+    }
+
 
 }
