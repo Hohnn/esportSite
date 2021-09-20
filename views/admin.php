@@ -22,20 +22,23 @@
                     <h1>ADMINISTRATION</h1>
                     <div class="container-md my-4">
                         <div class="adminMenu">
-                                <div class="card myCard">
-                                    <a href="?news"><i class="bi bi-newspaper me-2"></i>Ajouter un article</a>
-                                </div>
-                                <div class="card myCard">
-                                    <a href="?team"><i class="bi bi-card-heading me-2"></i>Ajouter une équipe</a>
-                                </div>
-                                <div class="card myCard">
-                                    <a href="?tournament"><i class="bi bi-trophy me-2"></i>Ajouter un tournoi</a>
-                                </div>
-                                <div class="card myCard">
-                                    <a href="?match"><i class="bi bi-controller me-2"></i>Ajouter un match</a>
-                                </div>
-                                <div class="card myCard">
-                                    <a href="?user"><i class="bi bi-person-square me-2"></i>Gestion des utilisateur</a>
+                            <div class="card myCard">
+                                <a href="?news"><i class="bi bi-newspaper me-2"></i>Ajouter un article</a>
+                            </div>
+                            <div class="card myCard">
+                                <a href="?team"><i class="bi bi-card-heading me-2"></i>Ajouter une équipe</a>
+                            </div>
+                            <div class="card myCard">
+                                <a href="?tournament"><i class="bi bi-trophy me-2"></i>Ajouter un tournoi</a>
+                            </div>
+                            <div class="card myCard">
+                                <a href="?match"><i class="bi bi-controller me-2"></i>Ajouter un match</a>
+                            </div>
+                            <div class="card myCard">
+                                <a href="?user"><i class="bi bi-person-square me-2"></i>Gestion des utilisateur</a>
+                            </div>
+                            <div class="card myCard">
+                                <a href="" id="refresh"><i class="bi bi-bar-chart me-2"></i>Actualisé les stats</a>
                             </div>
                         </div>
                     </div>

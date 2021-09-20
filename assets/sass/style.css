@@ -61,8 +61,8 @@ aside nav .pages {
   background-color: transparent;
   padding: 0.7em 1em !important;
   margin: 0.1rem 0.5em;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
   font-size: 1.2rem;
   font-weight: bold;
   position: relative;
@@ -79,7 +79,7 @@ aside nav .pages div::first-letter {
 }
 
 aside nav .pages:hover {
-  background-color: #2b2b2b;
+  background-color: rgba(0, 0, 0, 0.1);
   border-color: RGB(106, 247, 151);
 }
 
@@ -120,33 +120,19 @@ aside nav .profilMenu2 {
   width: 100%;
 }
 
-aside nav .profilMenu2 > *:not(form) {
-  margin: 5px 10px;
-  text-align: center;
-}
-
-aside nav .profilMenu2 form {
-  margin: 1rem 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 aside nav .profilMenu2 button {
   background-color: transparent;
   border: none;
-  border-radius: 1em;
-  font-size: 0.9em;
   color: #b3b3b3;
   padding: 0.4em 0.8em;
   -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
-  margin-left: auto;
+  width: 100%;
+  font-weight: normal;
 }
 
 aside nav .profilMenu2 button:hover {
-  background-color: #36393b;
-  color: RGB(106, 247, 151);
+  color: #ff2e2e;
 }
 
 main {
@@ -681,9 +667,13 @@ main .topMembers .scroll .profil .desc span {
     width: 100vw !important;
     max-width: unset !important;
     height: 6vh !important;
-    min-height: unset !important;
+    min-height: -webkit-fit-content !important;
+    min-height: -moz-fit-content !important;
+    min-height: fit-content !important;
     position: fixed;
     bottom: 0;
+    background: #0b0d0f;
+    border: unset;
   }
   aside .stick {
     display: -webkit-box;

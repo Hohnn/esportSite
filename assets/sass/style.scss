@@ -51,7 +51,7 @@ aside {
             background-color: transparent;
             padding:0.7em 1em !important;
             margin:0.1rem 0.5em;
-            transition: 0.5s;
+            transition: 0.2s;
             font-size: 1.2rem;
             font-weight: bold;
             position: relative;
@@ -64,7 +64,7 @@ aside {
                 }
             }
             &:hover {
-                background-color: $dark_grey;
+                background-color: $hover-black;
                 border-color: $yellow;
             }
         }
@@ -94,26 +94,16 @@ aside {
             position: absolute;
             bottom: 0;
             width: 100%;
-            & > *:not(form) {
-                margin: 5px 10px;
-                text-align: center;
-            }
-            form {
-                margin: 1rem 0;
-                display: flex;
-            }
             button {
                 background-color: transparent;
                 border: none;
-                border-radius: 1em;
-                font-size: 0.9em;
                 color: rgb(179, 179, 179);
                 padding: 0.4em 0.8em;
                 transition: 0.25s ease-out;
-                margin-left: auto;
+                width: 100%;
+                font-weight: normal;
                 &:hover {
-                    background-color: #36393b;
-                    color: $yellow;
+                    color: $youtube;
                 }
             }
         }
@@ -556,9 +546,11 @@ main {
         width: 100vw !important;
         max-width: unset !important;
         height: 6vh !important;
-        min-height: unset !important;
+        min-height: fit-content !important;
         position: fixed;
         bottom: 0;
+        background: hsl(210, 17%, 5%);
+        border: unset;
         .stick {
             display: flex;
             height: auto;
@@ -746,3 +738,4 @@ main {
 .maxContent {
     width: max-content;
 }
+

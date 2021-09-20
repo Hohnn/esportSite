@@ -40,5 +40,12 @@ function previewDate(input, target) {
     });
 }
 
-
-
+const refresh = document.getElementById('refresh');
+refresh.addEventListener('click', () => {
+    fetch(`../controllers/scraping_controller.php`)
+    .then(response => response.json())
+    .then(data => {
+        map1Preview.src = `../assets/images/maps/${data.MAPS_IMAGE}`;
+    })
+    .catch(error => console.error(error))
+})

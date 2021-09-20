@@ -42,7 +42,10 @@
                                     <div class="d-none d-lg-block">Administration</div>
                                 </a>
                                 <form method="post">
-                                    <button name="logout" value="logout"><i class="bi bi-box-arrow-left"></i></button>
+                                    <button name="logout" class="d-flex pages mb-0 mb-sm-3" value="logout">
+                                        <i class="bi bi-box-arrow-left me-3"></i>
+                                        <div class="d-none d-lg-block">Déconnexion</div>
+                                    </button>
                                 </form> 
                             </div> 
                         </nav>
