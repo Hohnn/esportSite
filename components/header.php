@@ -37,7 +37,7 @@
                                     <i class="bi bi-person-lines-fill me-3"></i>  
                                     <div class="d-none d-lg-block">Profil</div>
                                 </a>
-                                <a href="../views/admin.php" class="<?= $user['STATUS_ROLE'] == 'administrateur' ? 'd-block' : 'd-none' ?> d-flex pages <?= $_SERVER['SCRIPT_NAME'] == "/views/admin.php" ? 'active' : ''  ?>">
+                                <a href="../views/admin.php" class="<?= $user['STATUS_ROLE'] == 'administrateur' || $user['STATUS_ROLE'] == 'modérateur' ? 'd-block' : 'd-none' ?> d-flex pages <?= $_SERVER['SCRIPT_NAME'] == "/views/admin.php" ? 'active' : ''  ?>">
                                     <i class="bi bi-sliders me-3"></i>
                                     <div class="d-none d-lg-block">Administration</div>
                                 </a>

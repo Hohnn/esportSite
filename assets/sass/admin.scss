@@ -117,3 +117,22 @@ tr {
         }
     }
 }
+
+table {
+    white-space: nowrap;
+}
+
+table tr td a {
+    display:block;
+    height:100%;
+    width:100%;
+}
+
+tr {
+    position: relative;
+    z-index: 0;
+    form {
+        position: relative;
+        z-index: 100;
+    }
+}

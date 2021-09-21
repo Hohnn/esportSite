@@ -23,3 +23,7 @@ if (isset($_GET['playerTeam'])) {
     $result = $team->getAllplayerByTeam($_GET['playerTeam']);
     echo json_encode($result);
 }
+if (isset($_GET['updateStatus'])) {
+    $User = new UserModel();
+    $User->setUpdateUserStatus($_GET['updateStatus'], 1);
+}

@@ -296,3 +296,33 @@ if (isset($_POST['submitNewsUpdate'])) {
 if (isset($_GET['user'])) {
     $allStatus = $User->getAllStatus();
 }
+
+if (isset($_POST['updateRole'])) {
+    $userId = htmlspecialchars($_POST['userId']);
+    $author = $User->getUserById($_SESSION['id']);
+    if ($author['STATUS_ID'] > $_POST['updateRole'] && $author['USER_ID'] != $userId) {
+        if ($User->setUpdateUserStatus($userId, $_POST['updateRole'])) {
+            $allUsers = $User->getAllUser();
+            $success = 'Le rôle a bien été modifié !';
+            $color = 'bg-success';
+        } else {
+            $success = 'Une erreur est survenue !';
+            $color = 'bg-danger';
+        }
+    } else {
+        $success = 'Vous ne disposer pas des droits nécessaire !';
+        $color = 'bg-danger';
+    }
+}
+
+if (isset($_POST['submitDeleteUser'])) {
+    $userId = htmlspecialchars($_POST['userId']);
+    if ($User->deleteUser($userId)) {
+        $allUsers = $User->getAllUser();
+        $success = 'L\'utilisateur a bien été supprimé !';
+        $color = 'bg-success';
+    } else {
+        $success = 'Une erreur est survenue !';
+        $color = 'bg-danger';
+    }
+}

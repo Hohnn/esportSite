@@ -18,7 +18,7 @@ class UserModel extends database {
 
     public function getAllUser() {
         $bdd = $this->connectDatabase();
-        $condition = "SELECT * FROM user NATURAL JOIN `status` ";
+        $condition = "SELECT * FROM user NATURAL JOIN `status` ORDER BY user_id DESC";
         $result = $bdd->query($condition)->fetchAll();
         return $result;
     }
@@ -196,5 +196,13 @@ class UserModel extends database {
         return $result->fetch();
     }
 
+    public function deleteUser($userId) {
+        $bdd = $this->connectDatabase();
+        $condition = "DELETE FROM user WHERE user_id = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $userId, PDO::PARAM_INT);
+        $result->execute();
+        return $result;
+    }
 
 }

@@ -61,7 +61,7 @@ if (isset($_SESSION['user'])) {
             $goodUpload = false;
         }
     }
-    
+
     if ($_SESSION['user'] == $_GET['nickname']) {
         $showModif = true;
         $user = $User->getUserById($_SESSION['id']);
@@ -143,4 +143,3 @@ if ($User->getUserByUsername($_GET['nickname'])['USER_ORIGIN_ID']) {
 } else {
     $showInput = '';
 }
-

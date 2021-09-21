@@ -8,6 +8,14 @@ require __DIR__.'/../vendor/PHPMailer-master/src/SMTP.php';
 
 $User = new UserModel();
 
+
+$regexMail = "/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/";
+$regexPassword = "/^(?=.*?[A-Z])(?=.*?[a-z]).{5,}$/";
+$regexNickname = "/^[^0-9]\w+$/";
+$regexText = "/./";
+$regexUrl = "/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/";
+
+
 //logout
 if (isset($_POST['logout'])) {
     session_unset();

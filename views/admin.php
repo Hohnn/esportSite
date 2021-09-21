@@ -536,6 +536,7 @@ foreach($teamArray as $teamId){
                                             <th scope="col">Logo</th>
                                             <th scope="col">Pseudo</th>
                                             <th scope="col">Status</th>
+                                            <th scope="col">Adresse mail</th>
                                             <th scope="col">Origin ID</th>
                                             <th scope="col">Réseaux</th>
                                             <th scope="col"></th>
@@ -543,19 +544,21 @@ foreach($teamArray as $teamId){
                                     </thead>
                                     <tbody>
 <?php foreach($allUsers as $user){ ?>
-                                        <tr>
+                                        <tr data-href="../views/user.php?nickname=<?= $user['USER_USERNAME'] ?>">
                                             <th scope="row"><?= $user['USER_ID'] ?></th>
                                             <td><img src="../assets/images/user_logo/<?= $user['USER_LOGO'] ?>" alt="user logo"></td>
                                             <td><?= $user['USER_USERNAME'] ?></td>
                                             <td> 
-                                                <form class="roleSelect x" action="" method="post" class="form-horizontal">
-                                                    <select class="form-select" name="role" id="">
+                                                <form class="roleSelect" action="" method="post" class="form-horizontal">
+                                                    <input type="hidden" name="userId" value="<?= $user['USER_ID'] ?>">
+                                                    <select class="form-select" name="updateRole">
 <?php foreach($allStatus as $status){ ?>
                                                         <option <?= $user['STATUS_ID'] == $status['STATUS_ID'] ? 'selected' : '' ?> value="<?= $status['STATUS_ID'] ?>"><?= $status['STATUS_ROLE'] ?></option>
 <?php } ?>
                                                     </select>
                                                 </form>
                                             </td>
+                                            <td><?= $user['USER_MAIL'] ?></td>
                                             <td><?= $user['USER_ORIGIN_ID'] ?></td>
                                             <td>
                                                 <div class="social">
@@ -564,7 +567,9 @@ foreach($teamArray as $teamId){
                                                     <div><?= empty($user['USER_TWITCH']) ? '' : '<i class="bi bi-twitch me-2"></i>' ?><div class="twitch d-none"><?= $user['USER_twitch'] ?? '' ?></div></div>
                                                 </div> 
                                             </td>
-                                            <td class="d-flex justify-content-end"><button type="button" id="deleteNews" value="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#newsModal"><i class="bi bi-x-square"></i></button></td>
+                                            <td class="d-flex justify-content-end">
+                                                <button type="button" value="<?= $user['USER_ID'] ?? '' ?>" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#userModal"><i class="bi bi-x-square"></i></button>
+                                            </td>
                                         </tr>
 <?php } ?>
                                     </tbody>
@@ -579,7 +584,7 @@ foreach($teamArray as $teamId){
     </div>
 
 <!-- Toast -->
-<div class="position-fixed bottom-0 end-0 p-3 myToast" style="z-index: 110">
+<div class="position-fixed top-0 end-0 p-3 myToast" style="z-index: 110">
     <div id="liveToast" class="toast align-items-center text-white <?= $color ?? 'bg-success' ?> border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body">
@@ -588,6 +593,28 @@ foreach($teamArray as $teamId){
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
+</div>
+
+    <!-- Modal -->
+<div class="modal fade" id="userModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content text-dark">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="exampleModalLabel">Attention !</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Vous êtes sur le point de supprimer un compte utilisateur.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Annuler</button>
+        <form action="" method="POST">
+            <input type="hidden" id="userIdDelete" name="userId" value="">
+            <button type="submit" name="submitDeleteUser" class="btn btn-danger">Supprimer</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 
     <!-- Script -->

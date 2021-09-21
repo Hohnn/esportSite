@@ -104,8 +104,9 @@
                                     <div class="noOrigin">L'utilisateur n'a pas renseigné sont origin id</div>
 <?php } ?>
                                     <div class="<?= $showStats ?? 'd-none' ?>">
-                                        <div class="heures ps-2 text-white">
+                                        <div class="heures ps-2 text-white d-flex justify-content-between">
                                             Temps de jeu : <?= $userStats[0] ?>
+                                            <div class="refresh" id="refresh"><i class="bi bi-arrow-clockwise"></i></div>
                                         </div>
                                         <div class="row mygrid">
 <?php foreach ($userStats as $key => $value) {

@@ -10,7 +10,7 @@ require_once __DIR__.'/signin_controller.php';
 $access = 'd-none';
 if(isset($_SESSION['user'])) {
     $user = $User->getUserByUsername($_SESSION['user']);
-    if($user['STATUS_ROLE'] == 'administrateur'){
+    if($user['STATUS_ROLE'] == 'administrateur' || $user['STATUS_ROLE'] == 'modérateur'){
         $access = '';
     }
 }

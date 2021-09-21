@@ -18,3 +18,27 @@ function listenTrClick(param) {
 }
 
 listenTrClick(allUsersTr); */
+
+const allUsersSelect = document.querySelectorAll('tr select');
+console.log(allUsersSelect);
+allUsersSelect.forEach(function(select) {
+    select.addEventListener('change', function(e) {
+        select.parentElement.submit();
+    });
+});
+
+const deleteBtnUser = document.querySelectorAll('[data-bs-target="#userModal"]');
+const inputUserId = document.getElementById('userIdDelete');
+console.log(inputUserId);
+deleteBtnUser.forEach(btn => {
+    btn.addEventListener('click', function() {
+        let userId = this.value
+        console.log(userId);
+        inputUserId.value = userId;
+    })
+}
+)
+
+$('tr[data-href]').on("click", function() {
+    document.location = $(this).data('href');
+});

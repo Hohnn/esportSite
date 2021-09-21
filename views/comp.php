@@ -29,50 +29,6 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                         <?php foreach($allTeams as $team){
                                 echo displayTeam($team);
                             } ?>
-                            <!-- <div class="col teamCol" >
-                                <div class="teamCard myCard">
-                                    <div id="toggle" class="toggle"><i class="bi bi-plus-circle"></i></div>
-                                    <header>
-                                        <img src="../assets/images/teamLogo/daw.png" alt="" class="teamLogoBack">
-                                        <img src="../assets/images/teamLogo/daw.png" alt="" class="teamLogo">
-                                        <div class="wrap">
-                                            <h3 class="teamName">DAW esport</h3>
-                                            <div class="wrapDesc d-flex align-items-center">
-                                                <div class="flag">
-                                                    <img src="https://www.countryflags.io/fr/flat/64.png" alt="">
-                                                </div>
-                                                <div class="tag ms-3">[DAW]</div>
-                                            </div>
-                                        </div>
-                                    </header>
-                                    <div class="teamMembers small">
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>
-                                        <a href="#">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="memberLogo">
-                                            <h5 class="memberName">Hohnn</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div> -->
 
                             <div class="col teamCol position-relative">
                                 <a href="../views/admin.php?team=add">
@@ -96,40 +52,7 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                                         <div class="addCard">Ajouter un tournoi</div>
                                     </a>
                             </div>
-                            <!-- <div class="col-12" >
-                                <div class="tournamentCard myCard">
-                                    <div class="brand">
-                                        <img src="../assets/images/teamLogo/daw.png" alt="" class="orgLogo">
-                                        <h4 class="orgName">Tournoi BSP</h4>
-                                    </div>
-                                    <div class="type">
-                                        <span>Format</span> 
-                                        6 vs 6 Conquète escoude
-                                    </div>
-                                    <div class="date"> 
-                                        <span>Début</span> 
-                                        13/10/2016
-                                    </div>
-                                    <div class="status">
-                                        <span>Status</span> 
-                                        En cours
-                                    </div>
-                                    <div class="teams">
-                                        <span>équipes</span> 
-                                        <div class="teamsWrap">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                            <img src="../assets/images/hohnn_logo.jpg" alt="" class="teamLogo">
-                                        </div>
-                                    </div>
-                                    <a href="#" class="link"></a>
-                                </div>
-                            </div> -->
-                        
+
                         </div>
                     </div>    
                 </section>
@@ -145,55 +68,7 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                                 <a href="../views/admin.php?match=add">
                                     <div class="addCard">Ajouter un match</div>
                                 </a>
-                            </div>
-                            <!-- <div class="col matchCol" >
-                                <div class="matchCard myCard">
-                                    <div class="imgBack">
-                                        <img class="maps" src="../assets/images/1.jpg" alt="">
-                                        <img class="maps" src="../assets/images/2.jpg" alt="">
-                                        <img class="maps" src="../assets/images/3.jpg" alt="">
-                                    </div>
-                                    <header>
-                                        <div class="teamWrap">
-                                            <img src="../assets/images/teamLogo/daw.png" alt="team logo" class="teamLogo">
-                                            <span>DAW</span>
-                                        </div>
-                                        <div class="scoreWrap">
-                                            <div class="score">
-                                                <span>25</span>
-                                                <span>/</span>
-                                                <span>0</span>
-                                            </div>
-                                            <div class="score">
-                                                <span>250</span>
-                                                <span>/</span>
-                                                <span>0</span>
-                                            </div>
-                                            <div class="score">
-                                                <span>25</span>
-                                                <span>/</span>
-                                                <span>0</span>
-                                            </div>
-                                        </div>
-                                        <div class="teamWrap">
-                                            <img src="../assets/images/teamLogo/daw.png" alt="team logo" class="teamLogo">
-                                            <span>DAW</span>
-                                        </div>
-                                    </header>
-                                    <footer>
-                                        
-                                        <div class="typeWrap">
-                                            <span>Tournoi BSP</span>
-                                            <div class="date">25 mai</div>
-                                        </div>
-                                        <div class="vodWrap">
-                                            <span>VOD Twitch</span>
-                                            <a href="#" class="btn bgTwitch"></a>
-                                        </div>
-                                    </footer>
-                                </div>
-                            </div> -->
-                            
+                            </div>                            
                         </div>
                     </div>    
                 </section>

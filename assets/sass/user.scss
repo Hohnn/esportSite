@@ -199,3 +199,23 @@ body {
 .mailInput {
     max-width: 400px;
 }
+
+.refresh {
+    cursor: pointer;
+    &:hover {
+        color: $yellow;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: spin 1.5s linear infinite;
+}

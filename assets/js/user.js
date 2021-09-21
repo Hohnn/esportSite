@@ -29,3 +29,17 @@ cancel.addEventListener('click', () => {
     descEdit.classList.add('d-none')
     edit.style.color = 'white'
 })
+
+const refresh = document.getElementById('refresh')
+refresh.addEventListener('click', () => {
+    fetch(`../controllers/scraping_controller.php?action=refreshSingle`)
+    .then(function(response) {
+        return response.text().then(function (text) {
+        console.log(text);
+        });
+    });
+    refresh.classList.add('rotate')
+    setTimeout(() => {
+        location.reload();
+    }, 2000);
+})

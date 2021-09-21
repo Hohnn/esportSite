@@ -3,6 +3,10 @@ require_once __DIR__.'/database.php';
 require_once __DIR__.'/../models/user-model.php';
 require __DIR__.'/../vendor/simple_html_dom.php';
 
+if(!isset($_SESSION)) {
+    session_start();
+}
+
 function statsWeapon($user) {
     if (!file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/weapons")) {
         echo 'error';
@@ -49,6 +53,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'refreshAll') {
         echo 'ok';
     }
 }
+
 if (isset($_POST['originId'])) {
     $originId = htmlspecialchars($_POST['originId']);
     $userId = $_SESSION['id'];
@@ -60,6 +65,19 @@ if (isset($_POST['originId'])) {
         $User->setUserStats($userId, $statsString);
     } else {
         $validInput = false;
+    }
+}
+
+if (isset($_GET['action']) && $_GET['action'] == 'refreshSingle') {
+    $userId = $_SESSION['id'];
+    $user = $User->getUserById($userId);
+    $originId = $user['USER_ORIGIN_ID'];
+    if (!empty($originId) && displayStats($originId)) {
+        $validInput = true;
+        $scrap = displayStats($originId);
+        $stats = [$scrap[0], implode('|', $scrap[1])];
+        $statsString = implode('|', $stats);
+        $User->setUserStats($userId, $statsString);
     }
 }
 
