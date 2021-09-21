@@ -1,17 +1,67 @@
 <?php
 
-if ($User->getUserByUsername($_GET['nickname'])['USER_ORIGIN_ID']) {
-    $user = $User->getUserByUsername($_GET['nickname'])['USER_ORIGIN_ID'];
-    $showStats = '';
-} else {
-    $showInput = '';
-}
 
 $User = new UserModel();
 $userStats = $User->getUserStats($_GET['nickname']);
 $userStats = explode('|', $userStats[0]);
 
 if (isset($_SESSION['user'])) {
+    if (isset($_POST['submitEdit'])) {
+        $username = htmlspecialchars($_POST['username'] ?? '');
+        $originId = htmlspecialchars($_POST['originId'] ?? '');
+        $twitter = htmlspecialchars($_POST['twitter'] ?? '');
+        $youtube = htmlspecialchars($_POST['youtube'] ?? '');
+        $twitch = htmlspecialchars($_POST['twitch'] ?? '');
+        $count = 0;
+        if (!isValid($regexNickname, $username)) {
+            $count++;
+            $classUsername = 'is-invalid';
+            $errorUsername = 'Ce pseudo n’est pas valide.'; 
+        }
+        if ($originId) {
+            require_once __DIR__.'/scraping_controller.php';
+            if (!isValid($regexNickname, $originId) || !$validInput) {
+                $count++;
+                $classOriginId = 'is-invalid';
+                $errorOriginId = 'Ce pseudo n’est pas valide.'; 
+            }
+        }
+        if ($twitter) {
+            if (!isValid($regexTwitter, $twitter)) {
+                $count++;
+                $classTwitter = 'is-invalid';
+                $errorTwitter = 'Ce lien n’est pas valide.';
+            }
+        }
+        if ($youtube) {
+            if (!isValid($regexYoutube, $youtube)) {
+                $count++;
+                $classYoutube = 'is-invalid';
+                $errorYoutube = 'Ce lien n’est pas valide.';
+            }
+        }
+        if ($twitch) {
+            if (!isValid($regexTwitch, $twitch)) {
+                $count++;
+                $classTwitch = 'is-invalid';
+                $errorTwitch = 'Ce lien n’est pas valide.';
+            }
+        }
+        if ($count == 0) {
+            $_SESSION['user'] = $username;
+            $User->setUpdateUser($_SESSION['id'], $username, $originId, $twitter, $youtube, $twitch);
+            $uploaded = upload("logo");
+            if (empty($uploaded)) {
+                $goodUpload = true;
+            } else {
+                $goodUpload = false;
+            }
+            header("Location: user.php?nickname=$username");
+        } else {
+            $goodUpload = false;
+        }
+    }
+    
     if ($_SESSION['user'] == $_GET['nickname']) {
         $showModif = true;
         $user = $User->getUserById($_SESSION['id']);
@@ -76,5 +126,21 @@ $User = new UserModel();
 
 if (isset($_POST['originId'])) {
     $originId = htmlspecialchars($_POST['originId']); 
-    $User->setUserOriginID( $_SESSION['id'], $originId);
+    require_once __DIR__.'/scraping_controller.php';
+    if ($validInput) {
+        $User->setUserOriginID( $_SESSION['id'], $originId);
+        $userStats = $User->getUserStats($_GET['nickname']);
+        $userStats = explode('|', $userStats[0]);
+    } else {
+        $succes = 'Soldat inconnu';
+        $toastColor = 'bg-danger';
+    }
 }
+
+if ($User->getUserByUsername($_GET['nickname'])['USER_ORIGIN_ID']) {
+    $user = $User->getUserByUsername($_GET['nickname'])['USER_ORIGIN_ID'];
+    $showStats = '';
+} else {
+    $showInput = '';
+}
+

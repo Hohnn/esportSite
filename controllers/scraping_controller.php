@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__.'/database.php';
+require_once __DIR__.'/../models/user-model.php';
 require __DIR__.'/../vendor/simple_html_dom.php';
 
 function statsWeapon($user) {
@@ -16,10 +18,10 @@ function statsWeapon($user) {
 }
 
 function displayStats($user){
-    if (!file_get_contents("https://battlefieldtracker.com/bfv/profile/origin/$user/overview")) {
+    $html = @file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/overview");
+    if ($html === false) {
         return false;
     }
-    $html = file_get_html("https://battlefieldtracker.com/bfv/profile/origin/$user/overview");
     
     $targetTime = $html->find('div[data-v-9d8d0016]', 0);
     $time = $targetTime->find('span[data-v-9d8d0016].playtime', 0)->plaintext;
@@ -35,13 +37,32 @@ function displayStats($user){
 
 
 $User = new UserModel();
-$allUser = $User->getAllUser();
-foreach($allUser as $user){
-    if ($user['USER_ORIGIN_ID'] != NULL) {
-        $scrap = displayStats($user['USER_ORIGIN_ID']);
-        $test = [$scrap[0], implode('|', $scrap[1])];
-        $User->setUserStats($user['USER_ID'], $stats);
+if (isset($_GET['action']) && $_GET['action'] == 'refreshAll') {
+    $allUser = $User->getAllUser();
+    foreach($allUser as $user){
+        if ($user['USER_ORIGIN_ID'] != NULL) {
+            $scrap = displayStats($user['USER_ORIGIN_ID']);
+            $stats = [$scrap[0], implode('|', $scrap[1])];
+            $statsString = implode('|', $stats);
+            $User->setUserStats($user['USER_ID'], $statsString);
+        }
+        echo 'ok';
     }
 }
+if (isset($_POST['originId'])) {
+    $originId = htmlspecialchars($_POST['originId']);
+    $userId = $_SESSION['id'];
+    if (!empty($originId) && displayStats($originId)) {
+        $validInput = true;
+        $scrap = displayStats($originId);
+        $stats = [$scrap[0], implode('|', $scrap[1])];
+        $statsString = implode('|', $stats);
+        $User->setUserStats($userId, $statsString);
+    } else {
+        $validInput = false;
+    }
+}
+
+
 
 ?>

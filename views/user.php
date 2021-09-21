@@ -110,7 +110,6 @@
                                         <div class="row mygrid">
 <?php foreach ($userStats as $key => $value) {
     if ($key > 0) {
-
                                             echo $value;    
     }             
 } ?>
@@ -167,7 +166,7 @@
                                                         </div>
                                                         <div class="mailInput col-12">
                                                             <label for="password">Nouveau mot de passe</label>
-                                                            <input type="password" class="form-control <?= $errorPass ?? '' ?>" name="password" id="password" placeholder="" required>
+                                                            <input type="password" class="form-control <?= $errorPass ?? '' ?>" name="password" placeholder="" required>
                                                             <div class="invalid-feedback ">Non valide</div>
                                                         </div>
                                                         <div class="mailInput col-12">

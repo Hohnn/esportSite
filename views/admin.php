@@ -38,7 +38,7 @@
                                 <a href="?user"><i class="bi bi-person-square me-2"></i>Gestion des utilisateur</a>
                             </div>
                             <div class="card myCard">
-                                <a href="" id="refresh"><i class="bi bi-bar-chart me-2"></i>Actualisé les stats</a>
+                                <a  id="refresh"><i class="bi bi-bar-chart me-2"></i>Actualisé les stats</a>
                             </div>
                         </div>
                     </div>
