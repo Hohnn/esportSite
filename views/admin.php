@@ -48,58 +48,56 @@
                             <div class="title">Gestion des équipes</div>
                             <div class="col-12 col-xl-7">
                                 <form class="row myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
-                                <div class="col-12">    
-                                <div class="row mt-3">
-                                    <div class="col">
-                                        <label for="teamLogo">logo de l'équipe</label>
-                                        <input type="hidden" id="oldLogo" name="teamOldLogo" value="<?= $team['TEAM_LOGO'] ?? '' ?>">
-                                        <input type="file" accept="image/png, image/jpg, image/jpeg" class="form-control <?= !empty($verifUpload) ? 'is-invalid' : ''?>" name="logo" id="teamLogo" onchange="showPreviewTeamLogo(event);"  required>
-                                        <div class="invalid-feedback "><?= $verifUpload[0] ?? '' ?></div>
-                                    </div>
-                                    <div class="col">
-                                        <label for="teamName">Nom de l'équipe</label>
-                                        <input type="hidden" id="playerCount" name="playerCount" value="">
-                                        <input type="hidden" id="teamId" name="teamId" value="<?= $team['TEAM_ID'] ?? '' ?>">
-                                        <input type="text" class="form-control <?= isset($errorTeamName) ? 'is-invalid' : '' ?>" name="name" id="teamName" value="<?= $team['TEAM_NAME'] ?? '' ?>" placeholder="Vitality..." required>
-                                        <div class="invalid-feedback ">Champ obligatoire</div>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row mt-4">
-                                        <div class="col">
-                                            <label for="flagSelect">Drapeau</label>
-                                        <select class="form-select" aria-label="Default select example" id="flagSelect" name="country" required >
-<?php if ( $_GET['team'] != 'edit') { ?>
-                                            <option selected hidden disabled>Choisir un drapeau</option> 
-<?php } foreach($country as $tag => $countryName) { 
-        ?>
-                                            <option <?= isset($team) ? ($tag == $team['TEAM_COUNTRY'] ? 'selected' : '') : '' ?> <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'A venir' ? 'selected' : '') : '' ?> value="<?= $tag ?>" ><?= $countryName ?></option>
-<?php } ?>    
-                                        </select>
+                                    <div class="col-12">    
+                                        <div class="row mt-3">
+                                            <div class="col">
+                                                <label for="teamLogo">logo de l'équipe</label>
+                                                <input type="hidden" id="oldLogo" name="teamOldLogo" value="<?= $team['TEAM_LOGO'] ?? '' ?>">
+                                                <input type="file" accept="image/png, image/jpg, image/jpeg" class="form-control <?= !empty($verifUpload) ? 'is-invalid' : ''?>" name="logo" id="teamLogo" onchange="showPreviewTeamLogo(event);"  required>
+                                                <div class="invalid-feedback "><?= $verifUpload[0] ?? '' ?></div>
+                                            </div>
+                                            <div class="col">
+                                                <label for="teamName">Nom de l'équipe</label>
+                                                <input type="hidden" id="playerCount" name="playerCount" value="">
+                                                <input type="hidden" id="teamId" name="teamId" value="<?= $team['TEAM_ID'] ?? '' ?>">
+                                                <input type="text" class="form-control <?= isset($errorTeamName) ? 'is-invalid' : '' ?>" name="name" id="teamName" value="<?= $team['TEAM_NAME'] ?? '' ?>" placeholder="Vitality..." required>
+                                                <div class="invalid-feedback ">Champ obligatoire</div>
+                                            </div>
                                         </div>
-                                    <div class="col">
-                                        <label for="tag">Tag de l'équipe</label>
-                                        <input type="text" class="form-control" name="tag" id="tag" maxlength="6" value="<?= $team['TEAM_SHORTNAME']  ?? '' ?>" placeholder="VIT" required>
-                                        <div class="invalid-feedback ">non valide</div>
                                     </div>
-                                </div>
-                                <div class="row mt-4 g-2" id="playersContainer">
-                                    <div class="mb-2">Joueurs</div>
-                                </div>
-                                <div class="row mt-2">
                                     <div class="col-12">
-                                        <button type="button" class="btn btn-sm btn-primary bgYellow px-3 mw-25" id="plusPlayer">Ajouter un joueur</button>
-                                    </div>
-                                </div>
-                                </div>                       
+                                        <div class="row mt-4">
+                                            <div class="col">
+                                                <label for="flagSelect">Drapeau</label>
+                                            <select class="form-select" aria-label="Default select example" id="flagSelect" name="country" required >
+                                <?php if ( $_GET['team'] != 'edit') { ?>
+                                                <option selected hidden disabled>Choisir un drapeau</option> 
+                                <?php } foreach($country as $tag => $countryName) { ?>
+                                                <option <?= isset($team) ? ($tag == $team['TEAM_COUNTRY'] ? 'selected' : '') : '' ?> <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'A venir' ? 'selected' : '') : '' ?> value="<?= $tag ?>" ><?= $countryName ?></option>
+                                <?php } ?>    
+                                            </select>
+                                            </div>
+                                            <div class="col">
+                                                <label for="tag">Tag de l'équipe</label>
+                                                <input type="text" class="form-control" name="tag" id="tag" maxlength="6" value="<?= $team['TEAM_SHORTNAME']  ?? '' ?>" placeholder="VIT" required>
+                                                <div class="invalid-feedback ">non valide</div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4 g-2" id="playersContainer">
+                                            <div class="mb-2 text-white">Joueurs</div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-12">
+                                                <button type="button" class="btn btn-sm btn-primary bgYellowOutline pe-3 mw-25" id="plusPlayer"><i class="bi bi-plus me-2"></i>Ajouter un joueur</button>
+                                            </div>
+                                        </div>
+                                    </div>                       
                                     <div class="col d-flex my-3">
-<?php if (isset($_GET['team']) && $_GET['team'] == 'edit') { ?>
-                                    <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeamUpdate" value="<?= $match['MATCH_ID'] ?? '' ?>" >Modifier</button>
-<?php } else { ?>
-                                    <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeam">Ajouter</button>
-
-<?php } ?>
+                                <?php if (isset($_GET['team']) && $_GET['team'] == 'edit') { ?>
+                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeamUpdate" value="<?= $match['MATCH_ID'] ?? '' ?>" >Modifier</button>
+                                <?php } else { ?>
+                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeam">Ajouter</button>
+                                <?php } ?>
                                     </div>
                                 </form>
                             </div>
@@ -188,7 +186,12 @@
 <?php   } else { 
     $teamArray = explode(',', $tournament['TEAM_ID']);
     foreach ($teamArray as $teamId) {
-        $teamId == $team['TEAM_ID'] ? $checked = 'checked' : $checked = '';
+        if ($teamId == $team['TEAM_ID']) {
+            $checked = 'checked';
+            break;
+        } else {
+            $checked = '';
+        }
     } ?>
                                         <div class="form-check form-check-inline fw-normal">
                                             <input class="form-check-input" type="checkbox" id="checkbox<?= $team['TEAM_ID'] ?>" name="teams[]" value="<?= $team['TEAM_ID'] ?>" <?= $checked ?? '' ?> require>

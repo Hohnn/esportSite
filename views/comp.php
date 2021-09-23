@@ -20,15 +20,14 @@ require_once __DIR__.'/../controllers/comp_controller.php';
 </head>
 <?php require __DIR__.'/../components/header.php' ?>
                 <img src="../assets/images/banner_team.jpg" class="teamBackImg" alt="">
-
-                <section class="team">
+                <section class="team" id="teamScroll">
 
                     <h1 class="text-uppercase">équipes</h1>
                     <div class="container-fluid mt-3">
                         <div class="row g-3" >
-                        <?php foreach($allTeams as $team){
-                                echo displayTeam($team);
-                            } ?>
+                          <?php foreach($allTeams as $team){ // for each register team
+                              echo displayTeam($team); // display team
+                          } ?>
 
                             <div class="col teamCol position-relative">
                                 <a href="../views/admin.php?team=add">
@@ -39,7 +38,7 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                         </div>
                     </div>    
                 </section>
-                <section class="tournament mt-4">
+                <section class="tournament mt-4" id="tournamentScroll">
                     <h1 class="text-uppercase">tournois</h1>
                     <div class="container-fluid  mt-3">
                         <div class="row g-3">
@@ -56,7 +55,7 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                         </div>
                     </div>    
                 </section>
-                <section class="tournament mt-4">
+                <section class="tournament mt-4" id="matchScroll">
                     <h1 class="text-uppercase">Matchs <span>récent<span></span></span></h1>
                     <div class="container-fluid  mt-3">
                         <div class="row g-3">

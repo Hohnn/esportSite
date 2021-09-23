@@ -39,6 +39,6 @@ deleteBtnUser.forEach(btn => {
 }
 )
 
-$('tr[data-href]').on("click", function() {
+$('tr[data-href]').on("dblclick", function() {
     document.location = $(this).data('href');
 });

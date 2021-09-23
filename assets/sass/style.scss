@@ -591,9 +591,19 @@ main {
 .bgYellow {
     background-color: $yellow !important;
     border-color: $yellow;
+    color: black !important;
     &:hover {
         border-color: $yellow;
         box-shadow: 0 0px 5px 1px $yellow;
+    }
+}
+
+.bgYellowOutline {
+    background-color: transparent !important;
+    border-color: $yellow;
+    &:hover {
+        border-color: $yellow;
+        color: $yellow;
     }
 }
 
@@ -739,3 +749,16 @@ main {
     width: max-content;
 }
 
+.pageNav {
+    ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        li {
+            &::first-letter {
+                text-transform: uppercase;
+            }
+            font-weight: normal;
+        }
+    }
+}

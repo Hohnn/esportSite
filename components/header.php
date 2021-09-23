@@ -53,11 +53,29 @@
             </aside>
             <main class="col ">
                 <header>
-                    <input type="search" placeholder="Rechercher" class="d-none d-sm-block  me-auto">
+                    <!-- <input type="search" placeholder="Rechercher" class="d-none d-sm-block  me-auto"> -->
+<?php if ($_SERVER['SCRIPT_NAME'] == "/views/comp.php") { ?>
+                    <nav class="pageNav">
+                        <ul>
+                            <li><a href="#teamScroll">équipes</a></li>
+                            <li><a href="#tournamentScroll">Tournois</a></li>
+                            <li><a href="#matchScroll">Matchs</a></li>
+                        </ul>                  
+                    </nav>
+<?php } ?>
+<?php if ($_SERVER['SCRIPT_NAME'] == "/index.php") { ?>
+                    <nav class="pageNav">
+                        <ul>
+                            <li><a href="#twitchScroll">Twitch</a></li>
+                            <li><a href="#youtubeScroll">Youtube</a></li>
+                            <li><a href="#memberScroll">Membres</a></li>
+                        </ul>                  
+                    </nav>
+<?php } ?>
 <?php if (!isset($_SESSION['user'])) { ?>
-                    <a href="../views/login.php" class="">Se connecter</a>
+                    <a href="../views/login.php" class="ms-auto">Se connecter</a>
 <?php } else { ?>
-                    <i class="bi bi-bell mx-3"></i>
+                    <i class="bi bi-bell mx-3 ms-auto"></i>
                     <i class="bi bi-chat-left-text"></i>
                     <a href="../views/user.php?nickname=<?= $_SESSION['user'] ?? '' ?>" class="userInfos">
                         <div class="wrap">

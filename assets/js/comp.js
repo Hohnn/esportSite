@@ -29,15 +29,15 @@ deleteBtnTour.forEach(btn => {
     })
 }
 )
-
+// select all delete buttons
 const deleteBtnTeam = document.querySelectorAll('[data-bs-target="#teamModal"]');
-const inputTeamId = document.getElementById('teamId');
-deleteBtnTeam.forEach(btn => {
-    btn.addEventListener('click', function() {
-        let teamId = this.value
-        inputTeamId.value = teamId;
+const inputTeamId = document.getElementById('teamId'); // hidden input with the team id to be deleted
+deleteBtnTeam.forEach(btn => { // for each delete button
+    btn.addEventListener('click', function() { // add event listener
+        let teamId = this.value // get the team id
+        inputTeamId.value = teamId; // set the value of the hidden input
     })
-}   )
+})
 
 //rezise text to fit in parent
 const isOverflown = ({ clientWidth, clientHeight, scrollWidth, scrollHeight }) => (scrollWidth > clientWidth) || (scrollHeight > clientHeight)

@@ -724,12 +724,23 @@ main .topMembers .scroll .profil .desc span {
 .bgYellow {
   background-color: RGB(106, 247, 151) !important;
   border-color: RGB(106, 247, 151);
+  color: black !important;
 }
 
 .bgYellow:hover {
   border-color: RGB(106, 247, 151);
   -webkit-box-shadow: 0 0px 5px 1px RGB(106, 247, 151);
           box-shadow: 0 0px 5px 1px RGB(106, 247, 151);
+}
+
+.bgYellowOutline {
+  background-color: transparent !important;
+  border-color: RGB(106, 247, 151);
+}
+
+.bgYellowOutline:hover {
+  border-color: RGB(106, 247, 151);
+  color: RGB(106, 247, 151);
 }
 
 .border_red {
@@ -891,5 +902,21 @@ main .topMembers .scroll .profil .desc span {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+}
+
+.pageNav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.pageNav ul li {
+  font-weight: normal;
+}
+
+.pageNav ul li::first-letter {
+  text-transform: uppercase;
 }
 /*# sourceMappingURL=style.css.map */

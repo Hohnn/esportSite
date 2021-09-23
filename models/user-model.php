@@ -1,7 +1,16 @@
 <?php 
 
 class UserModel extends database {
-
+    /**
+     * set a new user
+     *
+     * @param string $username
+     * @param string $mail
+     * @param string $password
+     * @param int $status
+     * @param string $avatar
+     * @return void
+     */
     public function setUser($username, $mail, $password, $status, $avatar) {
         $bdd = $this->connectDatabase();
         $condition = "INSERT INTO user (user_username, user_mail, user_password, status_id, user_logo)
@@ -29,7 +38,12 @@ class UserModel extends database {
         $result = $bdd->query($condition)->fetchAll();
         return $result;
     }
-
+    /**
+     * get all user infos
+     *
+     * @param int $id
+     * @return array
+     */
     public function getUserById($id) {
         $bdd = $this->connectDatabase();
         $condition = "SELECT * FROM user NATURAL JOIN `status` WHERE user_id = ?";

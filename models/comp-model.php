@@ -2,7 +2,16 @@
 
 class CompModel extends database
 {
-
+    /**
+     * set new team
+     *
+     * @param string $name
+     * @param string $logo
+     * @param string $country
+     * @param integer $user_id
+     * @param string $shortname
+     * @return integer
+     */
     public function setTeam($name, $logo, $country, $user_id, $shortname)
     {
         $bdd = $this->connectDatabase();
@@ -16,7 +25,17 @@ class CompModel extends database
         $result->execute();
         return $bdd->lastInsertId();
     }
-
+    /**
+     * update team values
+     *
+     * @param integer $teamId
+     * @param string $name
+     * @param string $logo
+     * @param string $country
+     * @param string $shortname
+     * @param integer $user_id
+     * @return void
+     */
     public function updateTeam($teamId, $name, $logo, $country, $shortname, $user_id)
     {
         $bdd = $this->connectDatabase();
@@ -30,7 +49,12 @@ class CompModel extends database
         $result->bindValue(6, $teamId, PDO::PARAM_INT);
         $result->execute();
     }
-
+    /**
+     * delete the team with this id
+     *
+     * @param integer $teamId
+     * @return void
+     */
     public function deleteTeam($teamId)
     {
         $bdd = $this->connectDatabase();
@@ -49,7 +73,11 @@ class CompModel extends database
         $result->execute();
         return $result->fetch();
     }
-
+    /**
+     * get all teams
+     *
+     * @return array
+     */
     public function getAllTeams()
     {
         $bdd = $this->connectDatabase();
@@ -57,7 +85,12 @@ class CompModel extends database
         $result = $bdd->query($condition)->fetchAll();
         return $result;
     }
-
+    /**
+     * get all players of a team
+     *
+     * @param integer $teamId
+     * @return array
+     */
     public function getAllplayerByTeam($teamId)
     {
         $bdd = $this->connectDatabase();
@@ -67,7 +100,14 @@ class CompModel extends database
         $result->execute();
         return $result->fetchAll();
     }
-
+    /**
+     * set new player
+     *
+     * @param string $playerName
+     * @param integer $teamId
+     * @param integer $user_id
+     * @return string
+     */
     public function setPlayer($playerName, $teamId, $user_id)
     {
         $bdd = $this->connectDatabase();

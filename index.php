@@ -34,13 +34,13 @@ include './controllers/index_controller.php';
                             <div class="carousel-caption myTextShadow">
                                 <h2><?= $news['ARTICLE_TITLE'] ?></h2>
                                 <p><?= $news['ARTICLE_SUBTITLE'] ?></p>
-                                <a href="<?= $news['ARTICLE_LINK'] ?>" class="btn bgYellow text-white">Afficher <i class="bi bi-box-arrow-in-right"></i></a>
+                                <a href="<?= $news['ARTICLE_LINK'] ?>" target="_blank" rel="noopener noreferrer" class="btn bgYellow text-white">Afficher <i class="bi bi-box-arrow-in-right"></i></a>
                             </div>
                             <div class="carousel-caption mycaption-top" style="z-index: 0">
                                 <p><i class="bi bi-bookmark-fill"></i> <?= $news['ARTICLE_TYPE'] ?></p>
                             </div>
                             <div class="admin <?= $access ?>">
-                                <a href="../views/admin.php?news=edit&newsId=<?= $news['ARTICLE_ID'] ?>" class="btn bg-success text-white"><i class="bi bi-pencil-square"></i></a>
+                                <a href="../views/admin.php?news=edit&newsId=<?= $news['ARTICLE_ID'] ?>"  class="btn bg-success text-white"><i class="bi bi-pencil-square"></i></a>
                                 <button type="button" id="deleteNews" value="<?= $news['ARTICLE_ID'] ?>" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#newsModal"><i class="bi bi-x-square"></i></button>
                             </div>
                         </div>
@@ -55,7 +55,7 @@ include './controllers/index_controller.php';
                     </div>
                 </div>
                 
-                <section class="twitch">
+                <section class="twitch" id="twitchScroll">
                     <h1>L'ACTU <span>TWITCH</span></h1>
                     <nav>
                         <ul>
@@ -78,7 +78,7 @@ include './controllers/index_controller.php';
                         </div>
                     </div>
                 </section>
-                <section class="twitch">
+                <section class="twitch" id="youtubeScroll">
                     <h1>L'ACTU <span>YOUTUBE</span></h1>
                     <nav>
                         <ul>
@@ -101,7 +101,7 @@ include './controllers/index_controller.php';
                         </div>
                     </div>
                 </section>
-                <section class="twitch topMembers">
+                <section class="twitch topMembers" id="memberScroll">
                     <h1>MEMBRES</h1>
                     <div class="container-fluid cont">
                         <div id="next3" class="nav"><i class="bi bi-arrow-right-circle-fill"></i></div>
