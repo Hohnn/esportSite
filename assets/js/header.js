@@ -4,7 +4,7 @@ plusPhone.addEventListener('click', () => {
     userMenu.classList.toggle('visible')
 })
 
-const asideMenu = document.querySelectorAll('aside nav a')
+const asideMenu = document.querySelectorAll('aside nav .pages')
 asideMenu.forEach(element => {
     element.addEventListener('click', function () {
         asideMenu.forEach(element => {

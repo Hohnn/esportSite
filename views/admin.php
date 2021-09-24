@@ -22,19 +22,19 @@
                     <h1>ADMINISTRATION</h1>
                     <div class="container-md my-4">
                         <div class="adminMenu">
-                            <div class="card myCard">
+                            <div class="card myCard <?= isset($_GET['news']) ? 'menuActive' : '' ?>">
                                 <a href="?news"><i class="bi bi-newspaper me-2"></i>Ajouter un article</a>
                             </div>
-                            <div class="card myCard">
+                            <div class="card myCard <?= isset($_GET['team']) ? 'menuActive' : '' ?>">
                                 <a href="?team"><i class="bi bi-card-heading me-2"></i>Ajouter une équipe</a>
                             </div>
-                            <div class="card myCard">
+                            <div class="card myCard <?= isset($_GET['tournament']) ? 'menuActive' : '' ?>">
                                 <a href="?tournament"><i class="bi bi-trophy me-2"></i>Ajouter un tournoi</a>
                             </div>
-                            <div class="card myCard">
+                            <div class="card myCard <?= isset($_GET['match']) ? 'menuActive' : '' ?>">
                                 <a href="?match"><i class="bi bi-controller me-2"></i>Ajouter un match</a>
                             </div>
-                            <div class="card myCard">
+                            <div class="card myCard <?= isset($_GET['user']) ? 'menuActive' : '' ?>">
                                 <a href="?user"><i class="bi bi-person-square me-2"></i>Gestion des utilisateur</a>
                             </div>
                             <div class="card myCard">

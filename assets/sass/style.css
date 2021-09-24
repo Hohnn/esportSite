@@ -831,6 +831,8 @@ main .topMembers .scroll .profil .desc span {
   background-color: #292f32;
   border-radius: 1rem;
   padding: 0.6rem;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
 }
 
 .bgTwitch {
@@ -910,13 +912,47 @@ main .topMembers .scroll .profil .desc span {
   display: flex;
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .pageNav ul li {
-  font-weight: normal;
+  font-weight: lighter;
+  margin: 0 0.5vw;
 }
 
 .pageNav ul li::first-letter {
   text-transform: uppercase;
+}
+
+.pageNav ul li a {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.pageNav2 ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  list-style: none;
+  padding-left: 4rem;
+}
+
+.pageNav2 ul li {
+  font-weight: lighter;
+  margin-top: 0.3rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.pageNav2 ul li::first-letter {
+  text-transform: uppercase;
+}
+
+.hide {
+  display: none !important;
 }
 /*# sourceMappingURL=style.css.map */

@@ -106,6 +106,12 @@ section form .wrap input {
   padding: 0.5rem 1rem;
 }
 
+.menuActive {
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
 tr {
   cursor: pointer;
 }

@@ -16,7 +16,7 @@ include './controllers/index_controller.php';
     <title>DAW esport</title>
 </head>
 <?php include './components/header.php' ?>
-            <div class="container-fluid">
+            <div class="container-fluid" >
                 <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <?php 

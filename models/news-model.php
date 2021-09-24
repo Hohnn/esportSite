@@ -54,5 +54,6 @@ class NewsModel extends database {
         $result->execute();
         return $result;
     }
+
 }
 

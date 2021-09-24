@@ -91,6 +91,12 @@ section {
         }
     }
 }
+
+.menuActive {
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: none !important;
+}
+
 tr {
     cursor: pointer;
     .social {

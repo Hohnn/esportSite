@@ -126,10 +126,45 @@ require_once __DIR__.'/../controllers/controller.php';
                             </div>
                         </div>
                         </div>
-                        <footer>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore consectetur quidem asperiores nulla nostrum distinctio dicta amet necessitatibus quis minima debitis eum aspernatur enim ad laboriosam, sint fugiat nisi molestias libero optio sed esse inventore! Inventore, minima. Praesentium voluptatibus nam vel sequi adipisci non mollitia dignissimos culpa, consequuntur veniam sed iure quos quidem fugit facere atque repellendus illo iusto voluptas hic. Illo, placeat, itaque iure quae sapiente dignissimos, cum officiis labore eum omnis optio minima dolore praesentium quidem. Dolores velit eius, nam, enim quam quos dolorem culpa possimus mollitia quo omnis harum totam atque nemo officiis! Illo quasi laudantium doloribus?</p>
-                        </footer>
+        
                 </section>
+                <footer>
+                            <div class="container-fluid my-4">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="projet text-center">
+                                            <div>Projet d'étude pour la formation de <br><span>Développeur Web et Web mobile</span></div>
+                                            <div class="pt-3">Créé par <a href="https://www.linkedin.com/in/jean-baptiste-samson-76a18a208/" target="_blank">Jean-baptiste Samson</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="contact text-center">
+                                            <h3>Contact</h3>
+                                            <ul>
+                                                <li>06.63.22.76.98</li>
+                                                <li>dawesport@gmail.com</li>
+                                                <li>20 Rue jean jacque-rousseau, 76600, <br>  Le Havre</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="social text-center">
+                                            <h3>Réseaux sociaux</h3>
+                                            <ul>
+                                                <li><a href="https://www.facebook.com/DAWesport/"><i class="bi bi-facebook"></i></a></li>
+                                                <li><a href="https://twitter.com/DAWesport"><i class="bi bi-twitter"></i></a></li>
+                                                <li><a href="https://www.instagram.com/dawesport/"><i class="bi bi-instagram"></i></a></li>
+                                            </ul>
+                                            <div class="footer-copyright text-center pt-3">
+                                                © 2021 Copyright <a href="https://mdbootstrap.com/"> DAWesport.com</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </footer>
 
             </main>
         </div>

@@ -198,3 +198,46 @@
         }
     }
 }
+
+footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 5rem;
+    font-size: 0.9rem;
+    font-weight: lighter;
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .contact, .social, .projet {
+        width: 280px;
+        h3 {
+            font-size: 1rem;
+        }
+    }
+    .social {
+        ul {
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            align-items: center;
+            li {
+                margin: 1rem;
+                a {
+                    color: white;
+                    font-size: 1.5rem;
+                    &:hover {
+                        color: $yellow;
+                    }
+                }
+            }
+            
+        }
+    }
+    .projet {
+        span {
+            font-size: 0.95rem;
+            color: white;
+        }
+    }
+}
