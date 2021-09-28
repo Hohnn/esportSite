@@ -20,7 +20,6 @@ function listenTrClick(param) {
 listenTrClick(allUsersTr); */
 
 const allUsersSelect = document.querySelectorAll('tr select');
-console.log(allUsersSelect);
 allUsersSelect.forEach(function(select) {
     select.addEventListener('change', function(e) {
         select.parentElement.submit();
@@ -29,7 +28,6 @@ allUsersSelect.forEach(function(select) {
 
 const deleteBtnUser = document.querySelectorAll('[data-bs-target="#userModal"]');
 const inputUserId = document.getElementById('userIdDelete');
-console.log(inputUserId);
 deleteBtnUser.forEach(btn => {
     btn.addEventListener('click', function() {
         let userId = this.value
@@ -41,4 +39,18 @@ deleteBtnUser.forEach(btn => {
 
 $('tr[data-href]').on("dblclick", function() {
     document.location = $(this).data('href');
+});
+
+const searchMember = document.getElementById('searchMember');
+searchMember.addEventListener('keyup', function(e) {
+    let search = this.value;
+    let allTr = document.querySelectorAll('tbody tr');
+    allTr.forEach(function(tr) {
+        let name = tr.querySelector('.name').innerText;
+        if (name.toLowerCase().indexOf(search.toLowerCase()) != -1) {
+            tr.classList.remove('d-none');
+        } else {
+            tr.classList.add('d-none');
+        }
+    });
 });

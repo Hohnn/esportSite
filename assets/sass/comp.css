@@ -10,6 +10,11 @@
   position: absolute;
   bottom: 0.6rem;
   right: 1rem;
+  cursor: pointer;
+}
+
+.teamCard .toggle:hover {
+  color: RGB(106, 247, 151);
 }
 
 .teamCard header {
@@ -115,6 +120,11 @@
   padding-right: 3rem;
 }
 
+.teamCard .teamMembers [href]:hover .memberLogo {
+  -webkit-filter: saturate(2);
+          filter: saturate(2);
+}
+
 .teamCard .teamMembers a:first-child .memberLogo {
   margin-left: 0px;
 }
@@ -127,6 +137,9 @@
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 0.5rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .teamCard .teamMembers a .memberLogo {
@@ -185,8 +198,8 @@ main .active {
 .tournamentCard {
   position: relative;
   color: white;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
   display: -ms-grid;
   display: grid;
   grid-gap: .75rem;
@@ -200,8 +213,8 @@ main .active {
 }
 
 .tournamentCard:hover {
-  -webkit-transform: translate(0, -0.5rem);
-          transform: translate(0, -0.5rem);
+  -webkit-transform: translate(0, -0.2rem);
+          transform: translate(0, -0.2rem);
 }
 
 .tournamentCard > .stuff:not(:first-child) {

@@ -2,8 +2,6 @@
     require_once __DIR__.'/../controllers/controller.php';
     require __DIR__.'/../controllers/suggestion_controller.php';
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -22,59 +20,26 @@
 </head>
 <?php require __DIR__.'/../components/header.php' ?>
 
-<section class="actu">
+<section class="actu mt-5">
                     <h1>Proposition d'article</h1>
                     <div class="container-fluid mt-5">
-                        <div class="row mt-0 flex-column-reverse flex-md-row-reverse g-5">
-                            <div class="col">
-                                <h3>Aperçu</h3>
-                                <div class="card" id="backImage">
-                                    <div class="desc text-white">
-                                        <h2 class="title" id="titlePreview">Death Stranding</h2>
-                                        <div class="date" id="datePreview">25/05/1992</div>
-                                        <div class="sujet" id="typePreview">News</div>
-                                        <div class="auteur" id="authorPreview">Hohnn</div>
-                                        <button type="button">Voir</button>
-                                    </div>
-                                </div>
-                            </div>
-
+                        <div class="row mt-0 g-5">
+                            <div class="col-12 col-xl-6">
+                                <p class="text-white fs-5">Partager un article que vous pensez utile pour la communauté </p>
+                                <p class=" text-white fw-normal">La promotion d'un événement que vous organisez, l'actualité sur le jeu, le test d'une nouvelle souris... Tous ce qui concerne l'univers compétitif Battlefield.</p>
+                                <p>Votre demande sera étudiée par notre équipe. </p>
+                            </div>  
                             <div class="col d-flex mt-3 mt-sm-0">
-                                <form action="suggestion.php" method="POST" enctype="multipart/form-data">
+                                <form class="myCard p-3" action="suggestion.php" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3 form-floating">
                                         <input type="text" class="form-control <?=isset($errorTitle) ? 'is-invalid noFilter' : ''?>" id="title" name="title" placeholder="titre" value="<?= $_POST['title'] ?? '' ?>">
                                         <label for="title" class="text-muted">Titre de l'article</label>
                                         <div class="form-text text-danger"><?=$errorTitle ?? ''?></div>
                                     </div>
                                     <div class="mb-3 form-floating">
-                                        <input type="date" class="form-control <?=isset($errorDate) ? 'is-invalid noFilter' : ''?>"" id="date" name="date" placeholder="Date">
-                                        <label for="date" class="text-muted">Date de l'article</label>
-                                        <div class="form-text text-danger"><?=$errorDate ?? ''?></div>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <select class="form-select" id="type" name="type">
-                                            <option selected value="Article">Article</option>
-                                            <option value="Test">Test</option>
-                                            <option value="Actu">Actu</option>
-                                            <option value="Promo">Promo</option>
-                                        </select>
-                                        <label for="floatingSelect">Type d'article</label>
-                                    </div>
-                                    <div class="mb-3 form-floating">
-                                        <input type="text" class="form-control <?=isset($errorAuthor) ? 'is-invalid noFilter' : ''?>"" id="author" name="author" placeholder="Date">
-                                        <label for="author" class="text-muted">Auteur de l'article</label>
-                                        <div class="form-text text-danger"><?=$errorAuthor ?? ''?></div>
-                                    </div>
-                                    
-                                    <div class="mb-3 form-floating">
                                         <input type="url" class="form-control <?=isset($errorSource) ? 'is-invalid noFilter' : ''?>"" id="source" name="source" placeholder="Source">
                                         <label for="source" class="text-muted">Lien de l'article</label>
                                         <div class="form-text text-danger"><?=$errorSource ?? ''?></div>
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <label class="input-group-text" for="fileToUpload">Image d'illustration</label>
-                                        <input type="file" name="img" class="form-control" id="fileToUpload" accept="image/png, image/jpg, image/jpeg">
-                                        <div class="form-text text-danger"><?=$uploaded ?? ''?></div>
                                     </div>
                                     <div class="form-floating mb-3">
                                         <textarea class="form-control <?=isset($errorDesc) ? 'is-invalid noFilter' : ''?>" placeholder="Leave a comment here" id="desc" name="desc" style="height: 100px"></textarea>
@@ -94,24 +59,18 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade invert" id="myModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            ...
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+    <!-- Toast -->
+<div class="position-fixed top-0 end-0 p-3 myToast" style="z-index: 110">
+    <div id="liveToast" class="toast align-items-center text-white <?= $color ?? 'bg-success' ?> border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+            <?= $success ?? '' ?>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
-    </div>
+</div>
+
 
 
     <!-- Script -->

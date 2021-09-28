@@ -20,22 +20,22 @@
 <?php require __DIR__.'/../components/header.php' ?>
                 <section class="actu mt-0">
                     <h1>ADMINISTRATION</h1>
-                    <div class="container-md my-4">
+                    <div class="container-fluid my-4">
                         <div class="adminMenu">
                             <div class="card myCard <?= isset($_GET['news']) ? 'menuActive' : '' ?>">
-                                <a href="?news"><i class="bi bi-newspaper me-2"></i>Ajouter un article</a>
+                                <a href="?news"><i class="bi bi-newspaper me-2"></i>Article</a>
                             </div>
                             <div class="card myCard <?= isset($_GET['team']) ? 'menuActive' : '' ?>">
-                                <a href="?team"><i class="bi bi-card-heading me-2"></i>Ajouter une équipe</a>
+                                <a href="?team"><i class="bi bi-card-heading me-2"></i>Équipe</a>
                             </div>
                             <div class="card myCard <?= isset($_GET['tournament']) ? 'menuActive' : '' ?>">
-                                <a href="?tournament"><i class="bi bi-trophy me-2"></i>Ajouter un tournoi</a>
+                                <a href="?tournament"><i class="bi bi-trophy me-2"></i>Tournoi</a>
                             </div>
                             <div class="card myCard <?= isset($_GET['match']) ? 'menuActive' : '' ?>">
-                                <a href="?match"><i class="bi bi-controller me-2"></i>Ajouter un match</a>
+                                <a href="?match"><i class="bi bi-controller me-2"></i>Match</a>
                             </div>
                             <div class="card myCard <?= isset($_GET['user']) ? 'menuActive' : '' ?>">
-                                <a href="?user"><i class="bi bi-person-square me-2"></i>Gestion des utilisateur</a>
+                                <a href="?user"><i class="bi bi-person-square me-2"></i>Utilisateur</a>
                             </div>
                             <div class="card myCard">
                                 <a  id="refresh"><i class="bi bi-bar-chart me-2"></i>Actualisé les stats</a>
@@ -43,9 +43,9 @@
                         </div>
                     </div>
 <?php if (isset($_GET['team'])) { ?>
-                    <div class="container-md mb-5 mt-3">
+                    <div class="container-fluid mb-5 mt-3">
                         <div class="row g-4">
-                            <div class="title">Gestion des équipes</div>
+                            <div class="title"><?= $_GET['team'] == 'edit' ? 'Modifier une ' : 'Ajouter une ' ?>équipes</div>
                             <div class="col-12 col-xl-7">
                                 <form class="row myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
                                     <div class="col-12">    
@@ -127,10 +127,10 @@
 
 
 <?php } if (isset($_GET['tournament'])) { ?>
-                    <div class="container-md mb-5 mt-3">
+                    <div class="container-fluid mb-5 mt-3">
                         <div class="row g-4">
                             <div class="col-12">
-                            <div class="title">Gestion des matchs</div>
+                            <div class="title"><?= $_GET['tournament'] == 'edit' ? 'Modifier un ' : 'Ajouter un ' ?>tournoi</div>
 
                                 <form class="row myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
                                 <div class="col-12">    
@@ -248,9 +248,9 @@ foreach($teamArray as $teamId){
                     </div>
 <?php } ?>
 <?php if (isset($_GET['match'])) { ?>
-                    <div class="container-md mb-5">
+                    <div class="container-fluid mb-5">
                         <div class="row g-4">
-                            <div class="title mb-0">Gestion des matchs</div>
+                            <div class="title mb-0"><?= $_GET['match'] == 'edit' ? 'Modifier un ' : 'Ajouter un ' ?>match</div>
                             <div class="col-12 col-xl-7">                        
                         <form class="row pt-3 myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
                             <div class="col-sm-5">
@@ -457,9 +457,9 @@ foreach($teamArray as $teamId){
                         </div>
                     </div>
 <?php } if(isset($_GET['news'])) { ?>
-                    <div class="container-md">
+                    <div class="container-fluid">
                     <div class="row fw-normal">
-                        <div class="title">Gestion des articles</div>
+                        <div class="title"><?= $_GET['news'] == 'edit' ? 'Modifier un ' : 'Ajouter un ' ?>article</div>
                             <div class="col-12 mt-3 mt-sm-0 myCard p-3 col-xl-6">
                                 <form action="" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3">
@@ -526,11 +526,38 @@ foreach($teamArray as $teamId){
                             </div>
                             </div>
                         </div>
+                        <div class="row fw-normal mt-4 g-3">
+                            <div class="title">Propositions d'articles</div>
+<?php foreach($allProposal as $proposal){ 
+    $user = $User->getUserById($proposal['USER_ID']);
+    ?>
+                            <div class="col proposalCol">
+                                <div class="myCard proposalCard position-relative p-3">
+                                    <div class="admin">
+                                        <a data-add class="btn bg-success text-white"><i class="bi bi-plus-square"></i></a>
+                                        <button type="button" id="deleteTeam" value="<?= $proposal['PROPOSAL_ID'] ?>" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#proposalModal"><i class="bi bi-x-square"></i></button>
+                                    </div>
+                                    <header>
+                                        <img src="../assets/images/user_logo/<?= $user['USER_LOGO'] ?>" alt="user_logo">
+                                        <div class="username"><?= $user['USER_USERNAME'] ?></div>
+                                        <div class="date"><?= $proposal['DATEFORMAT'] ?></div>
+                                    </header>
+                                    <p class="articleTitle"><?= $proposal['PROPOSAL_TITLE'] ?></p>
+                                    <div class="link">  <a href=""><?= $proposal['PROPOSAL_LINK'] ?></a> </div>
+                                    <p class="content"><?= $proposal['PROPOSAL_DESC'] ?></p>
+                                </div>
+                            </div>
+<?php } ?>  
+                        </div>  
                         </div>
 <?php } if(isset($_GET['user'])) { ?>
-                        <div class="container-md">
+                        <div class="container-fluid">
                             <div class="row fw-normal">
-                                <div class="title">Gestion des utilisateur</div>
+                                <div class="title d-flex justify-content-between align-items-end fw-bold">Gestion des utilisateurs 
+                                    <form class="searchMember" action="" method="POST">
+                                        <input type="text" id="searchMember" name="searchMember" placeholder="Recherche">
+                                    </form>
+                                </div>
                                 <div class="table-responsive">
                                 <table class="table table-dark table-striped table-hover">
                                     <thead>
@@ -546,11 +573,11 @@ foreach($teamArray as $teamId){
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php foreach($allUsers as $user){ ?>
+<?php foreach($allUserManager as $user){ ?>
                                         <tr data-href="../views/user.php?nickname=<?= $user['USER_USERNAME'] ?>">
                                             <th scope="row"><?= $user['USER_ID'] ?></th>
                                             <td><img src="../assets/images/user_logo/<?= $user['USER_LOGO'] ?>" alt="user logo"></td>
-                                            <td><?= $user['USER_USERNAME'] ?></td>
+                                            <td class="name"><?= $user['USER_USERNAME'] ?></td>
                                             <td> 
                                                 <form class="roleSelect" action="" method="post" class="form-horizontal">
                                                     <input type="hidden" name="userId" value="<?= $user['USER_ID'] ?>">
@@ -614,6 +641,28 @@ foreach($teamArray as $teamId){
         <form action="" method="POST">
             <input type="hidden" id="userIdDelete" name="userId" value="">
             <button type="submit" name="submitDeleteUser" class="btn btn-danger">Supprimer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Modal -->
+<div class="modal fade" id="proposalModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content text-dark">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="exampleModalLabel">Attention !</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Vous êtes sur le point de supprimer une proposition d'article.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Annuler</button>
+        <form action="" method="POST">
+            <input type="hidden" id="proposalIdDelete" name="proposalId" value="">
+            <button type="submit" name="submitDeleteProposal" class="btn btn-danger">Supprimer</button>
         </form>
       </div>
     </div>

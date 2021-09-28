@@ -10,6 +10,10 @@
         position: absolute;
         bottom: 0.6rem;
         right: 1rem;
+        cursor: pointer;
+        &:hover {
+            color: $yellow;
+        }
     }
     header {
         display: flex;
@@ -89,6 +93,13 @@
     .teamMembers {
         padding: 1rem;
         padding-right: 3rem;
+        [href] {
+            &:hover {
+                .memberLogo {
+                    filter: saturate(2);
+                }
+            }
+        }
         a:first-child {
             .memberLogo {
                 margin-left: 0px;
@@ -98,6 +109,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 0.5rem;
+            width: fit-content;
             .memberLogo {
                 width: 40px;
                 height: 40px;
@@ -148,7 +160,7 @@ main {
 .tournamentCard {
     position: relative;
     color: white;
-    transition: 0.3s ease-in-out ;
+    transition: 0.2s ease-in-out ;
     display: grid;
     grid-gap: .75rem;
     grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
@@ -157,7 +169,7 @@ main {
         max-width: 500px !important;
     }
     &:hover {
-        transform: translate(0, -0.5rem);
+        transform: translate(0, -0.2rem);
     }
     &>.stuff:not(:first-child) {
         border-left: 1px solid $yellow;

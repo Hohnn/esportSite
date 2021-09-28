@@ -3,9 +3,10 @@
 
 
 form {
-    width: 100% !important;
-    input, textarea, select, label {
-        filter: invert(1);
+    width: 100%;
+    max-width: 500px;
+    label {
+        font-weight: normal;
     }
 }
 

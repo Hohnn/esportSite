@@ -1,11 +1,11 @@
 /* $yellow: #fca311; */
 form {
-  width: 100% !important;
+  width: 100%;
+  max-width: 500px;
 }
 
-form input, form textarea, form select, form label {
-  -webkit-filter: invert(1);
-          filter: invert(1);
+form label {
+  font-weight: normal;
 }
 
 .card {

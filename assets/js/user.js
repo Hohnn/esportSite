@@ -43,3 +43,19 @@ refresh.addEventListener('click', () => {
         location.reload();
     }, 2000);
 })
+
+const editMail = document.getElementById('editMail')
+const editMdp = document.getElementById('editMdp')
+const collapseMail = document.getElementById('collapseMail')
+const collapseMdp = document.getElementById('collapseMdp')
+
+editMail.addEventListener('click', () => {
+    collapseMdp.classList.remove('show')
+    collapseMdp.classList.replace('collapse', 'collapsing')
+}   
+)
+editMdp.addEventListener('click', () => {
+    collapseMail.classList.remove('show')
+    collapseMail.classList.replace('collapse', 'collapsing')
+}   
+)

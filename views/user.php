@@ -129,12 +129,12 @@
                                 
                             <div class="col-12">
                                 <p>
-                                    <a class="btn btn-primary btn-sm btn-dark" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Modifier votre adresse mail</a>
-                                    <button class="btn btn-primary btn-sm btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Modifier votre mot de passe</button>
+                                    <a id="editMail" class="btn btn-primary btn-sm btn-dark" data-bs-toggle="collapse" href="#collapseMail" role="button" aria-expanded="false" aria-controls="collapseMail">Modifier votre adresse mail</a>
+                                    <button id="editMdp" class="btn btn-primary btn-sm btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMdp" aria-expanded="false" aria-controls="collapseMdp">Modifier votre mot de passe</button>
                                 </p>
                                 <div class="row g-3">
                                     <div class="col-12 col-md-6">
-                                        <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                        <div class="collapse multi-collapse" id="collapseMail">
                                             <div class="card myCard p-3 profilDesc">
                                                 <div class="title">Modification de l'adresse mail</div>
                                                 <form action="" method="POST" class="row fw-normal g-3">
@@ -154,9 +154,7 @@
                                                 </form>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="collapse multi-collapse" id="multiCollapseExample2">
+                                        <div class="collapse multi-collapse" id="collapseMdp">
                                             <div class="card myCard p-3 profilDesc">
                                                     <div class="title">Modification du mot de passe</div>
                                                     <form action="" method="POST" class="row fw-normal g-3">
@@ -181,6 +179,9 @@
                                                     </form>
                                                 </div>
                                             </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+
                                         </div>
                                     </div>
                                 </div>

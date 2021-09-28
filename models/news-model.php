@@ -55,5 +55,32 @@ class NewsModel extends database {
         return $result;
     }
 
+    public function setProposal($userId, $title, $source, $description){
+        $bdd = $this->connectDatabase();
+        $condition = "INSERT INTO proposal (user_id, PROPOSAL_TITLE, PROPOSAL_LINK, PROPOSAL_DESC) VALUES (?, ?, ?, ?)";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $userId, PDO::PARAM_INT);
+        $result->bindValue(2, $title, PDO::PARAM_STR);
+        $result->bindValue(3, $source, PDO::PARAM_STR);
+        $result->bindValue(4, $description, PDO::PARAM_STR);
+        $result->execute();
+        return $result;
+    }
+
+    public function getAllProposals(){
+        $bdd = $this->connectDatabase();
+        $condition = "SELECT *, DATE_FORMAT(PROPOSAL_DATE, '%d/%m/%Y') as `DATEFORMAT` FROM proposal ORDER BY PROPOSAL_ID DESC";
+        $result = $bdd->query($condition);
+        return $result->fetchAll();
+    }
+
+    public function deleteProposal($proposalId){
+        $bdd = $this->connectDatabase();
+        $condition = "DELETE FROM proposal WHERE PROPOSAL_ID = ?";
+        $result = $bdd->prepare($condition);
+        $result->bindValue(1, $proposalId, PDO::PARAM_INT);
+        $result->execute();
+        return $result;
+    }
 }
 

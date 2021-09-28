@@ -1,3 +1,5 @@
+@import 'colors';
+
 section {
     .title {
         color: white;
@@ -75,18 +77,23 @@ section {
 .adminMenu {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
     .myCard {
-        border-radius: 0.5rem;
+        border-radius: 0;
+        box-shadow: none;
         font-size: 0.9rem;
         font-weight: normal;
-        width: 200px;
+        width: fit-content;
         padding: 0;
         &:hover {
             background-color: rgba(0, 0, 0, 0.1);
         }
         a {
             padding: 0.5rem 1rem;
+            &::first-letter {
+                text-transform: uppercase;
+            }
 
         }
     }
@@ -95,6 +102,12 @@ section {
 .menuActive {
     background-color: rgba(0, 0, 0, 0.1);
     box-shadow: none !important;
+    a {
+        color: white;
+        i {
+            color: $yellow;
+        }
+    }
 }
 
 tr {
@@ -140,5 +153,68 @@ tr {
     form {
         position: relative;
         z-index: 100;
+    }
+}
+
+form {
+    input {
+        &:focus {
+            border-color: $yellow !important;
+        }
+    }
+}
+
+.proposalCol {
+    max-width: 350px;
+    font-size: 0.9rem;
+    max-height: 250px;
+    .proposalCard {
+    width: 100%;
+    }
+    header {
+        display: flex;
+        align-items: center;
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .username {
+            margin-left: 0.5rem;
+        }
+        .date {
+            margin-left: auto;
+            margin-right: 2rem;
+            align-self: start;
+        }
+    }
+    .articleTitle {
+        margin-top: 0.5rem;
+        color: white;
+    }
+    .link {
+        text-decoration: underline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    p {
+        margin-bottom: 0.2rem;
+        white-space: normal;  
+    }
+}
+
+.searchMember {
+    margin: 0;
+    input {
+        width: 150px;
+        border-radius: 3em;
+        border: 1px solid $yellow;
+        background-color: transparent;
+        padding: 0.4em 2em;
+        font-size: 0.8em;
+        outline: none;
+        color: #b3b3b3;
+        position: relative;
     }
 }

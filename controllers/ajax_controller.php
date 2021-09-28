@@ -27,3 +27,8 @@ if (isset($_GET['updateStatus'])) {
     $User = new UserModel();
     $User->setUpdateUserStatus($_GET['updateStatus'], 1);
 }
+/* if (isset($_GET['searchMember'])) {
+    $User = new UserModel();
+    $result = $User->searchMember($_GET['searchMember']);
+    echo json_encode($result);
+} */

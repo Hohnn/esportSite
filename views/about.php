@@ -25,7 +25,7 @@ require_once __DIR__.'/../controllers/controller.php';
                                     <h1><span>DAW</span> eSport</h1>
                                     <div class="subtitle">Une équipe compétitive mais pas que ...</div>
                                     <p class="tag">Rester informé sur l'actualité et la compétition sur Battlefield. <br> Faite vous connaitre grâce à votre profil.</p>
-                                    <a href="login.php" class="btn bgYellow text-white">Créer un compte</a>
+                                    <a href="login.php" class="btn bgYellow text-white">Créer un profil</a>
                                 <img class="floatImg d-none d-xl-block" src="../assets/images/head.png" alt="twisted">
                                     
                             </div>
@@ -104,7 +104,7 @@ require_once __DIR__.'/../controllers/controller.php';
                                         <span>01</span>
                                         <div>
                                             <div class="title">Créer votre compte</div>
-                                            <div class="desc">Indispensable pour profiter des déférentes fonctionnalités.</div>
+                                            <div class="desc">Indispensable pour profiter plainement des déférentes fonctionnalités.</div>
                                         </div>
 
                                     </div>

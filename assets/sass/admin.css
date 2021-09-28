@@ -1,3 +1,4 @@
+/* $yellow: #fca311; */
 section .title {
   color: white;
   border-bottom: 1px solid rgba(255, 255, 255, 0.459);
@@ -87,14 +88,19 @@ section form .wrap input {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 0.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 .adminMenu .myCard {
-  border-radius: 0.5rem;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   font-size: 0.9rem;
   font-weight: normal;
-  width: 200px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   padding: 0;
 }
 
@@ -106,10 +112,22 @@ section form .wrap input {
   padding: 0.5rem 1rem;
 }
 
+.adminMenu .myCard a::first-letter {
+  text-transform: uppercase;
+}
+
 .menuActive {
   background-color: rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
+}
+
+.menuActive a {
+  color: white;
+}
+
+.menuActive a i {
+  color: RGB(106, 247, 151);
 }
 
 tr {
@@ -170,5 +188,80 @@ tr {
 tr form {
   position: relative;
   z-index: 100;
+}
+
+form input:focus {
+  border-color: RGB(106, 247, 151) !important;
+}
+
+.proposalCol {
+  max-width: 350px;
+  font-size: 0.9rem;
+  max-height: 250px;
+}
+
+.proposalCol .proposalCard {
+  width: 100%;
+}
+
+.proposalCol header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.proposalCol header img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.proposalCol header .username {
+  margin-left: 0.5rem;
+}
+
+.proposalCol header .date {
+  margin-left: auto;
+  margin-right: 2rem;
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
+}
+
+.proposalCol .articleTitle {
+  margin-top: 0.5rem;
+  color: white;
+}
+
+.proposalCol .link {
+  text-decoration: underline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.proposalCol p {
+  margin-bottom: 0.2rem;
+  white-space: normal;
+}
+
+.searchMember {
+  margin: 0;
+}
+
+.searchMember input {
+  width: 150px;
+  border-radius: 3em;
+  border: 1px solid RGB(106, 247, 151);
+  background-color: transparent;
+  padding: 0.4em 2em;
+  font-size: 0.8em;
+  outline: none;
+  color: #b3b3b3;
+  position: relative;
 }
 /*# sourceMappingURL=admin.css.map */

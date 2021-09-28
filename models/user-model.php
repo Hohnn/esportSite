@@ -218,5 +218,4 @@ class UserModel extends database {
         $result->execute();
         return $result;
     }
-
 }

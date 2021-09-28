@@ -12,6 +12,9 @@ $allMaps = $Comp->getAllMaps();
 $allTournament = $Comp->getAllTournament();
 $allMatches = $Comp->getAllMatches();
 $allUsers = $User->getAllUser();
+$allProposal = $News->getAllProposals();
+
+// ----- MATCH ------  
 
 if (isset($_POST['submitMatch'])) {
     $match_id = $Comp->addMatch($_POST['team1'], $_POST['team2'], $_POST['match_date'], $_POST['link'], $_POST['event'], $_SESSION['id']);
@@ -51,6 +54,8 @@ if (isset($_GET['match']) && $_GET['match'] == 'edit') {
         $vod = 'No VOD';
     }
 }
+
+// ----- TOURNAMENT ------  
 
 if (isset($_POST['submitMatchUpdate'])) {
     $match_id = $_POST['submitMatchUpdate'];
@@ -130,6 +135,8 @@ function uploadLogo($img_file, $type = "image", $size = 1000000)
     }
     return $msgArray;
 }
+
+// ----- TEAM ------  
 
 if (isset($_POST['submitTeam'])) { // if submit button is clicked
     $verifUpload = uploadLogo($_FILES['logo']); // verify image upload
@@ -211,7 +218,8 @@ if (isset($_POST['submitTeamUpdate'])) { // if the form has been submitted
     }
 }
 
-// register new article
+// ----- NEWS------  
+
 if (isset($_POST['submitNews'])) {
     $title = htmlspecialchars($_POST['title']);
     $subTitle = htmlspecialchars($_POST['subTitle']);
@@ -309,7 +317,10 @@ if (isset($_POST['submitNewsUpdate'])) {
     }
 }
 
+// ----- USER ------   
+
 if (isset($_GET['user'])) {
+    $allUserManager = $User->getAllUser();
     $allStatus = $User->getAllStatus();
 }
 
@@ -318,7 +329,7 @@ if (isset($_POST['updateRole'])) {
     $author = $User->getUserById($_SESSION['id']);
     if ($author['STATUS_ID'] > $_POST['updateRole'] && $author['USER_ID'] != $userId) {
         if ($User->setUpdateUserStatus($userId, $_POST['updateRole'])) {
-            $allUsers = $User->getAllUser();
+            $allUserManager = $User->getAllUser();
             $success = 'Le rôle a bien été modifié !';
             $color = 'bg-success';
         } else {
@@ -336,6 +347,20 @@ if (isset($_POST['submitDeleteUser'])) {
     if ($User->deleteUser($userId)) {
         $allUsers = $User->getAllUser();
         $success = 'L\'utilisateur a bien été supprimé !';
+        $color = 'bg-success';
+    } else {
+        $success = 'Une erreur est survenue !';
+        $color = 'bg-danger';
+    }
+}
+
+// ----- PROPOSALS ------
+
+if (isset($_POST['submitDeleteProposal'])) {
+    $proposalId = htmlspecialchars($_POST['proposalId']);
+    if ($News->deleteProposal($proposalId)) {
+        $allProposal = $News->getAllProposals();
+        $success = 'La proposition a bien été supprimée !';
         $color = 'bg-success';
     } else {
         $success = 'Une erreur est survenue !';

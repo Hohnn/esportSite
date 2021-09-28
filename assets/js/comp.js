@@ -10,6 +10,7 @@ toggleBtn.forEach(btn => {
         card.classList.toggle('active');
     });
 })
+
 const deleteBtn = document.querySelectorAll('[data-bs-target="#matchModal"]');
 const inputMatchId = document.getElementById('matchId');
 deleteBtn.forEach(btn => {

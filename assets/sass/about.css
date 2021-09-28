@@ -232,6 +232,7 @@ footer ul {
 
 footer .contact, footer .social, footer .projet {
   width: 280px;
+  margin: 0 auto;
 }
 
 footer .contact h3, footer .social h3, footer .projet h3 {
