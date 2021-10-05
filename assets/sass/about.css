@@ -224,18 +224,27 @@ footer {
   font-weight: lighter;
 }
 
+footer a {
+  color: white;
+  font-size: 0.9rem;
+}
+
+footer a:hover {
+  color: RGB(106, 247, 151);
+}
+
 footer ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-footer .contact, footer .social, footer .projet {
+footer .contact, footer .social {
   width: 280px;
   margin: 0 auto;
 }
 
-footer .contact h3, footer .social h3, footer .projet h3 {
+footer .contact h3, footer .social h3 {
   font-size: 1rem;
 }
 
@@ -257,12 +266,11 @@ footer .social ul li {
 }
 
 footer .social ul li a {
-  color: white;
   font-size: 1.5rem;
 }
 
-footer .social ul li a:hover {
-  color: RGB(106, 247, 151);
+footer .projet div {
+  margin-top: 1rem;
 }
 
 footer .projet span {

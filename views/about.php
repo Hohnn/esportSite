@@ -132,9 +132,10 @@ require_once __DIR__.'/../controllers/controller.php';
                             <div class="container-fluid my-4">
                                 <div class="row">
                                     <div class="col">
-                                        <div class="projet text-center">
-                                            <div>Projet d'étude pour la formation de <br><span>Développeur Web et Web mobile</span></div>
-                                            <div class="pt-3">Créé par <a href="https://www.linkedin.com/in/jean-baptiste-samson-76a18a208/" target="_blank">Jean-baptiste Samson</a></div>
+                                        <div class="projet">
+                                            <a href="../views/mention-legale.php">Mentions légales et CGU</a>
+                                            <div>Projet d'étude pour la formation de Développeur Web et Web mobile</div>
+                                            <div>Créé par <a href="https://www.linkedin.com/in/jean-baptiste-samson-76a18a208/" target="_blank">Jean-baptiste Samson</a></div>
                                         </div>
                                     </div>
                                     <div class="col">

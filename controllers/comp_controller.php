@@ -26,7 +26,7 @@ function displayMatch($match) {
         $vod = 'VOD Youtube';
         $vodClass = 'bgYoutube';
     } else {
-        $vod = 'No VOD';
+        $vod = '';
     }
     ?>
     <div class="col matchCol">
@@ -39,7 +39,7 @@ function displayMatch($match) {
                     } else {
                         $class = 'maps';
                     }?>
-                <img class=" <?= $class ?? '' ?>" src="../assets/images/<?= $round['MAPS_ID'] ?>.jpg" alt="">
+                <img class=" <?= $class ?? '' ?>" src="../assets/images/maps/<?= $round['MAPS_IMAGE'] ?>" alt="">
                 <?php } ?>
             </div>
             <header>
@@ -63,7 +63,7 @@ function displayMatch($match) {
             </header>
             <footer>
                 <div class="typeWrap">
-                    <span ><?= $match['TOURNAMENT_NAME'] ?></span>
+                    <span ><?= $match['TOURNAMENT_NAME'] ?? 'Scrim' ?></span>
                     <div class="date"><?= $match['MATCH_DATE'] ?></div>
                 </div>
                 <div class="vodWrap">

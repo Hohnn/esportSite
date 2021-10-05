@@ -15,10 +15,23 @@ const checkButton = document.querySelectorAll('input[type="checkbox"]');
 checkButton.forEach(function(check){
     check.addEventListener('change', function(){
         if(check.checked){
-            check.parentElement.classList.add('checked');
+            let teamId = check.value;
+            fetch(`../controllers/ajax_controller.php?teamId=${teamId}`)
+            .then(response => response.json())
+            .then(data => {
+                const teamsWrap = document.querySelector('.teamsWrap');
+                let img = document.createElement('img');
+                img.src = 'data:image/png;base64,' + data.TEAM_LOGO;
+                img.classList.add('teamLogo');
+                img.dataset.teamId = teamId;
+                teamsWrap.appendChild(img);
+            })
+            .catch(error => console.error(error))
         } else {
-            check.parentElement.classList.remove('checked');
+            let thisTeam = document.querySelector(`img[data-team-id="${check.value}"]`);
+            thisTeam.remove();
         }
     })
 }
 )
+

@@ -47,7 +47,7 @@
                         <div class="row g-4">
                             <div class="title"><?= $_GET['team'] == 'edit' ? 'Modifier une ' : 'Ajouter une ' ?>équipes</div>
                             <div class="col-12 col-xl-7">
-                                <form class="row myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
+                                <form class="row myCard needs-validation" action="" method="POST" enctype="multipart/form-data">
                                     <div class="col-12">    
                                         <div class="row mt-3">
                                             <div class="col">
@@ -93,10 +93,11 @@
                                         </div>
                                     </div>                       
                                     <div class="col d-flex my-3">
+                                        <a href="../views/comp.php" class="btn btn-sm btn-outline-secondary px-3" type="submit" name="submitMatch" >Annuler</a>
                                 <?php if (isset($_GET['team']) && $_GET['team'] == 'edit') { ?>
-                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeamUpdate" value="<?= $match['MATCH_ID'] ?? '' ?>" >Modifier</button>
+                                        <button class="btn btn-sm btn-primary bgYellow px-3 ms-auto" type="submit" name="submitTeamUpdate" value="<?= $match['MATCH_ID'] ?? '' ?>" >Modifier</button>
                                 <?php } else { ?>
-                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTeam">Ajouter</button>
+                                        <button class="btn btn-sm btn-primary bgYellow px-3 ms-auto" type="submit" name="submitTeam">Ajouter</button>
                                 <?php } ?>
                                     </div>
                                 </form>
@@ -131,55 +132,56 @@
                         <div class="row g-4">
                             <div class="col-12">
                             <div class="title"><?= $_GET['tournament'] == 'edit' ? 'Modifier un ' : 'Ajouter un ' ?>tournoi</div>
-
                                 <form class="row myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
                                 <div class="col-12">    
-                                <div class="row mt-3">
-                                    <div class="col">
+                                <div class="row mt-2 gy-2">
+                                    <div class="col myMaxFit minSet ">
+                                        <label for="tournamentLogo">Logo du Tournoi</label>
                                         <input type="hidden" name="tournamentOldLogo" value="<?= $tournament['TOURNAMENT_LOGO'] ?? '' ?>">
                                         <input type="file"  class="form-control <?= !empty($verifUpload) ? 'is-invalid' : ''?>" name="logo" id="tournamentLogo" onchange="showPreview(event);"  required>
                                         <div class="invalid-feedback "><?= $verifUpload[0] ?? '' ?></div>
                                     </div>
-                                    <div class="col">
+                                    <div class="col minSet">
+                                        <label for="tournamentName">Nom du Tournoi</label>
                                         <input type="hidden" name="tournamentId" value="<?= $tournament['TOURNAMENT_ID'] ?? '' ?>">
-                                        <input type="text" class="form-control" name="name" id="tournamentName" value="<?= $tournament['TOURNAMENT_NAME'] ?? '' ?>" placeholder="Tournoi..." required>
+                                        <input type="text" class="form-control" name="name" id="tournamentName" value="<?= $tournament['TOURNAMENT_NAME'] ?? '' ?>" placeholder="Tournoi BSP" required>
                                         <div class="invalid-feedback ">non valide</div>
                                     </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-12">
-                                    <div class="row mt-4">
-                                    <div class="col">
-                                        <input list="formats" type="text" class="form-control" name="format" id="format" value="<?= $tournament['TOURNAMENT_FORMAT']  ?? '' ?>" placeholder="Format... ex: 6v6 conquête escoude" required>
+                                    <div class="col minSet">
+                                        <label for="format">Format</label>
+                                        <input list="formats" type="text" class="form-control" name="format" id="format" value="<?= $tournament['TOURNAMENT_FORMAT']  ?? '' ?>" placeholder="6v6 conquête escoude" required>
                                         <datalist id="formats">
                                             <option value="6v6 conquête escoude"></option>
                                             <option value="6v6 domination"></option>
                                         </datalist>
                                         <div class="invalid-feedback ">non valide</div>
                                     </div>
-                                    <div class="col">
+                                    <div class="col myMaxFit">
+                                        <label for="format">Début</label>
                                         <input type="date" class="form-control" name="date" id="tournamentDate" value="<?= $tournament['TOURNAMENT_START']  ?? '' ?>" required>
                                         <div class="invalid-feedback ">non valide</div>
                                     </div>
-                                    <div class="col">
+                                    <div class="col myMaxFit">
+                                        <label for="statusSelect">Statu</label>
                                         <select class="form-select" aria-label="Default select example" id="statusSelect" name="status" required>
 <?php if (isset($_GET['tournament']) && $_GET['tournament'] != 'edit') { ?>
-                                            <option selected hidden>Status</option> 
+                                            <option selected hidden disabled>Choisir</option> 
 <?php } ?>    
                                             <option <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'A venir' ? 'selected' : '') : '' ?> >A venir</option>
                                             <option <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'En cours' ? 'selected' : '') : ''  ?> >En cours</option>
                                             <option <?= isset($tournament['TOURNAMENT_STATUS']) ? ($tournament['TOURNAMENT_STATUS'] == 'Terminé' ? 'selected' : '') : ''  ?> >Terminé</option>
                                         </select>
                                     </div>
-                                    <div class="col">
+                                    <div class="col minSet">
+                                        <label for="link">URL</label>
                                         <input type="link" class="form-control" name="link" id="link" value="<?= $tournament['TOURNAMENT_LINK']  ?? '' ?>" placeholder="Lien du tournoi" required>
                                         <div class="invalid-feedback ">non valide</div>
                                     </div>
                                     <div class="col-12 mt-3">
-                                        <div class="mb-2">Equipe inscrite</div>
+                                        <label class="mb-2 d-block">Equipe inscrite</label>
 <?php  foreach ($allTeams as $team) { 
     if (!isset($_GET['tournament']) || $_GET['tournament'] != 'edit') { ?>
-                                        <div class="form-check form-check-inline fw-normal">
+                                        <div class="d-inline-block fw-normal myCheckBox">
                                             <input class="form-check-input" type="checkbox" id="checkbox<?= $team['TEAM_ID'] ?>" name="teams[]" value="<?= $team['TEAM_ID'] ?>" require>
                                             <label class="form-check-label" for="checkbox<?= $team['TEAM_ID'] ?>"><?= $team['TEAM_NAME'] ?></label>
                                         </div>
@@ -193,7 +195,7 @@
             $checked = '';
         }
     } ?>
-                                        <div class="form-check form-check-inline fw-normal">
+                                        <div class="d-inline-block fw-normal myCheckBox">
                                             <input class="form-check-input" type="checkbox" id="checkbox<?= $team['TEAM_ID'] ?>" name="teams[]" value="<?= $team['TEAM_ID'] ?>" <?= $checked ?? '' ?> require>
                                             <label class="form-check-label" for="checkbox<?= $team['TEAM_ID'] ?>"><?= $team['TEAM_NAME'] ?></label>
                                         </div>
@@ -202,11 +204,12 @@
                                     </div>
                                     </div>
                                     </div>                       
-                                    <div class="col d-flex my-3">
+                                    <div class="col d-flex mt-3 mb-2">
+                                        <a href="../views/comp.php" class="btn btn-sm btn-outline-secondary px-3" type="submit" name="submitMatch" >Annuler</a>
 <?php if (isset($_GET['tournament']) && $_GET['tournament'] != 'edit') { ?>
-                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTournament" >Ajouter</button>
+                                        <button class="btn btn-sm btn-primary bgYellow px-3 ms-auto" type="submit" name="submitTournament" >Ajouter</button>
 <?php } else { ?>
-                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitTournamentUpdate" value="<?= $match['MATCH_ID'] ?? '' ?>" >Modifier</button>
+                                        <button class="btn btn-sm btn-primary bgYellow px-3 ms-auto" type="submit" name="submitTournamentUpdate" value="<?= $match['MATCH_ID'] ?? '' ?>" >Modifier</button>
 <?php } ?>
                                     </div>
                                 </form>
@@ -237,7 +240,7 @@ $teamArray = explode(',', $tournament['TEAM_ID']);
 foreach($teamArray as $teamId){ 
     $team = $Comp->getTeam($teamId);
 ?>
-                                            <img src="data:image/png;base64,<?= $team['TEAM_LOGO'] ?>" alt="" class="teamLogo">
+                                            <img src="data:image/png;base64,<?= $team['TEAM_LOGO'] ?>" alt="" class="teamLogo" data-team-id="<?= $team['TEAM_ID'] ?>">
 <?php } }?>
                                         </div>
                                     </div>
@@ -252,11 +255,12 @@ foreach($teamArray as $teamId){
                         <div class="row g-4">
                             <div class="title mb-0"><?= $_GET['match'] == 'edit' ? 'Modifier un ' : 'Ajouter un ' ?>match</div>
                             <div class="col-12 col-xl-7">                        
-                        <form class="row pt-3 myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
+                        <form class="row pt-3 myCard needs-validation" action="" method="POST" enctype="multipart/form-data">
                             <div class="col-sm-5">
+                                <label for="team1">Équipe n°1</label>
                                 <select class="form-select" aria-label="Default select example" name="team1" id="team1" required>
                                     <?php if ($_GET['match'] != 'edit') { ?>
-                                    <option selected hidden>équipe n°1</option>
+                                    <option hidden value="">Choisir une équipe</option>
                                     <?php } ?>
 <?php  foreach ($allTeams as $team) { 
     if ($_GET['match'] != 'edit') { ?>
@@ -266,11 +270,12 @@ foreach($teamArray as $teamId){
 <?php } }?>
                                 </select>
                             </div>
-                            <div class="col-sm-2 d-flex justify-content-center align-items-center text-yellow">VS</div>
+                            <div class="col-sm-2 d-flex justify-content-center align-items-end text-yellow py-2">VS</div>
                             <div class="col-sm-5">
+                                <label for="team2">Équipe n°2</label>
                                 <select class="form-select" aria-label="Default select example" name="team2" id="team2" required>
                                     <?php if (isset($_GET['match']) && $_GET['match'] != 'edit') { ?>
-                                    <option selected hidden>équipe n°1</option>
+                                    <option value="" hidden>Choisir une équipe</option>
                                     <?php } ?>
 <?php  foreach ($allTeams as $team) { 
     if (!isset($_GET['match']) || $_GET['match'] != 'edit') { ?>
@@ -283,15 +288,16 @@ foreach($teamArray as $teamId){
                             <div class="col-12 g-3 mb-0">
                                 <div class="row g-3">
                                     <div class="col minSet">
-                                        <div class="row g-2">
+                                        <div class="row">
+                                            <label for="team1">Tour n°1</label>
                                             <div class="col-5">
                                                 <input type="hidden" name="score1Id" value="<?= $matchScore[0]['SCORE_ID'] ?? '' ?>">
-                                                <input type="number" max="500" class="form-control" name="score1Team1" id="score1Team1" value="<?= $matchScore[0]['SCORE_TEAM1'] ?? '' ?>" placeholder="Score T1" required>
+                                                <input type="number" max="500" class="form-control" name="score1Team1" id="score1Team1" value="<?= $matchScore[0]['SCORE_TEAM1'] ?? '' ?>" placeholder="Score n°1" required>
                                                 <div class="invalid-feedback ">non valide</div>
                                             </div>
                                             <div class="col-2 d-flex justify-content-center align-items-center text-yellow">/</div>
                                             <div class="col-5">
-                                                <input type="number" max="500" class="form-control" name="score1Team2" id="score1Team2" value="<?= $matchScore[0]['SCORE_TEAM2'] ?? '' ?>" placeholder="Score T2" required>
+                                                <input type="number" max="500" class="form-control" name="score1Team2" id="score1Team2" value="<?= $matchScore[0]['SCORE_TEAM2'] ?? '' ?>" placeholder="Score n°2" required>
                                                 <div class="invalid-feedback ">non valide</div>
                                             </div>
                                         </div>
@@ -299,7 +305,7 @@ foreach($teamArray as $teamId){
                                             <div class="col">
                                                 <select class="form-select" aria-label="Default select example" name="map" id="map1" required>
                                                 <?php if (isset($_GET['match']) && $_GET['match'] != 'edit') { ?>
-                                                    <option selected hidden>Carte n°1</option>
+                                                    <option value="" hidden>Carte n°1</option>
                                                 <?php } ?>    
 <?php  foreach ($allMaps as $map) { 
     if (!isset($_GET['match']) || $_GET['match'] != 'edit') { ?>
@@ -312,15 +318,17 @@ foreach($teamArray as $teamId){
                                         </div>
                                     </div>
                                     <div class="col minSet">
-                                        <div class="row g-2">
+                                        <div class="row">
+                                    <label for="team1">Tour n°2</label>
+
                                             <div class="col-5">
                                                 <input type="hidden" name="score2Id" value="<?= $matchScore[1]['SCORE_ID'] ?? '' ?>">
-                                                <input type="number" max="500" class="form-control" name="score2Team1" id="score2Team1" value="<?= $matchScore[1]['SCORE_TEAM1'] ?? '' ?>" placeholder="Score T1" required>
+                                                <input type="number" max="500" class="form-control" name="score2Team1" id="score2Team1" value="<?= $matchScore[1]['SCORE_TEAM1'] ?? '' ?>" placeholder="Score n°1" required>
                                                 <div class="invalid-feedback ">Score invalide</div>
                                             </div>
                                             <div class="col-2 d-flex justify-content-center align-items-center text-yellow">/</div>
                                             <div class="col-5">
-                                                <input type="number" max="500" class="form-control" name="score2Team2" id="score2Team2" value="<?= $matchScore[1]['SCORE_TEAM2'] ?? '' ?>" placeholder="Score T2" required>
+                                                <input type="number" max="500" class="form-control" name="score2Team2" id="score2Team2" value="<?= $matchScore[1]['SCORE_TEAM2'] ?? '' ?>" placeholder="Score n°2" required>
                                                 <div class="invalid-feedback ">Score invalide</div>
                                             </div>
                                         </div>
@@ -328,7 +336,7 @@ foreach($teamArray as $teamId){
                                             <div class="col">
                                                 <select class="form-select" aria-label="Default select example" name="map2" id="map2" required>
                                                 <?php if ($_GET['match'] != 'edit') { ?>
-                                                    <option selected hidden>Carte n°2</option>
+                                                    <option value="" hidden>Carte n°2</option>
                                                 <?php } ?>    
 <?php  foreach ($allMaps as $map) { 
     if (isset($_GET['match']) && $_GET['match'] != 'edit') { ?>
@@ -341,24 +349,25 @@ foreach($teamArray as $teamId){
                                         </div>
                                     </div>
                                     <div class="col minSet">
-                                        <div class="row g-2">
+                                        <div class="row">
+                                            <label for="team1">Tour n°3</label>
                                             <div class="col-5">
                                                 <input type="hidden" name="score3Id" value="<?= $matchScore[2]['SCORE_ID'] ?? '' ?>">
-                                                <input type="number" max="500" class="form-control" name="score3Team1" id="score3Team1" value="<?= $matchScore[2]['SCORE_TEAM1'] ?? '' ?>" placeholder="Score T1" required>
+                                                <input type="number" max="500" class="form-control" name="score3Team1" id="score3Team1" value="<?= $matchScore[2]['SCORE_TEAM1'] ?? '' ?>" placeholder="Score n°1">
                                                 <div class="invalid-feedback ">Score invalide</div>
                                             </div>
                                             <div class="col-2 d-flex justify-content-center align-items-center text-yellow">/</div>
                                             <div class="col-5">
-                                                <input type="number" max="500" class="form-control" name="score3Team2" id="score3Team2" value="<?= $matchScore[2]['SCORE_TEAM2'] ?? '' ?>" placeholder="Score T2" required>
+                                                <input type="number" max="500" class="form-control" name="score3Team2" id="score3Team2" value="<?= $matchScore[2]['SCORE_TEAM2'] ?? '' ?>" placeholder="Score n°2">
                                                 <div class="invalid-feedback ">Score invalide</div>
                                             </div>
                                         </div>
                                         
                                         <div class="row mt-2">
                                             <div class="col">
-                                                <select class="form-select" aria-label="Default select example" name="map3" id="map3" required>
+                                                <select class="form-select" aria-label="Default select example" name="map3" id="map3">
                                                 <?php if (isset($_GET['match']) && $_GET['match'] != 'edit' || empty($matchScore[2])) { ?>
-                                                    <option selected hidden>Carte n°3</option>
+                                                    <option hidden>Carte n°3</option>
                                                 <?php } ?>    
 <?php  foreach ($allMaps as $map) { 
     if (isset($_GET['match']) && $_GET['match'] != 'edit') { ?>
@@ -375,11 +384,13 @@ foreach($teamArray as $teamId){
 
                                 <div class="col-12 g-3">
                                     <div class="row g-3">
-                                    <div class="col minSet">
+                                    <div class="col myMaxFit">
+                                        <label for="selectTournament">Événement</label>
                                         <select class="form-select" aria-label="Default select example" name="event" id="selectTournament" required>
                                             <?php if ($_GET['match'] != 'edit') { ?>
-                                            <option selected hidden>Evènement</option>
+                                            <option value="" hidden>Choisir</option>
                                             <?php } ?>
+                                            <option value="0">Scrim</option>
 <?php  foreach ($allTournament as $tournament) {
     if (isset($_GET['match']) && $_GET['match'] != 'edit') { ?>
                                             <option value="<?= $tournament['TOURNAMENT_ID'] ?>"><?= $tournament['TOURNAMENT_NAME'] ?></option>
@@ -388,22 +399,25 @@ foreach($teamArray as $teamId){
 <?php } }?>
                                         </select>
                                     </div>
-                                    <div class="col">
-                                        <input type="date" class="form-control" name="match_date" id="match_date" value="<?= $match['MATCH_DATE'] ?? '' ?>" placeholder="Date" required>
+                                    <div class="col myMaxFit">
+                                        <label for="match_date">Date</label>
+                                        <input type="date" class="form-control  " name="match_date" id="match_date" value="<?= $match['MATCH_DATE'] ?? '' ?>" placeholder="Date" required>
                                         <div class="invalid-feedback ">Nom invalide</div>
                                     </div>
-                                    <div class="col minSet">
-                                        <input type="link" class="form-control" name="link" id="link" value="<?= $match['MATCH_LINK_VOD'] ?? '' ?>" placeholder="Lien" required>
+                                    <div class="col">
+                                        <label for="link">URL</label>
+                                        <input type="link" class="form-control" name="link" id="link" value="<?= $match['MATCH_LINK_VOD'] ?? '' ?>" placeholder="VOD du match">
                                         <div class="invalid-feedback ">Nom invalide</div>
                                     </div>
                                 </div>  
                             </div> 
                                 
-                            <div class="col d-flex mt-2">
+                            <div class="col d-flex mt-3 mb-2">
+                            <a href="../views/comp.php" class="btn btn-sm btn-outline-secondary px-3" type="submit" name="submitMatch" >Annuler</a>
 <?php if (isset($_GET['match']) && $_GET['match'] != 'edit') { ?>
-                                <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitMatch" >Ajouter</button>
+                                <button class="btn btn-sm btn-primary bgYellow px-3 ms-auto" type="submit" name="submitMatch" >Ajouter</button>
 <?php } else { ?>
-                                <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitMatchUpdate" value="<?= $match['MATCH_ID'] ?? '' ?>" >Modifier</button>
+                                <button class="btn btn-sm btn-primary bgYellow px-3 ms-auto" type="submit" name="submitMatchUpdate" value="<?= $match['MATCH_ID'] ?? '' ?>" >Modifier</button>
 <?php } ?>
                             </div>
                         </form>
@@ -495,11 +509,12 @@ foreach($teamArray as $teamId){
                                         <div class="form-text text-danger"><?=$errorUploadNews ?? '' ?></div>
                                     </div>
 
-                                    <div class="w-100 d-flex mt-2">
+                                    <div class="w-100 d-flex mt-4">
+                                        <a href="../views/comp.php" class="btn btn-sm btn-outline-secondary px-3" type="submit" name="submitMatch" >Annuler</a>
 <?php if (isset($_GET['news']) && $_GET['news'] != 'edit') { ?>
                                         <button class="btn btn-sm btn-primary ms-auto bgYellow px-3" type="submit" id="newsSubmit" name="submitNews" data-submit="<?= isset($count) && $count == 0 ? "valid" : "invalid" ?>">Valider</button>
 <?php } else { ?>
-                                        <button class="btn btn-sm btn-primary bgYellow px-3" type="submit" name="submitNewsUpdate" value="<?= $singleNews['ARTICLE_ID'] ?? '' ?>" >Modifier</button>
+                                        <button class="btn btn-sm btn-primary ms-auto bgYellow px-3" type="submit" name="submitNewsUpdate" value="<?= $singleNews['ARTICLE_ID'] ?? '' ?>" >Modifier</button>
 <?php } ?>
                                     </div>
                                 </form>
@@ -516,7 +531,7 @@ foreach($teamArray as $teamId){
                                         <div class="carousel-caption myTextShadow">
                                             <h2 id="previewNewstitle">First slide label</h2>
                                             <p id="previewNewsSubtitle">Some representative placeholder content for the first slide.</p>
-                                            <a href="#" class="btn bgYellow text-white">Afficher <i class="bi bi-box-arrow-in-right"></i></a>
+                                            <a href="<?= $singleNews['ARTICLE_LINK'] ?? '' ?>" class="btn bgYellow text-white" target="_blank">Afficher <i class="bi bi-box-arrow-in-right"></i></a>
                                         </div>
                                         <div class="carousel-caption mycaption-top">
                                             <p id="previewNewsType"><i class="bi bi-bookmark-fill"></i> TEST</p>

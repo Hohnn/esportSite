@@ -56,6 +56,7 @@ body {
 .profilDesc .wrap .infos ul .none, .topWeapon .wrap .infos ul .none {
   opacity: 0.2;
   pointer-events: none;
+  border: 1px solid transparent;
 }
 
 .profilDesc .wrap .infos ul .none:hover, .topWeapon .wrap .infos ul .none:hover {
@@ -64,7 +65,15 @@ body {
 
 .profilDesc .wrap .infos ul .social, .topWeapon .wrap .infos ul .social {
   margin-top: 2rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+
+.profilDesc .wrap .infos ul .social .show, .topWeapon .wrap .infos ul .social .show {
+  border: 2px solid RGB(106, 247, 151);
+  border-radius: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.5rem;
 }
 
 .profilDesc .wrap .infos ul li, .topWeapon .wrap .infos ul li {

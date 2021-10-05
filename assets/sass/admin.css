@@ -33,7 +33,7 @@ section form .wrap input {
 }
 
 .text-yellow {
-  color: #ffc107;
+  color: RGB(106, 247, 151);
 }
 
 .matchCol {
@@ -263,5 +263,54 @@ form input:focus {
   outline: none;
   color: #b3b3b3;
   position: relative;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.myMaxFit {
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+
+#tournamentName {
+  max-width: 400px;
+}
+
+.myCheckBox {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 40px;
+  position: relative;
+}
+
+.myCheckBox input {
+  display: none;
+}
+
+.myCheckBox input:checked + label {
+  border-color: RGB(106, 247, 151);
+  color: RGB(106, 247, 151);
+}
+
+.myCheckBox label {
+  cursor: pointer;
+  padding: 0.3rem 0.8rem;
+  border: 2px solid #b3b3b3;
+  border-radius: 0.5rem;
 }
 /*# sourceMappingURL=admin.css.map */

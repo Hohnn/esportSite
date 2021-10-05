@@ -204,12 +204,19 @@ footer {
     margin-top: 5rem;
     font-size: 0.9rem;
     font-weight: lighter;
+    a {
+        color: white;
+        font-size: 0.9rem;
+        &:hover {
+            color: $yellow;
+        }
+    }
     ul {
         list-style: none;
         padding: 0;
         margin: 0;
     }
-    .contact, .social, .projet {
+    .contact, .social{
         width: 280px;
         margin: 0 auto;
         h3 {
@@ -225,17 +232,16 @@ footer {
             li {
                 margin: 1rem;
                 a {
-                    color: white;
                     font-size: 1.5rem;
-                    &:hover {
-                        color: $yellow;
-                    }
                 }
             }
             
         }
     }
     .projet {
+        div {
+            margin-top: 1rem;
+        }
         span {
             font-size: 0.95rem;
             color: white;

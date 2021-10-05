@@ -31,7 +31,7 @@ section {
 }
 
 .text-yellow {
-    color: #ffc107;
+    color: $yellow;
 }
 
 .matchCol {
@@ -216,5 +216,47 @@ form {
         outline: none;
         color: #b3b3b3;
         position: relative;
+    }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.myMaxFit {
+    max-width: fit-content;
+    min-width: fit-content;
+}
+
+#tournamentName {
+    max-width: 400px;
+}
+
+.myCheckBox {
+    width: fit-content;
+    height: 40px;
+    position: relative;
+    input {
+        display: none;
+        &:checked {
+            & + label {
+                border-color: $yellow;
+                color: $yellow;
+            }
+        }
+    }
+    label {
+        cursor: pointer;
+        padding: 0.3rem 0.8rem;
+        border: 2px solid $grey;
+        border-radius: 0.5rem;
     }
 }
