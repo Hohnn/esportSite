@@ -44,4 +44,3 @@ function showArrow(event, target, dir, target2){
 showArrow(myscroll, prev, 10, next);
 showArrow(myscroll2, prev2, 10, next2);
 showArrow(myscroll3, prev3, 10, next3);
-console.log('ttttttttttttttttttt');

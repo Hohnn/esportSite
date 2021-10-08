@@ -502,19 +502,25 @@ main {
 }
 
 @media screen and (max-width: 750px) {
-    aside {
-        .active {
-            &::before {
-                width: 0px !important;
-            }
-        }
+    .scroll {
+        left: 10px !important;
+        max-width: 100vw important;
+    }
+    .wrapProfil {
+        display: none !important;
+    }
+    .profilLogo {
+        margin-left: 0 !important;
     }
         
     #carousel {
-        button {
-            width: 30px !important;
-            height: 30px !important;
+        .carousel-indicators {
+            button {
+                width: 30px !important;
+                height: 30px !important;
+            }
         }
+
         .carousel-item {
             img {
                 width: 100%;
@@ -531,6 +537,7 @@ main {
     main {
         padding: 0 !important;
         margin-bottom: 3rem;
+        overflow-x: hidden;
         .phone {
             padding: 0 !important;
         }
@@ -541,11 +548,15 @@ main {
         height: 400px !important;
     } 
     aside {
+        .active {
+            &::before {
+                width: 0px !important;
+            }
+        }
         position: absolute;
         z-index: 1000;
         width: 100vw !important;
         max-width: unset !important;
-        height: 6vh !important;
         min-height: fit-content !important;
         position: fixed;
         bottom: 0;

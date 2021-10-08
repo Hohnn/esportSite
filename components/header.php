@@ -92,7 +92,7 @@
                    <!--  <i class="bi bi-bell mx-3 "></i>
                     <i class="bi bi-chat-left-text"></i> -->
                     <a href="../views/user.php?nickname=<?= $_SESSION['user'] ?? '' ?>" class="userInfos ms-auto">
-                        <div class="wrap">
+                        <div class="wrapProfil">
                             <div class="userName" id="userName"><?= $_SESSION['user'] ?? '' ?></div>
                             <div class="role"><?= $user['STATUS_ROLE']  ?? '' ?></div>
                         </div>                        
@@ -101,4 +101,4 @@
 <?php } ?>
                 </header>
 
-                <script src="./assets/js/header.js"></script>
+                <script src="../assets/js/header.js"></script>

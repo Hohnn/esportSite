@@ -54,9 +54,21 @@ body {
 }
 
 .profilDesc .wrap .infos ul .none, .topWeapon .wrap .infos ul .none {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
   opacity: 0.2;
   pointer-events: none;
-  border: 1px solid transparent;
+  border: 2px solid white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .profilDesc .wrap .infos ul .none:hover, .topWeapon .wrap .infos ul .none:hover {
@@ -66,14 +78,35 @@ body {
 .profilDesc .wrap .infos ul .social, .topWeapon .wrap .infos ul .social {
   margin-top: 2rem;
   font-size: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.1rem;
 }
 
 .profilDesc .wrap .infos ul .social .show, .topWeapon .wrap .infos ul .social .show {
-  border: 2px solid RGB(106, 247, 151);
-  border-radius: 0.5rem;
-  width: 2rem;
-  height: 2rem;
-  padding: 0.5rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 2px solid white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 1rem;
+}
+
+.profilDesc .wrap .infos ul .social .show:hover, .topWeapon .wrap .infos ul .social .show:hover {
+  border-color: RGB(106, 247, 151);
+}
+
+.profilDesc .wrap .infos ul .social .youtube, .topWeapon .wrap .infos ul .social .youtube {
+  padding-top: 3px;
 }
 
 .profilDesc .wrap .infos ul li, .topWeapon .wrap .infos ul li {

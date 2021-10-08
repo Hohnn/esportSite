@@ -120,10 +120,10 @@ function displayTournament($tournament) {
                 </div>
             </div>
             <div class="admin <?= $access ?>">
-                <a href="../views/admin.php?tournament=edit&tournamentId=<?= $tournament['TOURNAMENT_ID'] ?>" class="btn bg-success text-white"><i class="bi bi-pencil-square"></i></a>
+                <a href="../views/admin.php?tournament=edit&tournamentId=<?= $tournament['TOURNAMENT_ID'] ?>"  class="btn bg-success text-white"><i class="bi bi-pencil-square"></i></a>
                 <button type="button" id="deleteTournament" value="<?= $tournament['TOURNAMENT_ID'] ?>" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tournamentModal"><i class="bi bi-x-square"></i></button>
             </div>
-            <a href="<?= $tournament['TOURNAMENT_LINK'] ?>" class="link"></a>
+            <a href="<?= $tournament['TOURNAMENT_LINK'] ?>" target="_blank" class="link"></a>
         </div>
     </div>
 <?php }

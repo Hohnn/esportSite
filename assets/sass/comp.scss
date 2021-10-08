@@ -118,6 +118,7 @@
             }
             .memberName { 
                 margin-left: 0.5rem;
+                margin-bottom: 0;
                 font-size: 1rem;
                 font-weight: normal;
                 color: white;
@@ -181,8 +182,7 @@ main {
         
     }
     .stuff {
-        width: 10%;
-        min-width: 200px;
+        width: 100%;
         overflow: hidden;
     }
     span {

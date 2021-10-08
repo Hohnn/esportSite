@@ -34,9 +34,15 @@ body {
             ul{
                 list-style: none;
                 .none {
+                    width: 2.4rem;
+                    height: 2.4rem;
+                    border-radius: 50%;
                     opacity: 0.2;
                     pointer-events: none;
-                    border: 1px solid transparent;
+                    border: 2px solid white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     &:hover {
                         color: unset;
                     }
@@ -44,16 +50,25 @@ body {
                 .social {
                     margin-top: 2rem;
                     font-size: 1.5rem;
+                    display: flex;
+                    font-size: 1.1rem;
                     .show {
-                        border: 2px solid $yellow;
-                        border-radius: 0.5rem;
-                        width: 2rem;
-                        height: 2rem;
-
-                        padding: 0.5rem;
-
+                        width: 2.4rem;
+                        height: 2.4rem;
+                        border-radius: 50%;
+                        border: 2px solid white;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 1rem;
+                        &:hover {
+                            border-color: $yellow;
+                        }
                     }
-                    
+                    .youtube {
+                        padding-top: 3px;
+                    }
+
                 }
                 li {
                     color: white;

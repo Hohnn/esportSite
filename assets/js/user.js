@@ -8,7 +8,7 @@ edit.addEventListener('click', () => {
     if (descEdit.classList.contains('d-none')) {
         edit.style.color = 'white'        
     } else {
-        edit.style.color = '#fca311'
+        edit.style.color = 'RGB(106, 247, 151)'
     }
 })
 

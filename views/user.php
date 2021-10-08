@@ -78,9 +78,9 @@
                                                 <li><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/><?= !empty($user['USER_ORIGIN_ID']) ? $user['USER_ORIGIN_ID'] : 'Inconnu' ?></li>
                                                 <li><i class="bi bi-person-bounding-box me-3"></i><?= $user['STATUS_ROLE'] ?></li>
                                                 <li class="social">
-                                                    <a class="<?= $user['USER_TWITTER'] ? 'show' : 'none' ?>" href="<?= $user['USER_TWITTER'] ?? '' ?>"><i class="bi bi-twitter"></i></a>
-                                                    <a class="<?= $user['USER_YOUTUBE'] ? 'show' : 'none' ?>" href="<?= $user['USER_YOUTUBE'] ?? '' ?>"><i class="bi bi-youtube"></i></a>
-                                                    <a class="<?= $user['USER_TWITCH'] ? 'show' : 'none' ?>" href="<?= $user['USER_TWITCH'] ?? '' ?>"><i class="bi bi-twitch"></i></a>
+                                                    <a class="<?= $user['USER_TWITTER'] ? 'show twitter' : 'none' ?>" href="<?= $user['USER_TWITTER'] ?? '' ?>"><i class="bi bi-twitter"></i></a>
+                                                    <a class="<?= $user['USER_YOUTUBE'] ? 'show youtube' : 'none' ?>" href="<?= $user['USER_YOUTUBE'] ?? '' ?>"><i class="bi bi-youtube"></i></a>
+                                                    <a class="<?= $user['USER_TWITCH'] ? 'show twitch' : 'none' ?>" href="<?= $user['USER_TWITCH'] ?? '' ?>"><i class="bi bi-twitch"></i></a>
                                                 </li>
                                             </ul>
                                         </div>

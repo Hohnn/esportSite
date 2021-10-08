@@ -628,10 +628,17 @@ main .topMembers .scroll .profil .desc span {
 }
 
 @media screen and (max-width: 750px) {
-  aside .active::before {
-    width: 0px !important;
+  .scroll {
+    left: 10px !important;
+    max-width: 100vw important;
   }
-  #carousel button {
+  .wrapProfil {
+    display: none !important;
+  }
+  .profilLogo {
+    margin-left: 0 !important;
+  }
+  #carousel .carousel-indicators button {
     width: 30px !important;
     height: 30px !important;
   }
@@ -649,6 +656,7 @@ main .topMembers .scroll .profil .desc span {
   main {
     padding: 0 !important;
     margin-bottom: 3rem;
+    overflow-x: hidden;
   }
   main .phone {
     padding: 0 !important;
@@ -666,7 +674,6 @@ main .topMembers .scroll .profil .desc span {
     z-index: 1000;
     width: 100vw !important;
     max-width: unset !important;
-    height: 6vh !important;
     min-height: -webkit-fit-content !important;
     min-height: -moz-fit-content !important;
     min-height: fit-content !important;
@@ -674,6 +681,9 @@ main .topMembers .scroll .profil .desc span {
     bottom: 0;
     background: #0b0d0f;
     border: unset;
+  }
+  aside .active::before {
+    width: 0px !important;
   }
   aside .stick {
     display: -webkit-box;

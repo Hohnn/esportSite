@@ -248,6 +248,10 @@ footer .contact h3, footer .social h3 {
   font-size: 1rem;
 }
 
+footer .projet {
+  min-width: 280px;
+}
+
 footer .social ul {
   display: -webkit-box;
   display: -ms-flexbox;
