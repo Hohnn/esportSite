@@ -52,6 +52,7 @@ if (isset($_SESSION['user'])) {
         }
         if ($count == 0) {
             $_SESSION['user'] = $username;
+            setcookie('user', $username, time() + 3600);
             $User->setUpdateUser($_SESSION['id'], $username, $originId, $twitter, $youtube, $twitch);
             $uploaded = upload("logo");
             if (empty($uploaded)) {

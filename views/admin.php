@@ -567,7 +567,7 @@ foreach($teamArray as $teamId){
                                         <div class="date"><?= $proposal['DATEFORMAT'] ?></div>
                                     </header>
                                     <p class="articleTitle"><?= $proposal['PROPOSAL_TITLE'] ?></p>
-                                    <div class="link">  <a href=""><?= $proposal['PROPOSAL_LINK'] ?></a> </div>
+                                    <div class="link">  <a href="<?= $proposal['PROPOSAL_LINK'] ?>" target="_blank"><?= $proposal['PROPOSAL_LINK'] ?></a> </div>
                                     <p class="content"><?= $proposal['PROPOSAL_DESC'] ?></p>
                                 </div>
                             </div>
@@ -589,7 +589,7 @@ foreach($teamArray as $teamId){
                                             <th scope="col">#</th>
                                             <th scope="col">Logo</th>
                                             <th scope="col">Pseudo</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">Statut</th>
                                             <th scope="col">Adresse mail</th>
                                             <th scope="col">Origin ID</th>
                                             <th scope="col">Réseaux</th>

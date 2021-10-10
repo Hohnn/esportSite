@@ -16,6 +16,9 @@
     <title>DAW Inscription</title>
 </head>
 <body class="body flex-md-row ">
+    <a href="../index.php" class="position-absolute top-0 left-0 text-decoration-none brandHome" >
+        <div class="brand-login">DAW <span>esport</span></div>
+    </a>
     <div class="magic"></div>
     <div class="brand text-center" >
         <h1 class="my-4">BIENVENUE</h1>
@@ -69,7 +72,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Notre logiciel utilise des cookies pour vous distinguer des autres utilisateurs de notre site Internet. Cela nous permet de vous offrir une expérience personnalisée lorsque vous naviguez sur ce site.
+                Ce système de site emploie des cookies pour stocker des informations sur votre ordinateur  local. Ces cookies ne contiennent aucune information que vous avez entrée, ils servent  uniquement à l'amélioration de votre plaisir de consultation. L'adresse e-mail est utilisée  uniquement pour la confirmation de vos données d'enregistrement et pour l'envoi d'un nouveau  mot de passe si vous deviez l'oublier. <br><br> En cliquant sur Valider ci-dessous, vous consentez à être lié par ces conditions.
                 </div>
             </div>
         </div>
@@ -78,7 +81,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-<!--     <script src="../assets/js/magic.js"></script> -->
+    <script src="../assets/js/magic.js"></script>
     <script src="https://www.google.com/recaptcha/api.js?hl=fr" async defer></script>
 
 </body>

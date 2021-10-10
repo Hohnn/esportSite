@@ -59,47 +59,12 @@ if (isset($_POST['submitSignin'])) {
         $_SESSION['user'] = $username;
         $user = $User->getUserByMail($email);
         $_SESSION['id'] = $user['USER_ID'];
+        setcookie('user', $username, time() + 365*24*3600, null, null, false, true);
+        setcookie('id', $user['USER_ID'], time() + 365*24*3600, null, null, false, true);        
         header('Location: ../index.php');
     }
 }
 
-/* if (isset($_POST['submitSignin'])) {
-    $username = $_POST['nickname'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $passHash = password_hash($password, PASSWORD_DEFAULT);
-    //random number for avatar
-    $avatar = rand(1, 5);
-    $avatar = "default_".$avatar.".png";
-    $user = $User->setUser($username, $email, $passHash, 1, $avatar);
-    $_SESSION['user'] = $username;
-    $user = $User->getUserByMail($email);
-    $_SESSION['id'] = $user['USER_ID'];
-    header('Location: ../index.php');
-} */
-
-
-/* if (!empty($_POST)) {
-    foreach ($pushToCookie as $key) {
-        if (isset($_POST[$key])) {
-            setcookie($key, $_POST[$key], time() + 24 * 60 * 60);
-        }
-    }
-}
-
-if (!empty($_COOKIE)) {
-    $redirect = true;
-    foreach ($pushToCookie as $cookieName) {
-        if (!isset($_COOKIE[$cookieName])) {
-            $redirect = false;
-        }
-    }
-    if ($redirect) {
-        header("Location: developpers.php"); // change de page avec le bonne url pour récupéré en GET
-        exit(); // stop le script
-    }
-}
- */
 
 
 ?>

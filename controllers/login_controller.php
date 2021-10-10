@@ -20,6 +20,8 @@ $regexUrl = "/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/";
 if (isset($_POST['logout'])) {
     session_unset();
     session_destroy();
+    setcookie("user", "", time()-3600);
+    setcookie("id", "", time()-3600);
     header('location: ../index.php');
 }
 
@@ -31,7 +33,7 @@ if (isset($_POST['submitLogin'])) {
     if ($user) {
         if (password_verify($password, $user['USER_PASSWORD'])) {
             $_SESSION['user'] = $user['USER_USERNAME'];
-            $_SESSION['id'] = $user['USER_ID'];
+            $_SESSION['id'] = $user['USER_ID'];  
             header('Location: ../index.php');
         } else {
             $errorPass = 'Ce mot de passe n’est pas valide.';
@@ -40,6 +42,8 @@ if (isset($_POST['submitLogin'])) {
         $errorLog = 'Mauvaise adresse mail';
     }
 }
+
+
 
 //send mail for reset password
 if (isset($_POST['submitForgetMdp'])) {

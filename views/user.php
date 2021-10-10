@@ -97,7 +97,7 @@
                                 <div class="topStats myCard">
 <?php if(isset($_SESSION['user']) == $_GET['nickname']){ ?>
                                     <form class="noOrigin <?= $showInput ?? 'd-none' ?>" action="" method="POST">
-                                        <p class="desc">Enter votre Origin ID pour afficher vos stats</p>
+                                        <p class="desc">Enter votre Origin ID pour afficher vos statistiques</p>
                                         <input type="text" name="originId" placeholder="Origin ID">
                                     </form>
 <?php } elseif (!$user['USER_ORIGIN_ID']) { ?>

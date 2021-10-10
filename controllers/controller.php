@@ -7,6 +7,10 @@ require_once __DIR__.'/upload_controller.php';
 require_once __DIR__.'/login_controller.php';
 require_once __DIR__.'/signin_controller.php';
 
+if(!isset($_SESSION)) {
+    session_start();
+}
+
 $access = 'd-none';
 if(isset($_SESSION['user'])) {
     $user = $User->getUserByUsername($_SESSION['user']);
@@ -16,9 +20,8 @@ if(isset($_SESSION['user'])) {
 }
 
 
-if(!isset($_SESSION)) {
-    session_start();
-}
+
+
 
 $regexMail = "/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/";
 $regexPassword = "/^(?=.*?[A-Z])(?=.*?[a-z]).{5,}$/";
