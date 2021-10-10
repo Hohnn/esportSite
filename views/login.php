@@ -96,7 +96,7 @@
 
     <?php } ?>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    <!--     <script src="./assets/js/magic.js"></script> -->
+    <!-- <script src="../assets/js/magic.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?php if (isset($_GET['updatePass'])) { 
     if ($_GET['updatePass'] == 'success') { ?>

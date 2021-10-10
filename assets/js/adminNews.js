@@ -26,7 +26,7 @@ allBtnAdd.forEach(btn => {
     btn.addEventListener('click', function() {
         let title = this.parentNode.parentNode.querySelector('.articleTitle');
         let subtitle = this.parentNode.parentNode.querySelector('.content');
-        let link = this.parentNode.parentNode.querySelector('.link');
+        let link = this.parentNode.parentNode.querySelector('.link a');
         newsTitle.value = title.innerHTML;
         previewNewstitle.innerHTML = title.innerHTML;
         newsSubTitle.value = subtitle.innerHTML;

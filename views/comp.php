@@ -29,7 +29,7 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                               echo displayTeam($team); // display team
                           } ?>
 
-                            <div class="col teamCol position-relative">
+                            <div class="col teamCol position-relative <?= $access ?>">
                                 <a href="../views/admin.php?team=add">
                                     <div class="addCard">Ajouter une équipe</div>
                                 </a>
@@ -46,7 +46,7 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                         <?php foreach($allTournaments as $tournament){
                                 echo displayTournament($tournament);
                             } ?>
-                            <div class="col-12 tournamentCard position-relative">
+                            <div class="col-12 tournamentCard position-relative <?= $access ?>">
                                     <a href="../views/admin.php?tournament=add">
                                         <div class="addCard">Ajouter un tournoi</div>
                                     </a>
@@ -57,13 +57,13 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                 </section>
                 <section class="tournament mt-4" id="matchScroll">
                     <h1 class="text-uppercase">Matchs </span></span></h1>
-                    <div class="container-fluid  mt-3">
-                        <div class="row g-3">
+                    <div class="container-fluid mt-3 matchContainer">
+                        <div class="row g-3 matchRow">
                             
                             <?php foreach($allMatches as $match){
                                 echo displayMatch($match);
                             } ?>
-                            <div class="col matchCol position-relative">
+                            <div class="col matchCol position-relative <?= $access ?>">
                                 <a href="../views/admin.php?match=add">
                                     <div class="addCard">Ajouter un match</div>
                                 </a>

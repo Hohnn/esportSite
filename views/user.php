@@ -18,6 +18,7 @@
     <title>DAW esport</title>
 </head>
 <?php require __DIR__.'/../components/header.php' ?>
+                <img src="../assets/images/banner_user.jpg" class="teamBackImg" alt="">
                 <section class="actu">
                     <h1>PROFIL <span><span class="text-uppercase"><?= $_GET['nickname'] ?? '' ?></span></span></h1>
                     <div class="container-fluid  mt-5">
@@ -25,9 +26,8 @@
                             <div class="col-12 col-xl-6">
                                 <div class="profilDesc myCard">
                                     <div class="title">Compte 
-<?php if(isset($_SESSION['user']) == $_GET['nickname']){ ?>
-                                        <div id="edit">Modifier <i class="bi bi-pencil-square"></i></div>
-                                        
+<?php if(isset($_SESSION['user']) && $_SESSION['user']  == $_GET['nickname']){ ?>
+                                        <div id="edit">Modifier <i class="bi bi-pencil-square"></i></div>                      
 <?php }?>
                                     </div>
                                     <div class="wrap">
@@ -75,7 +75,7 @@
                                         <div id="desc" class="infos <?= isset($goodUpload) && $goodUpload == false ? 'd-none' : '' ?>">
                                             <ul>
                                                 <li><i class="bi bi-person me-3"></i><?= $user['USER_USERNAME'] ?></li>
-                                                <li><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/><?= !empty($user['USER_ORIGIN_ID']) ? $user['USER_ORIGIN_ID'] : 'Inconnu' ?></li>
+                                                <li class="<?= !empty($user['USER_ORIGIN_ID']) ? '' : 'textDisable' ?>"><img class="me-3" src="https://img.icons8.com/fluent/48/000000/origin.png"/><?= !empty($user['USER_ORIGIN_ID']) ? $user['USER_ORIGIN_ID'] : 'Inconnu' ?></li>
                                                 <li><i class="bi bi-person-bounding-box me-3"></i><?= $user['STATUS_ROLE'] ?></li>
                                                 <li class="social">
                                                     <a class="<?= $user['USER_TWITTER'] ? 'show twitter' : 'none' ?>" href="<?= $user['USER_TWITTER'] ?? '' ?>"><i class="bi bi-twitter"></i></a>

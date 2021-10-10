@@ -2,6 +2,9 @@
 
 
 $User = new UserModel();
+if (!$User->getUserByUsername($_GET['nickname'])) {
+    header("Location: ../views/404.php");
+}
 $userStats = $User->getUserStats($_GET['nickname']);
 $userStats = explode('|', $userStats[0]);
 

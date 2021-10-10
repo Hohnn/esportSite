@@ -123,10 +123,18 @@
 .teamCard .teamMembers [href]:hover .memberLogo {
   -webkit-filter: saturate(2);
           filter: saturate(2);
+  border: 1px solid RGB(106, 247, 151);
+  background-color: RGB(106, 247, 151);
+}
+
+.teamCard .teamMembers [href]:hover .memberName {
+  color: RGB(106, 247, 151);
+  font-weight: bold;
 }
 
 .teamCard .teamMembers a:first-child .memberLogo {
   margin-left: 0px;
+  border: 1px solid transparent;
 }
 
 .teamCard .teamMembers a {
@@ -313,6 +321,19 @@ section h1 {
 
 section h1::first-letter {
   color: RGB(106, 247, 151);
+}
+
+.matchContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .matchCol {
@@ -580,6 +601,14 @@ label {
 @media screen and (max-width: 500px) {
   .teamCol {
     max-width: unset;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .matchRow {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 /*# sourceMappingURL=comp.css.map */

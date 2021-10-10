@@ -134,7 +134,12 @@ function listen(param){
 
 
 previewText(teamName, teamNamePreview)
-previewText(tag, teamTagPreview)
+
+tag.addEventListener('keyup', function(){
+    teamTagPreview.innerHTML = '[' + tag.value + ']';
+})
+teamTagPreview.innerHTML = '[' + tag.value + ']';
+
 
 let oldLogoBase64 = oldLogo.value
 teamLogoPreview.src = 'data:image/png;base64,' + oldLogoBase64;

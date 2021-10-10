@@ -57,12 +57,16 @@ if (isset($_GET['action']) && $_GET['action'] == 'refreshAll') {
 if (isset($_POST['originId'])) {
     $originId = htmlspecialchars($_POST['originId']);
     $userId = $_SESSION['id'];
-    if (!empty($originId) && displayStats($originId)) {
-        $validInput = true;
+    if (!empty($originId)) {
         $scrap = displayStats($originId);
-        $stats = [$scrap[0], implode('|', $scrap[1])];
-        $statsString = implode('|', $stats);
-        $User->setUserStats($userId, $statsString);
+        if ($scrap) {
+            $validInput = true;
+            $stats = [$scrap[0], implode('|', $scrap[1])];
+            $statsString = implode('|', $stats);
+            $User->setUserStats($userId, $statsString);
+        } else {
+            $validInput = false;
+        }
     } else {
         $validInput = false;
     }

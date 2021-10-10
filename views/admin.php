@@ -47,13 +47,13 @@
                         <div class="row g-4">
                             <div class="title"><?= $_GET['team'] == 'edit' ? 'Modifier une ' : 'Ajouter une ' ?>équipes</div>
                             <div class="col-12 col-xl-7">
-                                <form class="row myCard needs-validation" action="" method="POST" enctype="multipart/form-data">
+                                <form class="row myCard needs-validation" action="" method="POST" enctype="multipart/form-data" novalidate>
                                     <div class="col-12">    
                                         <div class="row mt-3">
                                             <div class="col">
                                                 <label for="teamLogo">logo de l'équipe</label>
                                                 <input type="hidden" id="oldLogo" name="teamOldLogo" value="<?= $team['TEAM_LOGO'] ?? '' ?>">
-                                                <input type="file" accept="image/png, image/jpg, image/jpeg" class="form-control <?= !empty($verifUpload) ? 'is-invalid' : ''?>" name="logo" id="teamLogo" onchange="showPreviewTeamLogo(event);"  required>
+                                                <input type="file" accept="image/png, image/jpg, image/jpeg" class="form-control <?= !empty($verifUpload) ? 'is-invalid' : ''?>" name="logo" id="teamLogo" onchange="showPreviewTeamLogo(event);"  <?= isset($team['TEAM_LOGO']) ? '' : 'required' ?>>
                                                 <div class="invalid-feedback "><?= $verifUpload[0] ?? '' ?></div>
                                             </div>
                                             <div class="col">
@@ -69,7 +69,7 @@
                                         <div class="row mt-4">
                                             <div class="col">
                                                 <label for="flagSelect">Drapeau</label>
-                                            <select class="form-select" aria-label="Default select example" id="flagSelect" name="country" required >
+                                            <select class="form-select myMaxFit " aria-label="Default select example" id="flagSelect" name="country" required >
                                 <?php if ( $_GET['team'] != 'edit') { ?>
                                                 <option selected hidden disabled>Choisir un drapeau</option> 
                                 <?php } foreach($country as $tag => $countryName) { ?>
@@ -287,23 +287,25 @@ foreach($teamArray as $teamId){
                             </div>   
                             <div class="col-12 g-3 mb-0">
                                 <div class="row g-3">
-                                    <div class="col minSet">
+                                    <div class="col-12">
                                         <div class="row">
                                             <label for="team1">Tour n°1</label>
-                                            <div class="col-5">
+                                            <div class="col mb-2 minSet">
+                                                <div class="row">
+                                            <div class="col">
                                                 <input type="hidden" name="score1Id" value="<?= $matchScore[0]['SCORE_ID'] ?? '' ?>">
                                                 <input type="number" max="500" class="form-control" name="score1Team1" id="score1Team1" value="<?= $matchScore[0]['SCORE_TEAM1'] ?? '' ?>" placeholder="Score n°1" required>
                                                 <div class="invalid-feedback ">non valide</div>
                                             </div>
-                                            <div class="col-2 d-flex justify-content-center align-items-center text-yellow">/</div>
-                                            <div class="col-5">
+                                            <div class="col-1 d-flex justify-content-center align-items-center text-yellow">/</div>
+                                            <div class="col">
                                                 <input type="number" max="500" class="form-control" name="score1Team2" id="score1Team2" value="<?= $matchScore[0]['SCORE_TEAM2'] ?? '' ?>" placeholder="Score n°2" required>
                                                 <div class="invalid-feedback ">non valide</div>
                                             </div>
                                         </div>
-                                        <div class="row mt-2">
-                                            <div class="col">
-                                                <select class="form-select" aria-label="Default select example" name="map" id="map1" required>
+                                        </div>
+                                            <div class="col minSet">
+                                                <select class="form-select myMaxFit" aria-label="Default select example" name="map" id="map1" required>
                                                 <?php if (isset($_GET['match']) && $_GET['match'] != 'edit') { ?>
                                                     <option value="" hidden>Carte n°1</option>
                                                 <?php } ?>    
@@ -317,24 +319,26 @@ foreach($teamArray as $teamId){
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col minSet">
+                                    <div class="col-12">
                                         <div class="row">
-                                    <label for="team1">Tour n°2</label>
+                                        <label>Tour n°2</label>
+                                            <div class="col mb-2 minSet">
+                                                <div class="row">
 
-                                            <div class="col-5">
+                                            <div class="col">
                                                 <input type="hidden" name="score2Id" value="<?= $matchScore[1]['SCORE_ID'] ?? '' ?>">
                                                 <input type="number" max="500" class="form-control" name="score2Team1" id="score2Team1" value="<?= $matchScore[1]['SCORE_TEAM1'] ?? '' ?>" placeholder="Score n°1" required>
                                                 <div class="invalid-feedback ">Score invalide</div>
                                             </div>
-                                            <div class="col-2 d-flex justify-content-center align-items-center text-yellow">/</div>
-                                            <div class="col-5">
+                                            <div class="col-1 d-flex justify-content-center align-items-center text-yellow">/</div>
+                                            <div class="col">
                                                 <input type="number" max="500" class="form-control" name="score2Team2" id="score2Team2" value="<?= $matchScore[1]['SCORE_TEAM2'] ?? '' ?>" placeholder="Score n°2" required>
                                                 <div class="invalid-feedback ">Score invalide</div>
                                             </div>
                                         </div>
-                                        <div class="row mt-2">
-                                            <div class="col">
-                                                <select class="form-select" aria-label="Default select example" name="map2" id="map2" required>
+                                        </div>
+                                            <div class="col minSet">
+                                                <select class="form-select myMaxFit"  aria-label="Default select example" name="map2" id="map2" required>
                                                 <?php if ($_GET['match'] != 'edit') { ?>
                                                     <option value="" hidden>Carte n°2</option>
                                                 <?php } ?>    
@@ -348,24 +352,28 @@ foreach($teamArray as $teamId){
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col minSet">
+                                    <div class="col-12">
                                         <div class="row">
-                                            <label for="team1">Tour n°3</label>
-                                            <div class="col-5">
+                                            <label>Tour n°3</label>
+                                            <div class="col mb-2 minSet">
+                                                <div class="row">
+ 
+                                            <div class="col">
                                                 <input type="hidden" name="score3Id" value="<?= $matchScore[2]['SCORE_ID'] ?? '' ?>">
                                                 <input type="number" max="500" class="form-control" name="score3Team1" id="score3Team1" value="<?= $matchScore[2]['SCORE_TEAM1'] ?? '' ?>" placeholder="Score n°1">
                                                 <div class="invalid-feedback ">Score invalide</div>
                                             </div>
-                                            <div class="col-2 d-flex justify-content-center align-items-center text-yellow">/</div>
-                                            <div class="col-5">
+                                            <div class="col-1 d-flex justify-content-center align-items-center text-yellow">/</div>
+                                            <div class="col">
                                                 <input type="number" max="500" class="form-control" name="score3Team2" id="score3Team2" value="<?= $matchScore[2]['SCORE_TEAM2'] ?? '' ?>" placeholder="Score n°2">
                                                 <div class="invalid-feedback ">Score invalide</div>
                                             </div>
-                                        </div>
+                                                                                               
+                                            </div>
+                                            </div>
                                         
-                                        <div class="row mt-2">
-                                            <div class="col">
-                                                <select class="form-select" aria-label="Default select example" name="map3" id="map3">
+                                            <div class="col minSet">
+                                                <select class="form-select myMaxFit" aria-label="Default select example" name="map3" id="map3">
                                                 <?php if (isset($_GET['match']) && $_GET['match'] != 'edit' || empty($matchScore[2])) { ?>
                                                     <option hidden>Carte n°3</option>
                                                 <?php } ?>    
@@ -378,6 +386,7 @@ foreach($teamArray as $teamId){
                                                 </select>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>  
                             </div>  

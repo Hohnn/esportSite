@@ -201,11 +201,11 @@ class UserModel extends database {
         return $result;
     }
 
-    public function getUserStats($userId) {
+    public function getUserStats($username) {
         $bdd = $this->connectDatabase();
         $condition = "SELECT stats FROM user WHERE user_username = ?";
         $result = $bdd->prepare($condition);
-        $result->bindValue(1, $userId, PDO::PARAM_INT);
+        $result->bindValue(1, $username, PDO::PARAM_STR);
         $result->execute();
         return $result->fetch();
     }
