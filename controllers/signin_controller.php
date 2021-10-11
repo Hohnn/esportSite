@@ -59,12 +59,10 @@ if (isset($_POST['submitSignin'])) {
         $_SESSION['user'] = $username;
         $user = $User->getUserByMail($email);
         $_SESSION['id'] = $user['USER_ID'];
-        setcookie('user', $username, time() + 365*24*3600, null, null, false, true);
-        setcookie('id', $user['USER_ID'], time() + 365*24*3600, null, null, false, true);        
+        setcookie('user', $username, time() + 3600, '/');
+        setcookie('id', $user['USER_ID'], time() + 3600, '/');        
         header('Location: ../index.php');
     }
 }
-
-
 
 ?>

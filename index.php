@@ -4,8 +4,8 @@ include './controllers/member_controller.php';
 include './controllers/index_controller.php';
 
 if(isset($_SESSION['user'])) {
-    setcookie('user', $_SESSION['user'], time() + 3600);
-    setcookie('id', $_SESSION['id'], time() + 3600); 
+    setcookie('user', $_SESSION['user'], time() + 3600, '/');
+    setcookie('id', $_SESSION['id'], time() + 3600, '/'); 
 }
 
 if (isset($_COOKIE['user']) && !empty(isset($_COOKIE['user']))) {

@@ -10,7 +10,7 @@
         <div class="row flex-nowrap">
             <aside class="col-3">
                     <div class="stick">
-                        <div class="brand d-none d-sm-block">BFV <span class="d-none d-lg-inline-block">esport</span></div>
+                        <div class="brand d-none d-sm-block">DAW <span class="d-none d-lg-inline-block">esport</span></div>
                         <nav id="navSide">
                             <a href="../index.php" class="d-flex pages <?= $_SERVER['SCRIPT_NAME'] == "/index.php" ? 'active' : ''  ?>">
                                 <i class="bi bi-newspaper"></i>

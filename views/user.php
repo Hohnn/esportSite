@@ -28,7 +28,7 @@
                                     <div class="title">Compte 
 <?php if(isset($_SESSION['user']) && $_SESSION['user']  == $_GET['nickname']){ ?>
                                         <div id="edit">Modifier <i class="bi bi-pencil-square"></i></div>                      
-<?php }?>
+<?php } ?>
                                     </div>
                                     <div class="wrap">
                                         <form id="descEdit" class="edit <?= isset($goodUpload) && $goodUpload == false ? '' : 'd-none' ?>" action="" method="POST" enctype="multipart/form-data" >
