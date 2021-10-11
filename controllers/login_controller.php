@@ -91,6 +91,8 @@ if (isset($_POST['submitNewMdp'])) {
         } else {
             $errorConfirmPass = 'Les mots de passe ne correspondent pas';
         }
+    } else {
+        $errorPass = 'Minimum 5 caractère, 1 majuscule, 1 minuscule, 1 chiffre';
     }
     
 }

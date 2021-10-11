@@ -25,7 +25,7 @@
     </div>
 <?php if(isset($_GET['token'])) {?>
     <div class="myForm d-flex d-md-block">
-        <form class="modal-content myModal" action="login.php?token=<?= $token ?? '' ?>" method="POST">
+        <form class="modal-content myModal"  method="POST">
             <div class="modal-header">
             <h3 class="modal-title" id="exampleModalLabel">Changement mot de passe</h3>
             </div>
@@ -44,7 +44,7 @@
                 <input type="hidden" name="token" value="<?= $_GET['token'] ?? '' ?>">
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="submit" name="submitNewMdp" class="btn btn-primary bgYellow">Envoyé</button>
+                <button type="submit" name="submitNewMdp" class="btn btn-primary bgYellow">Confirmer</button>
             </div>
         </form>
     </div>
@@ -82,7 +82,7 @@
                     <div class="form-text text-danger"><?=$errorLog ?? ''?></div>
                 </div>
                 <div class="mb-3 form-floating">
-                    <input type="password" class="form-control <?=isset($errorPass) ? 'is-invalid' : ''?>"" id="password" name="password" placeholder="Mot de passe">
+                    <input type="password" class="form-control <?=isset($errorPass) ? 'is-invalid' : ''?>" id="password" name="password" placeholder="Mot de passe">
                     <label for="password" class="text-muted">Mot de passe</label>
                     <div class="form-text text-danger"><?=$errorPass ?? ''?></div>
                 </div>
