@@ -20,6 +20,7 @@
   color: white;
   background-color: RGB(28, 29, 28);
   overflow: hidden;
+  cursor: crosshair;
 }
 
 .body .brand {
@@ -114,5 +115,9 @@
   color: white;
   font-weight: 300;
   font-size: 1.5rem;
+}
+
+.brandHome {
+  z-index: 100;
 }
 /*# sourceMappingURL=signIn.css.map */

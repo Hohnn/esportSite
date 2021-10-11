@@ -15,7 +15,7 @@
     <title>DAW Inscription</title>
 </head>
 <body class="body flex-md-row position-relative">
-    <a href="../index.php" class="position-absolute top-0 left-0 text-decoration-none" >
+    <a href="../index.php" class="position-absolute top-0 left-0 text-decoration-none brandHome" >
         <div class="brand-login">DAW <span>esport</span></div>
     </a>
     <div class="magic"></div>
@@ -32,12 +32,12 @@
             <div class="modal-body pt-0">
                 <div class="mb-4">Entrer votre nouveau mot de passe sécurisé.</div>
                 <div class="mb-3 form-floating">
-                    <input type="password" class="form-control <?=isset($errorPass) ? 'is-invalid' : ''?>"" id="password" name="password" placeholder="Mot de passe">
+                    <input type="password" class="form-control <?=isset($errorPass) ? 'is-invalid' : ''?>" id="password" name="password" placeholder="Mot de passe">
                     <label for="password" class="text-muted">Mot de passe</label>
                     <div class="form-text text-danger"><?=$errorPass ?? ''?></div>
                 </div>
                 <div class="mb-3 form-floating">
-                    <input type="password" class="form-control <?=isset($errorConfirmPass) ? 'is-invalid' : ''?>"" id="confirmPassword" name="confirmPassword" placeholder="Mot de passe">
+                    <input type="password" class="form-control <?=isset($errorConfirmPass) ? 'is-invalid' : ''?>" id="confirmPassword" name="confirmPassword" placeholder="Mot de passe">
                     <label for="confirmPassword" class="text-muted">Confirmer le mot de passe</label>
                     <div class="form-text text-danger"><?=$errorConfirmPass ?? ''?></div>
                 </div>
@@ -96,7 +96,7 @@
 
     <?php } ?>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    <!-- <script src="../assets/js/magic.js"></script> -->
+    <script src="../assets/js/magic.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?php if (isset($_GET['updatePass'])) { 
     if ($_GET['updatePass'] == 'success') { ?>

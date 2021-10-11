@@ -81,7 +81,7 @@ class CompModel extends database
     public function getAllTeams()
     {
         $bdd = $this->connectDatabase();
-        $condition = "SELECT * FROM teams";
+        $condition = "SELECT * FROM teams ORDER BY TEAM_ID DESC";
         $result = $bdd->query($condition)->fetchAll();
         return $result;
     }

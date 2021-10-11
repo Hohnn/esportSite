@@ -105,7 +105,7 @@ function displayTournament($tournament) {
                 <?= $tournament['date'] ?>
             </div>
             <div class="status stuff">
-                <span>Status</span> 
+                <span>Statut</span> 
                 <?= $tournament['TOURNAMENT_STATUS'] ?>
             </div>
             <div class="teams stuff">
