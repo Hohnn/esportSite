@@ -3,15 +3,6 @@ require './controllers/controller.php';
 include './controllers/member_controller.php';
 include './controllers/index_controller.php';
 
-if(isset($_SESSION['user'])) {
-    setcookie('user', $_SESSION['user'], time() + 3600, '/');
-    setcookie('id', $_SESSION['id'], time() + 3600, '/'); 
-}
-
-if (isset($_COOKIE['user']) && !empty(isset($_COOKIE['user']))) {
-    $_SESSION['user'] = $_COOKIE['user'];
-    $_SESSION['id'] = $_COOKIE['id'];
-}
 ?>
 
 <!DOCTYPE html>
@@ -154,7 +145,7 @@ if (isset($_COOKIE['user']) && !empty(isset($_COOKIE['user']))) {
     <div id="liveToast" class="toast align-items-center text-white <?= $color ?? 'bg-success' ?> border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body">
-            <?= $success ?>
+            <?= $success ?? '' ?>
             </div>
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>

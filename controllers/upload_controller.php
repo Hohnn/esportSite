@@ -41,7 +41,6 @@ function store($tmp_name, $uid, $ext)
                 store($img_file["tmp_name"], $uid, $ext);
             }
         }
-
         return $msgArray;
     }
 

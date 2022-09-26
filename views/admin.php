@@ -440,7 +440,7 @@ foreach($teamArray as $teamId){
                                     </div>
                                     <header>
                                         <div class="teamWrap">
-                                            <img <?= isset($match['TEAM1_LOGO']) ? 'src="data:image/png;base64,' . $match['TEAM1_LOGO'] . '"' : '' ?> id="logoTeam1"  class="teamLogo">
+                                            <img <?= isset($match['TEAM1_LOGO']) ? 'src="data:image/png;base64,' . $match['TEAM1_LOGO'] . '"' : '' ?> id="logoTeam1"  class="teamLogo <?= isset($looseCount) && $looseCount < 0 ? 'win' : '' ?>">
                                             <span id="nameTeam1"><?= $match['TEAM1_SHORTNAME'] ?? 'TAG' ?></span>
                                         </div>
                                         <div class="scoreWrap">
@@ -461,7 +461,7 @@ foreach($teamArray as $teamId){
                                             </div>
                                         </div>
                                         <div class="teamWrap">
-                                            <img <?= isset($match['TEAM2_LOGO']) ? 'src="data:image/png;base64,' . $match['TEAM2_LOGO'] . '"' : '' ?> id="logoTeam2"  class="teamLogo">
+                                            <img <?= isset($match['TEAM2_LOGO']) ? 'src="data:image/png;base64,' . $match['TEAM2_LOGO'] . '"' : '' ?> id="logoTeam2"  class="teamLogo <?= isset($looseCount) && $looseCount > 0 ? 'win' : '' ?>">
                                             <span id="nameTeam2"><?= $match['TEAM1_SHORTNAME'] ?? 'TAG' ?></span>
                                         </div>
                                     </header>

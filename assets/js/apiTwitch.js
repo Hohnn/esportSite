@@ -1,45 +1,85 @@
 /* curl -H 'Accept: application/vnd.twitchtv.v5+json' \
 -H 'Client-ID: uo6dggojyb8d6soh92zknwmi5ej1q2' \
 -X GET 'https://api.twitch.tv/kraken/streams/44322889' */
+504199
+"514974"
+"66402"
+"488500"
 
 $.ajax({
-    url: 'https://api.twitch.tv/kraken/streams/?game=Battlefield%20V&language=fr&broadcast_platform=live',
+    url: 'https://api.twitch.tv/helix/streams/?game_id=504199&game_id=514974&game_id=66402&game_id=488500&language=fr',
     beforeSend: function(xhr) {
-        xhr.setRequestHeader("Accept", "application/vnd.twitchtv.v5+json")
+        xhr.setRequestHeader('Authorization', 'Bearer sxoo09xeia9xelx0ztllv1z1ve78ph')
         xhr.setRequestHeader("Client-ID", "iguzmyofsjp2l6gru7d1q0kku4hg3e")
     }, success: function(data){
+        console.log(data);
         createContent(data);
+    }, error: function (request, status, error) {
+        console.log(request.responseText);
+        console.log(error);
     }
 })
 
+function test() {
+    fetch("https://id.twitch.tv/oauth2/token", {
+        body: "client_id=iguzmyofsjp2l6gru7d1q0kku4hg3e&client_secret=89373idltpqf39mizisqb58uzes15b&grant_type=client_credentials",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: "POST"
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+}
 
 
 function createContent(param) {
-    let array = param.streams;
+    let array = param.data;
     array.forEach(function(item) {
-        let viewers
-        if (item.viewers > 1) {
-            viewers = item.viewers + ' spectateurs';
-        } else {
-            viewers = item.viewers + ' spectateur';
-        }
-        let col = document.createElement('div');
-        col.className = 'col';
-        col.innerHTML = `<a target="_blank" href="${item.channel.url}" class="card">
-                            <div class="wrapPreview">
-                                <img class="preview" src="${item.preview.medium}" alt="stream preview">
-                                <span class="badge bg-danger">LIVE</span>
-                                <span class="count">${viewers}</span>
-                            </div>
-                            <div class="footer">
-                                <img class="logo" src="${item.channel.logo}" alt="stream logo">
-                                <div class="desc">
-                                    <h2 class="title">${item.channel.description}</h2>
-                                    <div class="name">${item.channel.display_name}</div>
+        let user
+        $.ajax({
+            url: `https://api.twitch.tv/helix/users?id=${item.user_id}`,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('Authorization', 'Bearer sxoo09xeia9xelx0ztllv1z1ve78ph')
+                xhr.setRequestHeader("Client-ID", "iguzmyofsjp2l6gru7d1q0kku4hg3e")
+            }, success: function(data){
+                console.log(data);
+                user = data.data[0]
+                display()
+            }, error: function (request, status, error) {
+                console.log(request.responseText);
+                console.log(error);
+            }
+        })
+        function display(){
+            console.log(user);
+            let viewers
+            if (item.viewer_count > 1) {
+                viewers = item.viewer_count + ' spectateurs';
+            } else {
+                viewers = item.viewer_count + ' spectateur';
+            }
+            let col = document.createElement('div');
+            col.className = 'col';
+            col.innerHTML = `<a target="_blank" href="https://www.twitch.tv/${item.user_name}" class="card">
+                                <div class="wrapPreview">
+                                    <img class="preview" src="${item.thumbnail_url.replace('{width}', '320').replace('{height}', '180')}" alt="stream preview">
+                                    <span class="badge bg-danger">LIVE</span>
+                                    <span class="count">${viewers}</span>
                                 </div>
-                            </div>
-                        </a>`
-        myscroll.appendChild(col);
+                                <div class="footer">
+                                    <img class="logo" src="${user.profile_image_url}" alt="stream logo">
+                                    <div class="desc">
+                                        <h2 class="title">${item.title}</h2>
+                                        <div class="name">${item.user_name}</div>
+                                    </div>
+                                </div>
+                            </a>`
+            myscroll.appendChild(col);
+        }
+
     })
 }
 
@@ -52,7 +92,7 @@ $.ajax({
         xhr.setRequestHeader("Accept", "application/json")
     },
     success: function(data){
-        createContentYT(data)                        
+        createContentYT(data)      
     }
 })
 

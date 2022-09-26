@@ -1,5 +1,15 @@
 <?php
 
+if(isset($_SESSION['user'])) {
+    setcookie('user', $_SESSION['user'], time() + 3600, '/');
+    setcookie('id', $_SESSION['id'], time() + 3600, '/'); 
+}
+
+if (isset($_COOKIE['user']) && !empty(isset($_COOKIE['user']))) {
+    $_SESSION['user'] = $_COOKIE['user'];
+    $_SESSION['id'] = $_COOKIE['id'];
+}
+
 $News = new NewsModel();
 $allNews = $News->getAllNews();
 

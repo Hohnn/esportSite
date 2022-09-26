@@ -43,7 +43,7 @@ require_once __DIR__.'/../controllers/comp_controller.php';
                     <div class="container-fluid  mt-3">
                         <div class="row g-3">
                             
-                        <?php foreach($allTournaments as $tournament){
+                          <?php foreach($allTournaments as $tournament){
                                 echo displayTournament($tournament);
                             } ?>
                             <div class="col-12 tournamentCard position-relative <?= $access ?>">
